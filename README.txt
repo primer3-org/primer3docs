@@ -93,9 +93,9 @@ DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
 distribution (primer3_<release>.tar.gz) to Unix, and then
 
-$ unzip primer3_1.0.1.tar.gz
-$ tar xvf primer3_1.0.1.tar
-$ cd primer3_1.0.1/src
+$ unzip primer3-<release number>.tar.gz
+$ tar xvf primer3-<release number>.tar
+$ cd primer3-<release number>/src
 
 If you do not use gcc, modify the makefile to
   use your (ANSI) C compiler and appropriate 
