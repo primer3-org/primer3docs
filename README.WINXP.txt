@@ -13,8 +13,9 @@ How to install this software
 ============================
 
 1. Unzip the '.zip' file downloaded from SourceForge.net
-2. You will create a primer3-1.1.1 folder in the location where the file was unzipped
-3. You may copy the files from the 'bin' directory of the primer3-1.1.1 folder to a
+2. You will create a primer3-<release number> folder in the location where the file was unzipped,
+for example, primer3-1.2.1.
+3. You may copy the files from the 'bin' directory of the primer3-<release number> folder to a
 location of your choice.  The exact same files are located within the 'src' folder so that
 the tests may be run (windows does not allow relative paths in shortcuts).
 
@@ -36,11 +37,11 @@ unix/linux versions. See below.***
 3. Hit enter (or select 'OK')
 4. Navigate to the location of the tests:
     
-    A. if you put it in C:/Documents and Settings/YourName/primer3-1.1.1/test/,
-    you would type 'cd c:/Documents and Settings/YourName/primer3-1.1.1/test/'
+    A. if you put it in C:/Documents and Settings/YourName/primer3-<release number>/test/,
+    you would type 'cd c:/Documents and Settings/YourName/primer3-<release number>/test/'
     
     B. you can also type 'cd ' (don't forget the space after cd) 
-    and drag the primer3-1.1.1 folder onto the command-line window from 
+    and drag the primer3-<release number> folder onto the command-line window from 
     windows explorer, this will fill in the location for you
 
 5. On the command line, run 'perl p3testz.pl -w' in this directory
