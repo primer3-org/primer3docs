@@ -1,4 +1,4 @@
-OS X (10.4) Universal Binary Installation Instructions (bcf; 3/27/2006;23:33)
+OS X (10.4, 10.5) Universal Binary Installation Instructions (bcf; 2/25/2008;13:18)
 
 
 How to install this software

@@ -141,9 +141,18 @@ Provided you have the OS X developer tools installed
 registering for a free account), you can compile a universal
 build (intel and PPC native) of primer3.
 
-o you must be running OS X > 10.4 and should have the most
+FOR OS X 10.4 (TIGER)
+-----------------------------
+o you must be running OS X 10.4.x and should have the most
 	recent version of XCode
-o then run `make -f Makefile.OSXUniversal all`
+o then run `make -f Makefile.OSX.Tiger all`
+o run the tests as directed above
+
+FOR OS X 10.5 (LEOPARD)
+-----------------------------
+o you must be running OS X 10.5.x and should have the most
+	recent version of XCode
+o then run `make -f Makefile.OSX.Leopard all`
 o run the tests as directed above
 
 Additional instructions for 'installing' the binaries may be found in
@@ -151,7 +160,7 @@ the README.OSX.txt.
 
 You should be able to compile a 3-way binary which includes PPC64 support 
 (intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
-end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
+end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.`platform`  
 This has not been tested.
 
 SYSTEM REQUIREMENTS
