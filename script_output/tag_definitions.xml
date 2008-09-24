@@ -2,28 +2,14 @@
 <tagList version="1.0">
 <tag>
 	<tagName></tagName>
-	<oldTag>
-		<oldTagName></oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType></dataType>
-	<min></min>
-	<max></max>
 	<default></default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
 	<tagName>SEQUENCE_ID</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_SEQUENCE_ID</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<oldTag>
-		<oldTagName>MARKER_NAME</oldTagName>
-		<version>2.0</version>
-	</oldTag>
 	<dataType>string</dataType>
 	<default>empty</default>
 	<description>
@@ -35,10 +21,6 @@ This tag must be present if PRIMER_FILE_FLAG is non-zero.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_TEMPLATE</tagName>
-	<oldTag>
-		<oldTagName>SEQUENCE</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>nucleotide sequence</dataType>
 	<default>empty</default>
 	<description>
@@ -51,10 +33,6 @@ Boulder-IO parser will assume that a line ends at a newline.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_INCLUDED_REGION</tagName>
-	<oldTag>
-		<oldTagName>INCLUDED_REGION</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
@@ -72,10 +50,6 @@ primer-picking region.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_TARGET</tagName>
-	<oldTag>
-		<oldTagName>TARGET</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
@@ -95,10 +69,6 @@ a trailing ,<description> for each element of this argument.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_EXCLUDED_REGION</tagName>
-	<oldTag>
-		<oldTagName>EXCLUDED_REGION</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
@@ -116,14 +86,6 @@ such as ALUs or LINEs.]]>
 </tag>
 <tag>
 	<tagName>PRIMER_COMMENT</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_COMMENT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<oldTag>
-		<oldTagName>COMMENT</oldTagName>
-		<version>2.0</version>
-	</oldTag>
 	<dataType>string</dataType>
 	<default>empty</default>
 	<description>
@@ -132,10 +94,6 @@ such as ALUs or LINEs.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_QUALITY</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_SEQUENCE_QUALITY</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>quality list</dataType>
 	<default>empty</default>
 	<description>
@@ -152,10 +110,6 @@ quality information (for example phred).]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_PRIMER</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_LEFT_INPUT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>nucleotide sequence</dataType>
 	<default>empty</default>
 	<description>
@@ -166,10 +120,6 @@ of SEQUENCE.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_PRIMER_REVCOMP</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_RIGHT_INPUT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>nucleotide sequence</dataType>
 	<default>empty</default>
 	<description>
@@ -180,13 +130,7 @@ substring of the reverse strand of SEQUENCE.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_START_CODON_POSITION</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_START_CODON_POSITION</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>int</dataType>
-	<min></min>
-	<max></max>
 	<default>-1000000</default>
 	<description>
 <![CDATA[This parameter should be considered EXPERIMENTAL at this point.
@@ -326,8 +270,7 @@ Legal values are:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=1
-   PRIMER_PICK_RIGHT_PRIMER=0
-]]>
+   PRIMER_PICK_RIGHT_PRIMER=0]]>
 	</description>
 </tag>
 <tag>
@@ -560,10 +503,6 @@ and PRIMER...INPUT is specified).]]>
 </tag>
 <tag>
 	<tagName>PRIMER_PRODUCT_SIZE_RANGE</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_DEFAULT_PRODUCT</oldTagName>
-		<version>2.0</version>
-	</oldTag>
 	<dataType>size range list</dataType>
 	<default>100-300</default>
 	<description>
@@ -605,10 +544,6 @@ effect on the internal oligo if one is requested.)]]>
 </tag>
 <tag>
 	<tagName>PRIMER_OPT_SIZE</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_DEFAULT_SIZE</oldTagName>
-		<version>2.0</version>
-	</oldTag>
 	<dataType>int</dataType>
 	<default>20</default>
 	<description>
@@ -677,10 +612,6 @@ temperatures of the left and right primers.]]>
 </tag>
 <tag>
 	<tagName>PRIMER_TM_FORMULA</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_TM_SANTALUCIA</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>int</dataType>
 	<default>0</default>
 	<description>
@@ -758,10 +689,6 @@ Tm(C) = 323.704 - 273.15 = 50.554 C]]>
 </tag>
 <tag>
 	<tagName>PRIMER_SALT_MONOVALENT</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_SALT_CONC</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
@@ -802,10 +729,6 @@ in an existing pair)]]>
 </tag>
 <tag>
 	<tagName>PRIMER_SALT_DIVALENT</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_DIVALENT_CONC</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -1023,10 +946,6 @@ least as great as the score of a global alignment.]]>
 </tag>
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_FILE_FLAG</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
@@ -1293,7 +1212,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1301,7 +1220,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1309,7 +1228,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1317,7 +1236,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1325,7 +1244,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1333,7 +1252,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1341,7 +1260,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1349,7 +1268,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1357,7 +1276,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1365,7 +1284,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1373,7 +1292,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1381,7 +1300,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1389,7 +1308,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1397,7 +1316,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1405,7 +1324,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1413,7 +1332,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1421,7 +1340,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1429,7 +1348,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1437,7 +1356,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1445,15 +1364,11 @@ PRIMER_OPT_GC_PERCENT.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
@@ -1469,10 +1384,6 @@ make Target regions excluded regions for internal oligos.]]>
 </tag>
 <tag>
 	<tagName>SEQUENCE_INTERNAL</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_INPUT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>nucleotide sequence</dataType>
 	<default>empty</default>
 	<description>
@@ -1485,7 +1396,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>int</dataType>
 	<default>20</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1493,7 +1404,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>int</dataType>
 	<default>18</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1501,7 +1412,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>int</dataType>
 	<default>27</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1509,7 +1420,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>60.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1517,7 +1428,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1525,7 +1436,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>57.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1533,7 +1444,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>63.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1541,7 +1452,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>20.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1549,7 +1460,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>80.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1557,7 +1468,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1565,7 +1476,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1573,7 +1484,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1581,7 +1492,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1589,7 +1500,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>decimal, 9999.99</dataType>
 	<default>12.00</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1597,7 +1508,7 @@ design left and right primers.  Must be a substring of SEQUENCE.]]>
 	<dataType>int</dataType>
 	<default>5</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1653,7 +1564,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1661,7 +1572,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1669,7 +1580,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1677,7 +1588,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1685,7 +1596,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1693,7 +1604,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1701,7 +1612,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1709,7 +1620,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1717,7 +1628,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1725,7 +1636,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1733,7 +1644,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 <tag>
@@ -1741,7 +1652,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[ ]]>
+<![CDATA[]]>
 	</description>
 </tag>
 </tagList>

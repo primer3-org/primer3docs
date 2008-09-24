@@ -25,7 +25,7 @@ The "per sequence" tags:
 NEW VERSION                       - OLD VERSION                                - comment
  
 SEQUENCE_ID                       - PRIMER_SEQUENCE_ID
-SEQUENCE_DNA                      - SEQUENCE                                   - dont know a good tag
+SEQUENCE_TEMPLATE                 - SEQUENCE
 SEQUENCE_QUALITY                  - PRIMER_SEQUENCE_QUALITY
 SEQUENCE_INCLUDED_REGION          - INCLUDED_REGION
 SEQUENCE_TARGET                   - TARGET
@@ -34,7 +34,7 @@ SEQUENCE_INTERNAL_EXCLUDED_REGION - PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION
 SEQUENCE_START_CODON_POSITION     - PRIMER_START_CODON_POSITION
  
 SEQUENCE_PRIMER                   - PRIMER_LEFT_INPUT
-SEQUENCE_OLIGO                    - PRIMER_INTERNAL_OLIGO_INPUT
+SEQUENCE_INTERNAL                 - PRIMER_INTERNAL_OLIGO_INPUT
 SEQUENCE_PRIMER_REVCOMP           - PRIMER_RIGHT_INPUT
 
 --------------------------------------------------------------------------------
