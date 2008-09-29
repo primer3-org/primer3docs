@@ -1,0 +1,58 @@
+This has still to be turned into xml....
+
+INVOKING primer3_core
+---------------------
+
+By default, the executable program produced by the Makefile is
+called primer3_core.  This is the C program that does the heavy
+lifting of primer picking.  There is also a more user-friendly
+web interface (distributed separately).
+
+The command line for primer3 can be:
+
+primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
+
+WARNING: primer3_core only reads its input on stdin, so the usual
+unix convention of
+
+primer3_core input_file.txt
+
+*will not work*.  Primer3_core will just sit there forever
+waiting for its input on stdin.
+
+
+Possible command line tags:
+
+-about
+   generates one line of output: primer3 release 1.1.2
+   and terminates the program. This allows scripts to 
+   query primer3 for its version.
+
+-format_output 
+   indicates that primer3_core should generate
+   user-oriented (rather than program-oriented) output.
+
+-strict_tags 
+   indicates that primer3_core should generate
+   a fatal error if there is any tag in the input that
+   it does not recognize (see INPUT AND OUTPUT CONVENTIONS).
+   
+-p3_settings_file=set.txt
+   allows to specify a settings file set.txt. The global 
+   ("PRIMER_...") parameters of these file are read first. 
+   Tags appearing in the settings file override identical 
+   tags of the default primer3 settings and are modified 
+   by identical tags in the command line input. See 
+   primer3 file documentation for details on the file 
+   format. 
+   
+-io_version=XXX
+   indicated were XXX is the version of input primer3 should 
+   read. At the moment only -io_version=3 and -io_version=4
+   are supported. Please note that -io_version=4 is required
+   to use new functionality.
+
+-2x_compat 
+   is no longer supported.
+
+

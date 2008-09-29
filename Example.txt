@@ -317,5 +317,5 @@ non-default value is supplied.
 
 EXAMPLE OUTPUT
 --------------
-You should run it youself.  Use the file 'example' in this
+You should run it yourself.  Use the file 'example' in this
 directory as input.

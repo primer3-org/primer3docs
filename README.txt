@@ -176,36 +176,6 @@ still uses many Kernighan-&-Richie-style function headers, so
 you might have to force your compiler to accept them.
 
 
-INVOKING primer3_core
----------------------
-
-By default, the executable program produced by the Makefile is
-called primer3_core.  This is the C program that does the heavy
-lifting of primer picking.  There is also a more user-friendly
-web interface (distributed separately).
-
-The command line for primer3 is:
-
-primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
-
--format_output indicates that primer3_core should generate
-   user-oriented (rather than program-oriented) output.
-
--strict_tags indicates that primer3_core should generate
-   a fatal error if there is any tag in the input that
-   it does not recognize (see INPUT AND OUTPUT CONVENTIONS).
-
-WARNING: primer3_core only reads its input on stdin, so the usual
-unix convention of
-
-primer3_core input_file.txt
-
-*will not work*.  Primer3_core will just sit there forever
-waiting for its input on stdin.
-
-Note: The old flag -2x_compat is no longer supported.
-
-
 INPUT AND OUTPUT CONVENTIONS
 ----------------------------
 
