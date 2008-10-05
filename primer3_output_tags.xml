@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<primer3Doc version="1.0">
+<tag>
+	<tagName></tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType></dataType>
+	<min></min>
+	<max></max>
+	<default></default>
+	<description>
+<![CDATA[ ]]>
+	</description>
+</tag>
+</primer3Doc>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
+
 <textBlock>
 	<id></id>
 	<head></head>
@@ -7,22 +8,271 @@
 <![CDATA[ ]]>
 	</text>
 </textBlock>
+
+
+<textBlock>
+	<id>buildOsX</id>
+	<head>BUILDING OSX UNIVERSAL BINARY</head>
+	<text>
+<![CDATA[** To build a processor-native, non-universal binary of primer3, 
+the following is unneccesary**.  
+
+The instructions above should be sufficient.
+
+A pre-compiled, universal binary download for OSX is available from 
+http://sourceforge.net/projects/primer3/ for the current release.
+
+These instructions assume you want to build binaries compatible 
+with *both* of the current processor architectures used by the Apple
+platform (i,e. the binaries will be run on both PPC and intel platforms).
+
+Provided you have the OS X developer tools installed
+(you can download from http://developer.apple.com after
+registering for a free account), you can compile a universal
+build (intel and PPC native) of primer3.
+
+o you must be running OS X > 10.4 and should have the most
+	recent version of XCode
+o run `make -f Makefile.OSX.Leopard all` if you run OS X 10.5
+o run `make -f Makefile.OSX.Tiger all` is you run OS X 10.4
+o run the tests as directed above
+
+Additional instructions for 'installing' the binaries may be found in
+the README.OSX.txt.
+
+You should be able to compile a 3-way binary which includes PPC64 support 
+(intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
+end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
+This has not been tested.]]>
+	</text>
+</textBlock>
 <textBlock>
 	<id>citationRequest</id>
-	<head>How to cite primer3</head>
+	<head>CITING PRIMER3</head>
 	<text>
 <![CDATA[We request but do not require that use of this software be cited in
 publications as
 
-Steve Rozen and Helen J. Skaletsky (2000)
-Primer3 on the WWW for general users and for biologist programmers.
-In: Krawetz S, Misener S (eds)
-Bioinformatics Methods and Protocols: Methods in Molecular Biology.
-Humana Press, Totowa, NJ, pp 365-386
+Steve Rozen and Helen J. Skaletsky (2000) Primer3 on the WWW for
+general users and for biologist programmers.
+In: Krawetz S, Misener S (eds) Bioinformatics Methods and
+Protocols: Methods in Molecular Biology.  Humana Press, Totowa,
+NJ, pp 365-386
+Source code available at http://sourceforge.net/projects/primer3/
 
-Source code available at http://primer3.sourceforge.net/
 The paper above is available at
 http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>contact</id>
+	<head>REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS</head>
+	<text>
+<![CDATA[For error reports or requests for enhancements, please send e-mail
+to primer3-mail (at) lists.sourceforge.net after replacing (at)
+with @.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>commandLineTags</id>
+	<head>COMMAND LINE TAGS</head>
+	<text>
+<![CDATA[This parameters are read from command line:]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>copyrightLicense</id>
+	<head>COPYRIGHT AND LICENSE</head>
+	<text>
+<![CDATA[Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+Whitehead Institute for Biomedical Research, Steve Rozen
+(http://jura.wi.mit.edu/rozen), and Helen Skaletsky
+All rights reserved.
+
+Most of primer3 is released under the following _new_ BSD license:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the names of the copyright holders nor contributors may
+be used to endorse or promote products derived from this software
+without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The oligtm library and tests are released under the GPL.  See
+file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>globalTags</id>
+	<head>"Global" Input Tags</head>
+	<text>
+<![CDATA["Global" input tags describe the general parameters that 
+primer3 should use in its searches, and the values of these 
+tags persist between input boulder records until or unless 
+they are explicitly reset. Errors in "Global" input tags are 
+fatal because they invalidate the basic conditions under 
+which primers are being picked.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>inputOutputConventions</id>
+	<head>INPUT AND OUTPUT CONVENTIONS</head>
+	<text>
+<![CDATA[By default, primer3 accepts input in Boulder-io format, a
+pre-XML, pre-RDF, text-based input/output format for
+program-to-program data interchange.  By default, primer3 also
+produces output in the same format.  
+
+When run with the -format_output command-line flag, primer3
+prints a more user-oriented report for each sequence.
+
+Primer3 exits with 0 status if it operates correctly.  See EXIT
+STATUS CODES below for additional information.
+
+The syntax of the version of Boulder-io recognized by primer3 is
+as follows:
+
+  o Input consists of a sequence of RECORDs.
+
+  o A RECORD consists of a sequence of (TAG,VALUE) pairs, each terminated
+    by a newline character (\n). A RECORD is terminated by  '='
+    appearing by itself on a line.
+
+  o A (TAG,VALUE) pair has the following requirements:
+
+        o the TAG must be immediately (without spaces) 
+          followed by '='.
+	o the pair must be terminated by a newline character.
+
+An example of a legal (TAG,VALUE) pair is
+
+PRIMER_SEQUENCE_ID=my_marker
+
+and an example of a BOULDER-IO record is
+
+PRIMER_SEQUENCE_ID=test1
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
+=
+
+Many records can be sent, one after another. Below is an example
+of three different records which might be passed through a
+boulder-io stream:
+
+PRIMER_SEQUENCE_ID=test1
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
+=
+PRIMER_SEQUENCE_ID=test2
+SEQUENCE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT
+=
+PRIMER_SEQUENCE_ID=test3
+SEQUENCE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC
+=
+
+Primer3 reads boulder-io on stdin and echos its input and returns
+results in boulder-io format on stdout.  Primer3 indicates many
+user-correctable errors by a value in the PRIMER_ERROR tag (see
+below) and indicates other errors, including system configuration
+errors, resource errors (such out-of-memory errors), and detected
+programming errors by a message on stderr and a non-zero exit
+status.
+
+Below is the list of input tags that primer3 recognizes.
+Primer3 echos and ignores any tags it does not recognize, unless
+the -strict_tags flag is set on the command line, in which case
+primer3 prints an error in the PRIMER_ERROR output tag (see
+below), and prints additional information on stdout; this option
+can be useful for debugging systems that incorporate primer.
+
+Except for tags with the type "interval list" each tag is allowed
+only ONCE in any given input record.  This restriction is not
+systematically checked in this beta release: use care.
+
+There are 2 major classes of input tags,  "Sequence" input tags
+and "Global" input tags described below.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>installGeneral</id>
+	<head>INSTALLATION INSTRUCTIONS</head>
+	<text>
+<![CDATA[Unzip and untar the distribution.
+
+DO NOT do this on a PC -- primer3_core will not compile if pc
+newlines get inserted into the source files.  Instead, move the
+distribution (primer3_<release>.tar.gz) to Unix, and then
+
+$ unzip primer3_1.0.1.tar.gz
+$ tar xvf primer3_1.0.1.tar
+$ cd primer3_1.0.1/src
+
+If you do not use gcc, modify the makefile to
+  use your (ANSI) C compiler and appropriate 
+  compile and link flags.
+
+$ make all
+
+# Warnings about pr_release being unused are harmless.
+# You should have created executables primer3_core, ntdpal,
+#  olgotm, and long_seq_tm_test
+
+$ make test
+
+# You should not see 'FAILED' during the tests.
+
+If your perl command is not called perl (for example, if it is
+called perl5) you will have to modify the 
+Makefile in the test/ directory.
+
+ntdpal (NucleoTide Dynamic Programming ALignment) is a
+stand-alone program that provides primer3's alignment
+functionality (local, a.k.a. Smith-Waterman, global,
+a.k.a. Needleman-Wunsch, plus "half global").  It is provided
+strictly as is; for further documentation please see the code.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>introduction</id>
+	<head>INTRODUCTION</head>
+	<text>
+<![CDATA[Primer3 picks primers for PCR reactions, considering as criteria:
+
+o oligonucleotide melting temperature, size, GC content,
+  and primer-dimer possibilities,
+
+o PCR product size,
+
+o positional constraints within the source (template) sequence, and
+
+o possibilities for ectopic priming (amplifying the wrong sequence)
+
+o many other constraints.
+
+All of these criteria are user-specifiable as constraints, and
+some are specifiable as terms in an objective function that
+characterizes an optimal primer pair.
+
+Whitehead Institute for Biomedical Research provides a web-based
+front end to primer3 at
+http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -34,10 +284,13 @@ called primer3_core.  This is the C program that does the heavy
 lifting of primer picking.  There is also a more user-friendly
 web interface (distributed separately).
 
-The command line for primer3 can be:
+The command line for primer3 is:
 
 primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
 
+A complete list of command line tags can be found in 
+COMMAND LINE TAGS below.
+	
 WARNING: primer3_core only reads its input on stdin, so the usual
 unix convention of
 
@@ -48,7 +301,32 @@ waiting for its input on stdin.]]>
 	</text>
 </textBlock>
 <textBlock>
-	<id>TagInputTpes</id>
+	<id>sequenceTags</id>
+	<head>"Sequence" Input Tags</head>
+	<text>
+<![CDATA["Sequence" input tags start with SEQUENCE_... and describe a 
+particular input sequence to primer3. They are reset after every 
+boulder record. Errors in "Sequence" input tags invalidate the 
+current record, but primer3 will continue to process additional 
+records.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>systemRequirements</id>
+	<head>SYSTEM REQUIREMENTS</head>
+	<text>
+<![CDATA[Please see http://sourceforge.net/projects/primer3/ for up-to-date
+information.  Primer3 should compile on any Linux/Unix system
+including MacOS 10 and on other systems with POSIX C
+(e.g. MSWindows).  The Makefile may need to be modified for
+compilation with C compilers other than gcc.  Our hope is to
+distribute binary for SourceForge in the near future.  Primer3
+still uses many Kernighan-&-Richie-style function headers, so
+you might have to force your compiler to accept them.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>tagInputTpes</id>
 	<head>Primer3 input tags</head>
 	<text>
 <![CDATA[There are 3 major classes of input tags.  "Sequence" input tags

@@ -7,38 +7,87 @@ use Cwd;
 use XML::LibXML;
 use File::Copy;
 
-my $tag_file = "primer3_tag_definitions.xml";
+
+#####################################################################
+# Modify here the version and years:                                #
+
+my $scriptP3Version = "1.1.4";
+my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008";
+
+# Modify here the order of the textblocks or add new:
+my @textblocksOrder = (
+"copyrightLicense",
+"introduction",
+"citationRequest",
+"contact",
+"installGeneral",
+"buildOsX",
+"systemRequirements",
+"invokingPrimer3",
+"commandLineTags",
+"inputOutputConventions",
+"sequenceTags",
+"globalTags");
+#####################################################################
+
+
 my $output_folder = cwd.'/script_output/';
 
 print"start processing\n";
 
-# Open the xml File
-my $tagParser = XML::LibXML->new();
-my $tagTree = $tagParser->parse_file($tag_file);
-my $tagRoot = $tagTree->getDocumentElement;
-
-# Get the root element name
-my $tagRootName = $tagRoot->nodeName;
-
-# Check the root element to be sure to have the right file
-if ($tagRootName ne "primer3Doc") {
-	print "Error: $tagRootName of $tag_file is not \"primer3Doc\"\n";
-	exit;
-}
-
-# Read all tags into an array
+# Open the input Tag file
+my $tagFile = "primer3_input_tags.xml";
+my $tagRoot = getXmlRoot($tagFile);
+# Read all Tag in an array
 my @xml_tags = $tagRoot->getElementsByTagName('tag');
-
-my $tagCount = 0;
 # First sort the tags alphabetically tags
 my @sortedTags = sort tagSort @xml_tags;
-
+# Print a message about the Tags
 my $readTagCount = $#sortedTags + 1;
-print "Read in $readTagCount for processing...\n";
+print "Read in $readTagCount input Tags for processing...\n";
+
+
+# Open the comad line Tag file
+my $commandFile = "primer3_command_line.xml";
+my $commandRoot = getXmlRoot($commandFile);
+# Read all Tag in an array
+my @commandTags = $commandRoot->getElementsByTagName('tag');
+# Print a message about the Tags
+$readTagCount = $#commandTags + 1;
+print "Read in $readTagCount command line Tags for processing...\n";
+
+
+# Open the TextBlocks file
+my $textblocksFile = "primer3_textblocks.xml";
+my $textblocksRoot = getXmlRoot($textblocksFile);
+# Read all Tag in an array
+my @textblocksTags = $textblocksRoot->getElementsByTagName('textBlock');
+# Now read everything into two hashes
+my %textHead;
+my %textBody;
+foreach my $idHolder (@textblocksTags) {
+	my $id = get_node_content($idHolder, "id");
+	$textHead{$id} = get_node_content($idHolder, "head");
+	$textBody{$id} = get_node_content($idHolder, "text");
+}
+
+# Print a message about the TextBlocks
+my $readtextblocksCount = $#textblocksTags + 1;
+print "Read in $readtextblocksCount textblocks for processing...\n";
+
+
+
+
+
+print "\n";
 
 # Create the readme.txt
 createReadmeTxt();
+
+# Create the tag_definitions.xml
 createTagDefinitionsXml();
+
+# Create the readme.htm
 createReadmeHtml();
 
 
@@ -48,6 +97,27 @@ print"end processing\n";
 
 
 
+###########################################
+# Opent the xml file and returns the root #
+###########################################
+sub getXmlRoot {
+	my $file = shift;
+	
+	# Open the xml File
+	my $parser = XML::LibXML->new();
+	my $tree = $parser->parse_file($file);
+	my $root = $tree->getDocumentElement;
+	
+	# Get the root element name
+	my $rootName = $root->nodeName;
+	
+	# Check the root element to be sure to have the right file
+	if ($rootName ne "primer3Doc") {
+		print "Error: $rootName of $file is not \"primer3Doc\"\n";
+		exit;
+	}
+	return $root;
+}
 
 ##################################################
 # sorts the tags alphabetically #
@@ -112,34 +182,105 @@ sub string2file {
 ###############################
 sub createReadmeTxt {
 	# Prepare the strings for the files
-	my $txt_string = "";
-	my $tagCount = 0;
-	
-	# Now print out all tags
-	foreach my $tag_holder (@sortedTags) {
-		$tagCount++;
-		
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $default = get_node_content($tag_holder, "default");
-		my $description = get_node_content($tag_holder, "description");
-		
-		# Assemble the txt file
-		$txt_string .= $tagName." (".$dataType."; default ".$default.")\n\n";
-		$txt_string .= "$description\n\n\n";
-	
-		
+	my $txt_string = underlineText("primer3 release $scriptP3Version");
+	$txt_string .= "\n";
+
+# Create a Index
+	$txt_string .= underlineText("Index of contents")."\n";
+	my $chapterCount = 0;
+	foreach my $textblock_holder (@textblocksOrder) {
+		if ($textHead{$textblock_holder} ne ""){
+			$chapterCount++;
+			$txt_string .= "$chapterCount. $textHead{$textblock_holder}\n";
+		}
+	}
+	$txt_string .= "\n\n";
+
+	$chapterCount = 0;
+	foreach my $textblock_holder (@textblocksOrder) {
+		if ($textHead{$textblock_holder} ne ""){
+		$chapterCount++;
+			$txt_string .= underlineText("$chapterCount. $textHead{$textblock_holder}");
+			$txt_string .= "$textBody{$textblock_holder}\n\n\n";
+		}
+		# Print out the command line tags at the right spot
+		if ($textblock_holder eq "commandLineTags") {
+			$txt_string =~ s/\n$//;
+			foreach my $tag_holder (@commandTags) {
+				# Get all the XML data of one tag
+				my $tagName = get_node_content($tag_holder, "tagName");
+				my $description = get_node_content($tag_holder, "description");
+				
+				# Assemble the txt file
+				$txt_string .= $tagName."\n";
+				$txt_string .= "   $description\n\n";
+			}
+			$txt_string .= "\n";
+		}
+		if ($textblock_holder eq "sequenceTags") {
+			$txt_string =~ s/\n$//;
+			$txt_string .= printTags("SEQUENCE_");
+		}
+		if ($textblock_holder eq "globalTags") {
+			$txt_string =~ s/\n$//;
+			$txt_string .= printTags("PRIMER_");
+		}
+		if ($textblock_holder eq "p3p") {
+			$txt_string =~ s/\n$//;
+			$txt_string .= printTags("SEQUENCE_");
+		}
 	}
 
 	# Write the files to the disk
 	my $output_file = $output_folder. "readme.txt";
 	string2file($output_file, $txt_string);
 
-	print "Printed $tagCount Tags in readme.txt\n";
-
 	return 0;
 }
+
+######################################
+# prints all tags of a certain group #
+######################################
+sub printTags {
+	my $text = shift;
+	my $output;
+	my $tagCount = 0;	
+	# Now print out all tags
+	foreach my $tag_holder (@sortedTags) {
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my $dataType = get_node_content($tag_holder, "dataType");
+		my $default = get_node_content($tag_holder, "default");
+		my $description = get_node_content($tag_holder, "description");
+		
+		if ($tagName =~ /^$text/) {
+			$tagCount++;
+			
+			# Assemble the txt file
+			$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
+			$output .= "$description\n\n\n";
+		}
+		
+	}
+
+	print "Printed $tagCount $text - Tags in readme.txt\n";
+	
+	return $output;
+}
+
+
+##############################
+# underlines the text with - #
+##############################
+sub underlineText {
+	my $text = shift;
+	my $output = "$text\n";
+	$text =~ s/./-/g;
+	$output .= "$text\n";
+	
+	return $output;
+}
+
 
 ########################################
 # creates the tag_definitions.xml file #

@@ -1468,7 +1468,7 @@ make Target regions excluded regions for internal oligos.]]>
 	</description>
 </tag>
 <tag>
-	<tagName>SEQUENCE_INTERNAL</tagName>
+	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_INPUT</oldTagName>
 		<version>3.0</version>

@@ -1539,15 +1539,6 @@ primer-picking region.]]>
 	</description>
 </tag>
 <tag>
-	<tagName>SEQUENCE_INTERNAL</tagName>
-	<dataType>nucleotide sequence</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[The sequence of an internal oligo to check and around which to
-design left and right primers.  Must be a substring of SEQUENCE.]]>
-	</description>
-</tag>
-<tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
 	<dataType>interval list</dataType>
 	<default>empty</default>
@@ -1560,6 +1551,15 @@ The associated value must be a space-separated list of
 pairs, where <start> is the index of the first base of
 an excluded region, and <length> is its length.  Often one would
 make Target regions excluded regions for internal oligos.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
+	<dataType>nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[The sequence of an internal oligo to check and around which to
+design left and right primers.  Must be a substring of SEQUENCE.]]>
 	</description>
 </tag>
 <tag>

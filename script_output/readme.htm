@@ -272,9 +272,9 @@
 
 <a href="#SEQUENCE_INCLUDED_REGION" style="font-size:0.8em">SEQUENCE_INCLUDED_REGION</a><br>
 
-<a href="#SEQUENCE_INTERNAL" style="font-size:0.8em">SEQUENCE_INTERNAL</a><br>
-
 <a href="#SEQUENCE_INTERNAL_EXCLUDED_REGION" style="font-size:0.8em">SEQUENCE_INTERNAL_EXCLUDED_REGION</a><br>
+
+<a href="#SEQUENCE_INTERNAL_OLIGO" style="font-size:0.8em">SEQUENCE_INTERNAL_OLIGO</a><br>
 
 <a href="#SEQUENCE_PRIMER" style="font-size:0.8em">SEQUENCE_PRIMER</a><br>
 
@@ -1703,14 +1703,6 @@ and <length> is the number of subsequent bases in the
 primer-picking region.</p>
 
 
-<h3><a name="SEQUENCE_INTERNAL">SEQUENCE_INTERNAL</a></h3>
-
-<p>(nucleotide sequence; default empty)<br><br>
-
-The sequence of an internal oligo to check and around which to
-design left and right primers.  Must be a substring of SEQUENCE.</p>
-
-
 <h3><a name="SEQUENCE_INTERNAL_EXCLUDED_REGION">SEQUENCE_INTERNAL_EXCLUDED_REGION</a></h3>
 
 <p>(interval list; default empty)<br><br>
@@ -1723,6 +1715,14 @@ The associated value must be a space-separated list of
 pairs, where <start> is the index of the first base of
 an excluded region, and <length> is its length.  Often one would
 make Target regions excluded regions for internal oligos.</p>
+
+
+<h3><a name="SEQUENCE_INTERNAL_OLIGO">SEQUENCE_INTERNAL_OLIGO</a></h3>
+
+<p>(nucleotide sequence; default empty)<br><br>
+
+The sequence of an internal oligo to check and around which to
+design left and right primers.  Must be a substring of SEQUENCE.</p>
 
 
 <h3><a name="SEQUENCE_PRIMER">SEQUENCE_PRIMER</a></h3>

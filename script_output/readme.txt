@@ -1,31 +1,500 @@
- (; default )
+primer3 release 1.1.4
+---------------------
+
+Index of contents
+-----------------
+
+1. COPYRIGHT AND LICENSE
+2. INTRODUCTION
+3. CITING PRIMER3
+4. REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS
+5. INSTALLATION INSTRUCTIONS
+6. BUILDING OSX UNIVERSAL BINARY
+7. SYSTEM REQUIREMENTS
+8. INVOKING primer3_core
+9. COMMAND LINE TAGS
+10. INPUT AND OUTPUT CONVENTIONS
+11. "Sequence" Input Tags
+12. "Global" Input Tags
 
 
+1. COPYRIGHT AND LICENSE
+------------------------
+Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+Whitehead Institute for Biomedical Research, Steve Rozen
+(http://jura.wi.mit.edu/rozen), and Helen Skaletsky
+All rights reserved.
+
+Most of primer3 is released under the following _new_ BSD license:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the names of the copyright holders nor contributors may
+be used to endorse or promote products derived from this software
+without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The oligtm library and tests are released under the GPL.  See
+file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.
 
 
-P3_FILE_FLAG (boolean; default 0)
+2. INTRODUCTION
+---------------
+Primer3 picks primers for PCR reactions, considering as criteria:
 
-If the associated value is non-0, then primer3 creates two output
-files for each input SEQUENCE.  File <sequence_id>.for lists all
-acceptable left primers for <sequence_id>, and <sequence_id>.rev
-lists all acceptable right primers for <sequence_id>, where
-<sequence_id> is the value of the SEQUENCE_ID tag (which
-must be supplied).  In addition, if the input tag
-PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
-<sequence_id>.int, which lists all acceptable internal oligos.
+o oligonucleotide melting temperature, size, GC content,
+  and primer-dimer possibilities,
+
+o PCR product size,
+
+o positional constraints within the source (template) sequence, and
+
+o possibilities for ectopic priming (amplifying the wrong sequence)
+
+o many other constraints.
+
+All of these criteria are user-specifiable as constraints, and
+some are specifiable as terms in an objective function that
+characterizes an optimal primer pair.
+
+Whitehead Institute for Biomedical Research provides a web-based
+front end to primer3 at
+http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi
 
 
-P3_SHOW_OLIGO_PROBLEMS (boolean; default 0)
+3. CITING PRIMER3
+-----------------
+We request but do not require that use of this software be cited in
+publications as
 
-If non-zero, cause the tags
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO_.._PROBLEMS, to be
-generated.  These tags have empty arguments when there are
-no problems with the corresponding oligo or primer, and
-otherwise list the problems (constraint violations)
-associated with primer or oligo that primer3 was forced to
-choose (for example, as sometimes when PRIMER_PICK_ANYWAY=1
-and PRIMER...INPUT is specified).
+Steve Rozen and Helen J. Skaletsky (2000) Primer3 on the WWW for
+general users and for biologist programmers.
+In: Krawetz S, Misener S (eds) Bioinformatics Methods and
+Protocols: Methods in Molecular Biology.  Humana Press, Totowa,
+NJ, pp 365-386
+Source code available at http://sourceforge.net/projects/primer3/
 
+The paper above is available at
+http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf
+
+
+4. REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS
+----------------------------------------------------------
+For error reports or requests for enhancements, please send e-mail
+to primer3-mail (at) lists.sourceforge.net after replacing (at)
+with @.
+
+
+5. INSTALLATION INSTRUCTIONS
+----------------------------
+Unzip and untar the distribution.
+
+DO NOT do this on a PC -- primer3_core will not compile if pc
+newlines get inserted into the source files.  Instead, move the
+distribution (primer3_<release>.tar.gz) to Unix, and then
+
+$ unzip primer3_1.0.1.tar.gz
+$ tar xvf primer3_1.0.1.tar
+$ cd primer3_1.0.1/src
+
+If you do not use gcc, modify the makefile to
+  use your (ANSI) C compiler and appropriate 
+  compile and link flags.
+
+$ make all
+
+# Warnings about pr_release being unused are harmless.
+# You should have created executables primer3_core, ntdpal,
+#  olgotm, and long_seq_tm_test
+
+$ make test
+
+# You should not see 'FAILED' during the tests.
+
+If your perl command is not called perl (for example, if it is
+called perl5) you will have to modify the 
+Makefile in the test/ directory.
+
+ntdpal (NucleoTide Dynamic Programming ALignment) is a
+stand-alone program that provides primer3's alignment
+functionality (local, a.k.a. Smith-Waterman, global,
+a.k.a. Needleman-Wunsch, plus "half global").  It is provided
+strictly as is; for further documentation please see the code.
+
+
+6. BUILDING OSX UNIVERSAL BINARY
+--------------------------------
+** To build a processor-native, non-universal binary of primer3, 
+the following is unneccesary**.  
+
+The instructions above should be sufficient.
+
+A pre-compiled, universal binary download for OSX is available from 
+http://sourceforge.net/projects/primer3/ for the current release.
+
+These instructions assume you want to build binaries compatible 
+with *both* of the current processor architectures used by the Apple
+platform (i,e. the binaries will be run on both PPC and intel platforms).
+
+Provided you have the OS X developer tools installed
+(you can download from http://developer.apple.com after
+registering for a free account), you can compile a universal
+build (intel and PPC native) of primer3.
+
+o you must be running OS X > 10.4 and should have the most
+	recent version of XCode
+o run `make -f Makefile.OSX.Leopard all` if you run OS X 10.5
+o run `make -f Makefile.OSX.Tiger all` is you run OS X 10.4
+o run the tests as directed above
+
+Additional instructions for 'installing' the binaries may be found in
+the README.OSX.txt.
+
+You should be able to compile a 3-way binary which includes PPC64 support 
+(intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
+end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
+This has not been tested.
+
+
+7. SYSTEM REQUIREMENTS
+----------------------
+Please see http://sourceforge.net/projects/primer3/ for up-to-date
+information.  Primer3 should compile on any Linux/Unix system
+including MacOS 10 and on other systems with POSIX C
+(e.g. MSWindows).  The Makefile may need to be modified for
+compilation with C compilers other than gcc.  Our hope is to
+distribute binary for SourceForge in the near future.  Primer3
+still uses many Kernighan-&-Richie-style function headers, so
+you might have to force your compiler to accept them.
+
+
+8. INVOKING primer3_core
+------------------------
+By default, the executable program produced by the Makefile is
+called primer3_core.  This is the C program that does the heavy
+lifting of primer picking.  There is also a more user-friendly
+web interface (distributed separately).
+
+The command line for primer3 is:
+
+primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
+
+A complete list of command line tags can be found in 
+COMMAND LINE TAGS below.
+	
+WARNING: primer3_core only reads its input on stdin, so the usual
+unix convention of
+
+primer3_core input_file.txt
+
+*will not work*.  Primer3_core will just sit there forever
+waiting for its input on stdin.
+
+
+9. COMMAND LINE TAGS
+--------------------
+This parameters are read from command line:
+
+-about
+   generates one line of output: primer3 release 1.1.2
+   and terminates the program. This allows scripts to 
+   query primer3 for its version.
+
+-format_output
+   indicates that primer3_core should generate
+   user-oriented (rather than program-oriented) output.
+
+-strict_tags
+   indicates that primer3_core should generate
+   a fatal error if there is any tag in the input that
+   it does not recognize (see INPUT AND OUTPUT CONVENTIONS).
+
+-p3_settings_file=set.txt
+   allows to specify a settings file set.txt. The global 
+   ("PRIMER_...") parameters of these file are read first. 
+   Tags appearing in the settings file override identical 
+   tags of the default primer3 settings and are modified 
+   by identical tags in the command line input. See 
+   primer3 file documentation for details on the file 
+   format.
+
+-io_version=XXX
+   indicated were XXX is the version of input primer3 should 
+   read. At the moment only -io_version=3 and -io_version=4
+   are supported. Please note that -io_version=4 is required
+   to use new functionality.
+
+-2x_compat
+   is no longer supported.
+
+
+10. INPUT AND OUTPUT CONVENTIONS
+--------------------------------
+By default, primer3 accepts input in Boulder-io format, a
+pre-XML, pre-RDF, text-based input/output format for
+program-to-program data interchange.  By default, primer3 also
+produces output in the same format.  
+
+When run with the -format_output command-line flag, primer3
+prints a more user-oriented report for each sequence.
+
+Primer3 exits with 0 status if it operates correctly.  See EXIT
+STATUS CODES below for additional information.
+
+The syntax of the version of Boulder-io recognized by primer3 is
+as follows:
+
+  o Input consists of a sequence of RECORDs.
+
+  o A RECORD consists of a sequence of (TAG,VALUE) pairs, each terminated
+    by a newline character (\n). A RECORD is terminated by  '='
+    appearing by itself on a line.
+
+  o A (TAG,VALUE) pair has the following requirements:
+
+        o the TAG must be immediately (without spaces) 
+          followed by '='.
+	o the pair must be terminated by a newline character.
+
+An example of a legal (TAG,VALUE) pair is
+
+PRIMER_SEQUENCE_ID=my_marker
+
+and an example of a BOULDER-IO record is
+
+PRIMER_SEQUENCE_ID=test1
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
+=
+
+Many records can be sent, one after another. Below is an example
+of three different records which might be passed through a
+boulder-io stream:
+
+PRIMER_SEQUENCE_ID=test1
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
+=
+PRIMER_SEQUENCE_ID=test2
+SEQUENCE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT
+=
+PRIMER_SEQUENCE_ID=test3
+SEQUENCE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC
+=
+
+Primer3 reads boulder-io on stdin and echos its input and returns
+results in boulder-io format on stdout.  Primer3 indicates many
+user-correctable errors by a value in the PRIMER_ERROR tag (see
+below) and indicates other errors, including system configuration
+errors, resource errors (such out-of-memory errors), and detected
+programming errors by a message on stderr and a non-zero exit
+status.
+
+Below is the list of input tags that primer3 recognizes.
+Primer3 echos and ignores any tags it does not recognize, unless
+the -strict_tags flag is set on the command line, in which case
+primer3 prints an error in the PRIMER_ERROR output tag (see
+below), and prints additional information on stdout; this option
+can be useful for debugging systems that incorporate primer.
+
+Except for tags with the type "interval list" each tag is allowed
+only ONCE in any given input record.  This restriction is not
+systematically checked in this beta release: use care.
+
+There are 2 major classes of input tags,  "Sequence" input tags
+and "Global" input tags described below.
+
+
+11. "Sequence" Input Tags
+-------------------------
+"Sequence" input tags start with SEQUENCE_... and describe a 
+particular input sequence to primer3. They are reset after every 
+boulder record. Errors in "Sequence" input tags invalidate the 
+current record, but primer3 will continue to process additional 
+records.
+
+SEQUENCE_EXCLUDED_REGION (interval list; default empty)
+
+Primer oligos may not overlap any region specified in this tag.
+The associated value must be a space-separated list of
+
+<start>,<length>
+
+pairs where <start> is the index of the first base of
+the excluded region, and <length> is its length.  This tag is
+useful for tasks such as excluding regions of low sequence
+quality or for excluding regions containing repetitive elements
+such as ALUs or LINEs.
+
+
+SEQUENCE_FORCE_LEFT_END (int; default -1)
+
+Forces the 3' end of the left primer to be at the indicated 
+position. Primers are also picked if they violate certain
+constrains.
+
+
+SEQUENCE_FORCE_LEFT_START (int; default -1)
+
+Forces the 5' end of the left primer to be at the indicated 
+position. Primers are also picked if they violate certain
+constrains.
+
+
+SEQUENCE_FORCE_RIGHT_END (int; default -1)
+
+Forces the 3' end of the left primer to be at the indicated 
+position. Primers are also picked if they violate certain
+constrains.
+
+
+SEQUENCE_FORCE_RIGHT_START (int; default -1)
+
+Forces the 5' end of the left primer to be at the indicated 
+position. Primers are also picked if they violate certain
+constrains.
+
+
+SEQUENCE_ID (string; default empty)
+
+An identifier that is reproduced in the output to enable users to
+identify the source of the chosen primers.
+
+This tag must be present if PRIMER_FILE_FLAG is non-zero.
+
+
+SEQUENCE_INCLUDED_REGION (interval list; default empty)
+
+A sub-region of the given sequence in which to pick primers.  For
+example, often the first dozen or so bases of a sequence are
+vector, and should be excluded from consideration. The value for
+this parameter has the form
+
+<start>,<length>
+
+where <start> is the index of the first base to consider,
+and <length> is the number of subsequent bases in the
+primer-picking region.
+
+
+SEQUENCE_INTERNAL_EXCLUDED_REGION (interval list; default empty)
+
+Middle oligos may not overlap any region specified by this tag.
+The associated value must be a space-separated list of
+
+<start>,<length>
+
+pairs, where <start> is the index of the first base of
+an excluded region, and <length> is its length.  Often one would
+make Target regions excluded regions for internal oligos.
+
+
+SEQUENCE_INTERNAL_OLIGO (nucleotide sequence; default empty)
+
+The sequence of an internal oligo to check and around which to
+design left and right primers.  Must be a substring of SEQUENCE.
+
+
+SEQUENCE_PRIMER (nucleotide sequence; default empty)
+
+The sequence of a left primer to check and around which to design
+right primers and optional internal oligos.  Must be a substring
+of SEQUENCE.
+
+
+SEQUENCE_PRIMER_REVCOMP (nucleotide sequence; default empty)
+
+The sequence of a right primer to check and around which to
+design left primers and optional internal oligos.  Must be a
+substring of the reverse strand of SEQUENCE.
+
+
+SEQUENCE_QUALITY (quality list; default empty)
+
+A list of space separated integers. There must be exactly
+one integer for each base in SEQUENCE if this argument is
+non-empty.  For example, for the sequence ANNTTCA...
+PRIMER_SEQUENCE_QUALITY might be 45 10 0 50 30 34 50 67 ....
+High numbers indicate high confidence in the base called at
+that position and low numbers indicate low confidence in the
+base call at that position.  This parameter is only relevant
+if you are using a base calling program that provides
+quality information (for example phred).
+
+
+SEQUENCE_START_CODON_POSITION (int; default -1000000)
+
+This parameter should be considered EXPERIMENTAL at this point.
+Please check the output carefully; some erroneous inputs might
+cause an error in primer3.
+
+Index of the first base of a start codon.  This parameter allows
+primer3 to select primer pairs to create in-frame amplicons
+e.g. to create a template for a fusion protein.  Primer3 will
+attempt to select an in-frame left primer, ideally starting at or
+to the left of the start codon, or to the right if necessary.
+Negative values of this parameter are legal if the actual start
+codon is to the left of available sequence. If this parameter is
+non-negative primer3 signals an error if the codon at the
+position specified by this parameter is not an ATG.  A value less
+than or equal to -10^6 indicates that primer3 should ignore this
+parameter.
+
+Primer3 selects the position of the right primer by scanning
+right from the left primer for a stop codon.  Ideally the right
+primer will end at or after the stop codon.
+
+
+SEQUENCE_TARGET (interval list; default empty)
+
+If one or more Targets is specified then a legal primer pair must
+flank at least one of them.  A Target might be a simple sequence
+repeat site (for example a CA repeat) or a single-base-pair
+polymorphism.  The value should be a space-separated list of
+
+<start>,<length>
+
+pairs where <start> is the index of the first base of a
+Target, and <length> is its length.
+
+For backward compatibility primer3 accepts (but ignores)
+a trailing ,<description> for each element of this argument.
+
+
+SEQUENCE_TEMPLATE (nucleotide sequence; default empty)
+
+The sequence from which to choose primers.  The sequence
+must be presented 5' -> 3' (see the discussion of the
+PRIMER_SELF_END argument).  The bases may be upper or lower case.
+No newlines should be inserted into the sequence, because the
+Boulder-IO parser will assume that a line ends at a newline.
+
+
+12. "Global" Input Tags
+-----------------------
+"Global" input tags describe the general parameters that 
+primer3 should use in its searches, and the values of these 
+tags persist between input boulder records until or unless 
+they are explicitly reset. Errors in "Global" input tags are 
+fatal because they invalidate the basic conditions under 
+which primers are being picked.
 
 PRIMER_COMMENT (string; default empty)
 
@@ -1101,162 +1570,5 @@ Penalty weight for primers with Tm over PRIMER_OPT_TM.
 PRIMER_WT_TM_LT (float; default 1.0)
 
 Penalty weight for primers with Tm under PRIMER_OPT_TM.
-
-
-SEQUENCE_EXCLUDED_REGION (interval list; default empty)
-
-Primer oligos may not overlap any region specified in this tag.
-The associated value must be a space-separated list of
-
-<start>,<length>
-
-pairs where <start> is the index of the first base of
-the excluded region, and <length> is its length.  This tag is
-useful for tasks such as excluding regions of low sequence
-quality or for excluding regions containing repetitive elements
-such as ALUs or LINEs.
-
-
-SEQUENCE_FORCE_LEFT_END (int; default -1)
-
-Forces the 3' end of the left primer to be at the indicated 
-position. Primers are also picked if they violate certain
-constrains.
-
-
-SEQUENCE_FORCE_LEFT_START (int; default -1)
-
-Forces the 5' end of the left primer to be at the indicated 
-position. Primers are also picked if they violate certain
-constrains.
-
-
-SEQUENCE_FORCE_RIGHT_END (int; default -1)
-
-Forces the 3' end of the left primer to be at the indicated 
-position. Primers are also picked if they violate certain
-constrains.
-
-
-SEQUENCE_FORCE_RIGHT_START (int; default -1)
-
-Forces the 5' end of the left primer to be at the indicated 
-position. Primers are also picked if they violate certain
-constrains.
-
-
-SEQUENCE_ID (string; default empty)
-
-An identifier that is reproduced in the output to enable users to
-identify the source of the chosen primers.
-
-This tag must be present if PRIMER_FILE_FLAG is non-zero.
-
-
-SEQUENCE_INCLUDED_REGION (interval list; default empty)
-
-A sub-region of the given sequence in which to pick primers.  For
-example, often the first dozen or so bases of a sequence are
-vector, and should be excluded from consideration. The value for
-this parameter has the form
-
-<start>,<length>
-
-where <start> is the index of the first base to consider,
-and <length> is the number of subsequent bases in the
-primer-picking region.
-
-
-SEQUENCE_INTERNAL (nucleotide sequence; default empty)
-
-The sequence of an internal oligo to check and around which to
-design left and right primers.  Must be a substring of SEQUENCE.
-
-
-SEQUENCE_INTERNAL_EXCLUDED_REGION (interval list; default empty)
-
-Middle oligos may not overlap any region specified by this tag.
-The associated value must be a space-separated list of
-
-<start>,<length>
-
-pairs, where <start> is the index of the first base of
-an excluded region, and <length> is its length.  Often one would
-make Target regions excluded regions for internal oligos.
-
-
-SEQUENCE_PRIMER (nucleotide sequence; default empty)
-
-The sequence of a left primer to check and around which to design
-right primers and optional internal oligos.  Must be a substring
-of SEQUENCE.
-
-
-SEQUENCE_PRIMER_REVCOMP (nucleotide sequence; default empty)
-
-The sequence of a right primer to check and around which to
-design left primers and optional internal oligos.  Must be a
-substring of the reverse strand of SEQUENCE.
-
-
-SEQUENCE_QUALITY (quality list; default empty)
-
-A list of space separated integers. There must be exactly
-one integer for each base in SEQUENCE if this argument is
-non-empty.  For example, for the sequence ANNTTCA...
-PRIMER_SEQUENCE_QUALITY might be 45 10 0 50 30 34 50 67 ....
-High numbers indicate high confidence in the base called at
-that position and low numbers indicate low confidence in the
-base call at that position.  This parameter is only relevant
-if you are using a base calling program that provides
-quality information (for example phred).
-
-
-SEQUENCE_START_CODON_POSITION (int; default -1000000)
-
-This parameter should be considered EXPERIMENTAL at this point.
-Please check the output carefully; some erroneous inputs might
-cause an error in primer3.
-
-Index of the first base of a start codon.  This parameter allows
-primer3 to select primer pairs to create in-frame amplicons
-e.g. to create a template for a fusion protein.  Primer3 will
-attempt to select an in-frame left primer, ideally starting at or
-to the left of the start codon, or to the right if necessary.
-Negative values of this parameter are legal if the actual start
-codon is to the left of available sequence. If this parameter is
-non-negative primer3 signals an error if the codon at the
-position specified by this parameter is not an ATG.  A value less
-than or equal to -10^6 indicates that primer3 should ignore this
-parameter.
-
-Primer3 selects the position of the right primer by scanning
-right from the left primer for a stop codon.  Ideally the right
-primer will end at or after the stop codon.
-
-
-SEQUENCE_TARGET (interval list; default empty)
-
-If one or more Targets is specified then a legal primer pair must
-flank at least one of them.  A Target might be a simple sequence
-repeat site (for example a CA repeat) or a single-base-pair
-polymorphism.  The value should be a space-separated list of
-
-<start>,<length>
-
-pairs where <start> is the index of the first base of a
-Target, and <length> is its length.
-
-For backward compatibility primer3 accepts (but ignores)
-a trailing ,<description> for each element of this argument.
-
-
-SEQUENCE_TEMPLATE (nucleotide sequence; default empty)
-
-The sequence from which to choose primers.  The sequence
-must be presented 5' -> 3' (see the discussion of the
-PRIMER_SELF_END argument).  The bases may be upper or lower case.
-No newlines should be inserted into the sequence, because the
-Boulder-IO parser will assume that a line ends at a newline.
 
 
