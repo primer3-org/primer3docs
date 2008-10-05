@@ -248,16 +248,7 @@ Except for tags with the type "interval list" each tag is allowed
 only ONCE in any given input record.  This restriction is not
 systematically checked in this beta release: use care.
 
-There are 2 major classes of input tags.  "Sequence" input tags
-describe a particular input sequence to primer3, and are reset
-after every boulder record.  "Global" input tags describe the
-general parameters that primer3 should use in its searches, and
-the values of these tags persist between input boulder records
-until or unless they are explicitly reset.  Errors in "Sequence"
-input tags invalidate the current record, but primer3 will
-continue to process additional records.  Errors in "Global" input
-tags are fatal because they invalidate the basic conditions under
-which primers are being picked.
+
 
 
 ADVICE FOR PICKING PRIMERS

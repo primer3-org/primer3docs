@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<primer3Doc version="1.0">
+<textBlock>
+	<id></id>
+	<head></head>
+	<text>
+<![CDATA[ ]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>citationRequest</id>
+	<head>How to cite primer3</head>
+	<text>
+<![CDATA[We request but do not require that use of this software be cited in
+publications as
+
+Steve Rozen and Helen J. Skaletsky (2000)
+Primer3 on the WWW for general users and for biologist programmers.
+In: Krawetz S, Misener S (eds)
+Bioinformatics Methods and Protocols: Methods in Molecular Biology.
+Humana Press, Totowa, NJ, pp 365-386
+
+Source code available at http://primer3.sourceforge.net/
+The paper above is available at
+http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>invokingPrimer3</id>
+	<head>INVOKING primer3_core</head>
+	<text>
+<![CDATA[By default, the executable program produced by the Makefile is
+called primer3_core.  This is the C program that does the heavy
+lifting of primer picking.  There is also a more user-friendly
+web interface (distributed separately).
+
+The command line for primer3 can be:
+
+primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
+
+WARNING: primer3_core only reads its input on stdin, so the usual
+unix convention of
+
+primer3_core input_file.txt
+
+*will not work*.  Primer3_core will just sit there forever
+waiting for its input on stdin.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>TagInputTpes</id>
+	<head>Primer3 input tags</head>
+	<text>
+<![CDATA[There are 3 major classes of input tags.  "Sequence" input tags
+starting with SEQUENCE_... describe a particular input sequence 
+to primer3, and are reset after every boulder record.  "Global" 
+input tags starting with PRIMER_... describe the general parameters 
+that primer3 should use in its searches, and the values of these 
+tags persist between input boulder records until or unless they 
+are explicitly reset. The third class of P3_... tags describe 
+parameters which modify the way primer3 provides the output (for 
+example as separate files) and do not influence the primer selection 
+itself.
+Tags which do not start with SEQUENCE_, PRIMER_ or P3_ are ignored 
+by primer3.
+  Errors in "Sequence" input tags invalidate the current record, 
+but primer3 will continue to process additional records.
+  Errors in "Global" input tags are fatal because they invalidate 
+the basic conditions under which primers are being picked.]]>
+	</text>
+</textBlock>
+</primer3Doc>

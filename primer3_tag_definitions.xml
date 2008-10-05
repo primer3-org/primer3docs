@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<tagList version="1.0">
+<primer3Doc version="1.0">
 <tag>
 	<tagName></tagName>
 	<oldTag>
@@ -1744,4 +1744,4 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.]]>
 <![CDATA[ ]]>
 	</description>
 </tag>
-</tagList>
+</primer3Doc>
