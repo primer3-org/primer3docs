@@ -27,7 +27,10 @@ my @textblocksOrder = (
 "commandLineTags",
 "inputOutputConventions",
 "sequenceTags",
-"globalTags");
+"globalTags",
+"programTags",
+"outputTags",
+"example");
 #####################################################################
 
 
@@ -170,7 +173,7 @@ sub string2file {
 		
 	} 
 	else {
-		$error = "Couldn't open $file for reading!\n";
+		$error = "Couldn't open $file for writing!\n";
 	}
 
     return $error;
@@ -225,9 +228,9 @@ sub createReadmeTxt {
 			$txt_string =~ s/\n$//;
 			$txt_string .= printTags("PRIMER_");
 		}
-		if ($textblock_holder eq "p3p") {
+		if ($textblock_holder eq "programTags") {
 			$txt_string =~ s/\n$//;
-			$txt_string .= printTags("SEQUENCE_");
+			$txt_string .= printTags("P3_");
 		}
 	}
 

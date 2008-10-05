@@ -15,14 +15,21 @@ it like that for ever.
 There are three xml files:
 
 primer3_command_line.xml
-A list of all possible command line flags.
+A list of all possible command line flags. New flags are automatically 
+added to all generated files. 
 
 primer3_tag_definitions.xml
-A list of all possible input tags.
+A list of all possible input tags. New tags are automatically added 
+to all generated files.
+
+primer3_output_tags.xml
+A list of all possible output tags. New tags are automatically added 
+to all generated files.
 
 primer3_textblocks.xml
 A alphabetical list of textblocks. The script reads them in and puts 
-them into order.
+them into order. New textblocks needed to be added to the 
+@textblocksOrder array to be addet to the generated files.
 
 In the <description> field of the tags or <text> field of the 
 textblocks the following html-like elements are allowed. The script 

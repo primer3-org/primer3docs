@@ -7,11 +7,394 @@
 		<version>3.0</version>
 	</oldTag>
 	<dataType></dataType>
-	<min></min>
-	<max></max>
-	<default></default>
+	<optional></optional>
 	<description>
 <![CDATA[ ]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_ERROR</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[s describes user-correctible errors detected in the input
+(separated by semicolons).  This tag is absent if there are no
+errors.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_LEFT</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>i,n</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The selected left primer (the primer to the left in the input
+sequence).  i is the 0-based index of the start base of the
+primer, and n is t its length.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RIGHT</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>i,n</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The selected right primer (the primer to the right in the input
+sequence).  i is the 0-based index of the last base of the
+primer, and n is its length.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_OLIGO</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>i,n</dataType>
+	<optional></optional>
+	<description>
+<![CDATA[The selected internal oligo. Primer3 outputs this tag if
+PRIMER_PICK_INTERNAL_OLIGO was non-0.  If primer3 fails to pick a
+middle oligo upon request, this tag will not be output.  i is the
+0-based index of start base of the internal oligo, and n is its
+length.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PRODUCT_SIZE</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>x</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[x is the product size of the PCR product.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_EXPLAIN</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[ is a (more or less) self-documenting string containing
+statistics on the possiblities that primer3 considered in
+selecting a single oligo.  For example
+
+PRIMER_LEFT_EXPLAIN=considered 62, too many Ns 53, ok 9
+PRIMER_RIGHT_EXPLAIN=considered 62, too many Ns 53, ok 9
+PRIMER_INTERNAL_OLIGO_EXPLAIN=considered 87, too many Ns 39, overlap excluded region 40, ok 8
+
+All the categories are exclusive, except the 'considered' category.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_EXPLAIN</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[s is a self-documenting string containing statistics on picking a
+primer pair (plus internal oligo if requested).  For exaple
+
+PRIMER_PAIR_EXPLAIN=considered 81, unacceptable product size 49, no internal oligo 32, ok 0
+
+All the categories are exclusive, except the 'considered' category.
+
+In some cases primer3 will examine a primer pair before it
+discovers that one of the primers in the pair violates specified
+constraints.  In this case PRIMER_PAIR_EXPLAIN might have a non-0
+number 'considered', even though one or more of
+PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
+PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_PENALTY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The value of the objective function for this pair (lower is better).]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_PENALTY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The contribution of this individual primer or oligo to the
+objective function.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_SEQUENCE</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The actual sequence of the oligo. The sequence of left primer and
+internal oligo is presented 5' -> 3' on the same strand as the
+input SEQUENCE (which must be presented 5' -> 3').  The sequence
+of the right primer is presented 5' -> 3' on the opposite strand
+from the input SEQUENCE.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_TM</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The melting TM for the selected oligo.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_GC_PERCENT</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The percent GC for the selected oligo (denominator is the number
+of non-ambiguous bases).]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_SELF_ANY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The self-complementarity measures for the selected oligo.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_SELF_END</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The self-complementarity measures for the selected oligo.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_COMPL_ANY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The inter-pair complementarity measures for the selected left and
+right primer.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_COMPL_END</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[The inter-pair complementarity measures for the selected left and
+right primer.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WARNING</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[s lists warnings generated by primer (separated by semicolons);
+this tag is absent if there are no warnings.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_MISPRIMING_SCORE</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f, s</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is the maximum mispriming score for the right primer
+against any sequence in the given PRIMER_MISPRIMING_LIBRARY;
+s is the id of corresponding library sequence.
+PRIMER_PAIR_MISPRIMING_SCORE is the maximum sum of
+mispriming scores in any single library sequence (perhaps a
+more reasonable estimator of the likelihood of mispriming).]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_TEMPLATE_MISPRIMING</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[Analogous to PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE, except that
+these output tags apply to mispriming within the template sequence.
+This often arises, for example, in genes with repeated exons. For
+backward compatibility, these tags only appear if the corresponding
+input tags have defined values.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PRODUCT_TM</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is the melting temperature of the product. Calculated using
+equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
+RE (1990) "Optimization of the annealing temperature for DNA
+amplification in vitro", Nucleic Acids Res 18:6409-12
+http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
+PRIMER_MIN_PRODUCT_TM is specified.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PRODUCT_TM_OLIGO_TM_DIFF</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is the difference between the melting temperature of the
+product and the melting temperature of the less stable primer.
+Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
+specified.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_T_OPT_A</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is T sub a super OPT from equation (i) in [Rychlik W, Spencer
+WJ and Rhoads RE (1990) "Optimization of the annealing
+temperature for DNA amplification in vitro", Nucleic Acids Res
+18:6409-12
+http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
+specified.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_OLIGO_MISHYB_SCORE</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f, s</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is the maximum mishybridization score for the right primer
+against any sequence in the given
+PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY; s is the id of
+corresponding library sequence.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLRI_MIN_SEQ_QUALITY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>i</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[i is the minimum _sequence_ quality within the primer
+or oligo (not to be confused with the PRIMER_PAIR_QUALITY
+output tag, which is really the value of the objective
+function.)]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_RLR_END_STABILITY</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[f is the delta G of disruption of the five 3' bases of the
+primer.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_STOP_CODON_POSITION</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>i</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[i is the position of the first base of the stop codon,
+if primer3 found one, or -1 if primer3 did not.  Printed
+only if the input tag PRIMER_START_CODON_POSITION with a
+non-default value is supplied.]]>
 	</description>
 </tag>
 </primer3Doc>

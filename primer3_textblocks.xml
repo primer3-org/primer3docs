@@ -122,15 +122,137 @@ file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
 	</text>
 </textBlock>
 <textBlock>
+	<id>example</id>
+	<head>AN EXAMPLE</head>
+	<text>
+<![CDATA[One might be interested in performing PCR on an STS with a CA
+repeat in the middle of it. Primers need to be chosen based on
+the criteria of the experiment.
+
+We need to come up with a boulder-io record to send to primer3 via
+stdin. There are lots of ways to accomplish this. We could save
+the record into a text file called 'input', and then type the
+UNIX command 'primer3 < input'. 
+
+Let's look at the input record itself:
+
+PRIMER_SEQUENCE_ID=example
+SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG
+TARGET=37,21
+PRIMER_OPT_SIZE=18
+PRIMER_MIN_SIZE=15
+PRIMER_MAX_SIZE=21
+PRIMER_NUM_NS_ACCEPTED=1
+PRIMER_PRODUCT_SIZE_RANGE=75-100
+PRIMER_FILE_FLAG=1
+PRIMER_PICK_INTERNAL_OLIGO=1
+PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21
+PRIMER_EXPLAIN_FLAG=1
+=
+
+A breakdown of the reasoning behind each of the TAG=VALUE pairs
+is below:
+
+PRIMER_SEQUENCE_ID=example
+
+The main intent of this tag is to provide an identifier for the
+sequence that is meaningful to the user, for example when primer3
+processes multiple records, and by default this tag is optional.
+However, this tag is _required_ when PRIMER_FILE_FLAG is non-0
+Because it provides the names of the files that contain lists
+of oligos that primer3 considered.
+
+SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG
+
+The SEQUENCE tag is of ultimate importance. Without it, primer3
+has no idea what to do. This sequence is 92 bases long. Note that
+there is no newline until the sequence terminates completely.
+
+TARGET=37,21
+
+There is a simple sequence repeat in our sequence, which starts
+at base 37, and has a length of 21 bases. We want primer3 to
+choose primers which flank the repeat site, so we let primer3 know
+that we consider this site to be important.
+
+PRIMER_OPT_SIZE=18
+
+Since our sequence length is rather small (only 92 bases
+long), we lower the PRIMER_OPT_SIZE from 20 to 18. It's
+more likely that primer3 will succeed if it shoots for smaller
+primers with such a small sequence.
+
+PRIMER_MIN_SIZE=15
+PRIMER_MAX_SIZE=21
+
+With the lowering of optimal primer size, it's good to lower
+the minimum and maximum sizes as well.
+
+PRIMER_NUM_NS_ACCEPTED=1
+
+Again, since we've got such a small sequence with a
+non-negligible amount of unknown bases (N's) in it, let's make
+primer3's job easier by allowing it to pick primers that have
+at most 1 unknown base.
+
+PRIMER_PRODUCT_SIZE_RANGE=75-100
+
+We reduce the product size range from the default of 100-300
+because our source sequence is only 108 base pairs long.  If we
+insisted on a product size of 100 base pairs primer3 would have
+few possibilities to choose from.
+
+PRIMER_FILE_FLAG=1
+
+Since we've got such a small sequence, Primer might fail to
+pick primers. We want to get the list of primers it
+considered, then, so that we might manually pick primers
+ourselves if Primer fails to do so. Setting this flag to 1
+will force Primer to output the primers it considered to a
+forward_primer and a reverse_primer output file.
+
+PRIMER_PICK_INTERNAL_OLIGO=1
+
+We want to see if Primer v2.3 can pick an internal oligo for
+the sequence, so we set this flag to 1 (true).
+
+PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21
+
+Normally CA-repeats make poor hybridization probes (because they
+not specific enough).  Therefor we exclude the CA repeat (which
+is the TARGET) from consideration for the middle oligo.
+
+PRIMER_EXPLAIN_FLAG=1
+
+We want to see statistics about the oligos and oligo triples
+(left primer, internal oligo, right primer) that primer3
+examined.
+
+=
+
+The '=' character terminates the record.
+
+There are some boulderio tags that we never even
+specified. (INCLUDED_REGION, EXCLUDED_REGION, et al.), which is
+perfectly legal.  For the tags with default values, those
+defaults will be used in the analysis. For the tags with NO
+default values (like TARGET, for instance), the functionality
+requested by the those tags will simply be absent. It's not the
+case that we need to surround a simple sequence repeat every time
+we want to pick primers!
+]]>
+	</text>
+</textBlock>
+<textBlock>
 	<id>globalTags</id>
 	<head>"Global" Input Tags</head>
 	<text>
-<![CDATA["Global" input tags describe the general parameters that 
-primer3 should use in its searches, and the values of these 
-tags persist between input boulder records until or unless 
-they are explicitly reset. Errors in "Global" input tags are 
-fatal because they invalidate the basic conditions under 
-which primers are being picked.]]>
+<![CDATA["Global" input tags start with PRIMER_... and describe the 
+general parameters that primer3 should use in its searches. 
+The values of these tags persist between input boulder 
+records until or unless they are explicitly reset. Errors 
+in "Global" input tags are fatal because they invalidate 
+the basic conditions under which primers are being picked.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -298,6 +420,35 @@ primer3_core input_file.txt
 
 *will not work*.  Primer3_core will just sit there forever
 waiting for its input on stdin.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>outputTags</id>
+	<head>OUTPUT TAGS</head>
+	<text>
+<![CDATA[For each boulderio record passed into primer3 via stdin, exactly
+one boulderio record comes out of primer3 on stdout. These output
+records contain everything that the input record contains, plus a
+subset of the following tag/value pairs.  Unless noted by (*),
+each tag appears for each primer pair returned.  The first
+version is PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<tag_name>.
+Tags of additional primers chosen are of the form
+PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<j>_<tag_name>.  where
+<j> is an integer from 1 to n, where n is at most the value of
+PRIMER_NUM_RETURN.
+
+In the descriptions below, 'i,n' represents a start/length pair,
+'s' represents a string, x represents an arbitrary integer, and f
+represents a float.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>programTags</id>
+	<head>"Program" Input Tags</head>
+	<text>
+<![CDATA["Program" input tags start with P3_... describe the 
+parameters that deal with the behavior of the primer3 program 
+itself.)]]>
 	</text>
 </textBlock>
 <textBlock>
