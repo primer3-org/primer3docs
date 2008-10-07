@@ -11,6 +11,36 @@
 
 
 <textBlock>
+	<id>acknowledgments</id>
+	<head>ACKNOWLEDGMENTS</head>
+	<text>
+<![CDATA[Initial development of Primer3 was funded by Howard Hughes Medical
+Institute and by the National Institutes of Health, National Human
+Genome Research Institute under grants R01-HG00257 (to David C. Page)
+and P50-HG00098 (to Eric S. Lander).
+
+Primer3 was originally written by Helen J. Skaletsky (Howard Hughes
+Medical Institute, Whitehead Institute) and Steve Rozen (Whitehead
+Institute/MIT Center for Genome Research), based on the design of
+earlier versions: Primer 0.5 (Steve Lincoln, Mark Daly, and Eric
+S. Lander) and Primer v2 (Richard Resnick).  This initial version of
+this documentation was written by Richard Resnick and Steve Rozen, and
+the original web interface was designed by Richard Resnick.  Lincoln
+Stein championed the use of the Boulder-IO format and the idea of
+making primer3 a software component.  In addition, among others, Ernst
+Molitor, Carl Foeller, and James Bonfield contributed to the early
+design of primer3. We also thank Centerline Software, Inc., for uses
+of its TestCenter memory-error, -leak, and test-coverage checker,
+which helped us discover and correct a number of otherwise latent
+errors in Primer3.
+
+Primer3 is now operating as open software development project hosted
+on SourceForge, and we are working out how to acknowledge all who have
+contributed to its enahancement.  Current active developers can be
+found at http://sourceforge.net/projects/primer3/.]]>
+	</text>
+</textBlock>
+<textBlock>
 	<id>buildOsX</id>
 	<head>BUILDING OSX UNIVERSAL BINARY</head>
 	<text>
@@ -44,6 +74,44 @@ You should be able to compile a 3-way binary which includes PPC64 support
 (intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
 end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
 This has not been tested.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>cautions</id>
+	<head>CAUTIONS</head>
+	<text>
+<![CDATA[Some of the most important issues in primer picking can be
+addressed only before using primer3.  These are sequence quality
+(including making sure the sequence is not vector and not
+chimeric) and avoiding repetitive elements.
+
+Techniques for avoiding problems include a thorough understanding
+of possible vector contaminants and cloning artifacts coupled
+with database searches using blast, fasta, or other similarity
+searching program to screen for vector contaminants and possible
+repeats.  Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
+others, 1995-1996, ftp://ncbi.nlm.nih.gov/repository/repbase)
+is an excellent source of repeat sequences and pointers to the
+literature.  (The Repbase files need to be converted to Fasta format
+before they can be used by primer3.) Primer3 now allows you to screen
+candidate oligos against a Mispriming Library (or a Mishyb Library in
+the case of internal oligos).
+
+
+Sequence quality can be controlled by manual trace viewing and
+quality clipping or automatic quality clipping programs.  Low-
+quality bases should be changed to N's or can be made part of
+Excluded Regions. The beginning of a sequencing read is often
+problematic because of primer peaks, and the end of the read
+often contains many low-quality or even meaningless called bases.
+Therefore when picking primers from single-pass sequence it is
+often best to use the INCLUDED_REGION parameter to ensure that
+primer3 chooses primers in the high quality region of the read.
+
+In addition, primer3 takes as input a Sequence Quality list for
+use with those base calling programs 
+
+(e.g. Phred, Bass/Grace, Trout) that output this information.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -119,6 +187,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The oligtm library and tests are released under the GPL.  See
 file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>earlierVersions</id>
+	<head>DIFFERENCES FROM EARLIER VERSIONS</head>
+	<text>
+<![CDATA[See the file release_notes.txt in this directory.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -244,6 +319,57 @@ we want to pick primers!
 	</text>
 </textBlock>
 <textBlock>
+	<id>exampleOutput</id>
+	<head>EXAMPLE OUTPUT</head>
+	<text>
+<![CDATA[You should run it yourself.  Use the file 'example' in this
+directory as input.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>findNoPrimers</id>
+	<head>WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</head>
+	<text>
+<![CDATA[Try relaxing various parameters, including the
+self-complementarity parameters and max and min oligo melting
+temperatures.  For example, for very A-T-rich regions you might
+have to increase maximum primer size or decrease minimum melting
+temperature.  It is usually unwise to reduce the minimum primer
+size if your template is complex (e.g. a mammalian genome), since
+small primers are more likely to be non-specific.  Make sure that
+there are adequate stretches of non-Ns in the regions in which
+you wish to pick primers.  If necessary you can also allow an N
+in your primer and use an oligo mixture containing all four bases
+at that position.
+
+Try setting the PRIMER_EXPLAIN_FLAG input tag.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>exitStatusCodes</id>
+	<head>EXIT STATUS CODES</head>
+	<text>
+<![CDATA[ 0 on normal operation
+-1 under the following conditions:
+   illegal command-line arguments.
+   unable to fflush stdout.
+   unable to open (for writing and creating) a .for, .rev
+     or .int file (probably due to a protection problem).
+-2 on out-of-memory
+-3 empty input
+-4 error in a "Global" input tag (message in PRIMER_ERROR).
+
+Primer3 calls abort() and dumps core (if possible) if a
+programming error is detected by an assertion violation.
+
+SIGINT and SIGTERM are handled essentially as empty input, except
+the signal received is returned as the exit status and printed to
+stderr.
+
+In all of the error cases above Primer3 prints a message to stderr.]]>
+	</text>
+</textBlock>
+<textBlock>
 	<id>globalTags</id>
 	<head>"Global" Input Tags</head>
 	<text>
@@ -329,7 +455,7 @@ only ONCE in any given input record.  This restriction is not
 systematically checked in this beta release: use care.
 
 There are 2 major classes of input tags,  "Sequence" input tags
-and "Global" input tags described below.]]>
+and "Global" input tags as described below.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -410,7 +536,7 @@ The command line for primer3 is:
 
 primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
 
-A complete list of command line tags can be found in 
+A complete list of valid command line tags can be found in 
 COMMAND LINE TAGS below.
 	
 WARNING: primer3_core only reads its input on stdin, so the usual
@@ -440,6 +566,16 @@ PRIMER_NUM_RETURN.
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
 represents a float.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>pickAdvice</id>
+	<head>ADVICE FOR PICKING PRIMERS</head>
+	<text>
+<![CDATA[We suggest consulting: Wojciech Rychlik (1993) "Selection of
+Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
+in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
+Applications", pp 31-40, Humana Press, Totowa NJ.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -496,6 +632,15 @@ by primer3.
 but primer3 will continue to process additional records.
   Errors in "Global" input tags are fatal because they invalidate 
 the basic conditions under which primers are being picked.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>webInterface</id>
+	<head>THE PRIMER3 WWW INTERFACE</head>
+	<text>
+<![CDATA[This distribution does not contain the Primer3 WWW interface.
+Web interface code is likely available at (or linked to from)
+http://sourceforge.net/projects/primer3/.]]>
 	</text>
 </textBlock>
 </primer3Doc>

@@ -29,8 +29,16 @@ my @textblocksOrder = (
 "sequenceTags",
 "globalTags",
 "programTags",
+"example",
 "outputTags",
-"example");
+"exampleOutput",
+"pickAdvice",
+"cautions",
+"findNoPrimers",
+"earlierVersions",
+"exitStatusCodes",
+"webInterface",
+"acknowledgments");
 #####################################################################
 
 
@@ -44,7 +52,8 @@ my $tagRoot = getXmlRoot($tagFile);
 # Read all Tag in an array
 my @xml_tags = $tagRoot->getElementsByTagName('tag');
 # First sort the tags alphabetically tags
-my @sortedTags = sort tagSort @xml_tags;
+# my @sortedTags = sort tagSort @xml_tags;
+my @sortedTags = @xml_tags;
 # Print a message about the Tags
 my $readTagCount = $#sortedTags + 1;
 print "Read in $readTagCount input Tags for processing...\n";
@@ -58,6 +67,16 @@ my @commandTags = $commandRoot->getElementsByTagName('tag');
 # Print a message about the Tags
 $readTagCount = $#commandTags + 1;
 print "Read in $readTagCount command line Tags for processing...\n";
+
+
+# Open the output Tag file
+my $outTagFile = "primer3_output_tags.xml";
+my $outTagRoot = getXmlRoot($outTagFile);
+# Read all Tag in an array
+my @outTagTags = $outTagRoot->getElementsByTagName('tag');
+# Print a message about the Tags
+$readTagCount = $#outTagTags + 1;
+print "Read in $readTagCount output Tags for processing...\n";
 
 
 # Open the TextBlocks file
@@ -232,6 +251,10 @@ sub createReadmeTxt {
 			$txt_string =~ s/\n$//;
 			$txt_string .= printTags("P3_");
 		}
+		if ($textblock_holder eq "outputTags") {
+			$txt_string =~ s/\n$//;
+			$txt_string .= printOutputTags();
+		}
 	}
 
 	# Write the files to the disk
@@ -267,6 +290,42 @@ sub printTags {
 	}
 
 	print "Printed $tagCount $text - Tags in readme.txt\n";
+	
+	return $output;
+}
+
+
+######################################
+# prints all tags of a certain group #
+######################################
+sub printOutputTags {
+	my $output;
+	my $tagCount = 0;	
+	# Now print out all tags
+	foreach my $tag_holder (@outTagTags) {
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my $dataType = get_node_content($tag_holder, "dataType");
+		my $optional = get_node_content($tag_holder, "optional");
+		my $description = get_node_content($tag_holder, "description");
+				
+		$tagCount++;
+		
+		$tagName =~ s/_RLRI_/_\{LEFT,RIGHT,INTERNAL_OLIGO\}_/;
+		$tagName =~ s/_RLRP_/_\{LEFT,RIGHT,PAIR\}_/;
+		$tagName =~ s/_RLR_/_\{LEFT,RIGHT\}_/;
+		
+		# Assemble the txt file
+		$output .= $tagName."=".$dataType;
+		if ($optional eq "Y"){
+			$output .= " (*)";
+		}
+		$output .= "\n\n";
+		$output .= "$description\n\n\n";
+			
+	}
+
+	print "Printed $tagCount output Tags in readme.txt\n";
 	
 	return $output;
 }

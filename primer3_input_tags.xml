@@ -1371,7 +1371,7 @@ PRIMER_OPT_GC_PERCENT.]]>
 <tag>
 	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
 	<dataType>float</dataType>
-	<default>0.0</default>
+	<default>1.0</default>
 	<description>
 <![CDATA[ ]]>
 	</description>

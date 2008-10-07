@@ -91,7 +91,7 @@ length.]]>
 	<dataType>s</dataType>
 	<optional>Y</optional>
 	<description>
-<![CDATA[ is a (more or less) self-documenting string containing
+<![CDATA[s is a (more or less) self-documenting string containing
 statistics on the possiblities that primer3 considered in
 selecting a single oligo.  For example
 
@@ -256,7 +256,7 @@ this tag is absent if there are no warnings.]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_MISPRIMING_SCORE</tagName>
+	<tagName>PRIMER_RLRP_MISPRIMING_SCORE</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -273,7 +273,7 @@ more reasonable estimator of the likelihood of mispriming).]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_TEMPLATE_MISPRIMING</tagName>
+	<tagName>PRIMER_RLRP_TEMPLATE_MISPRIMING</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
