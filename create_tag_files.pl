@@ -391,37 +391,73 @@ sub createReadmeHtml {
 	# Prepare the strings for the files
 	my $html_string = html_get_header();
 	my $tagCount = 0;
+
+	# Create a Index
+	$html_string .= "<h2>Index of contents</h2>";
+	my $chapterCount = 0;
+	$html_string .= "<p>\n";
+	foreach my $textblock_holder (@textblocksOrder) {
+		if ($textHead{$textblock_holder} ne ""){
+			$chapterCount++;
+			$html_string .= "<a href=\"#$textblock_holder\">";
+			$html_string .= "$chapterCount. $textHead{$textblock_holder}</a><br />\n";
+		}
+	}
+	$html_string .= "</p>\n";
+
+	$chapterCount = 0;
+	foreach my $textblock_holder (@textblocksOrder) {
+		if ($textHead{$textblock_holder} ne ""){
+			$chapterCount++;		
+			$html_string .= "<h2><a name=\"$textblock_holder\">$chapterCount. ";
+			$html_string .= "$textHead{$textblock_holder}</a></h2>\n\n";
+			$html_string .= "<p>$textBody{$textblock_holder}</p>\n\n";
+		}
+		# Print out the command line tags at the right spot
+		if ($textblock_holder eq "commandLineTags") {
+			$html_string =~ s/\n$//;
+			foreach my $tag_holder (@commandTags) {
+				# Get all the XML data of one tag
+				my $tagName = get_node_content($tag_holder, "tagName");
+				my $description = get_node_content($tag_holder, "description");
+				
+				# Assemble the txt file
+				$html_string .= "<h3>$tagName</h3>\n";
+				$html_string .= "<p>$description</p>\n\n";
+			}
+			$html_string .= "\n";
+		}
+		if ($textblock_holder eq "sequenceTags") {
+			$html_string =~ s/\n$//;
+			$html_string .= printHTMLTags("SEQUENCE_");
+		}
+		if ($textblock_holder eq "globalTags") {
+			$html_string =~ s/\n$//;
+			$html_string .= printHTMLTags("PRIMER_");
+		}
+		if ($textblock_holder eq "programTags") {
+			$html_string =~ s/\n$//;
+			$html_string .= printHTMLTags("P3_");
+		}
+		if ($textblock_holder eq "outputTags") {
+			$html_string =~ s/\n$//;
+			$html_string .= printHTMLOutputTags();
+		}
+	}
+
 	
 	# Lets print the overview table for the HTML file
-	foreach my $tag_holder (@sortedTags) {
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
+#	foreach my $tag_holder (@sortedTags) {
+#		# Get all the XML data of one tag
+#		my $tagName = get_node_content($tag_holder, "tagName");
 	
 	
 		# Assemble the html file
-		$html_string .= "<a href=\"#$tagName\" style=\"font-size:0.8em\">".$tagName."</a><br>\n\n";
+#		$html_string .= "<a href=\"#$tagName\" style=\"font-size:0.8em\">".$tagName."</a><br>\n\n";
 	
 		
-	}
+#	}
 	
-	# Now print out all tags
-	foreach my $tag_holder (@sortedTags) {
-		$tagCount++;
-		
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $default = get_node_content($tag_holder, "default");
-		my $description = get_node_content($tag_holder, "description");
-	
-	
-		# Assemble the html file
-		$html_string .= "<h3><a name=\"$tagName\">".$tagName."</a></h3>\n\n<p>(";
-		$html_string .= $dataType."; default ".$default.")<br><br>\n\n";
-		$html_string .= "$description</p>\n\n\n";
-	
-		
-	}
 	
 	# Finish the strings for the files
 	$html_string .= html_get_footer();
@@ -438,6 +474,74 @@ sub createReadmeHtml {
 	return 0;
 }
 
+######################################
+# prints all tags of a certain group #
+######################################
+sub printHTMLTags {
+	my $text = shift;
+	my $output;
+	my $tagCount = 0;	
+	# Now print out all tags
+	foreach my $tag_holder (@sortedTags) {
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my $dataType = get_node_content($tag_holder, "dataType");
+		my $default = get_node_content($tag_holder, "default");
+		my $description = get_node_content($tag_holder, "description");
+		
+		if ($tagName =~ /^$text/) {
+			$tagCount++;
+			
+			# Assemble the html file
+			$output .= "<h3><a name=\"$tagName\">".$tagName."</a></h3>\n\n<p>(";
+			$output .= $dataType."; default ".$default.")<br><br>\n\n";
+			$output .= "$description</p>\n\n\n";
+		}
+		
+	}
+
+	print "Printed $tagCount $text - Tags in readme.htm\n";
+	
+	return $output;
+}
+
+
+######################################
+# prints all tags of a certain group #
+######################################
+sub printHTMLOutputTags {
+	my $output;
+	my $tagCount = 0;	
+	# Now print out all tags
+	foreach my $tag_holder (@outTagTags) {
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my $dataType = get_node_content($tag_holder, "dataType");
+		my $optional = get_node_content($tag_holder, "optional");
+		my $description = get_node_content($tag_holder, "description");
+				
+		$tagCount++;
+		
+		$tagName =~ s/_RLRI_/_\{LEFT,RIGHT,INTERNAL_OLIGO\}_/;
+		$tagName =~ s/_RLRP_/_\{LEFT,RIGHT,PAIR\}_/;
+		$tagName =~ s/_RLR_/_\{LEFT,RIGHT\}_/;
+		
+		# Assemble the txt file
+		$output .= "<h3><a name=\"$tagName\">";
+		$output .= $tagName."=".$dataType;
+		if ($optional eq "Y"){
+			$output .= " (*)";
+		}
+		$output .= "</a></h3>\n\n";
+		$output .= "<p>$description</p>\n\n\n";
+			
+	}
+
+	print "Printed $tagCount output Tags in readme.htm\n";
+	
+	return $output;
+}
+
 
 ###################################
 # returns the html for the header #
@@ -449,7 +553,7 @@ sub html_get_header {
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>Primer3 - Readme</title>
+  <title>primer3 release $scriptP3Version - Readme</title>
   <style type="text/css">
   body {
   background-color:white;
