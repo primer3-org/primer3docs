@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
+<!--
+An example Tag with all possible options:
+
+<tagGroup>
+<tag>
+	<tagName></tagName>
+	<description>
+<![CDATA[<p> </p>]]>
+	</description>
+</tag>
+</tagGroup>
+-->
+<tagGroup>
 <tag>
 	<tagName>-about</tagName>
 	<description>
-<![CDATA[   generates one line of output: primer3 release 1.1.2
-   and terminates the program. This allows scripts to 
-   query primer3 for its version.]]>
+<![CDATA[<p>This tag generates one line of output: primer3 release 1.1.2
+and terminates the program. This allows scripts to 
+query primer3 for its version.</p>]]>
 	</description>
 </tag>
+</tagGroup>
+<tagGroup>
 <tag>
 	<tagName>-format_output</tagName>
 	<description>
-<![CDATA[   indicates that primer3_core should generate
-   user-oriented (rather than program-oriented) output.]]>
+<![CDATA[<p>This tag indicates that primer3_core should generate
+user-oriented (rather than program-oriented) output.</p>]]>
 	</description>
 </tag>
+</tagGroup>
+<tagGroup>
 <tag>
 	<tagName>-strict_tags</tagName>
 	<description>
-<![CDATA[   indicates that primer3_core should generate
-   a fatal error if there is any tag in the input that
-   it does not recognize (see INPUT AND OUTPUT CONVENTIONS).]]>
+<![CDATA[<p>This tag indicates that primer3_core should generate
+a fatal error if there is any tag in the input that
+it does not recognize (see INPUT AND OUTPUT CONVENTIONS).</p>]]>
 	</description>
 </tag>
+</tagGroup>
+<tagGroup>
 <tag>
 	<tagName>-p3_settings_file=set.txt</tagName>
 	<description>
-<![CDATA[   allows to specify a settings file set.txt. The global 
-   ("PRIMER_...") parameters of these file are read first. 
-   Tags appearing in the settings file override identical 
-   tags of the default primer3 settings and are modified 
-   by identical tags in the command line input. See 
-   primer3 file documentation for details on the file 
-   format.]]>
+<![CDATA[<p>This tag allows to specify a settings file set.txt. The global 
+("PRIMER_...") parameters of these file are read first. 
+Tags appearing in the settings file override identical 
+tags of the default primer3 settings and are modified 
+by identical tags in the command line input. See 
+primer3 file documentation for details on the file 
+format.</p>]]>
 	</description>
 </tag>
+</tagGroup>
+<tagGroup>
 <tag>
 	<tagName>-io_version=XXX</tagName>
 	<description>
-<![CDATA[   indicated were XXX is the version of input primer3 should 
-   read. At the moment only -io_version=3 and -io_version=4
-   are supported. Please note that -io_version=4 is required
-   to use new functionality.]]>
+<![CDATA[<p>This tag indicated were XXX is the version of input primer3 should 
+read. At the moment only -io_version=3 and -io_version=4
+are supported. Please note that -io_version=4 is required
+to use new functionality.</p>]]>
 	</description>
 </tag>
+</tagGroup>
+<tagGroup>
 <tag>
 	<tagName>-2x_compat</tagName>
 	<description>
-<![CDATA[   is no longer supported.]]>
+<![CDATA[<p>This tag is no longer supported.</p>]]>
 	</description>
 </tag>
+</tagGroup>
 </primer3Doc>

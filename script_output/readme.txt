@@ -1,8 +1,8 @@
 primer3 release 2.0.0
----------------------
+=====================
 
 Index of contents
------------------
+=================
 
 1. COPYRIGHT AND LICENSE
 2. INTRODUCTION
@@ -32,7 +32,7 @@ Index of contents
 
 
 1. COPYRIGHT AND LICENSE
-------------------------
+========================
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://jura.wi.mit.edu/rozen), and Helen Skaletsky
@@ -71,7 +71,7 @@ file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.
 
 
 2. INTRODUCTION
----------------
+===============
 Primer3 picks primers for PCR reactions, considering as criteria:
 
 o oligonucleotide melting temperature, size, GC content,
@@ -89,13 +89,17 @@ All of these criteria are user-specifiable as constraints, and
 some are specifiable as terms in an objective function that
 characterizes an optimal primer pair.
 
-Whitehead Institute for Biomedical Research provides a web-based
-front end to primer3 at
+Whitehead Institute for Biomedical Research provides a basic
+web-based front end to primer3 named primer3web at
 http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi
+
+Wageningen University Laboratory of Bioinformatics provides a enhanced 
+web-based front end to primer3 named primer3plus at
+http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi
 
 
 3. CITING PRIMER3
------------------
+=================
 We request but do not require that use of this software be cited in
 publications as
 
@@ -104,21 +108,22 @@ general users and for biologist programmers.
 In: Krawetz S, Misener S (eds) Bioinformatics Methods and
 Protocols: Methods in Molecular Biology.  Humana Press, Totowa,
 NJ, pp 365-386
-Source code available at http://sourceforge.net/projects/primer3/
 
-The paper above is available at
+The paper is available at
 http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf
+	
+Source code available at http://sourceforge.net/projects/primer3/.
 
 
 4. REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS
-----------------------------------------------------------
+==========================================================
 For error reports or requests for enhancements, please send e-mail
 to primer3-mail (at) lists.sourceforge.net after replacing (at)
 with @.
 
 
 5. INSTALLATION INSTRUCTIONS - UNIX/LINUX
------------------------------------------
+=========================================
 Unzip and untar the distribution.
 
 DO NOT do this on a PC -- primer3_core will not compile if pc
@@ -137,7 +142,7 @@ $ make all
 
 # Warnings about pr_release being unused are harmless.
 # You should have created executables primer3_core, ntdpal,
-#  olgotm, and long_seq_tm_test
+# olgotm, and long_seq_tm_test
 
 $ make test
 
@@ -155,7 +160,7 @@ strictly as is; for further documentation please see the code.
 
 
 6. INSTALLATION INSTRUCTIONS - OSX
-----------------------------------
+==================================
 How to install this software
 ============================
 
@@ -169,13 +174,13 @@ How to install this software
 
 4.  (Optional) Within this folder run:
 	a. 'perl -w p3test.pl'
-	
+
 5.  (Optional) You should not see 'FAILED' during the tests.
 
 6.  (Optional) *NOTE*:  If your perl command is not called 
     perl (for example, if it is called perl5) you will have 
     to modify the internals of the test scripts).
-	
+
 7.	Copy the following files to a location of your choice:
 	a.  bin/long_seq_tm_test
 	b.  bin/ntdpal
@@ -197,7 +202,7 @@ your home directory.
 
 You can certainly also copy the files within 'bin' to 
 /usr/local/bin (if you are an administrator) or another 
-similar location.  
+similar location.
 
 You may need to adjust the permissions on the binaries if 
 you get fancy.
@@ -212,7 +217,7 @@ by typing its name (primer3_core).
 
 *** You should be very careful when altering your $PATH as 
 things can go very wrong.  See below for an alternate 
-method. ***  
+method. *** 
 
 If you added the binaries to /usr/local/bin, then you do 
 not need to do this.
@@ -224,7 +229,7 @@ If you added the binaries to a local directory (let's say
         the command line (Terminal) with:
 
 		nano ~/.bash_profile
-	
+
 	2. Add the following line if it is not present 
        (replacing '~/bin' if you used another directory):
 
@@ -235,14 +240,14 @@ If you added the binaries to a local directory (let's say
        so if you have something like:
 
 		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin
-	
+
        make it look like:
-	
+
 		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin
-	
+
 	4. Quit and restart terminal for the changes to take 
        effect.
-		
+	
 If you don't add the location to your $PATH
 ===========================================
 
@@ -253,12 +258,12 @@ following:
 
 	1. ~/bin/primer3_core < yourInputFile
 	2. /Users/<your username>/bin/primer3_core < yourInputFile
-	
+
 The first option is just a shortcut to the second.
 
 
 7. INSTALLATION INSTRUCTIONS - WINDOWS
---------------------------------------
+======================================
 How to install this software
 ============================
 
@@ -275,10 +280,10 @@ Running the tests
 =================
 We are working on integrating the test suite to windows.  
 However, substantial differences between windows and 
-Unix/Linux require some differences in the test script.  
+Unix/Linux require some differences in the test script.
 
 You must also install a perl distribution to run the 
-windows tests.  
+windows tests.
 
 We *strongly* recommend you install ActiveState perl 
 (http://www.activestate.com/products/activeperl/) 
@@ -293,7 +298,7 @@ below.***
 2. Type 'cmd' into the space provided
 3. Hit enter (or select 'OK')
 4. Navigate to the location of the tests:
-    
+
     A. if you put it in 
     C:/Documents and Settings/YourName/primer3-1.1.3/test/,
     you would type 
@@ -320,33 +325,33 @@ information, if needed.  Here is a quick summary:
 2. Type 'cmd' into the space provided
 3. Hit enter (or select 'OK')
 4. Navigate to the location of the binary:
-    
-    A. if you put it in 
+
+    A. if you put it in
     C:/Documents and Settings/YourName/Temp,
     you would type 
     'cd c:/Documents and Settings/YourName/Temp'
-    
+
     B. you can also type 'cd ' (don't forget the space 
     after cd) and drag the primer3 folder onto the 
     command-line window from windows explorer, this will 
     fill in the location for you
-    
+
 5. Run the example file by typing:
 
     primer3_core.exe < example
-    
+
 Other files may be run in a similar fashion.  If your input 
 filename is 'MyData.txt' you can run primer3 using this 
 file (in the correct format; see README) with:
 
     primer3_core.exe < MyData.txt
-    
+
 If your file is not in the folder containing 
 primer3_core.exe, you could run the program from the 
 primer3_core folder using:
-    
+
     primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
-    
+
 Finally, if you want to run the program without going to 
 its folder, assuming primer3_core.exe is in c:/Temp, you 
 could run:
@@ -355,9 +360,9 @@ could run:
 
 
 8. BUILDING OSX UNIVERSAL BINARY
---------------------------------
+================================
 ** To build a processor-native, non-universal binary of primer3, 
-the following is unneccesary**.  
+the following is unneccesary**.
 
 The instructions above should be sufficient.
 
@@ -389,7 +394,7 @@ This has not been tested.
 
 
 9. SYSTEM REQUIREMENTS
-----------------------
+======================
 Please see http://sourceforge.net/projects/primer3/ for up-to-date
 information.  Primer3 should compile on any Linux/Unix system
 including MacOS 10 and on other systems with POSIX C
@@ -401,7 +406,7 @@ you might have to force your compiler to accept them.
 
 
 10. INVOKING primer3_core
--------------------------
+=========================
 By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
 lifting of primer picking.  There is also a more user-friendly
@@ -413,7 +418,7 @@ primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
 
 A complete list of valid command line tags can be found in 
 COMMAND LINE TAGS below.
-	
+
 WARNING: primer3_core only reads its input on stdin, so the usual
 unix convention of
 
@@ -424,48 +429,48 @@ waiting for its input on stdin.
 
 
 11. COMMAND LINE TAGS
----------------------
+=====================
 This parameters are read from command line:
 
 -about
-   generates one line of output: primer3 release 1.1.2
-   and terminates the program. This allows scripts to 
-   query primer3 for its version.
+   This tag generates one line of output: primer3 release 1.1.2
+and terminates the program. This allows scripts to 
+query primer3 for its version.
 
 -format_output
-   indicates that primer3_core should generate
-   user-oriented (rather than program-oriented) output.
+   This tag indicates that primer3_core should generate
+user-oriented (rather than program-oriented) output.
 
 -strict_tags
-   indicates that primer3_core should generate
-   a fatal error if there is any tag in the input that
-   it does not recognize (see INPUT AND OUTPUT CONVENTIONS).
+   This tag indicates that primer3_core should generate
+a fatal error if there is any tag in the input that
+it does not recognize (see INPUT AND OUTPUT CONVENTIONS).
 
 -p3_settings_file=set.txt
-   allows to specify a settings file set.txt. The global 
-   ("PRIMER_...") parameters of these file are read first. 
-   Tags appearing in the settings file override identical 
-   tags of the default primer3 settings and are modified 
-   by identical tags in the command line input. See 
-   primer3 file documentation for details on the file 
-   format.
+   This tag allows to specify a settings file set.txt. The global 
+("PRIMER_...") parameters of these file are read first. 
+Tags appearing in the settings file override identical 
+tags of the default primer3 settings and are modified 
+by identical tags in the command line input. See 
+primer3 file documentation for details on the file 
+format.
 
 -io_version=XXX
-   indicated were XXX is the version of input primer3 should 
-   read. At the moment only -io_version=3 and -io_version=4
-   are supported. Please note that -io_version=4 is required
-   to use new functionality.
+   This tag indicated were XXX is the version of input primer3 should 
+read. At the moment only -io_version=3 and -io_version=4
+are supported. Please note that -io_version=4 is required
+to use new functionality.
 
 -2x_compat
-   is no longer supported.
+   This tag is no longer supported.
 
 
 12. INPUT AND OUTPUT CONVENTIONS
---------------------------------
+================================
 By default, primer3 accepts input in Boulder-io format, a
 pre-XML, pre-RDF, text-based input/output format for
 program-to-program data interchange.  By default, primer3 also
-produces output in the same format.  
+produces output in the same format.
 
 When run with the -format_output command-line flag, primer3
 prints a more user-oriented report for each sequence.
@@ -484,9 +489,9 @@ as follows:
 
   o A (TAG,VALUE) pair has the following requirements:
 
-        o the TAG must be immediately (without spaces) 
+    o the TAG must be immediately (without spaces) 
           followed by '='.
-	o the pair must be terminated by a newline character.
+    o the pair must be terminated by a newline character.
 
 An example of a legal (TAG,VALUE) pair is
 
@@ -536,7 +541,7 @@ and "Global" input tags as described below.
 
 
 13. "Sequence" Input Tags
--------------------------
+=========================
 "Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
 boulder record. Errors in "Sequence" input tags invalidate the 
@@ -701,7 +706,7 @@ design left and right primers.  Must be a substring of SEQUENCE.
 
 
 14. "Global" Input Tags
------------------------
+=======================
 "Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
 The values of these tags persist between input boulder 
@@ -788,6 +793,7 @@ Legal values are:
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=1
    PRIMER_PICK_RIGHT_PRIMER=0
+
 
 
 PRIMER_PICK_LEFT_PRIMER (boolean; default 1)
@@ -1360,7 +1366,7 @@ invite user comments.
 
 PRIMER_NUM_RETURN (int; default 5)
 
-The maximum number of primer pairs to return.  Primer pairs
+The maximum number of primer (pairs) to return.  Primer pairs
 returned are sorted by their "quality", in other words by the
 value of the objective function (where a lower number indicates a
 better primer pair).  Caution: setting this parameter to a large
@@ -1431,15 +1437,18 @@ The maximum stability for the last five 3' bases of a left or
 right primer.  Bigger numbers mean more stable 3' ends.  The
 value is the maximum delta G (kcal/mol) for duplex disruption for
 the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by PRIMER_TM_SANTALUCIA.
+parameter values specified by the option of PRIMER_TM_SANTALUCIA 
+Table of thermodynamic parameters.
 
-If PRIMER_TM_SANTALUCIA=1, then delta G for the most stable 5-mer
-duplex (GCGCG) is 6.86 kcal/mol, and delta G for the most labile
-5-mer (TATAT) is 0.86 kcal/mol.
-
-If PRIMER_TM_SANTALUCIA=0, then delta G for the most stable 5-mer
-duplex (GCGCG) is 13.4 kcal/mol, and delta G for the most labile
-5-mer duplex (TATAC) is 4.6 kcal/mol.
+For example if the table of thermodynamic parameters suggested
+by SantaLucia 1998, DOI:10.1073/pnas.95.4.1460 is used the deltaG 
+values for the most stable and for the most labile 5mer duplex 
+are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.
+	
+If the table of thermodynamic parameters suggested by 
+Breslauer et al. 1986, 10.1073/pnas.83.11.3746 is used the deltaG 
+values for the most stable and for the most labile 5mer are 
+13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
 
 
 PRIMER_PRODUCT_OPT_TM (float; default 0.0)
@@ -1519,177 +1528,177 @@ PRIMER_OPT_GC_PERCENT.
 
 PRIMER_WT_COMPL_ANY (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_COMPL_END (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_NUM_NS (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_REP_SIM (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_SEQ_QUAL (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_END_QUAL (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_POS_PENALTY (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_END_STABILITY (float; default 0.0)
 
-
+ 
 
 
 PRIMER_WT_TEMPLATE_MISPRIMING (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_PR_PENALTY (float; default 1.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_IO_PENALTY (float; default 1.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_DIFF_TM (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_COMPL_ANY (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_COMPL_END (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_PRODUCT_TM_LT (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_PRODUCT_TM_GT (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_PRODUCT_SIZE_GT (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_PRODUCT_SIZE_LT (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_REP_SIM (float; default 0.0)
 
-
+ 
 
 
 PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_OPT_SIZE (int; default 20)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MIN_SIZE (int; default 18)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MAX_SIZE (int; default 27)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_OPT_TM (float; default 60.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT (float; default 50.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MIN_TM (float; default 57.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MAX_TM (float; default 63.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MIN_GC (float; default 20.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MAX_GC (float; default 80.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_SALT_CONC (float; default 50.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_DIVALENT_CONC (float; default 0.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_DNTP_CONC (float; default 0.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_DNA_CONC (float; default 50.0)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_SELF_ANY (decimal, 9999.99; default 12.00)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_MAX_POLY_X (int; default 5)
 
-
+ 
 
 
 PRIMER_INTERNAL_OLIGO_SELF_END (decimal 9999.99; default 12.00)
@@ -1727,66 +1736,66 @@ Note that there is no PRIMER_INTERNAL_OLIGO_MIN_END_QUALITY.
 
 PRIMER_IO_WT_TM_GT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_TM_LT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_GC_PERCENT_GT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_GC_PERCENT_LT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_SIZE_LT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_SIZE_GT (float; default 1.0)
 
-
+ 
 
 
 PRIMER_IO_WT_COMPL_ANY (float; default 0.0)
 
-
+ 
 
 
 PRIMER_IO_WT_COMPL_END (float; default 0.0)
 
-
+ 
 
 
 PRIMER_IO_WT_NUM_NS (float; default 0.0)
 
-
+ 
 
 
 PRIMER_IO_WT_REP_SIM (float; default 0.0)
 
-
+ 
 
 
 PRIMER_IO_WT_SEQ_QUAL (float; default 0.0)
 
-
+ 
 
 
 PRIMER_IO_WT_END_QUAL (float; default 0.0)
 
-
+ 
 
 
 15. "Program" Input Tags
-------------------------
+========================
 "Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
 itself.)
@@ -1816,7 +1825,7 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 
 
 16. AN EXAMPLE
---------------
+==============
 One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
 the criteria of the experiment.
@@ -1824,7 +1833,7 @@ the criteria of the experiment.
 We need to come up with a boulder-io record to send to primer3 via
 stdin. There are lots of ways to accomplish this. We could save
 the record into a text file called 'input', and then type the
-UNIX command 'primer3 < input'. 
+UNIX command 'primer3 < input'.
 
 Let's look at the input record itself:
 
@@ -1935,7 +1944,7 @@ we want to pick primers!
 
 
 17. OUTPUT TAGS
----------------
+===============
 For each boulderio record passed into primer3 via stdin, exactly
 one boulderio record comes out of primer3 on stdout. These output
 records contain everything that the input record contains, plus a
@@ -1950,11 +1959,6 @@ PRIMER_NUM_RETURN.
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
 represents a float.
-
-=
-
-
-
 
 PRIMER_ERROR=s (*)
 
@@ -2171,13 +2175,13 @@ non-default value is supplied.
 
 
 18. EXAMPLE OUTPUT
-------------------
+==================
 You should run it yourself.  Use the file 'example' in this
 directory as input.
 
 
 19. ADVICE FOR PICKING PRIMERS
-------------------------------
+==============================
 We suggest consulting: Wojciech Rychlik (1993) "Selection of
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
 in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
@@ -2185,11 +2189,11 @@ Applications", pp 31-40, Humana Press, Totowa NJ.
 
 
 20. CAUTIONS
-------------
+============
 Some of the most important issues in primer picking can be
-addressed only before using primer3.  These are sequence quality
-(including making sure the sequence is not vector and not
-chimeric) and avoiding repetitive elements.
+addressed only before using primer3. These are sequence quality 
+(including making sure the sequence is not vector and not chimeric) 
+and avoiding repetitive elements.
 
 Techniques for avoiding problems include a thorough understanding
 of possible vector contaminants and cloning artifacts coupled
@@ -2203,7 +2207,6 @@ before they can be used by primer3.) Primer3 now allows you to screen
 candidate oligos against a Mispriming Library (or a Mishyb Library in
 the case of internal oligos).
 
-
 Sequence quality can be controlled by manual trace viewing and
 quality clipping or automatic quality clipping programs.  Low-
 quality bases should be changed to N's or can be made part of
@@ -2211,17 +2214,17 @@ Excluded Regions. The beginning of a sequencing read is often
 problematic because of primer peaks, and the end of the read
 often contains many low-quality or even meaningless called bases.
 Therefore when picking primers from single-pass sequence it is
-often best to use the INCLUDED_REGION parameter to ensure that
-primer3 chooses primers in the high quality region of the read.
+often best to use the SEQUENCE_INCLUDED_REGION parameter to 
+ensure that primer3 chooses primers in the high quality region 
+of the read.
 
-In addition, primer3 takes as input a Sequence Quality list for
-use with those base calling programs 
-
-(e.g. Phred, Bass/Grace, Trout) that output this information.
+In addition, primer3 takes as input a SEQUENCE_QUALITY list for
+use with those base calling programs (e.g. Phred, Bass/Grace, 
+Trout) that output this information.
 
 
 21. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
---------------------------------------------------
+==================================================
 Try relaxing various parameters, including the
 self-complementarity parameters and max and min oligo melting
 temperatures.  For example, for very A-T-rich regions you might
@@ -2238,13 +2241,13 @@ Try setting the PRIMER_EXPLAIN_FLAG input tag.
 
 
 22. DIFFERENCES FROM EARLIER VERSIONS
--------------------------------------
+=====================================
 See the file release_notes.txt in this directory.
 
 
 23. EXIT STATUS CODES
----------------------
-0 on normal operation
+=====================
+ 0 on normal operation
 -1 under the following conditions:
    illegal command-line arguments.
    unable to fflush stdout.
@@ -2265,14 +2268,14 @@ In all of the error cases above Primer3 prints a message to stderr.
 
 
 24. THE PRIMER3 WWW INTERFACE
------------------------------
+=============================
 This distribution does not contain the Primer3 WWW interface.
 Web interface code is likely available at (or linked to from)
 http://sourceforge.net/projects/primer3/.
 
 
 25. ACKNOWLEDGMENTS
--------------------
+===================
 Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human
 Genome Research Institute under grants R01-HG00257 (to David C. Page)

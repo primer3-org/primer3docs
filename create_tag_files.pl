@@ -52,7 +52,7 @@ print"start processing\n";
 my $tagFile = "primer3_input_tags.xml";
 my $tagRoot = getXmlRoot($tagFile);
 # Read all Tag in an array
-my @xml_tags = $tagRoot->getElementsByTagName('tag');
+my @xml_tags = $tagRoot->getElementsByTagName('tagGroup');
 # First sort the tags alphabetically tags
 # my @sortedTags = sort tagSort @xml_tags;
 my @sortedTags = @xml_tags;
@@ -65,7 +65,7 @@ print "Read in $readTagCount input Tags for processing...\n";
 my $commandFile = "primer3_command_line.xml";
 my $commandRoot = getXmlRoot($commandFile);
 # Read all Tag in an array
-my @commandTags = $commandRoot->getElementsByTagName('tag');
+my @commandTags = $commandRoot->getElementsByTagName('tagGroup');
 # Print a message about the Tags
 $readTagCount = $#commandTags + 1;
 print "Read in $readTagCount command line Tags for processing...\n";
@@ -75,7 +75,7 @@ print "Read in $readTagCount command line Tags for processing...\n";
 my $outTagFile = "primer3_output_tags.xml";
 my $outTagRoot = getXmlRoot($outTagFile);
 # Read all Tag in an array
-my @outTagTags = $outTagRoot->getElementsByTagName('tag');
+my @outTagTags = $outTagRoot->getElementsByTagName('tagGroup');
 # Print a message about the Tags
 $readTagCount = $#outTagTags + 1;
 print "Read in $readTagCount output Tags for processing...\n";
@@ -186,8 +186,6 @@ sub string2file {
 	my $string = shift; # String to save in
 	my $error = 0;
 	
-	$string =~ s/<br \/>/<br>/g;
-
 	if (open FILE, ">:utf8", $file) { 
 		print FILE $string;
 		close(FILE);
@@ -206,11 +204,11 @@ sub string2file {
 ###############################
 sub createReadmeTxt {
 	# Prepare the strings for the files
-	my $txt_string = underlineText("primer3 release $scriptP3Version");
+	my $txt_string = underlineText("primer3 release $scriptP3Version","=");
 	$txt_string .= "\n";
 
 # Create a Index
-	$txt_string .= underlineText("Index of contents")."\n";
+	$txt_string .= underlineText("Index of contents","=")."\n";
 	my $chapterCount = 0;
 	foreach my $textblock_holder (@textblocksOrder) {
 		if ($textHead{$textblock_holder} ne ""){
@@ -224,7 +222,7 @@ sub createReadmeTxt {
 	foreach my $textblock_holder (@textblocksOrder) {
 		if ($textHead{$textblock_holder} ne ""){
 		$chapterCount++;
-			$txt_string .= underlineText("$chapterCount. $textHead{$textblock_holder}");
+			$txt_string .= underlineText("$chapterCount. $textHead{$textblock_holder}","=");
 			$txt_string .= "$textBody{$textblock_holder}\n\n\n";
 		}
 		# Print out the command line tags at the right spot
@@ -258,6 +256,28 @@ sub createReadmeTxt {
 			$txt_string .= printOutputTags();
 		}
 	}
+	
+	# Replace HTML decorations
+	$txt_string =~ s/&gt;/>/g;
+	$txt_string =~ s/&lt;/</g;
+	$txt_string =~ s/&quot;/\"/g;
+	$txt_string =~ s/<a (.*?)>(.*?)<\/a>/$2/g;
+
+	# Replace HTML decorations	
+	$txt_string =~ s/<br \/>//g;
+	$txt_string =~ s/<p>//g;
+	$txt_string =~ s/<\/p>//g;
+	$txt_string =~ s/<link>//g;
+	$txt_string =~ s/<\/link>//g;
+	$txt_string =~ s/<pre>//g;
+	$txt_string =~ s/<\/pre>//g;
+	$txt_string =~ s/<i>//g;
+	$txt_string =~ s/<\/i>//g;
+	$txt_string =~ s/<tt>//g;
+	$txt_string =~ s/<\/tt>//g;
+	$txt_string =~ s/<p3_anchor>//g;
+	$txt_string =~ s/<\/p3_anchor>//g;
+	
 
 	# Write the files to the disk
 	my $output_file = $output_folder. "readme.txt";
@@ -272,21 +292,52 @@ sub createReadmeTxt {
 sub printTags {
 	my $text = shift;
 	my $output;
-	my $tagCount = 0;	
+	my $headInfo;
+	my $headPrint = 0;
+	my $tagCount = 0;
+	my @tagArray;	
 	# Now print out all tags
-	foreach my $tag_holder (@sortedTags) {
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $default = get_node_content($tag_holder, "default");
-		my $description = get_node_content($tag_holder, "description");
-		
-		if ($tagName =~ /^$text/) {
-			$tagCount++;
+	foreach my $tagGroup_holder (@sortedTags) {
+		# Get all the XML data of one tagGroup
+		$headInfo = "";
+		my $tagGroupName = get_node_content($tagGroup_holder, "tagGroupName");
+		my $groupDescription = get_node_content($tagGroup_holder, "groupDescription");
+		$groupDescription =~ s/^\<p\>//;
+		$groupDescription =~ s/\<\/p\>$//;
+
+		# Assemble the txt file
+		if ($groupDescription ne ""){
+			$headInfo .= underlineText("$groupDescription","-");
+		}
+	
+		@tagArray = $tagGroup_holder->getElementsByTagName('tag');
+		foreach my $tag_holder (@tagArray) {
+			# Get all the XML data of one tag
+			my $tagName = get_node_content($tag_holder, "tagName");
+			my $dataType = get_node_content($tag_holder, "dataType");
+			my $default = get_node_content($tag_holder, "default");
+			my $description = get_node_content($tag_holder, "description");
+			$description =~ s/^\<p\>//;
+			$description =~ s/\<\/p\>$//;
 			
+			if ($tagName =~ /^$text/) {
+				$tagCount++;
+				
+				# Assemble the txt file
+				if ($headPrint == 0) {
+					$output .= $headInfo;
+					$headPrint = 1;
+				}
+				
+				$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
+				$output .= "$description\n\n\n";
+			}
+			
+		}
+		
+		if ($headPrint == 1) {
 			# Assemble the txt file
-			$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
-			$output .= "$description\n\n\n";
+			#$output .= "$groupDescription\n\n\n";
 		}
 		
 	}
@@ -310,6 +361,8 @@ sub printOutputTags {
 		my $dataType = get_node_content($tag_holder, "dataType");
 		my $optional = get_node_content($tag_holder, "optional");
 		my $description = get_node_content($tag_holder, "description");
+		$description =~ s/^\<p\>//;
+		$description =~ s/\<\/p\>$//;
 				
 		$tagCount++;
 		
@@ -338,8 +391,9 @@ sub printOutputTags {
 ##############################
 sub underlineText {
 	my $text = shift;
+	my $symbol = shift;
 	my $output = "$text\n";
-	$text =~ s/./-/g;
+	$text =~ s/./$symbol/g;
 	$output .= "$text\n";
 	
 	return $output;
@@ -392,7 +446,6 @@ sub createTagDefinitionsXml {
 sub createReadmeHtml {
 	# Prepare the strings for the files
 	my $html_string = html_get_header();
-	my $tagCount = 0;
 
 	# Create a Index
 	$html_string .= "<h2>Index of contents</h2>";
@@ -464,14 +517,13 @@ sub createReadmeHtml {
 	# Finish the strings for the files
 	$html_string .= html_get_footer();
 	
-	print "\nPrinted out $tagCount Tags!\n\n";
+	$html_string =~ s/<br \/>/<br>/g;
+	$html_string =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
+	$html_string =~ s/<p3_anchor>(.*?)<\/p3_anchor>/<a href=\"#$1\">$1<\/a>/g;
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "readme.htm";
 	string2file($output_file, $html_string);
-
-
-	print "Printed $tagCount Tags in readme.htm\n";
 
 	return 0;
 }
@@ -496,8 +548,8 @@ sub printHTMLTags {
 			
 			# Assemble the html file
 			$output .= "<h3><a name=\"$tagName\">".$tagName."</a></h3>\n\n<p>(";
-			$output .= $dataType."; default ".$default.")<br><br>\n\n";
-			$output .= "$description</p>\n\n\n";
+			$output .= $dataType."; default ".$default.")</p>\n\n";
+			$output .= "$description\n\n\n";
 		}
 		
 	}
@@ -535,7 +587,7 @@ sub printHTMLOutputTags {
 			$output .= " (*)";
 		}
 		$output .= "</a></h3>\n\n";
-		$output .= "<p>$description</p>\n\n\n";
+		$output .= "$description\n\n\n";
 			
 	}
 
@@ -572,7 +624,7 @@ sub html_get_header {
   margin:25px;
   padding:0;
   text-align:left;
-  width:900px;
+  width:850px;
   }
   </style>
 </head>

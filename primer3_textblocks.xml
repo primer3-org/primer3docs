@@ -17,8 +17,8 @@
 <![CDATA[Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human
 Genome Research Institute under grants R01-HG00257 (to David C. Page)
-and P50-HG00098 (to Eric S. Lander).
-
+and P50-HG00098 (to Eric S. Lander).<br />
+<br />
 Primer3 was originally written by Helen J. Skaletsky (Howard Hughes
 Medical Institute, Whitehead Institute) and Steve Rozen (Whitehead
 Institute/MIT Center for Genome Research), based on the design of
@@ -32,8 +32,8 @@ Molitor, Carl Foeller, and James Bonfield contributed to the early
 design of primer3. We also thank Centerline Software, Inc., for uses
 of its TestCenter memory-error, -leak, and test-coverage checker,
 which helped us discover and correct a number of otherwise latent
-errors in Primer3.
-
+errors in Primer3.<br />
+<br />
 Primer3 is now operating as open software development project hosted
 on SourceForge, and we are working out how to acknowledge all who have
 contributed to its enahancement.  Current active developers can be
@@ -45,31 +45,31 @@ found at http://sourceforge.net/projects/primer3/.]]>
 	<head>BUILDING OSX UNIVERSAL BINARY</head>
 	<text>
 <![CDATA[** To build a processor-native, non-universal binary of primer3, 
-the following is unneccesary**.  
-
-The instructions above should be sufficient.
-
+the following is unneccesary**.<br />
+<br />
+The instructions above should be sufficient.<br />
+<br />
 A pre-compiled, universal binary download for OSX is available from 
-http://sourceforge.net/projects/primer3/ for the current release.
-
+http://sourceforge.net/projects/primer3/ for the current release.<br />
+<br />
 These instructions assume you want to build binaries compatible 
 with *both* of the current processor architectures used by the Apple
-platform (i,e. the binaries will be run on both PPC and intel platforms).
-
+platform (i,e. the binaries will be run on both PPC and intel platforms).<br />
+<br />
 Provided you have the OS X developer tools installed
 (you can download from http://developer.apple.com after
 registering for a free account), you can compile a universal
-build (intel and PPC native) of primer3.
-
+build (intel and PPC native) of primer3.<br />
+<br />
 o you must be running OS X > 10.4 and should have the most
-	recent version of XCode
-o run `make -f Makefile.OSX.Leopard all` if you run OS X 10.5
-o run `make -f Makefile.OSX.Tiger all` is you run OS X 10.4
-o run the tests as directed above
-
+	recent version of XCode<br />
+o run `make -f Makefile.OSX.Leopard all` if you run OS X 10.5<br />
+o run `make -f Makefile.OSX.Tiger all` is you run OS X 10.4<br />
+o run the tests as directed above<br />
+<br />
 Additional instructions for 'installing' the binaries may be found in
-the README.OSX.txt.
-
+the README.OSX.txt.<br />
+<br />
 You should be able to compile a 3-way binary which includes PPC64 support 
 (intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
 end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
@@ -81,23 +81,22 @@ This has not been tested.]]>
 	<head>CAUTIONS</head>
 	<text>
 <![CDATA[Some of the most important issues in primer picking can be
-addressed only before using primer3.  These are sequence quality
-(including making sure the sequence is not vector and not
-chimeric) and avoiding repetitive elements.
-
+addressed only before using primer3. These are sequence quality 
+(including making sure the sequence is not vector and not chimeric) 
+and avoiding repetitive elements.<br />
+<br />
 Techniques for avoiding problems include a thorough understanding
 of possible vector contaminants and cloning artifacts coupled
 with database searches using blast, fasta, or other similarity
 searching program to screen for vector contaminants and possible
 repeats.  Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
-others, 1995-1996, ftp://ncbi.nlm.nih.gov/repository/repbase)
+others, 1995-1996, <link>ftp://ncbi.nlm.nih.gov/repository/repbase</link>)
 is an excellent source of repeat sequences and pointers to the
 literature.  (The Repbase files need to be converted to Fasta format
 before they can be used by primer3.) Primer3 now allows you to screen
 candidate oligos against a Mispriming Library (or a Mishyb Library in
-the case of internal oligos).
-
-
+the case of internal oligos).<br />
+<br />
 Sequence quality can be controlled by manual trace viewing and
 quality clipping or automatic quality clipping programs.  Low-
 quality bases should be changed to N's or can be made part of
@@ -105,13 +104,13 @@ Excluded Regions. The beginning of a sequencing read is often
 problematic because of primer peaks, and the end of the read
 often contains many low-quality or even meaningless called bases.
 Therefore when picking primers from single-pass sequence it is
-often best to use the INCLUDED_REGION parameter to ensure that
-primer3 chooses primers in the high quality region of the read.
-
-In addition, primer3 takes as input a Sequence Quality list for
-use with those base calling programs 
-
-(e.g. Phred, Bass/Grace, Trout) that output this information.]]>
+often best to use the <p3_anchor>SEQUENCE_INCLUDED_REGION</p3_anchor> parameter to 
+ensure that primer3 chooses primers in the high quality region 
+of the read.<br />
+<br />
+In addition, primer3 takes as input a <p3_anchor>SEQUENCE_QUALITY</p3_anchor> list for
+use with those base calling programs (e.g. Phred, Bass/Grace, 
+Trout) that output this information.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -119,17 +118,18 @@ use with those base calling programs
 	<head>CITING PRIMER3</head>
 	<text>
 <![CDATA[We request but do not require that use of this software be cited in
-publications as
-
+publications as<br />
+<br />
 Steve Rozen and Helen J. Skaletsky (2000) Primer3 on the WWW for
 general users and for biologist programmers.
 In: Krawetz S, Misener S (eds) Bioinformatics Methods and
 Protocols: Methods in Molecular Biology.  Humana Press, Totowa,
-NJ, pp 365-386
-Source code available at http://sourceforge.net/projects/primer3/
-
-The paper above is available at
-http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf]]>
+NJ, pp 365-386<br />
+<br />
+The paper is available at
+<link>http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf</link><br />
+<br />	
+Source code available at <link>http://sourceforge.net/projects/primer3/</link>.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -152,27 +152,27 @@ with @.]]>
 	<id>copyrightLicense</id>
 	<head>COPYRIGHT AND LICENSE</head>
 	<text>
-<![CDATA[Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+<![CDATA[Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008<br />
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://jura.wi.mit.edu/rozen), and Helen Skaletsky
-All rights reserved.
-
-Most of primer3 is released under the following _new_ BSD license:
-
+(http://jura.wi.mit.edu/rozen), and Helen Skaletsky<br />
+All rights reserved.<br />
+<br />
+Most of primer3 is released under the following _new_ BSD license:<br />
+<br />
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
-met:
-
+met:<br />
+<br />
    * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
+notice, this list of conditions and the following disclaimer.<br />
    * Redistributions in binary form must reproduce the above
 copyright notice, this list of conditions and the following disclaimer
 in the documentation and/or other materials provided with the
-distribution.
+distribution.<br />
    * Neither the names of the copyright holders nor contributors may
 be used to endorse or promote products derived from this software
-without specific prior written permission.
-
+without specific prior written permission.<br />
+<br />
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -183,8 +183,8 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+<br />
 The oligtm library and tests are released under the GPL.  See
 file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
 	</text>
@@ -202,111 +202,111 @@ file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
 	<text>
 <![CDATA[One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
-the criteria of the experiment.
-
+the criteria of the experiment.<br />
+<br />
 We need to come up with a boulder-io record to send to primer3 via
 stdin. There are lots of ways to accomplish this. We could save
 the record into a text file called 'input', and then type the
-UNIX command 'primer3 < input'. 
-
+UNIX command 'primer3 < input'.<br />
+<br />
 Let's look at the input record itself:
-
-PRIMER_SEQUENCE_ID=example
-SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG
-TARGET=37,21
-PRIMER_OPT_SIZE=18
-PRIMER_MIN_SIZE=15
-PRIMER_MAX_SIZE=21
-PRIMER_NUM_NS_ACCEPTED=1
-PRIMER_PRODUCT_SIZE_RANGE=75-100
-PRIMER_FILE_FLAG=1
-PRIMER_PICK_INTERNAL_OLIGO=1
-PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21
-PRIMER_EXPLAIN_FLAG=1
-=
-
+<br />
+PRIMER_SEQUENCE_ID=example<br />
+SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
+TARGET=37,21<br />
+PRIMER_OPT_SIZE=18<br />
+PRIMER_MIN_SIZE=15<br />
+PRIMER_MAX_SIZE=21<br />
+PRIMER_NUM_NS_ACCEPTED=1<br />
+PRIMER_PRODUCT_SIZE_RANGE=75-100<br />
+PRIMER_FILE_FLAG=1<br />
+PRIMER_PICK_INTERNAL_OLIGO=1<br />
+PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21<br />
+PRIMER_EXPLAIN_FLAG=1<br />
+=<br />
+<br />
 A breakdown of the reasoning behind each of the TAG=VALUE pairs
-is below:
-
-PRIMER_SEQUENCE_ID=example
-
+is below:<br />
+<br />
+PRIMER_SEQUENCE_ID=example<br />
+<br />
 The main intent of this tag is to provide an identifier for the
 sequence that is meaningful to the user, for example when primer3
 processes multiple records, and by default this tag is optional.
 However, this tag is _required_ when PRIMER_FILE_FLAG is non-0
 Because it provides the names of the files that contain lists
-of oligos that primer3 considered.
-
-SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG
-
+of oligos that primer3 considered.<br />
+<br />
+SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
+<br />
 The SEQUENCE tag is of ultimate importance. Without it, primer3
 has no idea what to do. This sequence is 92 bases long. Note that
-there is no newline until the sequence terminates completely.
-
-TARGET=37,21
-
+there is no newline until the sequence terminates completely.<br />
+<br />
+TARGET=37,21<br />
+<br />
 There is a simple sequence repeat in our sequence, which starts
 at base 37, and has a length of 21 bases. We want primer3 to
 choose primers which flank the repeat site, so we let primer3 know
-that we consider this site to be important.
-
-PRIMER_OPT_SIZE=18
-
+that we consider this site to be important.<br />
+<br />
+PRIMER_OPT_SIZE=18<br />
+<br />
 Since our sequence length is rather small (only 92 bases
 long), we lower the PRIMER_OPT_SIZE from 20 to 18. It's
 more likely that primer3 will succeed if it shoots for smaller
-primers with such a small sequence.
-
-PRIMER_MIN_SIZE=15
-PRIMER_MAX_SIZE=21
-
+primers with such a small sequence.<br />
+<br />
+PRIMER_MIN_SIZE=15<br />
+PRIMER_MAX_SIZE=21<br />
+<br />
 With the lowering of optimal primer size, it's good to lower
-the minimum and maximum sizes as well.
-
-PRIMER_NUM_NS_ACCEPTED=1
-
+the minimum and maximum sizes as well.<br />
+<br />
+PRIMER_NUM_NS_ACCEPTED=1<br />
+<br />
 Again, since we've got such a small sequence with a
 non-negligible amount of unknown bases (N's) in it, let's make
 primer3's job easier by allowing it to pick primers that have
-at most 1 unknown base.
-
-PRIMER_PRODUCT_SIZE_RANGE=75-100
-
+at most 1 unknown base.<br />
+<br />
+PRIMER_PRODUCT_SIZE_RANGE=75-100<br />
+<br />
 We reduce the product size range from the default of 100-300
 because our source sequence is only 108 base pairs long.  If we
 insisted on a product size of 100 base pairs primer3 would have
-few possibilities to choose from.
-
-PRIMER_FILE_FLAG=1
-
+few possibilities to choose from.<br />
+<br />
+PRIMER_FILE_FLAG=1<br />
+<br />
 Since we've got such a small sequence, Primer might fail to
 pick primers. We want to get the list of primers it
 considered, then, so that we might manually pick primers
 ourselves if Primer fails to do so. Setting this flag to 1
 will force Primer to output the primers it considered to a
-forward_primer and a reverse_primer output file.
-
-PRIMER_PICK_INTERNAL_OLIGO=1
-
+forward_primer and a reverse_primer output file.<br />
+<br />
+PRIMER_PICK_INTERNAL_OLIGO=1<br />
+<br />
 We want to see if Primer v2.3 can pick an internal oligo for
-the sequence, so we set this flag to 1 (true).
-
-PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21
-
+the sequence, so we set this flag to 1 (true).<br />
+<br />
+PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21<br />
+<br />
 Normally CA-repeats make poor hybridization probes (because they
 not specific enough).  Therefor we exclude the CA repeat (which
-is the TARGET) from consideration for the middle oligo.
-
-PRIMER_EXPLAIN_FLAG=1
-
+is the TARGET) from consideration for the middle oligo.<br />
+<br />
+PRIMER_EXPLAIN_FLAG=1<br />
+<br />
 We want to see statistics about the oligos and oligo triples
 (left primer, internal oligo, right primer) that primer3
-examined.
-
-=
-
-The '=' character terminates the record.
-
+examined.<br />
+<br />
+=<br />
+<br />
+The '=' character terminates the record.<br />
+<br />
 There are some boulderio tags that we never even
 specified. (INCLUDED_REGION, EXCLUDED_REGION, et al.), which is
 perfectly legal.  For the tags with default values, those
@@ -314,8 +314,7 @@ defaults will be used in the analysis. For the tags with NO
 default values (like TARGET, for instance), the functionality
 requested by the those tags will simply be absent. It's not the
 case that we need to surround a simple sequence repeat every time
-we want to pick primers!
-]]>
+we want to pick primers!]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -340,8 +339,8 @@ small primers are more likely to be non-specific.  Make sure that
 there are adequate stretches of non-Ns in the regions in which
 you wish to pick primers.  If necessary you can also allow an N
 in your primer and use an oligo mixture containing all four bases
-at that position.
-
+at that position.<br />
+<br />
 Try setting the PRIMER_EXPLAIN_FLAG input tag.]]>
 	</text>
 </textBlock>
@@ -349,7 +348,7 @@ Try setting the PRIMER_EXPLAIN_FLAG input tag.]]>
 	<id>exitStatusCodes</id>
 	<head>EXIT STATUS CODES</head>
 	<text>
-<![CDATA[ 0 on normal operation
+<![CDATA[<pre> 0 on normal operation
 -1 under the following conditions:
    illegal command-line arguments.
    unable to fflush stdout.
@@ -358,14 +357,14 @@ Try setting the PRIMER_EXPLAIN_FLAG input tag.]]>
 -2 on out-of-memory
 -3 empty input
 -4 error in a "Global" input tag (message in PRIMER_ERROR).
-
+</pre><br />
 Primer3 calls abort() and dumps core (if possible) if a
-programming error is detected by an assertion violation.
-
+programming error is detected by an assertion violation.<br />
+<br />
 SIGINT and SIGTERM are handled essentially as empty input, except
 the signal received is returned as the exit status and printed to
-stderr.
-
+stderr.<br />
+<br />
 In all of the error cases above Primer3 prints a message to stderr.]]>
 	</text>
 </textBlock>
@@ -388,17 +387,17 @@ the basic conditions under which primers are being picked.]]>
 <![CDATA[By default, primer3 accepts input in Boulder-io format, a
 pre-XML, pre-RDF, text-based input/output format for
 program-to-program data interchange.  By default, primer3 also
-produces output in the same format.  
-
+produces output in the same format.<br />
+<br />
 When run with the -format_output command-line flag, primer3
-prints a more user-oriented report for each sequence.
-
+prints a more user-oriented report for each sequence.<br />
+<br />
 Primer3 exits with 0 status if it operates correctly.  See EXIT
-STATUS CODES below for additional information.
-
+STATUS CODES below for additional information.<br />
+<br />
 The syntax of the version of Boulder-io recognized by primer3 is
-as follows:
-
+as follows:<br />
+<pre>
   o Input consists of a sequence of RECORDs.
 
   o A RECORD consists of a sequence of (TAG,VALUE) pairs, each terminated
@@ -407,53 +406,53 @@ as follows:
 
   o A (TAG,VALUE) pair has the following requirements:
 
-        o the TAG must be immediately (without spaces) 
+    o the TAG must be immediately (without spaces) 
           followed by '='.
-	o the pair must be terminated by a newline character.
-
-An example of a legal (TAG,VALUE) pair is
-
-PRIMER_SEQUENCE_ID=my_marker
-
-and an example of a BOULDER-IO record is
-
-PRIMER_SEQUENCE_ID=test1
-SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
-=
-
+    o the pair must be terminated by a newline character.
+</pre>
+An example of a legal (TAG,VALUE) pair is<br />
+<br />
+PRIMER_SEQUENCE_ID=my_marker<br />
+<br />
+and an example of a BOULDER-IO record is<br />
+<br />
+PRIMER_SEQUENCE_ID=test1<br />
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
+=<br />
+<br />
 Many records can be sent, one after another. Below is an example
 of three different records which might be passed through a
-boulder-io stream:
-
-PRIMER_SEQUENCE_ID=test1
-SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC
-=
-PRIMER_SEQUENCE_ID=test2
-SEQUENCE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT
-=
-PRIMER_SEQUENCE_ID=test3
-SEQUENCE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC
-=
-
+boulder-io stream:<br />
+<br />
+PRIMER_SEQUENCE_ID=test1<br />
+SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
+=<br />
+PRIMER_SEQUENCE_ID=test2<br />
+SEQUENCE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT<br />
+=<br />
+PRIMER_SEQUENCE_ID=test3<br />
+SEQUENCE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC<br />
+=<br />
+<br />
 Primer3 reads boulder-io on stdin and echos its input and returns
 results in boulder-io format on stdout.  Primer3 indicates many
 user-correctable errors by a value in the PRIMER_ERROR tag (see
 below) and indicates other errors, including system configuration
 errors, resource errors (such out-of-memory errors), and detected
 programming errors by a message on stderr and a non-zero exit
-status.
-
+status.<br />
+<br />
 Below is the list of input tags that primer3 recognizes.
 Primer3 echos and ignores any tags it does not recognize, unless
 the -strict_tags flag is set on the command line, in which case
 primer3 prints an error in the PRIMER_ERROR output tag (see
 below), and prints additional information on stdout; this option
-can be useful for debugging systems that incorporate primer.
-
+can be useful for debugging systems that incorporate primer.<br />
+<br />
 Except for tags with the type "interval list" each tag is allowed
 only ONCE in any given input record.  This restriction is not
-systematically checked in this beta release: use care.
-
+systematically checked in this beta release: use care.<br />
+<br />
 There are 2 major classes of input tags,  "Sequence" input tags
 and "Global" input tags as described below.]]>
 	</text>
@@ -462,34 +461,34 @@ and "Global" input tags as described below.]]>
 	<id>installLinux</id>
 	<head>INSTALLATION INSTRUCTIONS - UNIX/LINUX</head>
 	<text>
-<![CDATA[Unzip and untar the distribution.
-
+<![CDATA[Unzip and untar the distribution.<br />
+<br />
 DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
-distribution (primer3_<release>.tar.gz) to Unix/Linux, and then
-
-$ unzip primer3_1.0.1.tar.gz
-$ tar xvf primer3_1.0.1.tar
-$ cd primer3_1.0.1/src
-
+distribution (primer3_<release>.tar.gz) to Unix/Linux, and then<br />
+<br />
+$ unzip primer3_1.0.1.tar.gz<br />
+$ tar xvf primer3_1.0.1.tar<br />
+$ cd primer3_1.0.1/src<br />
+<br />
 If you do not use gcc, modify the makefile to
   use your (ANSI) C compiler and appropriate 
-  compile and link flags.
-
-$ make all
-
-# Warnings about pr_release being unused are harmless.
-# You should have created executables primer3_core, ntdpal,
-#  olgotm, and long_seq_tm_test
-
-$ make test
-
-# You should not see 'FAILED' during the tests.
-
+  compile and link flags.<br />
+<br />
+$ make all<br />
+<br />
+# Warnings about pr_release being unused are harmless.<br />
+# You should have created executables primer3_core, ntdpal,<br />
+# olgotm, and long_seq_tm_test<br />
+<br />
+$ make test<br />
+<br />
+# You should not see 'FAILED' during the tests.<br />
+<br />
 If your perl command is not called perl (for example, if it is
 called perl5) you will have to modify the 
-Makefile in the test/ directory.
-
+Makefile in the test/ directory.<br />
+<br />
 ntdpal (NucleoTide Dynamic Programming ALignment) is a
 stand-alone program that provides primer3's alignment
 functionality (local, a.k.a. Smith-Waterman, global,
@@ -501,104 +500,104 @@ strictly as is; for further documentation please see the code.]]>
 	<id>installMac</id>
 	<head>INSTALLATION INSTRUCTIONS - OSX</head>
 	<text>
-<![CDATA[How to install this software
-============================
-
-1.  Double click on the .tar.gz file to extract the archive.
-
+<![CDATA[How to install this software<br />
+============================<br />
+<br />
+1.  Double click on the .tar.gz file to extract the archive.<br />
+<br />
 2.  The binary files are located in the 'bin' [for 'binary'] 
-    folder
-
+    folder<br />
+<br />
 3.  (Optional) To run the tests, cd to the new directory and 
-    then the test folder
-
+    then the test folder<br />
+<br />
 4.  (Optional) Within this folder run:
-	a. 'perl -w p3test.pl'
-	
-5.  (Optional) You should not see 'FAILED' during the tests.
-
+	a. 'perl -w p3test.pl'<br />
+<br />
+5.  (Optional) You should not see 'FAILED' during the tests.<br />
+<br />
 6.  (Optional) *NOTE*:  If your perl command is not called 
     perl (for example, if it is called perl5) you will have 
-    to modify the internals of the test scripts).
-	
-7.	Copy the following files to a location of your choice:
-	a.  bin/long_seq_tm_test
-	b.  bin/ntdpal
-	c.  bin/oligotm
-	d.  bin/primer3_core
-
+    to modify the internals of the test scripts).<br />
+<br />
+7.	Copy the following files to a location of your choice:<br />
+	a.  bin/long_seq_tm_test<br />
+	b.  bin/ntdpal<br />
+	c.  bin/oligotm<br />
+	d.  bin/primer3_core<br />
+<br />
 8.	(Optional) Make sure this location is within your $PATH 
-    (see below)
-
-
-Where to put the binary files
-=============================
-
+    (see below)<br />
+<br />
+<br />
+Where to put the binary files<br />
+=============================<br />
+<br />
 A good place to put these is within ~/bin/ (this means in 
-your home folder, within a folder named `bin` [for 'binary']).
-
+your home folder, within a folder named `bin` [for 'binary']).<br />
+<br />
 You can also just drag the 'bin' folder to a location within 
-your home directory.
-
+your home directory.<br />
+<br />
 You can certainly also copy the files within 'bin' to 
 /usr/local/bin (if you are an administrator) or another 
-similar location.  
-
+similar location.<br />
+<br />
 You may need to adjust the permissions on the binaries if 
-you get fancy.
-
-
-Add the location to your $PATH
-==============================
-
+you get fancy.<br />
+<br />
+<br />
+Add the location to your $PATH<br />
+==============================<br />
+<br />
 This is an optional step, but it will allow you to run 
 primer3 in any directory on your machine as your user just 
-by typing its name (primer3_core).
-
+by typing its name (primer3_core).<br />
+<br />
 *** You should be very careful when altering your $PATH as 
 things can go very wrong.  See below for an alternate 
-method. ***  
-
+method. *** <br />
+<br />
 If you added the binaries to /usr/local/bin, then you do 
-not need to do this.
-
+not need to do this.<br />
+<br />
 If you added the binaries to a local directory (let's say 
-~/bin/), do the following:
-
+~/bin/), do the following:<br />
+<br />
 	1.  Edit your ~/.bash_profile.  You can edit this on 
-        the command line (Terminal) with:
-
-		nano ~/.bash_profile
-	
+        the command line (Terminal) with:<br />
+<br />
+		nano ~/.bash_profile<br />
+<br />
 	2. Add the following line if it is not present 
-       (replacing '~/bin' if you used another directory):
-
-		PATH=$PATH:~/bin/
-
+       (replacing '~/bin' if you used another directory):<br />
+<br />
+		PATH=$PATH:~/bin/<br />
+<br />
 	3. If a PATH line *is* present, ensure you add a colon 
        to the end of what is there and then the directory, 
-       so if you have something like:
-
-		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin
-	
-       make it look like:
-	
-		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin
-	
+       so if you have something like:<br />
+<br />
+		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin<br />
+<br />
+       make it look like:<br />
+<br />
+		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin<br />
+<br />
 	4. Quit and restart terminal for the changes to take 
-       effect.
-		
-If you don't add the location to your $PATH
-===========================================
-
+       effect.<br />
+<br />	
+If you don't add the location to your $PATH<br />
+===========================================<br />
+<br />
 Assuming you don't want to modify your $PATH, you can still 
 run the binaries.  Let's assume you put the files in 
 '~/bin/.  You may run primer3_core by doing either of the 
-following:
-
-	1. ~/bin/primer3_core < yourInputFile
-	2. /Users/<your username>/bin/primer3_core < yourInputFile
-	
+following:<br />
+<br />
+	1. ~/bin/primer3_core < yourInputFile<br />
+	2. /Users/<your username>/bin/primer3_core < yourInputFile<br />
+<br />
 The first option is just a shortcut to the second.]]>
 	</text>
 </textBlock>
@@ -606,98 +605,98 @@ The first option is just a shortcut to the second.]]>
 	<id>installWindows</id>
 	<head>INSTALLATION INSTRUCTIONS - WINDOWS</head>
 	<text>
-<![CDATA[How to install this software
-============================
-
-1. Unzip the '.zip' file downloaded from SourceForge.net
+<![CDATA[How to install this software<br />
+============================<br />
+<br />
+1. Unzip the '.zip' file downloaded from SourceForge.net<br />
 2. You will create a primer3-1.1.3 folder in the location 
-   where the file was unzipped
+   where the file was unzipped<br />
 3. You may copy the files from the 'bin' directory of the 
    primer3-1.1.3 folder to a location of your choice.  
    The exact same files are located within the 'src' folder 
    so that the tests may be run (windows does not allow 
-   relative paths in shortcuts).
-
-Running the tests
-=================
+   relative paths in shortcuts).<br />
+<br />
+Running the tests<br />
+=================<br />
 We are working on integrating the test suite to windows.  
 However, substantial differences between windows and 
-Unix/Linux require some differences in the test script.  
-
+Unix/Linux require some differences in the test script.<br />
+<br />
 You must also install a perl distribution to run the 
-windows tests.  
-
+windows tests.<br />
+<br />
 We *strongly* recommend you install ActiveState perl 
 (http://www.activestate.com/products/activeperl/) 
 as this was used to test our primer3 builds, and it is 
-known to work.
-
+known to work.<br />
+<br />
 ***The perl test script for windows has a different name, 
 at the moment, than that for the unix/linux versions. See 
-below.***
-
-1. Click on 'Start > Run...'
-2. Type 'cmd' into the space provided
-3. Hit enter (or select 'OK')
-4. Navigate to the location of the tests:
-    
-    A. if you put it in 
-    C:/Documents and Settings/YourName/primer3-1.1.3/test/,
-    you would type 
-    'cd c:/Documents and Settings/YourName/primer3-1.1.3/test/'
-    
+below.***<br />
+<br />
+1. Click on 'Start > Run...'<br />
+2. Type 'cmd' into the space provided<br />
+3. Hit enter (or select 'OK')<br />
+4. Navigate to the location of the tests:<br />
+<br />
+    A. if you put it in <br />
+    C:/Documents and Settings/YourName/primer3-1.1.3/test/,<br />
+    you would type <br />
+    'cd c:/Documents and Settings/YourName/primer3-1.1.3/test/'<br />
+    <br />
     B. you can also type 'cd ' (don't forget the space 
     after cd) and drag the primer3-1.1.3 folder onto the 
     command-line window from windows explorer, this will 
-    fill in the location for you
-
+    fill in the location for you<br />
+<br />
 5. On the command line, run 'perl p3testz.pl -w' in this 
-   directory
-6. You should see [OK] for all of the tests.
-
-Running the software
-====================
-
+   directory<br />
+6. You should see [OK] for all of the tests.<br />
+<br />
+Running the software<br />
+====================<br />
+<br />
 To run the program, you must do so from the MS-DOS 
 command-line.  The intricacies of the DOS commandline are 
 beyond the scope of this document.  Google for more 
-information, if needed.  Here is a quick summary:
-
-1. Click on 'Start > Run...'
-2. Type 'cmd' into the space provided
-3. Hit enter (or select 'OK')
-4. Navigate to the location of the binary:
-    
-    A. if you put it in 
-    C:/Documents and Settings/YourName/Temp,
-    you would type 
-    'cd c:/Documents and Settings/YourName/Temp'
-    
+information, if needed.  Here is a quick summary:<br />
+<br />
+1. Click on 'Start > Run...'<br />
+2. Type 'cmd' into the space provided<br />
+3. Hit enter (or select 'OK')<br />
+4. Navigate to the location of the binary:<br />
+<br />
+    A. if you put it in<br />
+    C:/Documents and Settings/YourName/Temp,<br />
+    you would type <br />
+    'cd c:/Documents and Settings/YourName/Temp'<br />
+<br />
     B. you can also type 'cd ' (don't forget the space 
     after cd) and drag the primer3 folder onto the 
     command-line window from windows explorer, this will 
-    fill in the location for you
-    
-5. Run the example file by typing:
-
-    primer3_core.exe < example
-    
+    fill in the location for you<br />
+<br />
+5. Run the example file by typing:<br />
+<br />
+    primer3_core.exe < example<br />
+<br />
 Other files may be run in a similar fashion.  If your input 
 filename is 'MyData.txt' you can run primer3 using this 
-file (in the correct format; see README) with:
-
-    primer3_core.exe < MyData.txt
-    
+file (in the correct format; see README) with:<br />
+<br />
+    primer3_core.exe < MyData.txt<br />
+<br />
 If your file is not in the folder containing 
 primer3_core.exe, you could run the program from the 
-primer3_core folder using:
-    
-    primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
-    
+primer3_core folder using:<br />
+<br />
+    primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt<br />
+<br />
 Finally, if you want to run the program without going to 
 its folder, assuming primer3_core.exe is in c:/Temp, you 
-could run:
-
+could run:<br />
+<br />
     c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt]]>
 	</text>
 </textBlock>
@@ -706,25 +705,29 @@ could run:
 	<head>INTRODUCTION</head>
 	<text>
 <![CDATA[Primer3 picks primers for PCR reactions, considering as criteria:
-
+<br />
 o oligonucleotide melting temperature, size, GC content,
-  and primer-dimer possibilities,
-
-o PCR product size,
-
-o positional constraints within the source (template) sequence, and
-
-o possibilities for ectopic priming (amplifying the wrong sequence)
-
-o many other constraints.
-
+  and primer-dimer possibilities,<br />
+<br />
+o PCR product size,<br />
+<br />
+o positional constraints within the source (template) sequence, and<br />
+<br />
+o possibilities for ectopic priming (amplifying the wrong sequence)<br />
+<br />
+o many other constraints.<br />
+<br />
 All of these criteria are user-specifiable as constraints, and
 some are specifiable as terms in an objective function that
-characterizes an optimal primer pair.
-
-Whitehead Institute for Biomedical Research provides a web-based
-front end to primer3 at
-http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi]]>
+characterizes an optimal primer pair.<br />
+<br />
+Whitehead Institute for Biomedical Research provides a basic
+web-based front end to primer3 named primer3web at
+http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi<br />
+<br />
+Wageningen University Laboratory of Bioinformatics provides a enhanced 
+web-based front end to primer3 named primer3plus at
+http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -734,20 +737,20 @@ http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi]]>
 <![CDATA[By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
 lifting of primer picking.  There is also a more user-friendly
-web interface (distributed separately).
-
-The command line for primer3 is:
-
-primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt
-
+web interface (distributed separately).<br />
+<br />
+The command line for primer3 is:<br />
+<br />
+primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt<br />
+<br />
 A complete list of valid command line tags can be found in 
-COMMAND LINE TAGS below.
-	
+COMMAND LINE TAGS below.<br />
+<br />
 WARNING: primer3_core only reads its input on stdin, so the usual
-unix convention of
-
-primer3_core input_file.txt
-
+unix convention of<br />
+<br />
+primer3_core input_file.txt<br />
+<br />
 *will not work*.  Primer3_core will just sit there forever
 waiting for its input on stdin.]]>
 	</text>
@@ -765,8 +768,8 @@ version is PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<tag_name>.
 Tags of additional primers chosen are of the form
 PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<j>_<tag_name>.  where
 <j> is an integer from 1 to n, where n is at most the value of
-PRIMER_NUM_RETURN.
-
+PRIMER_NUM_RETURN.<br />
+<br />
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
 represents a float.]]>
@@ -829,11 +832,11 @@ tags persist between input boulder records until or unless they
 are explicitly reset. The third class of P3_... tags describe 
 parameters which modify the way primer3 provides the output (for 
 example as separate files) and do not influence the primer selection 
-itself.
+itself.<br />
 Tags which do not start with SEQUENCE_, PRIMER_ or P3_ are ignored 
-by primer3.
+by primer3.<br />
   Errors in "Sequence" input tags invalidate the current record, 
-but primer3 will continue to process additional records.
+but primer3 will continue to process additional records.<br />
   Errors in "Global" input tags are fatal because they invalidate 
 the basic conditions under which primers are being picked.]]>
 	</text>
