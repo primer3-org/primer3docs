@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<primer3Doc version="1.0">
+<primer3Doc xmlns="http://primer3.sourceforge.net/"
+xmlns:xsi="http://primer3.sourceforge.net/XMLSchema-instance"
+xsi:schemaLocation="http://primer3.sourceforge.net/ primer3_doc_schema.xsd" version="1.0">
 <tag>
 	<tagName></tagName>
 	<oldTag>

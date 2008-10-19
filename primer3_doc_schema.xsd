@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://primer3.sourceforge.net/2008/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="http://primer3.sourceforge.net/"
 	xmlns="http://primer3.sourceforge.net/"
 	elementFormDefault="qualified">
@@ -15,7 +15,7 @@
 		</xs:sequence>
 	  </xs:complexType>
 	</xs:element>
-	<xs:element name="tag" maxOccurs="unbounded" minOccurs="0">
+	<xs:element name="tagi" maxOccurs="unbounded" minOccurs="0">
 	  <xs:complexType>
 		<xs:sequence>
 		  <xs:element name="tagName" type="xs:string"/>

@@ -7,8 +7,12 @@ primer3web and primer3plus in sync. With primer3 getting more input
 tags this also helps to keep the overview.
 
 It works rather simple. All information is stored in XML files. Then 
-a script is run which generates the html and txt files from it. Of 
-course there would be better ways, but I (A. Untergasser) know perl 
+a script is run which generates the html and txt files from it. This 
+end up in the folder script_output. Old and tested documents are in 
+reference_docs. Compare your new output to them to avoid loosing 
+information or other unwanted effects.
+
+Of course there would be better ways, but I (A. Untergasser) know perl 
 and wanted fast results. That does of course not mean we should keep 
 it like that for ever.
 

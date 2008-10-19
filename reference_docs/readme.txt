@@ -1,4 +1,4 @@
-primer3 release 1.1.4
+primer3 release 2.0.0
 ---------------------
 
 Index of contents
@@ -8,25 +8,27 @@ Index of contents
 2. INTRODUCTION
 3. CITING PRIMER3
 4. REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS
-5. INSTALLATION INSTRUCTIONS
-6. BUILDING OSX UNIVERSAL BINARY
-7. SYSTEM REQUIREMENTS
-8. INVOKING primer3_core
-9. COMMAND LINE TAGS
-10. INPUT AND OUTPUT CONVENTIONS
-11. "Sequence" Input Tags
-12. "Global" Input Tags
-13. "Program" Input Tags
-14. AN EXAMPLE
-15. OUTPUT TAGS
-16. EXAMPLE OUTPUT
-17. ADVICE FOR PICKING PRIMERS
-18. CAUTIONS
-19. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
-20. DIFFERENCES FROM EARLIER VERSIONS
-21. EXIT STATUS CODES
-22. THE PRIMER3 WWW INTERFACE
-23. ACKNOWLEDGMENTS
+5. INSTALLATION INSTRUCTIONS - UNIX/LINUX
+6. INSTALLATION INSTRUCTIONS - OSX
+7. INSTALLATION INSTRUCTIONS - WINDOWS
+8. BUILDING OSX UNIVERSAL BINARY
+9. SYSTEM REQUIREMENTS
+10. INVOKING primer3_core
+11. COMMAND LINE TAGS
+12. INPUT AND OUTPUT CONVENTIONS
+13. "Sequence" Input Tags
+14. "Global" Input Tags
+15. "Program" Input Tags
+16. AN EXAMPLE
+17. OUTPUT TAGS
+18. EXAMPLE OUTPUT
+19. ADVICE FOR PICKING PRIMERS
+20. CAUTIONS
+21. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
+22. DIFFERENCES FROM EARLIER VERSIONS
+23. EXIT STATUS CODES
+24. THE PRIMER3 WWW INTERFACE
+25. ACKNOWLEDGMENTS
 
 
 1. COPYRIGHT AND LICENSE
@@ -115,13 +117,13 @@ to primer3-mail (at) lists.sourceforge.net after replacing (at)
 with @.
 
 
-5. INSTALLATION INSTRUCTIONS
-----------------------------
+5. INSTALLATION INSTRUCTIONS - UNIX/LINUX
+-----------------------------------------
 Unzip and untar the distribution.
 
 DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
-distribution (primer3_<release>.tar.gz) to Unix, and then
+distribution (primer3_<release>.tar.gz) to Unix/Linux, and then
 
 $ unzip primer3_1.0.1.tar.gz
 $ tar xvf primer3_1.0.1.tar
@@ -152,7 +154,207 @@ a.k.a. Needleman-Wunsch, plus "half global").  It is provided
 strictly as is; for further documentation please see the code.
 
 
-6. BUILDING OSX UNIVERSAL BINARY
+6. INSTALLATION INSTRUCTIONS - OSX
+----------------------------------
+How to install this software
+============================
+
+1.  Double click on the .tar.gz file to extract the archive.
+
+2.  The binary files are located in the 'bin' [for 'binary'] 
+    folder
+
+3.  (Optional) To run the tests, cd to the new directory and 
+    then the test folder
+
+4.  (Optional) Within this folder run:
+	a. 'perl -w p3test.pl'
+	
+5.  (Optional) You should not see 'FAILED' during the tests.
+
+6.  (Optional) *NOTE*:  If your perl command is not called 
+    perl (for example, if it is called perl5) you will have 
+    to modify the internals of the test scripts).
+	
+7.	Copy the following files to a location of your choice:
+	a.  bin/long_seq_tm_test
+	b.  bin/ntdpal
+	c.  bin/oligotm
+	d.  bin/primer3_core
+
+8.	(Optional) Make sure this location is within your $PATH 
+    (see below)
+
+
+Where to put the binary files
+=============================
+
+A good place to put these is within ~/bin/ (this means in 
+your home folder, within a folder named `bin` [for 'binary']).
+
+You can also just drag the 'bin' folder to a location within 
+your home directory.
+
+You can certainly also copy the files within 'bin' to 
+/usr/local/bin (if you are an administrator) or another 
+similar location.  
+
+You may need to adjust the permissions on the binaries if 
+you get fancy.
+
+
+Add the location to your $PATH
+==============================
+
+This is an optional step, but it will allow you to run 
+primer3 in any directory on your machine as your user just 
+by typing its name (primer3_core).
+
+*** You should be very careful when altering your $PATH as 
+things can go very wrong.  See below for an alternate 
+method. ***  
+
+If you added the binaries to /usr/local/bin, then you do 
+not need to do this.
+
+If you added the binaries to a local directory (let's say 
+~/bin/), do the following:
+
+	1.  Edit your ~/.bash_profile.  You can edit this on 
+        the command line (Terminal) with:
+
+		nano ~/.bash_profile
+	
+	2. Add the following line if it is not present 
+       (replacing '~/bin' if you used another directory):
+
+		PATH=$PATH:~/bin/
+
+	3. If a PATH line *is* present, ensure you add a colon 
+       to the end of what is there and then the directory, 
+       so if you have something like:
+
+		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin
+	
+       make it look like:
+	
+		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin
+	
+	4. Quit and restart terminal for the changes to take 
+       effect.
+		
+If you don't add the location to your $PATH
+===========================================
+
+Assuming you don't want to modify your $PATH, you can still 
+run the binaries.  Let's assume you put the files in 
+'~/bin/.  You may run primer3_core by doing either of the 
+following:
+
+	1. ~/bin/primer3_core < yourInputFile
+	2. /Users/<your username>/bin/primer3_core < yourInputFile
+	
+The first option is just a shortcut to the second.
+
+
+7. INSTALLATION INSTRUCTIONS - WINDOWS
+--------------------------------------
+How to install this software
+============================
+
+1. Unzip the '.zip' file downloaded from SourceForge.net
+2. You will create a primer3-1.1.3 folder in the location 
+   where the file was unzipped
+3. You may copy the files from the 'bin' directory of the 
+   primer3-1.1.3 folder to a location of your choice.  
+   The exact same files are located within the 'src' folder 
+   so that the tests may be run (windows does not allow 
+   relative paths in shortcuts).
+
+Running the tests
+=================
+We are working on integrating the test suite to windows.  
+However, substantial differences between windows and 
+Unix/Linux require some differences in the test script.  
+
+You must also install a perl distribution to run the 
+windows tests.  
+
+We *strongly* recommend you install ActiveState perl 
+(http://www.activestate.com/products/activeperl/) 
+as this was used to test our primer3 builds, and it is 
+known to work.
+
+***The perl test script for windows has a different name, 
+at the moment, than that for the unix/linux versions. See 
+below.***
+
+1. Click on 'Start > Run...'
+2. Type 'cmd' into the space provided
+3. Hit enter (or select 'OK')
+4. Navigate to the location of the tests:
+    
+    A. if you put it in 
+    C:/Documents and Settings/YourName/primer3-1.1.3/test/,
+    you would type 
+    'cd c:/Documents and Settings/YourName/primer3-1.1.3/test/'
+    
+    B. you can also type 'cd ' (don't forget the space 
+    after cd) and drag the primer3-1.1.3 folder onto the 
+    command-line window from windows explorer, this will 
+    fill in the location for you
+
+5. On the command line, run 'perl p3testz.pl -w' in this 
+   directory
+6. You should see [OK] for all of the tests.
+
+Running the software
+====================
+
+To run the program, you must do so from the MS-DOS 
+command-line.  The intricacies of the DOS commandline are 
+beyond the scope of this document.  Google for more 
+information, if needed.  Here is a quick summary:
+
+1. Click on 'Start > Run...'
+2. Type 'cmd' into the space provided
+3. Hit enter (or select 'OK')
+4. Navigate to the location of the binary:
+    
+    A. if you put it in 
+    C:/Documents and Settings/YourName/Temp,
+    you would type 
+    'cd c:/Documents and Settings/YourName/Temp'
+    
+    B. you can also type 'cd ' (don't forget the space 
+    after cd) and drag the primer3 folder onto the 
+    command-line window from windows explorer, this will 
+    fill in the location for you
+    
+5. Run the example file by typing:
+
+    primer3_core.exe < example
+    
+Other files may be run in a similar fashion.  If your input 
+filename is 'MyData.txt' you can run primer3 using this 
+file (in the correct format; see README) with:
+
+    primer3_core.exe < MyData.txt
+    
+If your file is not in the folder containing 
+primer3_core.exe, you could run the program from the 
+primer3_core folder using:
+    
+    primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
+    
+Finally, if you want to run the program without going to 
+its folder, assuming primer3_core.exe is in c:/Temp, you 
+could run:
+
+    c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
+
+
+8. BUILDING OSX UNIVERSAL BINARY
 --------------------------------
 ** To build a processor-native, non-universal binary of primer3, 
 the following is unneccesary**.  
@@ -186,7 +388,7 @@ end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.
 This has not been tested.
 
 
-7. SYSTEM REQUIREMENTS
+9. SYSTEM REQUIREMENTS
 ----------------------
 Please see http://sourceforge.net/projects/primer3/ for up-to-date
 information.  Primer3 should compile on any Linux/Unix system
@@ -198,8 +400,8 @@ still uses many Kernighan-&-Richie-style function headers, so
 you might have to force your compiler to accept them.
 
 
-8. INVOKING primer3_core
-------------------------
+10. INVOKING primer3_core
+-------------------------
 By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
 lifting of primer picking.  There is also a more user-friendly
@@ -221,8 +423,8 @@ primer3_core input_file.txt
 waiting for its input on stdin.
 
 
-9. COMMAND LINE TAGS
---------------------
+11. COMMAND LINE TAGS
+---------------------
 This parameters are read from command line:
 
 -about
@@ -258,7 +460,7 @@ This parameters are read from command line:
    is no longer supported.
 
 
-10. INPUT AND OUTPUT CONVENTIONS
+12. INPUT AND OUTPUT CONVENTIONS
 --------------------------------
 By default, primer3 accepts input in Boulder-io format, a
 pre-XML, pre-RDF, text-based input/output format for
@@ -333,7 +535,7 @@ There are 2 major classes of input tags,  "Sequence" input tags
 and "Global" input tags as described below.
 
 
-11. "Sequence" Input Tags
+13. "Sequence" Input Tags
 -------------------------
 "Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
@@ -498,7 +700,7 @@ The sequence of an internal oligo to check and around which to
 design left and right primers.  Must be a substring of SEQUENCE.
 
 
-12. "Global" Input Tags
+14. "Global" Input Tags
 -----------------------
 "Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
@@ -1583,7 +1785,7 @@ PRIMER_IO_WT_END_QUAL (float; default 0.0)
 
 
 
-13. "Program" Input Tags
+15. "Program" Input Tags
 ------------------------
 "Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
@@ -1613,7 +1815,7 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.
 
 
-14. AN EXAMPLE
+16. AN EXAMPLE
 --------------
 One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
@@ -1732,7 +1934,7 @@ case that we need to surround a simple sequence repeat every time
 we want to pick primers!
 
 
-15. OUTPUT TAGS
+17. OUTPUT TAGS
 ---------------
 For each boulderio record passed into primer3 via stdin, exactly
 one boulderio record comes out of primer3 on stdout. These output
@@ -1878,6 +2080,17 @@ s lists warnings generated by primer (separated by semicolons);
 this tag is absent if there are no warnings.
 
 
+PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_PROBLEMS=s (*)
+
+s lists the problems (constraint violations) associated
+with the corresponding primer oligo.  Generated when
+P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
+primer3 was forced to choose a primer or oligo
+that did not satisfy specified design constraints
+(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
+is specified).
+
+
 PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE=f, s
 
 f is the maximum mispriming score for the right primer
@@ -1957,13 +2170,13 @@ only if the input tag PRIMER_START_CODON_POSITION with a
 non-default value is supplied.
 
 
-16. EXAMPLE OUTPUT
+18. EXAMPLE OUTPUT
 ------------------
 You should run it yourself.  Use the file 'example' in this
 directory as input.
 
 
-17. ADVICE FOR PICKING PRIMERS
+19. ADVICE FOR PICKING PRIMERS
 ------------------------------
 We suggest consulting: Wojciech Rychlik (1993) "Selection of
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
@@ -1971,7 +2184,7 @@ in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
 Applications", pp 31-40, Humana Press, Totowa NJ.
 
 
-18. CAUTIONS
+20. CAUTIONS
 ------------
 Some of the most important issues in primer picking can be
 addressed only before using primer3.  These are sequence quality
@@ -2007,7 +2220,7 @@ use with those base calling programs
 (e.g. Phred, Bass/Grace, Trout) that output this information.
 
 
-19. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
+21. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
 --------------------------------------------------
 Try relaxing various parameters, including the
 self-complementarity parameters and max and min oligo melting
@@ -2024,12 +2237,12 @@ at that position.
 Try setting the PRIMER_EXPLAIN_FLAG input tag.
 
 
-20. DIFFERENCES FROM EARLIER VERSIONS
+22. DIFFERENCES FROM EARLIER VERSIONS
 -------------------------------------
 See the file release_notes.txt in this directory.
 
 
-21. EXIT STATUS CODES
+23. EXIT STATUS CODES
 ---------------------
 0 on normal operation
 -1 under the following conditions:
@@ -2051,14 +2264,14 @@ stderr.
 In all of the error cases above Primer3 prints a message to stderr.
 
 
-22. THE PRIMER3 WWW INTERFACE
+24. THE PRIMER3 WWW INTERFACE
 -----------------------------
 This distribution does not contain the Primer3 WWW interface.
 Web interface code is likely available at (or linked to from)
 http://sourceforge.net/projects/primer3/.
 
 
-23. ACKNOWLEDGMENTS
+25. ACKNOWLEDGMENTS
 -------------------
 Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human

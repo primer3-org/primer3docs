@@ -11,7 +11,7 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "1.1.4";
+my $scriptP3Version = "2.0.0";
 my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008";
 
 # Modify here the order of the textblocks or add new:
@@ -20,7 +20,9 @@ my @textblocksOrder = (
 "introduction",
 "citationRequest",
 "contact",
-"installGeneral",
+"installLinux",
+"installMac",
+"installWindows",
 "buildOsX",
 "systemRequirements",
 "invokingPrimer3",

@@ -459,14 +459,14 @@ and "Global" input tags as described below.]]>
 	</text>
 </textBlock>
 <textBlock>
-	<id>installGeneral</id>
-	<head>INSTALLATION INSTRUCTIONS</head>
+	<id>installLinux</id>
+	<head>INSTALLATION INSTRUCTIONS - UNIX/LINUX</head>
 	<text>
 <![CDATA[Unzip and untar the distribution.
 
 DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
-distribution (primer3_<release>.tar.gz) to Unix, and then
+distribution (primer3_<release>.tar.gz) to Unix/Linux, and then
 
 $ unzip primer3_1.0.1.tar.gz
 $ tar xvf primer3_1.0.1.tar
@@ -495,6 +495,210 @@ stand-alone program that provides primer3's alignment
 functionality (local, a.k.a. Smith-Waterman, global,
 a.k.a. Needleman-Wunsch, plus "half global").  It is provided
 strictly as is; for further documentation please see the code.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>installMac</id>
+	<head>INSTALLATION INSTRUCTIONS - OSX</head>
+	<text>
+<![CDATA[How to install this software
+============================
+
+1.  Double click on the .tar.gz file to extract the archive.
+
+2.  The binary files are located in the 'bin' [for 'binary'] 
+    folder
+
+3.  (Optional) To run the tests, cd to the new directory and 
+    then the test folder
+
+4.  (Optional) Within this folder run:
+	a. 'perl -w p3test.pl'
+	
+5.  (Optional) You should not see 'FAILED' during the tests.
+
+6.  (Optional) *NOTE*:  If your perl command is not called 
+    perl (for example, if it is called perl5) you will have 
+    to modify the internals of the test scripts).
+	
+7.	Copy the following files to a location of your choice:
+	a.  bin/long_seq_tm_test
+	b.  bin/ntdpal
+	c.  bin/oligotm
+	d.  bin/primer3_core
+
+8.	(Optional) Make sure this location is within your $PATH 
+    (see below)
+
+
+Where to put the binary files
+=============================
+
+A good place to put these is within ~/bin/ (this means in 
+your home folder, within a folder named `bin` [for 'binary']).
+
+You can also just drag the 'bin' folder to a location within 
+your home directory.
+
+You can certainly also copy the files within 'bin' to 
+/usr/local/bin (if you are an administrator) or another 
+similar location.  
+
+You may need to adjust the permissions on the binaries if 
+you get fancy.
+
+
+Add the location to your $PATH
+==============================
+
+This is an optional step, but it will allow you to run 
+primer3 in any directory on your machine as your user just 
+by typing its name (primer3_core).
+
+*** You should be very careful when altering your $PATH as 
+things can go very wrong.  See below for an alternate 
+method. ***  
+
+If you added the binaries to /usr/local/bin, then you do 
+not need to do this.
+
+If you added the binaries to a local directory (let's say 
+~/bin/), do the following:
+
+	1.  Edit your ~/.bash_profile.  You can edit this on 
+        the command line (Terminal) with:
+
+		nano ~/.bash_profile
+	
+	2. Add the following line if it is not present 
+       (replacing '~/bin' if you used another directory):
+
+		PATH=$PATH:~/bin/
+
+	3. If a PATH line *is* present, ensure you add a colon 
+       to the end of what is there and then the directory, 
+       so if you have something like:
+
+		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin
+	
+       make it look like:
+	
+		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin
+	
+	4. Quit and restart terminal for the changes to take 
+       effect.
+		
+If you don't add the location to your $PATH
+===========================================
+
+Assuming you don't want to modify your $PATH, you can still 
+run the binaries.  Let's assume you put the files in 
+'~/bin/.  You may run primer3_core by doing either of the 
+following:
+
+	1. ~/bin/primer3_core < yourInputFile
+	2. /Users/<your username>/bin/primer3_core < yourInputFile
+	
+The first option is just a shortcut to the second.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>installWindows</id>
+	<head>INSTALLATION INSTRUCTIONS - WINDOWS</head>
+	<text>
+<![CDATA[How to install this software
+============================
+
+1. Unzip the '.zip' file downloaded from SourceForge.net
+2. You will create a primer3-1.1.3 folder in the location 
+   where the file was unzipped
+3. You may copy the files from the 'bin' directory of the 
+   primer3-1.1.3 folder to a location of your choice.  
+   The exact same files are located within the 'src' folder 
+   so that the tests may be run (windows does not allow 
+   relative paths in shortcuts).
+
+Running the tests
+=================
+We are working on integrating the test suite to windows.  
+However, substantial differences between windows and 
+Unix/Linux require some differences in the test script.  
+
+You must also install a perl distribution to run the 
+windows tests.  
+
+We *strongly* recommend you install ActiveState perl 
+(http://www.activestate.com/products/activeperl/) 
+as this was used to test our primer3 builds, and it is 
+known to work.
+
+***The perl test script for windows has a different name, 
+at the moment, than that for the unix/linux versions. See 
+below.***
+
+1. Click on 'Start > Run...'
+2. Type 'cmd' into the space provided
+3. Hit enter (or select 'OK')
+4. Navigate to the location of the tests:
+    
+    A. if you put it in 
+    C:/Documents and Settings/YourName/primer3-1.1.3/test/,
+    you would type 
+    'cd c:/Documents and Settings/YourName/primer3-1.1.3/test/'
+    
+    B. you can also type 'cd ' (don't forget the space 
+    after cd) and drag the primer3-1.1.3 folder onto the 
+    command-line window from windows explorer, this will 
+    fill in the location for you
+
+5. On the command line, run 'perl p3testz.pl -w' in this 
+   directory
+6. You should see [OK] for all of the tests.
+
+Running the software
+====================
+
+To run the program, you must do so from the MS-DOS 
+command-line.  The intricacies of the DOS commandline are 
+beyond the scope of this document.  Google for more 
+information, if needed.  Here is a quick summary:
+
+1. Click on 'Start > Run...'
+2. Type 'cmd' into the space provided
+3. Hit enter (or select 'OK')
+4. Navigate to the location of the binary:
+    
+    A. if you put it in 
+    C:/Documents and Settings/YourName/Temp,
+    you would type 
+    'cd c:/Documents and Settings/YourName/Temp'
+    
+    B. you can also type 'cd ' (don't forget the space 
+    after cd) and drag the primer3 folder onto the 
+    command-line window from windows explorer, this will 
+    fill in the location for you
+    
+5. Run the example file by typing:
+
+    primer3_core.exe < example
+    
+Other files may be run in a similar fashion.  If your input 
+filename is 'MyData.txt' you can run primer3 using this 
+file (in the correct format; see README) with:
+
+    primer3_core.exe < MyData.txt
+    
+If your file is not in the folder containing 
+primer3_core.exe, you could run the program from the 
+primer3_core folder using:
+    
+    primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
+    
+Finally, if you want to run the program without going to 
+its folder, assuming primer3_core.exe is in c:/Temp, you 
+could run:
+
+    c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt]]>
 	</text>
 </textBlock>
 <textBlock>

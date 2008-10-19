@@ -256,6 +256,24 @@ this tag is absent if there are no warnings.]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_RLRI_PROBLEMS</tagName>
+	<oldTag>
+		<oldTagName></oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[s lists the problems (constraint violations) associated
+with the corresponding primer oligo.  Generated when
+P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
+primer3 was forced to choose a primer or oligo
+that did not satisfy specified design constraints
+(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
+is specified).]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_RLRP_MISPRIMING_SCORE</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
