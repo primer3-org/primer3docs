@@ -6,6 +6,7 @@ xsi:schemaLocation="http://primer3.sourceforge.net/ primer3_doc_schema.xsd" vers
 An example Tag with all possible options:
 	
 <tagGroup>
+	<groupID></groupID>
 	<tagGroupName></tagGroupName>
 <tag>
 	<tagName></tagName>
@@ -27,7 +28,7 @@ An example Tag with all possible options:
 </tagGroup>
 -->
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_ID</tagName>
 	<oldTag>
@@ -52,7 +53,7 @@ This tag must be present if PRIMER_FILE_FLAG is non-zero.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_TEMPLATE</tagName>
 	<oldTag>
@@ -74,7 +75,7 @@ Boulder-IO parser will assume that a line ends at a newline.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INCLUDED_REGION</tagName>
 	<oldTag>
@@ -101,7 +102,7 @@ primer-picking region.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_TARGET</tagName>
 	<oldTag>
@@ -130,7 +131,7 @@ a trailing ,<description> for each element of this argument.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_EXCLUDED_REGION</tagName>
 	<oldTag>
@@ -157,7 +158,7 @@ such as ALUs or LINEs.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_COMMENT</tagName>
 	<oldTag>
@@ -179,7 +180,7 @@ such as ALUs or LINEs.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_QUALITY</tagName>
 	<oldTag>
@@ -205,7 +206,7 @@ quality information (for example phred).</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_PRIMER</tagName>
 	<oldTag>
@@ -225,7 +226,7 @@ of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_PRIMER_REVCOMP</tagName>
 	<oldTag>
@@ -245,7 +246,7 @@ substring of the reverse strand of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_START_CODON_POSITION</tagName>
 	<oldTag>
@@ -283,7 +284,7 @@ primer will end at or after the stop codon.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_START</tagName>
 	<dataType>int</dataType>
@@ -299,7 +300,7 @@ constrains.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_END</tagName>
 	<dataType>int</dataType>
@@ -315,7 +316,7 @@ constrains.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_START</tagName>
 	<dataType>int</dataType>
@@ -331,7 +332,7 @@ constrains.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_END</tagName>
 	<dataType>int</dataType>
@@ -347,7 +348,6 @@ constrains.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_TASK</tagName>
 	<dataType>string</dataType>
@@ -355,7 +355,7 @@ constrains.</p>]]>
 	<description>
 <![CDATA[<p>Probably the most important Tag. It tells primer3 what task to perform.
 Legal values are:
-
+<pre>
  - pick_detection_primers
  
    Pick primers to detect a sequence (the classic primer3 task). Use 
@@ -425,15 +425,11 @@ Legal values are:
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=1
    PRIMER_PICK_RIGHT_PRIMER=0
-</p>]]>
+</pre></p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PICK_LEFT_PRIMER</tagName>
 	<dataType>boolean</dataType>
@@ -443,12 +439,6 @@ Legal values are:
 pick left primers.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PICK_INTERNAL_OLIGO</tagName>
 	<dataType>boolean</dataType>
@@ -459,12 +449,6 @@ pick an internal oligo (hybridization probe to detect the PCR
 product).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PICK_RIGHT_PRIMER</tagName>
 	<dataType>boolean</dataType>
@@ -474,12 +458,9 @@ product).</p>]]>
 pick a right primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PICK_ANYWAY</tagName>
 	<dataType>boolean</dataType>
@@ -495,7 +476,7 @@ constraints.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MISPRIMING_LIBRARY</tagName>
 	<dataType>string</dataType>
@@ -555,7 +536,7 @@ format before they can be used by primer3.)</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</tagName>
 	<dataType>boolean</dataType>
@@ -579,7 +560,7 @@ you know for sure that your library does not have runs of Ns
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -594,7 +575,7 @@ PRIMER_MISPRIMING_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -612,7 +593,7 @@ consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_MAX_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -630,7 +611,7 @@ of similarities.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -651,7 +632,7 @@ oligos) to locations outside of the amplicon.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -689,7 +670,7 @@ under hybridization conditions.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -705,7 +686,7 @@ product for details.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_EXPLAIN_FLAG</tagName>
 	<dataType>boolean</dataType>
@@ -724,7 +705,7 @@ set similar information is produced in the user-oriented output.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>P3_SHOW_OLIGO_PROBLEMS</tagName>
 	<dataType>boolean</dataType>
@@ -745,7 +726,7 @@ and PRIMER...INPUT is specified).</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_SIZE_RANGE</tagName>
 	<oldTag>
@@ -786,7 +767,7 @@ would, of course, include the primers themselves.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_GC_CLAMP</tagName>
 	<dataType>int</dataType>
@@ -802,7 +783,7 @@ effect on the internal oligo if one is requested.)</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_SIZE</tagName>
 	<oldTag>
@@ -821,7 +802,7 @@ to pick primers close to this length.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_SIZE</tagName>
 	<dataType>int</dataType>
@@ -836,7 +817,7 @@ and less than or equal to PRIMER_MAX_SIZE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_SIZE</tagName>
 	<dataType>int</dataType>
@@ -853,7 +834,7 @@ valid.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -871,7 +852,7 @@ information.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -886,7 +867,7 @@ oligo.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -901,7 +882,7 @@ oligo.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_DIFF_TM</tagName>
 	<dataType>float</dataType>
@@ -916,7 +897,7 @@ temperatures of the left and right primers.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_TM_FORMULA</tagName>
 	<oldTag>
@@ -1003,7 +984,7 @@ Tm(C) = 323.704 - 273.15 = 50.554 C</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_MONOVALENT</tagName>
 	<oldTag>
@@ -1024,7 +1005,7 @@ of divalent cations (in this case you also should use tag PRIMER_DNTP_CONC).</p>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
 	<dataType>int</dataType>
@@ -1059,7 +1040,7 @@ in an existing pair)</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_DIVALENT</tagName>
 	<oldTag>
@@ -1095,7 +1076,7 @@ melting temperature. Use tag PRIMER_DNTP_CONC to specify the concentration of dN
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_DNTP_CONC</tagName>
 	<dataType>float</dataType>
@@ -1111,7 +1092,7 @@ PRIMER_DIVALENT_CONC.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_CORRECTIONS</tagName>
 	<dataType>int</dataType>
@@ -1145,7 +1126,7 @@ Biochemistry 43:3537-54 http://dx.doi.org/10.1021/bi034621r].</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LOWERCASE_MASKING</tagName>
 	<dataType>int</dataType>
@@ -1172,7 +1153,7 @@ do not overlap the 3'-end of primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_GC</tagName>
 	<dataType>float</dataType>
@@ -1186,7 +1167,7 @@ do not overlap the 3'-end of primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_GC_PERCENT</tagName>
 	<dataType>float</dataType>
@@ -1201,7 +1182,7 @@ PRIMER_WT_GC_PERCENT_GT or PRIMER_WT_GC_PERCENT_LT are non-0.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_GC</tagName>
 	<dataType>float</dataType>
@@ -1216,7 +1197,7 @@ by Primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_DNA_CONC</tagName>
 	<dataType>float</dataType>
@@ -1254,7 +1235,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_NUM_NS_ACCEPTED</tagName>
 	<dataType>int</dataType>
@@ -1268,7 +1249,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SELF_ANY</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -1305,7 +1286,7 @@ oligos.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SELF_END</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -1346,7 +1327,7 @@ least as great as the score of a global alignment.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
 	<oldTag>
@@ -1371,7 +1352,7 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_POLY_X</tagName>
 	<dataType>int</dataType>
@@ -1386,7 +1367,7 @@ for example AAAAAA.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LIBERAL_BASE</tagName>
 	<dataType>boolean</dataType>
@@ -1409,7 +1390,7 @@ invite user comments.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_NUM_RETURN</tagName>
 	<dataType>int</dataType>
@@ -1427,7 +1408,7 @@ value will increase running time.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_FIRST_BASE_INDEX</tagName>
 	<dataType>int</dataType>
@@ -1447,7 +1428,7 @@ file flag is set.)</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -1462,7 +1443,7 @@ PRIMER_SEQUENCE_QUALITY) allowed within a primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_END_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -1478,7 +1459,7 @@ primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_QUALITY_RANGE_MIN</tagName>
 	<dataType>int</dataType>
@@ -1493,7 +1474,7 @@ of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_QUALITY_RANGE_MAX</tagName>
 	<dataType>int</dataType>
@@ -1508,7 +1489,7 @@ of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1528,7 +1509,7 @@ target as a term in the objective function.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OUTSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1548,7 +1529,7 @@ target as a term in the objective function.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_END_STABILITY</tagName>
 	<dataType>float, 999.9999</dataType>
@@ -1577,7 +1558,7 @@ values for the most stable and for the most labile 5mer are
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -1592,7 +1573,7 @@ that there is no optimum temperature.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_OPT_SIZE</tagName>
 	<dataType>int</dataType>
@@ -1610,7 +1591,7 @@ PRIMER_PAIR_WT_PRODUCT_SIZE_LT is non-0.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_LEAD</tagName>
 	<dataType>int</dataType>
@@ -1626,7 +1607,7 @@ signals are readable.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_SPACING</tagName>
 	<dataType>int</dataType>
@@ -1642,7 +1623,7 @@ on the same strand.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_INTERVAL</tagName>
 	<dataType>int</dataType>
@@ -1658,7 +1639,7 @@ on the reverse strand.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_ACCURACY</tagName>
 	<dataType>int</dataType>
@@ -1674,7 +1655,7 @@ which primer3plus picks the best primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -1688,7 +1669,7 @@ which primer3plus picks the best primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -1702,7 +1683,7 @@ which primer3plus picks the best primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -1716,7 +1697,7 @@ which primer3plus picks the best primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -1730,7 +1711,7 @@ which primer3plus picks the best primer.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_LT</tagName>
 	<dataType>float</dataType>
@@ -1745,7 +1726,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_GT</tagName>
 	<dataType>float</dataType>
@@ -1760,7 +1741,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -1774,7 +1755,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -1788,7 +1769,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
@@ -1802,7 +1783,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -1816,7 +1797,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SEQ_QUAL</tagName>
 	<dataType>float</dataType>
@@ -1830,7 +1811,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_END_QUAL</tagName>
 	<dataType>float</dataType>
@@ -1844,7 +1825,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_POS_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1858,7 +1839,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_END_STABILITY</tagName>
 	<dataType>float</dataType>
@@ -1872,7 +1853,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
@@ -1886,7 +1867,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PR_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1900,7 +1881,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1914,7 +1895,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_DIFF_TM</tagName>
 	<dataType>float</dataType>
@@ -1928,7 +1909,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -1942,7 +1923,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -1956,7 +1937,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -1970,7 +1951,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -1984,7 +1965,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -1998,7 +1979,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -2012,7 +1993,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -2026,7 +2007,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
@@ -2040,7 +2021,7 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
 	<oldTag>
@@ -2065,7 +2046,7 @@ make Target regions excluded regions for internal oligos.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
 	<oldTag>
@@ -2084,7 +2065,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2098,7 +2079,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2112,7 +2093,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2126,7 +2107,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -2140,7 +2121,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</tagName>
 	<dataType>float</dataType>
@@ -2154,7 +2135,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -2168,7 +2149,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -2182,7 +2163,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_GC</tagName>
 	<dataType>float</dataType>
@@ -2196,7 +2177,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_GC</tagName>
 	<dataType>float</dataType>
@@ -2210,7 +2191,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SALT_CONC</tagName>
 	<dataType>float</dataType>
@@ -2224,7 +2205,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DIVALENT_CONC</tagName>
 	<dataType>float</dataType>
@@ -2238,7 +2219,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DNTP_CONC</tagName>
 	<dataType>float</dataType>
@@ -2252,7 +2233,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DNA_CONC</tagName>
 	<dataType>float</dataType>
@@ -2266,7 +2247,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SELF_ANY</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -2280,7 +2261,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_POLY_X</tagName>
 	<dataType>int</dataType>
@@ -2294,7 +2275,7 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SELF_END</tagName>
 	<dataType>decimal 9999.99</dataType>
@@ -2312,7 +2293,7 @@ PRIMER_INTERNAL_OLIGO_SELF_ANY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</tagName>
 	<dataType>string</dataType>
@@ -2328,7 +2309,7 @@ in this library rather than priming from them.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_MISHYB</tagName>
 	<dataType>decimal,9999.99</dataType>
@@ -2344,7 +2325,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -2358,7 +2339,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -2372,7 +2353,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -2386,7 +2367,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -2400,7 +2381,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_GC_PERCENT_GT</tagName>
 	<dataType>float</dataType>
@@ -2414,7 +2395,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_GC_PERCENT_LT</tagName>
 	<dataType>float</dataType>
@@ -2428,7 +2409,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -2442,7 +2423,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -2456,7 +2437,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -2470,7 +2451,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -2484,7 +2465,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
@@ -2498,7 +2479,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -2512,7 +2493,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SEQ_QUAL</tagName>
 	<dataType>float</dataType>
@@ -2526,7 +2507,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</groupDescription>
 </tagGroup>
 <tagGroup>
-	<tagGroupName></tagGroupName>
+	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_END_QUAL</tagName>
 	<dataType>float</dataType>

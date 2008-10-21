@@ -193,7 +193,7 @@ constrains.</p>]]>
 	<description>
 <![CDATA[<p>Probably the most important Tag. It tells primer3 what task to perform.
 Legal values are:
-
+<pre>
  - pick_detection_primers
  
    Pick primers to detect a sequence (the classic primer3 task). Use 
@@ -263,7 +263,7 @@ Legal values are:
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=1
    PRIMER_PICK_RIGHT_PRIMER=0
-</p>]]>
+</pre></p>]]>
 	</description>
 </tag>
 <tag>
@@ -273,25 +273,6 @@ Legal values are:
 	<description>
 <![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
 pick left primers.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PICK_INTERNAL_OLIGO</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
-pick an internal oligo (hybridization probe to detect the PCR
-product).</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PICK_RIGHT_PRIMER</tagName>
-	<dataType>boolean</dataType>
-	<default>1</default>
-	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
-pick a right primer.</p>]]>
 	</description>
 </tag>
 <tag>

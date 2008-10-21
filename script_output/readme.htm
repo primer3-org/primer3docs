@@ -765,7 +765,7 @@ the basic conditions under which primers are being picked.</p>
 
 <p>Probably the most important Tag. It tells primer3 what task to perform.
 Legal values are:
-
+<pre>
  - pick_detection_primers
  
    Pick primers to detect a sequence (the classic primer3 task). Use 
@@ -835,7 +835,7 @@ Legal values are:
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=1
    PRIMER_PICK_RIGHT_PRIMER=0
-</p>
+</pre></p>
 
 
 <h3><a name="PRIMER_PICK_LEFT_PRIMER">PRIMER_PICK_LEFT_PRIMER</a></h3>
@@ -844,23 +844,6 @@ Legal values are:
 
 <p>If the associated value is non-0, then primer3 will attempt to
 pick left primers.</p>
-
-
-<h3><a name="PRIMER_PICK_INTERNAL_OLIGO">PRIMER_PICK_INTERNAL_OLIGO</a></h3>
-
-<p>(boolean; default 0)</p>
-
-<p>If the associated value is non-0, then primer3 will attempt to
-pick an internal oligo (hybridization probe to detect the PCR
-product).</p>
-
-
-<h3><a name="PRIMER_PICK_RIGHT_PRIMER">PRIMER_PICK_RIGHT_PRIMER</a></h3>
-
-<p>(boolean; default 1)</p>
-
-<p>If the associated value is non-0, then primer3 will attempt to
-pick a right primer.</p>
 
 
 <h3><a name="PRIMER_PICK_ANYWAY">PRIMER_PICK_ANYWAY</a></h3>

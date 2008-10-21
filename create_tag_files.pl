@@ -53,9 +53,9 @@ my $tagFile = "primer3_input_tags.xml";
 my $tagRoot = getXmlRoot($tagFile);
 # Read all Tag in an array
 my @xml_tags = $tagRoot->getElementsByTagName('tagGroup');
+my @all_tags = $tagRoot->getElementsByTagName('tag');
 # First sort the tags alphabetically tags
-# my @sortedTags = sort tagSort @xml_tags;
-my @sortedTags = @xml_tags;
+my @sortedTags = sort tagSort @all_tags;
 # Print a message about the Tags
 my $readTagCount = $#sortedTags + 1;
 print "Read in $readTagCount input Tags for processing...\n";
@@ -294,20 +294,23 @@ sub printTags {
 	my $output;
 	my $headInfo;
 	my $headPrint = 0;
+	my $footerPrint = 0;
 	my $tagCount = 0;
 	my @tagArray;	
 	# Now print out all tags
-	foreach my $tagGroup_holder (@sortedTags) {
+	foreach my $tagGroup_holder (@xml_tags) {
 		# Get all the XML data of one tagGroup
 		$headInfo = "";
+		$headPrint = 0;
+		$footerPrint = 0;
 		my $tagGroupName = get_node_content($tagGroup_holder, "tagGroupName");
 		my $groupDescription = get_node_content($tagGroup_holder, "groupDescription");
-		$groupDescription =~ s/^\<p\>//;
-		$groupDescription =~ s/\<\/p\>$//;
 
 		# Assemble the txt file
-		if ($groupDescription ne ""){
-			$headInfo .= underlineText("$groupDescription","-");
+		if ($tagGroupName ne "") {
+			$headInfo .= underlineText("$tagGroupName","-");
+		} else {
+			$headPrint = 2;
 		}
 	
 		@tagArray = $tagGroup_holder->getElementsByTagName('tag');
@@ -317,8 +320,6 @@ sub printTags {
 			my $dataType = get_node_content($tag_holder, "dataType");
 			my $default = get_node_content($tag_holder, "default");
 			my $description = get_node_content($tag_holder, "description");
-			$description =~ s/^\<p\>//;
-			$description =~ s/\<\/p\>$//;
 			
 			if ($tagName =~ /^$text/) {
 				$tagCount++;
@@ -328,16 +329,21 @@ sub printTags {
 					$output .= $headInfo;
 					$headPrint = 1;
 				}
+				$footerPrint = 1;
 				
-				$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
-				$output .= "$description\n\n\n";
+				$output .= $tagName." (".$dataType."; default ".$default.")\n";
+				if ($description ne "") {
+					$output .= "\n$description\n\n\n";
+				}
+				
 			}
 			
 		}
 		
-		if ($headPrint == 1) {
+		if (($groupDescription ne "") and ($groupDescription ne "<p> </p>")
+			and ($footerPrint == 1)) {
 			# Assemble the txt file
-			#$output .= "$groupDescription\n\n\n";
+			$output .= "$groupDescription\n\n\n";
 		}
 		
 	}
@@ -411,7 +417,7 @@ sub createTagDefinitionsXml {
 	my $tagCount = 0;
 	
 	# Now print out all tags
-	foreach my $tag_holder (@sortedTags) {
+	foreach my $tag_holder (@xml_tags) {
 		$tagCount++;
 		
 		# Get all the XML data of one tag
@@ -502,7 +508,7 @@ sub createReadmeHtml {
 
 	
 	# Lets print the overview table for the HTML file
-#	foreach my $tag_holder (@sortedTags) {
+#	foreach my $tag_holder (@xml_tags) {
 #		# Get all the XML data of one tag
 #		my $tagName = get_node_content($tag_holder, "tagName");
 	
@@ -536,7 +542,7 @@ sub printHTMLTags {
 	my $output;
 	my $tagCount = 0;	
 	# Now print out all tags
-	foreach my $tag_holder (@sortedTags) {
+	foreach my $tag_holder (@xml_tags) {
 		# Get all the XML data of one tag
 		my $tagName = get_node_content($tag_holder, "tagName");
 		my $dataType = get_node_content($tag_holder, "dataType");
