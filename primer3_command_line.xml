@@ -3,16 +3,14 @@
 <!--
 An example Tag with all possible options:
 
-<tagGroup>
 <tag>
 	<tagName></tagName>
 	<description>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-</tagGroup>
--->
-<tagGroup>
+
+	-->
 <tag>
 	<tagName>-about</tagName>
 	<description>
@@ -21,8 +19,6 @@ and terminates the program. This allows scripts to
 query primer3 for its version.</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>-format_output</tagName>
 	<description>
@@ -30,8 +26,6 @@ query primer3 for its version.</p>]]>
 user-oriented (rather than program-oriented) output.</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>-strict_tags</tagName>
 	<description>
@@ -40,8 +34,6 @@ a fatal error if there is any tag in the input that
 it does not recognize (see INPUT AND OUTPUT CONVENTIONS).</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>-p3_settings_file=set.txt</tagName>
 	<description>
@@ -54,8 +46,6 @@ primer3 file documentation for details on the file
 format.</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>-io_version=XXX</tagName>
 	<description>
@@ -65,13 +55,10 @@ are supported. Please note that -io_version=4 is required
 to use new functionality.</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>-2x_compat</tagName>
 	<description>
 <![CDATA[<p>This tag is no longer supported.</p>]]>
 	</description>
 </tag>
-</tagGroup>
 </primer3Doc>

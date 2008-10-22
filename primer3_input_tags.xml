@@ -5,9 +5,6 @@ xsi:schemaLocation="http://primer3.sourceforge.net/ primer3_doc_schema.xsd" vers
 <!--
 An example Tag with all possible options:
 	
-<tagGroup>
-	<groupID></groupID>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName></tagName>
 	<oldTag>
@@ -22,13 +19,7 @@ An example Tag with all possible options:
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
 -->
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_ID</tagName>
 	<oldTag>
@@ -48,12 +39,6 @@ identify the source of the chosen primers.<br />
 This tag must be present if PRIMER_FILE_FLAG is non-zero.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_TEMPLATE</tagName>
 	<oldTag>
@@ -70,12 +55,6 @@ No newlines should be inserted into the sequence, because the
 Boulder-IO parser will assume that a line ends at a newline.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INCLUDED_REGION</tagName>
 	<oldTag>
@@ -97,12 +76,6 @@ and <tt><i>&lt;length&gt;</i></tt> is the number of subsequent bases in the
 primer-picking region.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_TARGET</tagName>
 	<oldTag>
@@ -126,12 +99,6 @@ For backward compatibility primer3 accepts (but ignores)
 a trailing ,<description> for each element of this argument.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_EXCLUDED_REGION</tagName>
 	<oldTag>
@@ -153,12 +120,6 @@ quality or for excluding regions containing repetitive elements
 such as ALUs or LINEs.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_COMMENT</tagName>
 	<oldTag>
@@ -175,12 +136,6 @@ such as ALUs or LINEs.</p>]]>
 <![CDATA[<p>The value of this tag is ignored.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_QUALITY</tagName>
 	<oldTag>
@@ -201,12 +156,6 @@ if you are using a base calling program that provides
 quality information (for example phred).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_PRIMER</tagName>
 	<oldTag>
@@ -221,12 +170,6 @@ right primers and optional internal oligos.  Must be a substring
 of SEQUENCE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_PRIMER_REVCOMP</tagName>
 	<oldTag>
@@ -241,12 +184,6 @@ design left primers and optional internal oligos.  Must be a
 substring of the reverse strand of SEQUENCE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_START_CODON_POSITION</tagName>
 	<oldTag>
@@ -279,12 +216,6 @@ right from the left primer for a stop codon.  Ideally the right
 primer will end at or after the stop codon.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_START</tagName>
 	<dataType>int</dataType>
@@ -295,12 +226,6 @@ position. Primers are also picked if they violate certain
 constrains.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_END</tagName>
 	<dataType>int</dataType>
@@ -311,12 +236,6 @@ position. Primers are also picked if they violate certain
 constrains.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_START</tagName>
 	<dataType>int</dataType>
@@ -327,12 +246,6 @@ position. Primers are also picked if they violate certain
 constrains.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_END</tagName>
 	<dataType>int</dataType>
@@ -343,11 +256,6 @@ position. Primers are also picked if they violate certain
 constrains.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>PRIMER_TASK</tagName>
 	<dataType>string</dataType>
@@ -428,8 +336,6 @@ Legal values are:
 </pre></p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
 <tag>
 	<tagName>PRIMER_PICK_LEFT_PRIMER</tagName>
 	<dataType>boolean</dataType>
@@ -458,9 +364,6 @@ product).</p>]]>
 pick a right primer.</p>]]>
 	</description>
 </tag>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PICK_ANYWAY</tagName>
 	<dataType>boolean</dataType>
@@ -471,12 +374,6 @@ or PRIMER_INTERNAL_OLIGO_INPUT even if it violates specific
 constraints.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MISPRIMING_LIBRARY</tagName>
 	<dataType>string</dataType>
@@ -531,12 +428,6 @@ literature. (The Repbase files need to be converted to Fasta
 format before they can be used by primer3.)</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</tagName>
 	<dataType>boolean</dataType>
@@ -555,12 +446,6 @@ you know for sure that your library does not have runs of Ns
 (or Xs), then set this flag to 0.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -570,12 +455,6 @@ you know for sure that your library does not have runs of Ns
 PRIMER_MISPRIMING_LIBRARY.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -588,12 +467,6 @@ that an ambiguity code in the template is never treated as a
 consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_MAX_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -606,12 +479,6 @@ Library sequence weights are not used in computing the sum
 of similarities.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -627,12 +494,6 @@ check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -665,12 +526,6 @@ for hybridization later this behavior will not give you the Tm
 under hybridization conditions.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -681,12 +536,6 @@ see the documentation on the maximum melting temperature of the
 product for details.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_EXPLAIN_FLAG</tagName>
 	<dataType>boolean</dataType>
@@ -700,12 +549,6 @@ the number discarded for various reasons.  If -format_output is
 set similar information is produced in the user-oriented output.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>P3_SHOW_OLIGO_PROBLEMS</tagName>
 	<dataType>boolean</dataType>
@@ -721,12 +564,6 @@ choose (for example, as sometimes when PRIMER_PICK_ANYWAY=1
 and PRIMER...INPUT is specified).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_SIZE_RANGE</tagName>
 	<oldTag>
@@ -762,12 +599,6 @@ PCR reaction on the given sequence template.  This
 would, of course, include the primers themselves.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_GC_CLAMP</tagName>
 	<dataType>int</dataType>
@@ -778,12 +609,6 @@ end of both the left and right primer.  (This parameter has no
 effect on the internal oligo if one is requested.)</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_SIZE</tagName>
 	<oldTag>
@@ -797,12 +622,6 @@ effect on the internal oligo if one is requested.)</p>]]>
 to pick primers close to this length.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_SIZE</tagName>
 	<dataType>int</dataType>
@@ -812,12 +631,6 @@ to pick primers close to this length.</p>]]>
 and less than or equal to PRIMER_MAX_SIZE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_SIZE</tagName>
 	<dataType>int</dataType>
@@ -829,12 +642,6 @@ maximum oligo size for which primer3's melting-temperature is
 valid.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -847,12 +654,6 @@ be specified by user. Please see PRIMER_TM_SANTALUCIA for more
 information.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -862,12 +663,6 @@ information.</p>]]>
 oligo.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -877,12 +672,6 @@ oligo.</p>]]>
 oligo.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_DIFF_TM</tagName>
 	<dataType>float</dataType>
@@ -892,12 +681,6 @@ oligo.</p>]]>
 temperatures of the left and right primers.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_TM_FORMULA</tagName>
 	<oldTag>
@@ -979,12 +762,6 @@ Tm = -128.800/(-361.736+1.987*ln((5*10^(-8))/4)) =
 Tm(C) = 323.704 - 273.15 = 50.554 C</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_MONOVALENT</tagName>
 	<oldTag>
@@ -1000,12 +777,6 @@ temperatures. Use tag PRIMER_DIVALENT_CONC to specify the concentration
 of divalent cations (in this case you also should use tag PRIMER_DNTP_CONC).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
 	<dataType>int</dataType>
@@ -1035,12 +806,6 @@ NOT(3' end of right primer closer than n to the 3' end of right primer
 in an existing pair)</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_DIVALENT</tagName>
 	<oldTag>
@@ -1071,12 +836,6 @@ dNTP. Attained concentration of monovalent cations is used to calculate oligo/pr
 melting temperature. Use tag PRIMER_DNTP_CONC to specify the concentration of dNTPs.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_DNTP_CONC</tagName>
 	<dataType>float</dataType>
@@ -1087,12 +846,6 @@ argument is considered only if PRIMER_DIVALENT_CONC is specified. See
 PRIMER_DIVALENT_CONC.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SALT_CORRECTIONS</tagName>
 	<dataType>int</dataType>
@@ -1121,12 +874,6 @@ duplex oligomers: Improved predictions of melting temperatures",
 Biochemistry 43:3537-54 http://dx.doi.org/10.1021/bi034621r].</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LOWERCASE_MASKING</tagName>
 	<dataType>int</dataType>
@@ -1148,12 +895,6 @@ masked features do not influence the primer performance if they
 do not overlap the 3'-end of primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_GC</tagName>
 	<dataType>float</dataType>
@@ -1162,12 +903,6 @@ do not overlap the 3'-end of primer.</p>]]>
 <![CDATA[<p>Minimum allowable percentage of Gs and Cs in any primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OPT_GC_PERCENT</tagName>
 	<dataType>float</dataType>
@@ -1177,12 +912,6 @@ do not overlap the 3'-end of primer.</p>]]>
 PRIMER_WT_GC_PERCENT_GT or PRIMER_WT_GC_PERCENT_LT are non-0.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_GC</tagName>
 	<dataType>float</dataType>
@@ -1192,12 +921,6 @@ PRIMER_WT_GC_PERCENT_GT or PRIMER_WT_GC_PERCENT_LT are non-0.</p>]]>
 by Primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_DNA_CONC</tagName>
 	<dataType>float</dataType>
@@ -1230,12 +953,6 @@ temperatures.
 See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_NUM_NS_ACCEPTED</tagName>
 	<dataType>int</dataType>
@@ -1244,12 +961,6 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 <![CDATA[<p>Maximum number of unknown bases (N) allowable in any primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SELF_ANY</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -1281,12 +992,6 @@ indicates that there is no reasonable local alignment between two
 oligos.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SELF_END</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -1322,12 +1027,6 @@ parameter because the score of a local alignment will always be at
 least as great as the score of a global alignment.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
 	<oldTag>
@@ -1347,12 +1046,6 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_POLY_X</tagName>
 	<dataType>int</dataType>
@@ -1362,12 +1055,6 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 for example AAAAAA.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LIBERAL_BASE</tagName>
 	<dataType>boolean</dataType>
@@ -1385,12 +1072,6 @@ to 'N', but currently they simply get converted to N's.  The authors
 invite user comments.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_NUM_RETURN</tagName>
 	<dataType>int</dataType>
@@ -1403,12 +1084,6 @@ better primer pair).  Caution: setting this parameter to a large
 value will increase running time.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_FIRST_BASE_INDEX</tagName>
 	<dataType>int</dataType>
@@ -1423,12 +1098,6 @@ indexes in the contents of the files produced when the primer
 file flag is set.)</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -1438,12 +1107,6 @@ file flag is set.)</p>]]>
 PRIMER_SEQUENCE_QUALITY) allowed within a primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MIN_END_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -1454,12 +1117,6 @@ PRIMER_SEQUENCE_QUALITY) allowed within the 5' pentamer of a
 primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_QUALITY_RANGE_MIN</tagName>
 	<dataType>int</dataType>
@@ -1469,12 +1126,6 @@ primer.</p>]]>
 of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_QUALITY_RANGE_MAX</tagName>
 	<dataType>int</dataType>
@@ -1484,12 +1135,6 @@ of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).</p>]]>
 of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1504,12 +1149,6 @@ this parameter is to allow primer3 to include overlap with the
 target as a term in the objective function.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_OUTSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1524,12 +1163,6 @@ this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_MAX_END_STABILITY</tagName>
 	<dataType>float, 999.9999</dataType>
@@ -1553,12 +1186,6 @@ values for the most stable and for the most labile 5mer are
 13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -1568,12 +1195,6 @@ values for the most stable and for the most labile 5mer are
 that there is no optimum temperature.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_OPT_SIZE</tagName>
 	<dataType>int</dataType>
@@ -1586,12 +1207,6 @@ if PRIMER_PAIR_WT_PRODUCT_SIZE_GT or
 PRIMER_PAIR_WT_PRODUCT_SIZE_LT is non-0.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_LEAD</tagName>
 	<dataType>int</dataType>
@@ -1602,12 +1217,6 @@ space from the 3'end of the primer to the point were the trace
 signals are readable.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_SPACING</tagName>
 	<dataType>int</dataType>
@@ -1618,12 +1227,6 @@ space from the 3'end of the primer to the 3'end of the next primer
 on the same strand.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_INTERVAL</tagName>
 	<dataType>int</dataType>
@@ -1634,12 +1237,6 @@ space from the 3'end of the primer to the 3'end of the next primer
 on the reverse strand.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_SEQUENCING_ACCURACY</tagName>
 	<dataType>int</dataType>
@@ -1650,12 +1247,6 @@ space from the calculated position of the 3'end to both sides in
 which primer3plus picks the best primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -1664,12 +1255,6 @@ which primer3plus picks the best primer.</p>]]>
 <![CDATA[<p>Penalty weight for primers with Tm over PRIMER_OPT_TM.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -1678,12 +1263,6 @@ which primer3plus picks the best primer.</p>]]>
 <![CDATA[<p>Penalty weight for primers with Tm under PRIMER_OPT_TM.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -1692,12 +1271,6 @@ which primer3plus picks the best primer.</p>]]>
 <![CDATA[<p>Penalty weight for primers shorter than PRIMER_OPT_SIZE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -1706,12 +1279,6 @@ which primer3plus picks the best primer.</p>]]>
 <![CDATA[<p>Penalty weight for primers longer than PRIMER_OPT_SIZE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_LT</tagName>
 	<dataType>float</dataType>
@@ -1721,12 +1288,6 @@ which primer3plus picks the best primer.</p>]]>
 PRIMER_OPT_GC_PERCENT.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_GT</tagName>
 	<dataType>float</dataType>
@@ -1736,12 +1297,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 PRIMER_OPT_GC_PERCENT.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -1750,12 +1305,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -1764,12 +1313,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
@@ -1778,12 +1321,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -1792,12 +1329,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_SEQ_QUAL</tagName>
 	<dataType>float</dataType>
@@ -1806,12 +1337,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_END_QUAL</tagName>
 	<dataType>float</dataType>
@@ -1820,12 +1345,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_POS_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1834,12 +1353,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_END_STABILITY</tagName>
 	<dataType>float</dataType>
@@ -1848,12 +1361,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
@@ -1862,12 +1369,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PR_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1876,12 +1377,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1890,12 +1385,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_DIFF_TM</tagName>
 	<dataType>float</dataType>
@@ -1904,12 +1393,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -1918,12 +1401,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -1932,12 +1409,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -1946,12 +1417,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -1960,12 +1425,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -1974,12 +1433,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -1988,12 +1441,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -2002,12 +1449,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
@@ -2016,12 +1457,6 @@ PRIMER_OPT_GC_PERCENT.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
 	<oldTag>
@@ -2041,12 +1476,6 @@ an excluded region, and <length> is its length.  Often one would
 make Target regions excluded regions for internal oligos.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
 	<oldTag>
@@ -2060,12 +1489,6 @@ make Target regions excluded regions for internal oligos.</p>]]>
 design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2074,12 +1497,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2088,12 +1505,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_SIZE</tagName>
 	<dataType>int</dataType>
@@ -2102,12 +1513,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_TM</tagName>
 	<dataType>float</dataType>
@@ -2116,12 +1521,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</tagName>
 	<dataType>float</dataType>
@@ -2130,12 +1529,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_TM</tagName>
 	<dataType>float</dataType>
@@ -2144,12 +1537,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_TM</tagName>
 	<dataType>float</dataType>
@@ -2158,12 +1545,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_GC</tagName>
 	<dataType>float</dataType>
@@ -2172,12 +1553,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_GC</tagName>
 	<dataType>float</dataType>
@@ -2186,12 +1561,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SALT_CONC</tagName>
 	<dataType>float</dataType>
@@ -2200,12 +1569,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DIVALENT_CONC</tagName>
 	<dataType>float</dataType>
@@ -2214,12 +1577,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DNTP_CONC</tagName>
 	<dataType>float</dataType>
@@ -2228,12 +1585,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_DNA_CONC</tagName>
 	<dataType>float</dataType>
@@ -2242,12 +1593,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SELF_ANY</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -2256,12 +1601,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_POLY_X</tagName>
 	<dataType>int</dataType>
@@ -2270,12 +1609,6 @@ design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_SELF_END</tagName>
 	<dataType>decimal 9999.99</dataType>
@@ -2288,12 +1621,6 @@ PRIMER_INTERNAL_OLIGO_SELF_END be set at least as high as
 PRIMER_INTERNAL_OLIGO_SELF_ANY.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</tagName>
 	<dataType>string</dataType>
@@ -2304,12 +1631,6 @@ seek to avoid is hybridization of the internal oligo to sequences
 in this library rather than priming from them.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_MISHYB</tagName>
 	<dataType>decimal,9999.99</dataType>
@@ -2320,12 +1641,6 @@ to the similarity of candidate internal oligos to the library
 specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -2334,12 +1649,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p>Not implemented.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MIN_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -2348,12 +1657,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p>Note that there is no PRIMER_INTERNAL_OLIGO_MIN_END_QUALITY.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_TM_GT</tagName>
 	<dataType>float</dataType>
@@ -2362,12 +1665,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_TM_LT</tagName>
 	<dataType>float</dataType>
@@ -2376,12 +1673,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_GC_PERCENT_GT</tagName>
 	<dataType>float</dataType>
@@ -2390,12 +1681,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_GC_PERCENT_LT</tagName>
 	<dataType>float</dataType>
@@ -2404,12 +1689,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SIZE_LT</tagName>
 	<dataType>float</dataType>
@@ -2418,12 +1697,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SIZE_GT</tagName>
 	<dataType>float</dataType>
@@ -2432,12 +1705,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -2446,12 +1713,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
@@ -2460,12 +1721,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
@@ -2474,12 +1729,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
@@ -2488,12 +1737,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_SEQ_QUAL</tagName>
 	<dataType>float</dataType>
@@ -2502,12 +1745,6 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<groupID></groupID><tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_IO_WT_END_QUAL</tagName>
 	<dataType>float</dataType>
@@ -2516,8 +1753,4 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[ ]]>
-	</groupDescription>
-</tagGroup>
 </primer3Doc>

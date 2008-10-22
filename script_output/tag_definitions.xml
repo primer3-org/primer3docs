@@ -276,6 +276,25 @@ pick left primers.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_PICK_INTERNAL_OLIGO</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
+pick an internal oligo (hybridization probe to detect the PCR
+product).</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PICK_RIGHT_PRIMER</tagName>
+	<dataType>boolean</dataType>
+	<default>1</default>
+	<description>
+<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
+pick a right primer.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PICK_ANYWAY</tagName>
 	<dataType>boolean</dataType>
 	<default>0</default>

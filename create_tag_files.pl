@@ -52,10 +52,9 @@ print"start processing\n";
 my $tagFile = "primer3_input_tags.xml";
 my $tagRoot = getXmlRoot($tagFile);
 # Read all Tag in an array
-my @xml_tags = $tagRoot->getElementsByTagName('tagGroup');
-my @all_tags = $tagRoot->getElementsByTagName('tag');
+my @xml_tags = $tagRoot->getElementsByTagName('tag');
 # First sort the tags alphabetically tags
-my @sortedTags = sort tagSort @all_tags;
+my @sortedTags = sort tagSort @xml_tags;
 # Print a message about the Tags
 my $readTagCount = $#sortedTags + 1;
 print "Read in $readTagCount input Tags for processing...\n";
@@ -65,7 +64,7 @@ print "Read in $readTagCount input Tags for processing...\n";
 my $commandFile = "primer3_command_line.xml";
 my $commandRoot = getXmlRoot($commandFile);
 # Read all Tag in an array
-my @commandTags = $commandRoot->getElementsByTagName('tagGroup');
+my @commandTags = $commandRoot->getElementsByTagName('tag');
 # Print a message about the Tags
 $readTagCount = $#commandTags + 1;
 print "Read in $readTagCount command line Tags for processing...\n";
@@ -75,7 +74,7 @@ print "Read in $readTagCount command line Tags for processing...\n";
 my $outTagFile = "primer3_output_tags.xml";
 my $outTagRoot = getXmlRoot($outTagFile);
 # Read all Tag in an array
-my @outTagTags = $outTagRoot->getElementsByTagName('tagGroup');
+my @outTagTags = $outTagRoot->getElementsByTagName('tag');
 # Print a message about the Tags
 $readTagCount = $#outTagTags + 1;
 print "Read in $readTagCount output Tags for processing...\n";
@@ -292,58 +291,21 @@ sub createReadmeTxt {
 sub printTags {
 	my $text = shift;
 	my $output;
-	my $headInfo;
-	my $headPrint = 0;
-	my $footerPrint = 0;
-	my $tagCount = 0;
-	my @tagArray;	
+	my $tagCount = 0;	
 	# Now print out all tags
-	foreach my $tagGroup_holder (@xml_tags) {
-		# Get all the XML data of one tagGroup
-		$headInfo = "";
-		$headPrint = 0;
-		$footerPrint = 0;
-		my $tagGroupName = get_node_content($tagGroup_holder, "tagGroupName");
-		my $groupDescription = get_node_content($tagGroup_holder, "groupDescription");
-
-		# Assemble the txt file
-		if ($tagGroupName ne "") {
-			$headInfo .= underlineText("$tagGroupName","-");
-		} else {
-			$headPrint = 2;
-		}
-	
-		@tagArray = $tagGroup_holder->getElementsByTagName('tag');
-		foreach my $tag_holder (@tagArray) {
-			# Get all the XML data of one tag
-			my $tagName = get_node_content($tag_holder, "tagName");
-			my $dataType = get_node_content($tag_holder, "dataType");
-			my $default = get_node_content($tag_holder, "default");
-			my $description = get_node_content($tag_holder, "description");
-			
-			if ($tagName =~ /^$text/) {
-				$tagCount++;
-				
-				# Assemble the txt file
-				if ($headPrint == 0) {
-					$output .= $headInfo;
-					$headPrint = 1;
-				}
-				$footerPrint = 1;
-				
-				$output .= $tagName." (".$dataType."; default ".$default.")\n";
-				if ($description ne "") {
-					$output .= "\n$description\n\n\n";
-				}
-				
-			}
-			
-		}
+	foreach my $tag_holder (@xml_tags) {
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my $dataType = get_node_content($tag_holder, "dataType");
+		my $default = get_node_content($tag_holder, "default");
+		my $description = get_node_content($tag_holder, "description");
 		
-		if (($groupDescription ne "") and ($groupDescription ne "<p> </p>")
-			and ($footerPrint == 1)) {
+		if ($tagName =~ /^$text/) {
+			$tagCount++;
+			
 			# Assemble the txt file
-			$output .= "$groupDescription\n\n\n";
+			$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
+			$output .= "$description\n\n\n";
 		}
 		
 	}
@@ -367,8 +329,6 @@ sub printOutputTags {
 		my $dataType = get_node_content($tag_holder, "dataType");
 		my $optional = get_node_content($tag_holder, "optional");
 		my $description = get_node_content($tag_holder, "description");
-		$description =~ s/^\<p\>//;
-		$description =~ s/\<\/p\>$//;
 				
 		$tagCount++;
 		

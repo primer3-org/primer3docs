@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
+<!--
+An example Tag with all possible options:
 
 <textBlock>
 	<id></id>
@@ -9,7 +11,7 @@
 	</text>
 </textBlock>
 
-
+-->
 <textBlock>
 	<id>acknowledgments</id>
 	<head>ACKNOWLEDGMENTS</head>

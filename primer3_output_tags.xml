@@ -2,6 +2,8 @@
 <primer3Doc version="1.0">
 <!--
 An example Tag with all possible options:
+	
+All output tags should be presented for output nr. 1
 
 <tagGroup>
 	<tagGroupName></tagGroupName>
@@ -21,9 +23,8 @@ An example Tag with all possible options:
 <![CDATA[<p> </p>]]>
 	</groupDescription>
 </tagGroup>
+
 -->
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_ERROR</tagName>
 	<oldTag>
@@ -38,12 +39,6 @@ An example Tag with all possible options:
 errors.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_LEFT</tagName>
 	<oldTag>
@@ -58,12 +53,6 @@ sequence).  i is the 0-based index of the start base of the
 primer, and n is t its length.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RIGHT</tagName>
 	<oldTag>
@@ -78,12 +67,6 @@ sequence).  i is the 0-based index of the last base of the
 primer, and n is its length.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO</tagName>
 	<oldTag>
@@ -100,12 +83,6 @@ middle oligo upon request, this tag will not be output.  i is the
 length.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_SIZE</tagName>
 	<oldTag>
@@ -118,12 +95,6 @@ length.</p>]]>
 <![CDATA[<p>x is the product size of the PCR product.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_EXPLAIN</tagName>
 	<oldTag>
@@ -144,12 +115,6 @@ PRIMER_INTERNAL_OLIGO_EXPLAIN=considered 87, too many Ns 39, overlap excluded re
 All the categories are exclusive, except the 'considered' category.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_EXPLAIN</tagName>
 	<oldTag>
@@ -174,12 +139,6 @@ PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
 PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_PENALTY</tagName>
 	<oldTag>
@@ -192,12 +151,6 @@ PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
 <![CDATA[<p>The value of the objective function for this pair (lower is better).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_PENALTY</tagName>
 	<oldTag>
@@ -211,12 +164,6 @@ PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
 objective function.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_SEQUENCE</tagName>
 	<oldTag>
@@ -233,12 +180,6 @@ of the right primer is presented 5' -> 3' on the opposite strand
 from the input SEQUENCE.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_TM</tagName>
 	<oldTag>
@@ -251,12 +192,6 @@ from the input SEQUENCE.</p>]]>
 <![CDATA[<p>The melting TM for the selected oligo.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_GC_PERCENT</tagName>
 	<oldTag>
@@ -270,12 +205,6 @@ from the input SEQUENCE.</p>]]>
 of non-ambiguous bases).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_SELF_ANY</tagName>
 	<oldTag>
@@ -288,12 +217,6 @@ of non-ambiguous bases).</p>]]>
 <![CDATA[<p>The self-complementarity measures for the selected oligo.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_SELF_END</tagName>
 	<oldTag>
@@ -306,12 +229,6 @@ of non-ambiguous bases).</p>]]>
 <![CDATA[<p>The self-complementarity measures for the selected oligo.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_COMPL_ANY</tagName>
 	<oldTag>
@@ -325,12 +242,6 @@ of non-ambiguous bases).</p>]]>
 right primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_COMPL_END</tagName>
 	<oldTag>
@@ -344,12 +255,6 @@ right primer.</p>]]>
 right primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_WARNING</tagName>
 	<oldTag>
@@ -363,12 +268,6 @@ right primer.</p>]]>
 this tag is absent if there are no warnings.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_PROBLEMS</tagName>
 	<oldTag>
@@ -387,12 +286,6 @@ that did not satisfy specified design constraints
 is specified).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRP_MISPRIMING_SCORE</tagName>
 	<oldTag>
@@ -410,12 +303,6 @@ mispriming scores in any single library sequence (perhaps a
 more reasonable estimator of the likelihood of mispriming).</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRP_TEMPLATE_MISPRIMING</tagName>
 	<oldTag>
@@ -432,12 +319,6 @@ backward compatibility, these tags only appear if the corresponding
 input tags have defined values.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_TM</tagName>
 	<oldTag>
@@ -456,12 +337,6 @@ Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
 PRIMER_MIN_PRODUCT_TM is specified.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PRODUCT_TM_OLIGO_TM_DIFF</tagName>
 	<oldTag>
@@ -477,12 +352,6 @@ Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_PAIR_T_OPT_A</tagName>
 	<oldTag>
@@ -501,12 +370,6 @@ Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_INTERNAL_OLIGO_MISHYB_SCORE</tagName>
 	<oldTag>
@@ -522,12 +385,6 @@ PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY; s is the id of
 corresponding library sequence.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLRI_MIN_SEQ_QUALITY</tagName>
 	<oldTag>
@@ -543,12 +400,6 @@ output tag, which is really the value of the objective
 function.)</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_RLR_END_STABILITY</tagName>
 	<oldTag>
@@ -562,12 +413,6 @@ function.)</p>]]>
 primer.</p>]]>
 	</description>
 </tag>
-	<groupDescription>
-<![CDATA[<p> </p>]]>
-	</groupDescription>
-</tagGroup>
-<tagGroup>
-	<tagGroupName></tagGroupName>
 <tag>
 	<tagName>PRIMER_STOP_CODON_POSITION</tagName>
 	<oldTag>
@@ -586,5 +431,4 @@ non-default value is supplied.</p>]]>
 	<groupDescription>
 <![CDATA[<p> </p>]]>
 	</groupDescription>
-</tagGroup>
 </primer3Doc>
