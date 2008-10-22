@@ -28,6 +28,7 @@ my @textblocksOrder = (
 "invokingPrimer3",
 "commandLineTags",
 "inputOutputConventions",
+"migrateTags",
 "sequenceTags",
 "globalTags",
 "programTags",

@@ -39,19 +39,20 @@
 <a href="#invokingPrimer3">10. INVOKING primer3_core</a><br>
 <a href="#commandLineTags">11. COMMAND LINE TAGS</a><br>
 <a href="#inputOutputConventions">12. INPUT AND OUTPUT CONVENTIONS</a><br>
-<a href="#sequenceTags">13. "Sequence" Input Tags</a><br>
-<a href="#globalTags">14. "Global" Input Tags</a><br>
-<a href="#programTags">15. "Program" Input Tags</a><br>
-<a href="#example">16. AN EXAMPLE</a><br>
-<a href="#outputTags">17. OUTPUT TAGS</a><br>
-<a href="#exampleOutput">18. EXAMPLE OUTPUT</a><br>
-<a href="#pickAdvice">19. ADVICE FOR PICKING PRIMERS</a><br>
-<a href="#cautions">20. CAUTIONS</a><br>
-<a href="#findNoPrimers">21. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</a><br>
-<a href="#earlierVersions">22. DIFFERENCES FROM EARLIER VERSIONS</a><br>
-<a href="#exitStatusCodes">23. EXIT STATUS CODES</a><br>
-<a href="#webInterface">24. THE PRIMER3 WWW INTERFACE</a><br>
-<a href="#acknowledgments">25. ACKNOWLEDGMENTS</a><br>
+<a href="#migrateTags">13. HOW TO MIGRATE TAGS TO VERSION 4</a><br>
+<a href="#sequenceTags">14. "Sequence" Input Tags</a><br>
+<a href="#globalTags">15. "Global" Input Tags</a><br>
+<a href="#programTags">16. "Program" Input Tags</a><br>
+<a href="#example">17. AN EXAMPLE</a><br>
+<a href="#outputTags">18. OUTPUT TAGS</a><br>
+<a href="#exampleOutput">19. EXAMPLE OUTPUT</a><br>
+<a href="#pickAdvice">20. ADVICE FOR PICKING PRIMERS</a><br>
+<a href="#cautions">21. CAUTIONS</a><br>
+<a href="#findNoPrimers">22. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</a><br>
+<a href="#earlierVersions">23. DIFFERENCES FROM EARLIER VERSIONS</a><br>
+<a href="#exitStatusCodes">24. EXIT STATUS CODES</a><br>
+<a href="#webInterface">25. THE PRIMER3 WWW INTERFACE</a><br>
+<a href="#acknowledgments">26. ACKNOWLEDGMENTS</a><br>
 </p>
 <h2><a name="copyrightLicense">1. COPYRIGHT AND LICENSE</a></h2>
 
@@ -506,26 +507,26 @@ as follows:<br>
 </pre>
 An example of a legal (TAG,VALUE) pair is<br>
 <br>
-PRIMER_SEQUENCE_ID=my_marker<br>
+SEQUENCE_ID=my_marker<br>
 <br>
 and an example of a BOULDER-IO record is<br>
 <br>
-PRIMER_SEQUENCE_ID=test1<br>
-SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br>
+SEQUENCE_ID=test1<br>
+SEQUENCE_TEMPLATE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br>
 =<br>
 <br>
 Many records can be sent, one after another. Below is an example
 of three different records which might be passed through a
 boulder-io stream:<br>
 <br>
-PRIMER_SEQUENCE_ID=test1<br>
-SEQUENCE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br>
+SEQUENCE_ID=test1<br>
+SEQUENCE_TEMPLATE=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br>
 =<br>
-PRIMER_SEQUENCE_ID=test2<br>
-SEQUENCE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT<br>
+SEQUENCE_ID=test2<br>
+SEQUENCE_TEMPLATE=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT<br>
 =<br>
-PRIMER_SEQUENCE_ID=test3<br>
-SEQUENCE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC<br>
+SEQUENCE_ID=test3<br>
+SEQUENCE_TEMPLATE=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC<br>
 =<br>
 <br>
 Primer3 reads boulder-io on stdin and echos its input and returns
@@ -550,7 +551,218 @@ systematically checked in this beta release: use care.<br>
 There are 2 major classes of input tags,  "Sequence" input tags
 and "Global" input tags as described below.</p>
 
-<h2><a name="sequenceTags">13. "Sequence" Input Tags</a></h2>
+<h2><a name="migrateTags">13. HOW TO MIGRATE TAGS TO VERSION 4</a></h2>
+
+<p>From primer3 v2.0 many tags were modified and new tags 
+were introduced. The new primer3 tags are designed with the 
+idea in mind that not humans use primer3, but computer scripts 
+and other programs. The modifications make it easier for 
+programmers to read the output and write the input for primer3.
+	
+For temporal backward compartibility a flag can be set at 
+command line (-io_version=3) which allows the use of the "old" 
+primer3 tags. Please be aware that the new functionality is 
+not available with the old tags. Furthermore the primer3 default 
+values have changed in version 2.0. We strongly recomment to 
+adapt your software to the new tags because this backward 
+compartibility might be dropped in the next versions. 
+
+There are three classes of input: "Sequence" input tags describe 
+a particular input sequence to primer3, and are reset after 
+every boulder record (now starting with SEQUENCE_).  "Global" 
+input tags describe the general parameters that primer3 should 
+use in its searches, and the values of these tags persist 
+between input boulder records until or unless they are 
+explicitly reset (now starting with PRIMER_). "Program" 
+parameters that deal with the behavior of the primer3 program 
+itself (now starting with P3_). See below for a list of the 
+modified tags.
+
+The handling of PRIMER_TASK changed completely. In the past we 
+used it to tell primer3 what task to perform. Now the task is 
+complemented with PRIMER_PICK_RIGHT_PRIMER, 
+PRIMER_PICK_INTERNAL_OLIGO and PRIMER_PICK_LEFT_PRIMER, which 
+specify which primers are to be picked.
+
+--------------------------------------------------------------------------------
+These Tags are modified:
+
+The "per sequence" tags:
+<pre>
+NEW VERSION                       - OLD VERSION                                - comment
+----------------------------------------------------------------------------------------                       
+SEQUENCE_ID                       - PRIMER_SEQUENCE_ID
+SEQUENCE_TEMPLATE                 - SEQUENCE
+SEQUENCE_QUALITY                  - PRIMER_SEQUENCE_QUALITY
+SEQUENCE_INCLUDED_REGION          - INCLUDED_REGION
+SEQUENCE_TARGET                   - TARGET
+SEQUENCE_EXCLUDED_REGION          - EXCLUDED_REGION
+SEQUENCE_START_CODON_POSITION     - PRIMER_START_CODON_POSITION
+SEQUENCE_PRIMER                   - PRIMER_LEFT_INPUT
+SEQUENCE_PRIMER_REVCOMP           - PRIMER_RIGHT_INPUT
+
+
+SEQUENCE_INTERNAL_OLIGO           - PRIMER_INTERNAL_OLIGO_INPUT
+SEQUENCE_INTERNAL_EXCLUDED_REGION - PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION
+
+--------------------------------------------------------------------------------
+The "global" tags:
+
+NEW VERSION                       - OLD VERSION                                - comment
+
+PRIMER_TASK                       - PRIMER_TASK                                - the use is modified
+PRIMER_PICK_RIGHT_PRIMER          - --- did not exist
+PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO                 - the use is modified
+PRIMER_PICK_LEFT_PRIMER           - --- did not exist
+
+PRIMER_SALT_MONOVALENT            - PRIMER_SALT_CONC
+PRIMER_SALT_DIVALENT              - PRIMER_DIVALENT_CONC
+PRIMER_TM_FORMULA                 - PRIMER_TM_SANTALUCIA
+
+P3_FILE_FLAG                      - PRIMER_FILE_FLAG
+
+PRIMER_INTERNAL_SALT_MONOVALENT   - PRIMER_INTERNAL_OLIGO_SALT_CONC
+PRIMER_INTERNAL_SALT_DIVALENT     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
+
+The following tags INTERNAL_OLIGO is replaced by INTERNAL:
+
+PRIMER_INTERNAL_OPT_SIZE          - PRIMER_INTERNAL_OLIGO_OPT_SIZE
+PRIMER_INTERNAL_MIN_SIZE          - PRIMER_INTERNAL_OLIGO_MIN_SIZE
+PRIMER_INTERNAL_MAX_SIZE          - PRIMER_INTERNAL_OLIGO_MAX_SIZE
+PRIMER_INTERNAL_OPT_TM            - PRIMER_INTERNAL_OLIGO_OPT_TM
+PRIMER_INTERNAL_MIN_TM            - PRIMER_INTERNAL_OLIGO_MIN_TM
+PRIMER_INTERNAL_MAX_TM            - PRIMER_INTERNAL_OLIGO_MAX_TM
+PRIMER_INTERNAL_MIN_GC            - PRIMER_INTERNAL_OLIGO_MIN_GC
+PRIMER_INTERNAL_OPT_GC_PERCENT    - PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT
+PRIMER_INTERNAL_MAX_GC            - PRIMER_INTERNAL_OLIGO_MAX_GC
+PRIMER_INTERNAL_DNTP_CONC         - PRIMER_INTERNAL_OLIGO_DNTP_CONC
+PRIMER_INTERNAL_DNA_CONC          - PRIMER_INTERNAL_OLIGO_DNA_CONC
+PRIMER_INTERNAL_SELF_ANY          - PRIMER_INTERNAL_OLIGO_SELF_ANY
+PRIMER_INTERNAL_MAX_POLY_X        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
+PRIMER_INTERNAL_SELF_END          - PRIMER_INTERNAL_OLIGO_SELF_END
+PRIMER_INTERNAL_MISHYB_LIBRARY    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
+PRIMER_INTERNAL_MAX_MISHYB        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
+PRIMER_INTERNAL_MIN_QUALITY       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
+PRIMER_INTERNAL_NUM_NS            - PRIMER_INTERNAL_OLIGO_NUM_NS
+
+The following tags IO is replaced by INTERNAL:
+
+PRIMER_INTERNAL_WT_TM_GT          - PRIMER_IO_WT_TM_GT
+PRIMER_INTERNAL_WT_TM_LT          - PRIMER_IO_WT_TM_LT
+PRIMER_INTERNAL_WT_SIZE_LT        - PRIMER_IO_WT_SIZE_LT
+PRIMER_INTERNAL_WT_SIZE_GT        - PRIMER_IO_WT_SIZE_GT
+PRIMER_INTERNAL_WT_GC_PERCENT_LT  - PRIMER_IO_WT_GC_PERCENT_LT
+PRIMER_INTERNAL_WT_GC_PERCENT_GT  - PRIMER_IO_WT_GC_PERCENT_GT
+PRIMER_INTERNAL_WT_COMPL_ANY      - PRIMER_IO_WT_COMPL_ANY
+PRIMER_INTERNAL_WT_NUM_NS         - PRIMER_IO_WT_NUM_NS
+PRIMER_INTERNAL_WT_REP_SIM        - PRIMER_IO_WT_REP_SIM
+PRIMER_INTERNAL_WT_SEQ_QUAL       - PRIMER_IO_WT_SEQ_QUAL
+</pre>
+
+--------------------------------------------------------------------------------
+OUTPUT TAGS:
+
+There are three big changes on the output:
+- INTERNAL_OLIGO is now replaced by INTERNAL.
+- The first version is numbered 0.
+- The "PRODUCT" tags are renamed
+
+Now all primer related output follows the rule:
+PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>.
+where <j> is an integer from 0 to n, where n is at most the 
+value of
+PRIMER_NUM_RETURN - 1.
+
+This allows easy scripting by using the underscores _ to split 
+the name. The first part is PRIMER, the second the type of oligo 
+or pair parameters, the third is always a number, starting at 
+0 and the rest is used by the tags.
+
+
+That affects also (shown for output nr. 5):
+<pre>
+NEW VERSION                             - OLD VERSION                       - comment
+------------------------------------------------------------------------------------------------------
+PRIMER_PAIR_4_PENALTY                   - PRIMER_PAIR_PENALTY_4             - number moved behind PAIR
+PRIMER_PAIR_4_PRODUCT_SIZE              - PRIMER_PRODUCT_SIZE_4             - grouped with PAIR
+PRIMER_PAIR_4_PRODUCT_TM                - PRIMER_PRODUCT_TM_4               - grouped with PAIR
+PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 - grouped with PAIR
+
+PRIMER_INTERNAL_EXPLAIN                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
+</pre>
+
+Unchanged Tags:
+---------------------------------------------------------------------------------
+PRIMER_EXPLAIN_FLAG
+PRIMER_PICK_ANYWAY
+PRIMER_MISPRIMING_LIBRARY
+PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS
+PRIMER_MAX_MISPRIMING
+PRIMER_MAX_TEMPLATE_MISPRIMING
+PRIMER_PAIR_MAX_MISPRIMING
+PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING
+PRIMER_PRODUCT_MIN_TM
+PRIMER_PRODUCT_OPT_TM
+PRIMER_PRODUCT_MAX_TM
+PRIMER_PRODUCT_OPT_SIZE
+PRIMER_PRODUCT_SIZE_RANGE
+PRIMER_GC_CLAMP
+PRIMER_OPT_SIZE
+PRIMER_MIN_SIZE
+PRIMER_MAX_SIZE
+PRIMER_OPT_TM
+PRIMER_MIN_TM
+PRIMER_MAX_TM
+PRIMER_MAX_DIFF_TM
+PRIMER_MIN_GC
+PRIMER_OPT_GC_PERCENT
+PRIMER_MAX_GC
+PRIMER_DNTP_CONC
+PRIMER_SALT_CORRECTIONS
+PRIMER_LOWERCASE_MASKING
+PRIMER_DNA_CONC
+PRIMER_NUM_NS_ACCEPTED
+PRIMER_SELF_ANY
+PRIMER_SELF_END
+PRIMER_MAX_POLY_X
+PRIMER_LIBERAL_BASE
+PRIMER_NUM_RETURN
+PRIMER_FIRST_BASE_INDEX
+PRIMER_MIN_QUALITY
+PRIMER_MIN_END_QUALITY
+PRIMER_QUALITY_RANGE_MIN
+PRIMER_QUALITY_RANGE_MAX
+PRIMER_INSIDE_PENALTY
+PRIMER_OUTSIDE_PENALTY
+PRIMER_MAX_END_STABILITY
+PRIMER_WT_TM_GT
+PRIMER_WT_TM_LT
+PRIMER_WT_SIZE_LT
+PRIMER_WT_SIZE_GT
+PRIMER_WT_GC_PERCENT_LT
+PRIMER_WT_GC_PERCENT_GT
+PRIMER_WT_COMPL_ANY
+PRIMER_WT_COMPL_END
+PRIMER_WT_NUM_NS
+PRIMER_WT_REP_SIM
+PRIMER_WT_SEQ_QUAL
+PRIMER_WT_END_QUAL
+PRIMER_WT_POS_PENALTY
+PRIMER_WT_END_STABILITY
+PRIMER_WT_TEMPLATE_MISPRIMING
+PRIMER_PAIR_WT_PR_PENALTY
+PRIMER_PAIR_WT_IO_PENALTY
+PRIMER_PAIR_WT_DIFF_TM
+PRIMER_PAIR_WT_COMPL_ANY
+PRIMER_PAIR_WT_COMPL_END
+PRIMER_PAIR_WT_PRODUCT_TM_LT
+PRIMER_PAIR_WT_PRODUCT_TM_GT
+PRIMER_PAIR_WT_PRODUCT_SIZE_GT
+PRIMER_PAIR_WT_PRODUCT_SIZE_LT
+PRIMER_PAIR_WT_REP_SIM
+PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p>
+
+<h2><a name="sequenceTags">14. "Sequence" Input Tags</a></h2>
 
 <p>"Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
@@ -744,7 +956,7 @@ make Target regions excluded regions for internal oligos.</p>
 design left and right primers.  Must be a substring of SEQUENCE.</p>
 
 
-<h2><a name="globalTags">14. "Global" Input Tags</a></h2>
+<h2><a name="globalTags">15. "Global" Input Tags</a></h2>
 
 <p>"Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
@@ -2058,7 +2270,7 @@ specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.</p>
 <p> </p>
 
 
-<h2><a name="programTags">15. "Program" Input Tags</a></h2>
+<h2><a name="programTags">16. "Program" Input Tags</a></h2>
 
 <p>"Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
@@ -2091,7 +2303,7 @@ PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.</p>
 
 
-<h2><a name="example">16. AN EXAMPLE</a></h2>
+<h2><a name="example">17. AN EXAMPLE</a></h2>
 
 <p>One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
@@ -2104,44 +2316,62 @@ UNIX command 'primer3 < input'.<br>
 <br>
 Let's look at the input record itself:
 <br>
-PRIMER_SEQUENCE_ID=example<br>
-SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br>
-TARGET=37,21<br>
+SEQUENCE_ID=example<br>
+SEQUENCE_TEMPLATE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br>
+SEQUENCE_TARGET=37,21<br>
+PRIMER_TASK=pick_detection_primers<br>
+PRIMER_PICK_LEFT_PRIMER=1<br>
+PRIMER_PICK_INTERNAL_OLIGO=1<br>
+PRIMER_PICK_RIGHT_PRIMER=1<br>
 PRIMER_OPT_SIZE=18<br>
 PRIMER_MIN_SIZE=15<br>
 PRIMER_MAX_SIZE=21<br>
 PRIMER_NUM_NS_ACCEPTED=1<br>
 PRIMER_PRODUCT_SIZE_RANGE=75-100<br>
-PRIMER_FILE_FLAG=1<br>
-PRIMER_PICK_INTERNAL_OLIGO=1<br>
-PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21<br>
+P3_FILE_FLAG=1<br>
+PRIMER_INTERNAL_EXCLUDED_REGION=37,21<br>
 PRIMER_EXPLAIN_FLAG=1<br>
 =<br>
 <br>
 A breakdown of the reasoning behind each of the TAG=VALUE pairs
 is below:<br>
 <br>
-PRIMER_SEQUENCE_ID=example<br>
+SEQUENCE_ID=example<br>
 <br>
 The main intent of this tag is to provide an identifier for the
 sequence that is meaningful to the user, for example when primer3
 processes multiple records, and by default this tag is optional.
-However, this tag is _required_ when PRIMER_FILE_FLAG is non-0
+However, this tag is _required_ when P3_FILE_FLAG is non-0
 Because it provides the names of the files that contain lists
 of oligos that primer3 considered.<br>
 <br>
-SEQUENCE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br>
+SEQUENCE_TEMPLATE=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br>
 <br>
-The SEQUENCE tag is of ultimate importance. Without it, primer3
+The SEQUENCE_TEMPLATE tag is of ultimate importance. Without it, primer3
 has no idea what to do. This sequence is 92 bases long. Note that
 there is no newline until the sequence terminates completely.<br>
 <br>
-TARGET=37,21<br>
+SEQUENCE_TARGET=37,21<br>
 <br>
 There is a simple sequence repeat in our sequence, which starts
 at base 37, and has a length of 21 bases. We want primer3 to
 choose primers which flank the repeat site, so we let primer3 know
 that we consider this site to be important.<br>
+<br>
+PRIMER_TASK=pick_detection_primers<br>
+<br>
+The PRIMER_TASK is of ultimate importance it tells primer3 which 
+type of primers to pick. You can select typical primers for PCR 
+detection, primers for cloning or for sequencing.<br>
+<br>
+PRIMER_PICK_LEFT_PRIMER=1<br>
+PRIMER_PICK_INTERNAL_OLIGO=1<br>
+PRIMER_PICK_RIGHT_PRIMER=1<br>
+<br>
+We would like to pick a left primer, a internal oligo and a 
+right primer, so we set this flags to 1 (true). In combination 
+with the PRIMER_TASK this tags control which primers are 
+picked.<br>
 <br>
 PRIMER_OPT_SIZE=18<br>
 <br>
@@ -2170,7 +2400,7 @@ because our source sequence is only 108 base pairs long.  If we
 insisted on a product size of 100 base pairs primer3 would have
 few possibilities to choose from.<br>
 <br>
-PRIMER_FILE_FLAG=1<br>
+P3_FILE_FLAG=1<br>
 <br>
 Since we've got such a small sequence, Primer might fail to
 pick primers. We want to get the list of primers it
@@ -2179,12 +2409,7 @@ ourselves if Primer fails to do so. Setting this flag to 1
 will force Primer to output the primers it considered to a
 forward_primer and a reverse_primer output file.<br>
 <br>
-PRIMER_PICK_INTERNAL_OLIGO=1<br>
-<br>
-We want to see if Primer v2.3 can pick an internal oligo for
-the sequence, so we set this flag to 1 (true).<br>
-<br>
-PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION=37,21<br>
+PRIMER_INTERNAL_EXCLUDED_REGION=37,21<br>
 <br>
 Normally CA-repeats make poor hybridization probes (because they
 not specific enough).  Therefor we exclude the CA repeat (which
@@ -2201,26 +2426,25 @@ examined.<br>
 The '=' character terminates the record.<br>
 <br>
 There are some boulderio tags that we never even
-specified. (INCLUDED_REGION, EXCLUDED_REGION, et al.), which is
-perfectly legal.  For the tags with default values, those
-defaults will be used in the analysis. For the tags with NO
-default values (like TARGET, for instance), the functionality
-requested by the those tags will simply be absent. It's not the
-case that we need to surround a simple sequence repeat every time
-we want to pick primers!</p>
+specified. (SEQUENCE_INCLUDED_REGION, SEQUENCE_EXCLUDED_REGION, 
+et al.), which is perfectly legal.  For the tags with default 
+values, those defaults will be used in the analysis. For the 
+tags with NO default values (like TARGET, for instance), the 
+functionality requested by the those tags will simply be absent. 
+It's not the case that we need to surround a simple sequence 
+repeat every time we want to pick primers!</p>
 
-<h2><a name="outputTags">17. OUTPUT TAGS</a></h2>
+<h2><a name="outputTags">18. OUTPUT TAGS</a></h2>
 
 <p>For each boulderio record passed into primer3 via stdin, exactly
 one boulderio record comes out of primer3 on stdout. These output
 records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
-each tag appears for each primer pair returned.  The first
-version is PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<tag_name>.
-Tags of additional primers chosen are of the form
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO,PAIR}_<j>_<tag_name>.  where
-<j> is an integer from 1 to n, where n is at most the value of
-PRIMER_NUM_RETURN.<br>
+each tag appears for each primer pair returned.<br>
+Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>
+where <j> is an integer from 0 to n, where n is at most the 
+value of PRIMER_NUM_RETURN. In the documentation the output 
+nr. 5 is shown as for example: PRIMER_LEFT_4_TM.<br>
 <br>
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
@@ -2439,19 +2663,19 @@ only if the input tag PRIMER_START_CODON_POSITION with a
 non-default value is supplied.</p>
 
 
-<h2><a name="exampleOutput">18. EXAMPLE OUTPUT</a></h2>
+<h2><a name="exampleOutput">19. EXAMPLE OUTPUT</a></h2>
 
 <p>You should run it yourself.  Use the file 'example' in this
 directory as input.</p>
 
-<h2><a name="pickAdvice">19. ADVICE FOR PICKING PRIMERS</a></h2>
+<h2><a name="pickAdvice">20. ADVICE FOR PICKING PRIMERS</a></h2>
 
 <p>We suggest consulting: Wojciech Rychlik (1993) "Selection of
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
 in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
 Applications", pp 31-40, Humana Press, Totowa NJ.</p>
 
-<h2><a name="cautions">20. CAUTIONS</a></h2>
+<h2><a name="cautions">21. CAUTIONS</a></h2>
 
 <p>Some of the most important issues in primer picking can be
 addressed only before using primer3. These are sequence quality 
@@ -2485,7 +2709,7 @@ In addition, primer3 takes as input a <a href="#SEQUENCE_QUALITY">SEQUENCE_QUALI
 use with those base calling programs (e.g. Phred, Bass/Grace, 
 Trout) that output this information.</p>
 
-<h2><a name="findNoPrimers">21. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</a></h2>
+<h2><a name="findNoPrimers">22. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</a></h2>
 
 <p>Try relaxing various parameters, including the
 self-complementarity parameters and max and min oligo melting
@@ -2501,11 +2725,13 @@ at that position.<br>
 <br>
 Try setting the PRIMER_EXPLAIN_FLAG input tag.</p>
 
-<h2><a name="earlierVersions">22. DIFFERENCES FROM EARLIER VERSIONS</a></h2>
+<h2><a name="earlierVersions">23. DIFFERENCES FROM EARLIER VERSIONS</a></h2>
 
-<p>See the file release_notes.txt in this directory.</p>
+<p>See the file release_notes.txt in this directory. The 
+modified tags ae described in detail in HOW TO MIGRATE TAGS TO 
+VERSION 4.</p>
 
-<h2><a name="exitStatusCodes">23. EXIT STATUS CODES</a></h2>
+<h2><a name="exitStatusCodes">24. EXIT STATUS CODES</a></h2>
 
 <p><pre> 0 on normal operation
 -1 under the following conditions:
@@ -2526,13 +2752,13 @@ stderr.<br>
 <br>
 In all of the error cases above Primer3 prints a message to stderr.</p>
 
-<h2><a name="webInterface">24. THE PRIMER3 WWW INTERFACE</a></h2>
+<h2><a name="webInterface">25. THE PRIMER3 WWW INTERFACE</a></h2>
 
 <p>This distribution does not contain the Primer3 WWW interface.
 Web interface code is likely available at (or linked to from)
 http://sourceforge.net/projects/primer3/.</p>
 
-<h2><a name="acknowledgments">25. ACKNOWLEDGMENTS</a></h2>
+<h2><a name="acknowledgments">26. ACKNOWLEDGMENTS</a></h2>
 
 <p>Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human
