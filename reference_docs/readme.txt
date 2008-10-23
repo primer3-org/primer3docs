@@ -683,6 +683,7 @@ PRIMER_INTERNAL_EXPLAIN                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 
 Unchanged Tags:
 ---------------------------------------------------------------------------------
+
 PRIMER_EXPLAIN_FLAG
 PRIMER_PICK_ANYWAY
 PRIMER_MISPRIMING_LIBRARY
@@ -753,6 +754,7 @@ PRIMER_PAIR_WT_REP_SIM
 PRIMER_PAIR_WT_TEMPLATE_MISPRIMING
 
 
+
 14. "Sequence" Input Tags
 =========================
 "Sequence" input tags start with SEQUENCE_... and describe a 
@@ -766,7 +768,7 @@ SEQUENCE_ID (string; default empty)
 An identifier that is reproduced in the output to enable users to
 identify the source of the chosen primers.
 
-This tag must be present if PRIMER_FILE_FLAG is non-zero.
+This tag must be present if P3_FILE_FLAG is non-zero.
 
 
 SEQUENCE_TEMPLATE (nucleotide sequence; default empty)
@@ -825,9 +827,9 @@ such as ALUs or LINEs.
 SEQUENCE_QUALITY (quality list; default empty)
 
 A list of space separated integers. There must be exactly
-one integer for each base in SEQUENCE if this argument is
+one integer for each base in SEQUENCE_TEMPLATE if this argument is
 non-empty.  For example, for the sequence ANNTTCA...
-PRIMER_SEQUENCE_QUALITY might be 45 10 0 50 30 34 50 67 ....
+SEQUENCE_QUALITY might be 45 10 0 50 30 34 50 67 ....
 High numbers indicate high confidence in the base called at
 that position and low numbers indicate low confidence in the
 base call at that position.  This parameter is only relevant
@@ -839,14 +841,14 @@ SEQUENCE_PRIMER (nucleotide sequence; default empty)
 
 The sequence of a left primer to check and around which to design
 right primers and optional internal oligos.  Must be a substring
-of SEQUENCE.
+of SEQUENCE_TEMPLATE.
 
 
 SEQUENCE_PRIMER_REVCOMP (nucleotide sequence; default empty)
 
 The sequence of a right primer to check and around which to
 design left primers and optional internal oligos.  Must be a
-substring of the reverse strand of SEQUENCE.
+substring of the reverse strand of SEQUENCE_TEMPLATE.
 
 
 SEQUENCE_START_CODON_POSITION (int; default -1000000)
@@ -948,7 +950,7 @@ Legal values are:
  - check_primers
  
    Primer3 does not pick any primers, it only checks the primers 
-   provided in SEQUENCE_PRIMER, SEQUENCE_OLIGO and 
+   provided in SEQUENCE_PRIMER, SEQUENCE_INTERNAL_OLIGO and 
    SEQUENCE_PRIMER_REVCOMP. Its the only task which does not
    require a sequence. If the sequence is provided, it is used
    as a template.
@@ -1030,8 +1032,8 @@ pick a right primer.
 
 PRIMER_PICK_ANYWAY (boolean; default 0)
 
-If true use primer provided in PRIMER_LEFT_INPUT, PRIMER_RIGHT_INPUT, 
-or PRIMER_INTERNAL_OLIGO_INPUT even if it violates specific 
+If true use primer provided in SEQUENCE_PRIMER, SEQUENCE_PRIMER_REVCOMP, 
+or SEQUENCE_INTERNAL_OLIGO even if it violates specific 
 constraints.
 
 
@@ -1176,7 +1178,7 @@ product for details.
 PRIMER_EXPLAIN_FLAG (boolean; default 0)
 
 If this flag is non-0, produce PRIMER_LEFT_EXPLAIN,
-PRIMER_RIGHT_EXPLAIN, and PRIMER_INTERNAL_OLIGO_EXPLAIN output
+PRIMER_RIGHT_EXPLAIN, and PRIMER_INTERNAL_EXPLAIN output
 tags, which are intended to provide information on the number of
 oligos and primer pairs that primer3 examined, and statistics on
 the number discarded for various reasons.  If -format_output is
@@ -1243,7 +1245,7 @@ PRIMER_OPT_TM (float; default 60.0)
 Optimum melting temperature(Celsius) for a primer oligo. Primer3
 will try to pick primers with melting temperatures are close to
 this temperature.  The oligo melting temperature formula used can
-be specified by user. Please see PRIMER_TM_SANTALUCIA for more
+be specified by user. Please see PRIMER_TM_FORMULA for more
 information.
 
 
@@ -1343,7 +1345,7 @@ PRIMER_SALT_MONOVALENT (float; default 50.0)
 
 The millimolar (mM) concentration of monovalent salt cations (usually KCl) in the PCR.
 Primer3 uses this argument to calculate oligo and primer melting
-temperatures. Use tag PRIMER_DIVALENT_CONC to specify the concentration
+temperatures. Use tag PRIMER_SALT_DIVALENT to specify the concentration
 of divalent cations (in this case you also should use tag PRIMER_DNTP_CONC).
 
 
@@ -1399,8 +1401,8 @@ melting temperature. Use tag PRIMER_DNTP_CONC to specify the concentration of dN
 PRIMER_DNTP_CONC (float; default 0.0)
 
 The millimolar concentration of deoxyribonucleotide triphosphate. This
-argument is considered only if PRIMER_DIVALENT_CONC is specified. See
-PRIMER_DIVALENT_CONC.
+argument is considered only if PRIMER_SALT_DIVALENT is specified. See
+PRIMER_SALT_DIVALENT.
 
 
 PRIMER_SALT_CORRECTIONS (int; default 0)
@@ -1600,13 +1602,13 @@ file flag is set.)
 PRIMER_MIN_QUALITY (int; default 0)
 
 The minimum sequence quality (as specified by
-PRIMER_SEQUENCE_QUALITY) allowed within a primer.
+SEQUENCE_QUALITY) allowed within a primer.
 
 
 PRIMER_MIN_END_QUALITY (int; default 0)
 
 The minimum sequence quality (as specified by
-PRIMER_SEQUENCE_QUALITY) allowed within the 5' pentamer of a
+SEQUENCE_QUALITY) allowed within the 5' pentamer of a
 primer.
 
 
@@ -1839,170 +1841,170 @@ PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
  
 
 
-PRIMER_INTERNAL_OLIGO_OPT_SIZE (int; default 20)
+PRIMER_INTERNAL_OPT_SIZE (int; default 20)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MIN_SIZE (int; default 18)
+PRIMER_INTERNAL_MIN_SIZE (int; default 18)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MAX_SIZE (int; default 27)
+PRIMER_INTERNAL_MAX_SIZE (int; default 27)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_OPT_TM (float; default 60.0)
+PRIMER_INTERNAL_OPT_TM (float; default 60.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT (float; default 50.0)
+PRIMER_INTERNAL_OPT_GC_PERCENT (float; default 50.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MIN_TM (float; default 57.0)
+PRIMER_INTERNAL_MIN_TM (float; default 57.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MAX_TM (float; default 63.0)
+PRIMER_INTERNAL_MAX_TM (float; default 63.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MIN_GC (float; default 20.0)
+PRIMER_INTERNAL_MIN_GC (float; default 20.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MAX_GC (float; default 80.0)
+PRIMER_INTERNAL_MAX_GC (float; default 80.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_SALT_CONC (float; default 50.0)
+PRIMER_INTERNAL_SALT_CONC (float; default 50.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_DIVALENT_CONC (float; default 0.0)
+PRIMER_INTERNAL_DIVALENT_CONC (float; default 0.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_DNTP_CONC (float; default 0.0)
+PRIMER_INTERNAL_DNTP_CONC (float; default 0.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_DNA_CONC (float; default 50.0)
+PRIMER_INTERNAL_DNA_CONC (float; default 50.0)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_SELF_ANY (decimal, 9999.99; default 12.00)
+PRIMER_INTERNAL_SELF_ANY (decimal, 9999.99; default 12.00)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_MAX_POLY_X (int; default 5)
+PRIMER_INTERNAL_MAX_POLY_X (int; default 5)
 
  
 
 
-PRIMER_INTERNAL_OLIGO_SELF_END (decimal 9999.99; default 12.00)
+PRIMER_INTERNAL_SELF_END (decimal 9999.99; default 12.00)
 
-PRIMER_INTERNAL_OLIGO_SELF_END is meaningless when applied
+PRIMER_INTERNAL_SELF_END is meaningless when applied
 to internal oligos used for hybridization-based detection, since
 primer-dimer will not occur.  We recommend that
-PRIMER_INTERNAL_OLIGO_SELF_END be set at least as high as
-PRIMER_INTERNAL_OLIGO_SELF_ANY.
+PRIMER_INTERNAL_SELF_END be set at least as high as
+PRIMER_INTERNAL_SELF_ANY.
 
 
-PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY (string; default empty)
+PRIMER_INTERNAL_MISHYB_LIBRARY (string; default empty)
 
 Similar to PRIMER_MISPRIMING_LIBRARY, except that the event we
 seek to avoid is hybridization of the internal oligo to sequences
 in this library rather than priming from them.
 
 
-PRIMER_INTERNAL_OLIGO_MAX_MISHYB (decimal,9999.99; default 12.00)
+PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)
 
 Similar to PRIMER_MAX_MISPRIMING except that this parameter applies
 to the similarity of candidate internal oligos to the library
-specified in PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY.
+specified in PRIMER_INTERNAL_MISHYB_LIBRARY.
 
 
-PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
+PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
 
 Not implemented.
 
 
-PRIMER_INTERNAL_OLIGO_MIN_QUALITY (int; default 0)
+PRIMER_INTERNAL_MIN_QUALITY (int; default 0)
 
-Note that there is no PRIMER_INTERNAL_OLIGO_MIN_END_QUALITY.
-
-
-PRIMER_IO_WT_TM_GT (float; default 1.0)
-
- 
+Note that there is no PRIMER_INTERNAL_MIN_END_QUALITY.
 
 
-PRIMER_IO_WT_TM_LT (float; default 1.0)
+PRIMER_INTERNAL_WT_TM_GT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_GC_PERCENT_GT (float; default 1.0)
+PRIMER_INTERNAL_WT_TM_LT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_GC_PERCENT_LT (float; default 1.0)
+PRIMER_INTERNAL_WT_GC_PERCENT_GT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_SIZE_LT (float; default 1.0)
+PRIMER_INTERNAL_WT_GC_PERCENT_LT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_SIZE_GT (float; default 1.0)
+PRIMER_INTERNAL_WT_SIZE_LT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_COMPL_ANY (float; default 0.0)
+PRIMER_INTERNAL_WT_SIZE_GT (float; default 1.0)
 
  
 
 
-PRIMER_IO_WT_COMPL_END (float; default 0.0)
+PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
 
  
 
 
-PRIMER_IO_WT_NUM_NS (float; default 0.0)
+PRIMER_INTERNAL_WT_COMPL_END (float; default 0.0)
 
  
 
 
-PRIMER_IO_WT_REP_SIM (float; default 0.0)
+PRIMER_INTERNAL_WT_NUM_NS (float; default 0.0)
 
  
 
 
-PRIMER_IO_WT_SEQ_QUAL (float; default 0.0)
+PRIMER_INTERNAL_WT_REP_SIM (float; default 0.0)
 
  
 
 
-PRIMER_IO_WT_END_QUAL (float; default 0.0)
+PRIMER_INTERNAL_WT_SEQ_QUAL (float; default 0.0)
+
+ 
+
+
+PRIMER_INTERNAL_WT_END_QUAL (float; default 0.0)
 
  
 
@@ -2028,7 +2030,7 @@ and PRIMER...INPUT is specified).
 P3_FILE_FLAG (boolean; default 0)
 
 If the associated value is non-0, then primer3 creates two output
-files for each input SEQUENCE.  File <sequence_id>.for lists all
+files for each input SEQUENCE_TEMPLATE.  File <sequence_id>.for lists all
 acceptable left primers for <sequence_id>, and <sequence_id>.rev
 lists all acceptable right primers for <sequence_id>, where
 <sequence_id> is the value of the SEQUENCE_ID tag (which
@@ -2163,7 +2165,7 @@ There are some boulderio tags that we never even
 specified. (SEQUENCE_INCLUDED_REGION, SEQUENCE_EXCLUDED_REGION, 
 et al.), which is perfectly legal.  For the tags with default 
 values, those defaults will be used in the analysis. For the 
-tags with NO default values (like TARGET, for instance), the 
+tags with NO default values (like SEQUENCE_TARGET, for instance), the 
 functionality requested by the those tags will simply be absent. 
 It's not the case that we need to surround a simple sequence 
 repeat every time we want to pick primers!
