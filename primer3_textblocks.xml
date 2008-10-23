@@ -188,7 +188,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
 <br />
 The oligtm library and tests are released under the GPL.  See
-file src/gpl.txt or go to http://www.gnu.org/licenses/gpl-2.0.txt.]]>
+file src/gpl.txt or go to <link>http://www.gnu.org/licenses/gpl-2.0.txt</link>.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -387,7 +387,7 @@ In all of the error cases above Primer3 prints a message to stderr.]]>
 </textBlock>
 <textBlock>
 	<id>globalTags</id>
-	<head>"Global" Input Tags</head>
+	<head>"GLOBAL" INPUT TAGS</head>
 	<text>
 <![CDATA["Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
@@ -740,11 +740,11 @@ characterizes an optimal primer pair.<br />
 <br />
 Whitehead Institute for Biomedical Research provides a basic
 web-based front end to primer3 named primer3web at
-http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi<br />
+<link>http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi</link><br />
 <br />
 Wageningen University Laboratory of Bioinformatics provides a enhanced 
 web-based front end to primer3 named primer3plus at
-http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi]]>
+<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -780,16 +780,16 @@ waiting for its input on stdin.]]>
 were introduced. The new primer3 tags are designed with the 
 idea in mind that not humans use primer3, but computer scripts 
 and other programs. The modifications make it easier for 
-programmers to read the output and write the input for primer3.
-	
+programmers to read the output and write the input for primer3.<br />
+<br />
 For temporal backward compartibility a flag can be set at 
 command line (-io_version=3) which allows the use of the "old" 
 primer3 tags. Please be aware that the new functionality is 
 not available with the old tags. Furthermore the primer3 default 
 values have changed in version 2.0. We strongly recomment to 
 adapt your software to the new tags because this backward 
-compartibility might be dropped in the next versions. 
-
+compartibility might be dropped in the next versions.<br />
+<br />
 There are three classes of input: "Sequence" input tags describe 
 a particular input sequence to primer3, and are reset after 
 every boulder record (now starting with SEQUENCE_).  "Global" 
@@ -799,20 +799,19 @@ between input boulder records until or unless they are
 explicitly reset (now starting with PRIMER_). "Program" 
 parameters that deal with the behavior of the primer3 program 
 itself (now starting with P3_). See below for a list of the 
-modified tags.
-
+modified tags.<br />
+<br />
 The handling of PRIMER_TASK changed completely. In the past we 
 used it to tell primer3 what task to perform. Now the task is 
 complemented with <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>, 
 <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> and <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>, which 
-specify which primers are to be picked.
-
---------------------------------------------------------------------------------
-These Tags are modified:
-
-The "per sequence" tags:
+specify which primers are to be picked.<br />
+<br />
+These Tags are modified:<br />
+<br />
+The "per sequence" tags:<br />
 <pre>
-NEW VERSION                       - OLD VERSION                                - comment
+NEW VERSION                       - OLD VERSION
 ----------------------------------------------------------------------------------------                       
 <p3_anchor>SEQUENCE_ID</p3_anchor>                       - PRIMER_SEQUENCE_ID
 <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>                 - SEQUENCE
@@ -831,11 +830,11 @@ NEW VERSION                       - OLD VERSION                                -
 --------------------------------------------------------------------------------
 The "global" tags:
 
-NEW VERSION                       - OLD VERSION                                - comment
+NEW VERSION                       - OLD VERSION
 
-<p3_anchor>PRIMER_TASK</p3_anchor>                       - PRIMER_TASK                                - the use is modified
+<p3_anchor>PRIMER_TASK</p3_anchor>                       - PRIMER_TASK (the use is modified)
 <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>          - --- did not exist
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>        - PRIMER_PICK_INTERNAL_OLIGO                 - the use is modified
+<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
 <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>           - --- did not exist
 
 <p3_anchor>PRIMER_SALT_MONOVALENT</p3_anchor>            - PRIMER_SALT_CONC
@@ -882,40 +881,38 @@ The following tags IO is replaced by INTERNAL:
 <p3_anchor>PRIMER_INTERNAL_WT_SEQ_QUAL</p3_anchor>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
 
---------------------------------------------------------------------------------
-OUTPUT TAGS:
-
-There are three big changes on the output:
-- INTERNAL_OLIGO is now replaced by INTERNAL.
-- The first version is numbered 0.
-- The "PRODUCT" tags are renamed
-
+--------------------------------------------------------------------------------<br />
+OUTPUT TAGS:<br />
+<br />
+There are three big changes on the output:<br />
+- INTERNAL_OLIGO is now replaced by INTERNAL.<br />
+- The first version is numbered 0.<br />
+- The "PRODUCT" tags are renamed<br />
+<br />
 Now all primer related output follows the rule:
 PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>.
 where <j> is an integer from 0 to n, where n is at most the 
-value of
-PRIMER_NUM_RETURN - 1.
-
+value of <p3_anchor>PRIMER_NUM_RETURN</p3_anchor> - 1.<br />
+<br />
 This allows easy scripting by using the underscores _ to split 
 the name. The first part is PRIMER, the second the type of oligo 
 or pair parameters, the third is always a number, starting at 
-0 and the rest is used by the tags.
-
-
-That affects also (shown for output nr. 5):
+0 and the rest is used by the tags.<br />
+<br />
+That affects also (shown for output nr. 5):<br />
 <pre>
-NEW VERSION                             - OLD VERSION                       - comment
+NEW VERSION                             - OLD VERSION
 ------------------------------------------------------------------------------------------------------
-<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor>                   - PRIMER_PAIR_PENALTY_4             - number moved behind PAIR
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor>              - PRIMER_PRODUCT_SIZE_4             - grouped with PAIR
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor>                - PRIMER_PRODUCT_TM_4               - grouped with PAIR
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF</p3_anchor>  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 - grouped with PAIR
+<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor>                   - PRIMER_PAIR_PENALTY_4 (number moved behind PAIR)
+<p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor>              - PRIMER_PRODUCT_SIZE_4 (grouped with PAIR)
+<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor>                - PRIMER_PRODUCT_TM_4 (grouped with PAIR)
+<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF</p3_anchor>  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
 
 <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor>                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 </pre>
-
-Unchanged Tags:
----------------------------------------------------------------------------------
+<br />
+Unchanged Tags:<br />
+---------------------------------------------------------------------------------<br />
 <pre>
 <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor>
 <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor>
@@ -1019,7 +1016,7 @@ Applications", pp 31-40, Humana Press, Totowa NJ.]]>
 </textBlock>
 <textBlock>
 	<id>programTags</id>
-	<head>"Program" Input Tags</head>
+	<head>"PROGRAM" INPUT TAGS</head>
 	<text>
 <![CDATA["Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
@@ -1028,7 +1025,7 @@ itself.)]]>
 </textBlock>
 <textBlock>
 	<id>sequenceTags</id>
-	<head>"Sequence" Input Tags</head>
+	<head>"SEQUENCE" INPUT TAGS</head>
 	<text>
 <![CDATA["Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
@@ -1041,7 +1038,7 @@ records.]]>
 	<id>systemRequirements</id>
 	<head>SYSTEM REQUIREMENTS</head>
 	<text>
-<![CDATA[Please see http://sourceforge.net/projects/primer3/ for up-to-date
+<![CDATA[Please see <link>http://sourceforge.net/projects/primer3/</link> for up-to-date
 information.  Primer3 should compile on any Linux/Unix system
 including MacOS 10 and on other systems with POSIX C
 (e.g. MSWindows).  The Makefile may need to be modified for
@@ -1077,9 +1074,19 @@ the basic conditions under which primers are being picked.]]>
 	<id>webInterface</id>
 	<head>THE PRIMER3 WWW INTERFACE</head>
 	<text>
-<![CDATA[This distribution does not contain the Primer3 WWW interface.
-Web interface code is likely available at (or linked to from)
-http://sourceforge.net/projects/primer3/.]]>
+<![CDATA[There are two web interfaces available :<br />
+The Whitehead Institute for Biomedical Research provides a basic
+web-based front end to primer3 named primer3web at
+<link>http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi</link><br />
+<br />
+The Wageningen University Laboratory of Bioinformatics provides a enhanced 
+web-based front end to primer3 named primer3plus at
+<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link><br />
+<br />
+This distribution does not contain the Primer3 WWW interface.<br />
+<br />
+Web interface code is available at
+<link>http://sourceforge.net/projects/primer3/</link>.]]>
 	</text>
 </textBlock>
 </primer3Doc>

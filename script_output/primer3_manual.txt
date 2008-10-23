@@ -17,9 +17,9 @@ Index of contents
 11. COMMAND LINE TAGS
 12. INPUT AND OUTPUT CONVENTIONS
 13. HOW TO MIGRATE TAGS TO VERSION 4
-14. "Sequence" Input Tags
-15. "Global" Input Tags
-16. "Program" Input Tags
+14. "SEQUENCE" INPUT TAGS
+15. "GLOBAL" INPUT TAGS
+16. "PROGRAM" INPUT TAGS
 17. AN EXAMPLE
 18. OUTPUT TAGS
 19. EXAMPLE OUTPUT
@@ -548,14 +548,14 @@ were introduced. The new primer3 tags are designed with the
 idea in mind that not humans use primer3, but computer scripts 
 and other programs. The modifications make it easier for 
 programmers to read the output and write the input for primer3.
-	
+
 For temporal backward compartibility a flag can be set at 
 command line (-io_version=3) which allows the use of the "old" 
 primer3 tags. Please be aware that the new functionality is 
 not available with the old tags. Furthermore the primer3 default 
 values have changed in version 2.0. We strongly recomment to 
 adapt your software to the new tags because this backward 
-compartibility might be dropped in the next versions. 
+compartibility might be dropped in the next versions.
 
 There are three classes of input: "Sequence" input tags describe 
 a particular input sequence to primer3, and are reset after 
@@ -574,12 +574,11 @@ complemented with PRIMER_PICK_RIGHT_PRIMER,
 PRIMER_PICK_INTERNAL_OLIGO and PRIMER_PICK_LEFT_PRIMER, which 
 specify which primers are to be picked.
 
---------------------------------------------------------------------------------
 These Tags are modified:
 
 The "per sequence" tags:
 
-NEW VERSION                       - OLD VERSION                                - comment
+NEW VERSION                       - OLD VERSION
 ----------------------------------------------------------------------------------------                       
 SEQUENCE_ID                       - PRIMER_SEQUENCE_ID
 SEQUENCE_TEMPLATE                 - SEQUENCE
@@ -598,11 +597,11 @@ SEQUENCE_INTERNAL_EXCLUDED_REGION - PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION
 --------------------------------------------------------------------------------
 The "global" tags:
 
-NEW VERSION                       - OLD VERSION                                - comment
+NEW VERSION                       - OLD VERSION
 
-PRIMER_TASK                       - PRIMER_TASK                                - the use is modified
+PRIMER_TASK                       - PRIMER_TASK (the use is modified)
 PRIMER_PICK_RIGHT_PRIMER          - --- did not exist
-PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO                 - the use is modified
+PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
 PRIMER_PICK_LEFT_PRIMER           - --- did not exist
 
 PRIMER_SALT_MONOVALENT            - PRIMER_SALT_CONC
@@ -660,23 +659,21 @@ There are three big changes on the output:
 Now all primer related output follows the rule:
 PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>.
 where <j> is an integer from 0 to n, where n is at most the 
-value of
-PRIMER_NUM_RETURN - 1.
+value of PRIMER_NUM_RETURN - 1.
 
 This allows easy scripting by using the underscores _ to split 
 the name. The first part is PRIMER, the second the type of oligo 
 or pair parameters, the third is always a number, starting at 
 0 and the rest is used by the tags.
 
-
 That affects also (shown for output nr. 5):
 
-NEW VERSION                             - OLD VERSION                       - comment
+NEW VERSION                             - OLD VERSION
 ------------------------------------------------------------------------------------------------------
-PRIMER_PAIR_4_PENALTY                   - PRIMER_PAIR_PENALTY_4             - number moved behind PAIR
-PRIMER_PAIR_4_PRODUCT_SIZE              - PRIMER_PRODUCT_SIZE_4             - grouped with PAIR
-PRIMER_PAIR_4_PRODUCT_TM                - PRIMER_PRODUCT_TM_4               - grouped with PAIR
-PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 - grouped with PAIR
+PRIMER_PAIR_4_PENALTY                   - PRIMER_PAIR_PENALTY_4 (number moved behind PAIR)
+PRIMER_PAIR_4_PRODUCT_SIZE              - PRIMER_PRODUCT_SIZE_4 (grouped with PAIR)
+PRIMER_PAIR_4_PRODUCT_TM                - PRIMER_PRODUCT_TM_4 (grouped with PAIR)
+PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
 
 PRIMER_INTERNAL_EXPLAIN                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 
@@ -755,7 +752,7 @@ PRIMER_PAIR_WT_TEMPLATE_MISPRIMING
 
 
 
-14. "Sequence" Input Tags
+14. "SEQUENCE" INPUT TAGS
 =========================
 "Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
@@ -920,7 +917,7 @@ The sequence of an internal oligo to check and around which to
 design left and right primers.  Must be a substring of SEQUENCE.
 
 
-15. "Global" Input Tags
+15. "GLOBAL" INPUT TAGS
 =======================
 "Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
@@ -2009,7 +2006,7 @@ PRIMER_INTERNAL_WT_END_QUAL (float; default 0.0)
  
 
 
-16. "Program" Input Tags
+16. "PROGRAM" INPUT TAGS
 ========================
 "Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
@@ -2222,7 +2219,9 @@ PRIMER_PRODUCT_SIZE=x
 x is the product size of the PCR product.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_EXPLAIN=s (*)
+PRIMER_LEFT_EXPLAIN=s (*)
+PRIMER_INTERNAL_EXPLAIN=s (*)
+PRIMER_RIGHT_EXPLAIN=s (*)
 
 s is a (more or less) self-documenting string containing
 statistics on the possiblities that primer3 considered in
@@ -2257,13 +2256,17 @@ PRIMER_PAIR_PENALTY=f
 The value of the objective function for this pair (lower is better).
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_PENALTY=f
+PRIMER_LEFT_PENALTY=f
+PRIMER_INTERNAL_PENALTY=f
+PRIMER_RIGHT_PENALTY=f
 
 The contribution of this individual primer or oligo to the
 objective function.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_SEQUENCE=s
+PRIMER_LEFT_SEQUENCE=s
+PRIMER_INTERNAL_SEQUENCE=s
+PRIMER_RIGHT_SEQUENCE=s
 
 The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
@@ -2272,23 +2275,31 @@ of the right primer is presented 5' -> 3' on the opposite strand
 from the input SEQUENCE.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_TM=f
+PRIMER_LEFT_TM=f
+PRIMER_INTERNAL_TM=f
+PRIMER_RIGHT_TM=f
 
 The melting TM for the selected oligo.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_GC_PERCENT=f
+PRIMER_LEFT_GC_PERCENT=f
+PRIMER_INTERNAL_GC_PERCENT=f
+PRIMER_RIGHT_GC_PERCENT=f
 
 The percent GC for the selected oligo (denominator is the number
 of non-ambiguous bases).
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_SELF_ANY=f
+PRIMER_LEFT_SELF_ANY=f
+PRIMER_INTERNAL_SELF_ANY=f
+PRIMER_RIGHT_SELF_ANY=f
 
 The self-complementarity measures for the selected oligo.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_SELF_END=f
+PRIMER_LEFT_SELF_END=f
+PRIMER_INTERNAL_SELF_END=f
+PRIMER_RIGHT_SELF_END=f
 
 The self-complementarity measures for the selected oligo.
 
@@ -2311,7 +2322,9 @@ s lists warnings generated by primer (separated by semicolons);
 this tag is absent if there are no warnings.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_PROBLEMS=s (*)
+PRIMER_LEFT_PROBLEMS=s (*)
+PRIMER_INTERNAL_PROBLEMS=s (*)
+PRIMER_RIGHT_PROBLEMS=s (*)
 
 s lists the problems (constraint violations) associated
 with the corresponding primer oligo.  Generated when
@@ -2322,7 +2335,9 @@ that did not satisfy specified design constraints
 is specified).
 
 
-PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE=f, s
+PRIMER_LEFT_MISPRIMING_SCORE=f, s
+PRIMER_RIGHT_MISPRIMING_SCORE=f, s
+PRIMER_PAIR_MISPRIMING_SCORE=f, s
 
 f is the maximum mispriming score for the right primer
 against any sequence in the given PRIMER_MISPRIMING_LIBRARY;
@@ -2332,7 +2347,9 @@ mispriming scores in any single library sequence (perhaps a
 more reasonable estimator of the likelihood of mispriming).
 
 
-PRIMER_{LEFT,RIGHT,PAIR}_TEMPLATE_MISPRIMING=f
+PRIMER_LEFT_TEMPLATE_MISPRIMING=f
+PRIMER_RIGHT_TEMPLATE_MISPRIMING=f
+PRIMER_PAIR_TEMPLATE_MISPRIMING=f
 
 Analogous to PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE, except that
 these output tags apply to mispriming within the template sequence.
@@ -2379,7 +2396,9 @@ PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY; s is the id of
 corresponding library sequence.
 
 
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO}_MIN_SEQ_QUALITY=i
+PRIMER_LEFT_MIN_SEQ_QUALITY=i
+PRIMER_INTERNAL_MIN_SEQ_QUALITY=i
+PRIMER_RIGHT_MIN_SEQ_QUALITY=i
 
 i is the minimum _sequence_ quality within the primer
 or oligo (not to be confused with the PRIMER_PAIR_QUALITY
@@ -2387,7 +2406,8 @@ output tag, which is really the value of the objective
 function.)
 
 
-PRIMER_{LEFT,RIGHT}_END_STABILITY=f
+PRIMER_LEFT_END_STABILITY=f
+PRIMER_RIGHT_END_STABILITY=f
 
 f is the delta G of disruption of the five 3' bases of the
 primer.
@@ -2498,8 +2518,18 @@ In all of the error cases above Primer3 prints a message to stderr.
 
 25. THE PRIMER3 WWW INTERFACE
 =============================
+There are two web interfaces available :
+The Whitehead Institute for Biomedical Research provides a basic
+web-based front end to primer3 named primer3web at
+http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi
+
+The Wageningen University Laboratory of Bioinformatics provides a enhanced 
+web-based front end to primer3 named primer3plus at
+http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi
+
 This distribution does not contain the Primer3 WWW interface.
-Web interface code is likely available at (or linked to from)
+
+Web interface code is available at
 http://sourceforge.net/projects/primer3/.
 
 

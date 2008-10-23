@@ -176,6 +176,31 @@ sub get_node_content {
 	return $txt;
 }
 
+##################################################
+# returns the html for the content of plain_page #
+##################################################
+sub get_node_content_array {
+	my $root = shift;
+	my $node = shift;
+	
+	my @xml = $root->getElementsByTagName($node);
+
+	my @array;
+	
+	if (!(defined ($xml[0]))) {
+		$array[0] = "";
+		return @array;
+	}
+	my $i = 0;
+	while (defined ($xml[$i])) {
+		$array[$i] = $xml[$i]->textContent();
+		$i++;
+	}
+
+	return @array;
+}
+
+
 ##########################################
 # Writes a string int a File and returns #
 #      0 for success                     #
@@ -253,7 +278,7 @@ sub createReadmeTxt {
 		}
 		if ($textblock_holder eq "outputTags") {
 			$txt_string =~ s/\n$//;
-			$txt_string .= printOutputTags();
+			$txt_string .= printTags("output");
 		}
 	}
 	
@@ -265,6 +290,8 @@ sub createReadmeTxt {
 
 	# Replace HTML decorations	
 	$txt_string =~ s/<br \/>//g;
+	$txt_string =~ s/<h3>//g;
+	$txt_string =~ s/<\/h3>//g;
 	$txt_string =~ s/<p>//g;
 	$txt_string =~ s/<\/p>//g;
 	$txt_string =~ s/<link>//g;
@@ -280,74 +307,75 @@ sub createReadmeTxt {
 	
 
 	# Write the files to the disk
-	my $output_file = $output_folder. "readme.txt";
+	my $output_file = $output_folder. "primer3_manual.txt";
 	string2file($output_file, $txt_string);
 
 	return 0;
 }
 
-######################################
-# prints all tags of a certain group #
-######################################
+
+#########################################
+# prints all tags of a certain group    #
+# $text can limit the output to certain #
+# tags, "output" prints all tags        #
+#########################################
 sub printTags {
 	my $text = shift;
 	my $output;
-	my $tagCount = 0;	
+	my $tagCount = 0;
+	my @tags;
+	my $tagName;
+	my $dataType;
+	my $default;
+	my $optional;
+	my $description;
+
+	if ($text eq "output"){
+		@tags = @outTagTags;
+	} else {
+		@tags = @xml_tags;
+	}
 	# Now print out all tags
-	foreach my $tag_holder (@xml_tags) {
+	foreach my $tag_holder (@tags) {
 		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $default = get_node_content($tag_holder, "default");
-		my $description = get_node_content($tag_holder, "description");
+		my @tagsNames = get_node_content_array($tag_holder, "tagName");
+		$dataType = get_node_content($tag_holder, "dataType");
+		$default = get_node_content($tag_holder, "default");
+		$optional = get_node_content($tag_holder, "optional");
+		$description = get_node_content($tag_holder, "description");
 		
-		if ($tagName =~ /^$text/) {
+		
+		if (($tagsNames[0] =~ /^$text/) and ($text ne "output")) {
+			foreach $tagName (@tagsNames) {
+				$output .= "<h3><a name=\"$tagName\">".$tagName." (";
+				$output .= $dataType."; default ".$default.")</a></h3>\n";
+			}
+			
 			$tagCount++;
 			
 			# Assemble the txt file
-			$output .= $tagName." (".$dataType."; default ".$default.")\n\n";
-			$output .= "$description\n\n\n";
+			$output .= "\n$description\n\n\n";
+		}
+
+		if ($text eq "output") {
+			foreach $tagName (@tagsNames) {
+				# Assemble the txt file
+				$output .= "<h3><a name=\"$tagName\">";
+				$output .= $tagName."=".$dataType;
+				if ($optional eq "Y"){
+					$output .= " (*)";
+				}
+				$output .= "</a></h3>\n";
+			}
+			$tagCount++;
+			
+			# Assemble the txt file
+			$output .= "\n$description\n\n\n";
 		}
 		
 	}
 
 	print "Printed $tagCount $text - Tags in readme.txt\n";
-	
-	return $output;
-}
-
-
-######################################
-# prints all tags of a certain group #
-######################################
-sub printOutputTags {
-	my $output;
-	my $tagCount = 0;	
-	# Now print out all tags
-	foreach my $tag_holder (@outTagTags) {
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $optional = get_node_content($tag_holder, "optional");
-		my $description = get_node_content($tag_holder, "description");
-				
-		$tagCount++;
-		
-		$tagName =~ s/_RLRI_/_\{LEFT,RIGHT,INTERNAL_OLIGO\}_/;
-		$tagName =~ s/_RLRP_/_\{LEFT,RIGHT,PAIR\}_/;
-		$tagName =~ s/_RLR_/_\{LEFT,RIGHT\}_/;
-		
-		# Assemble the txt file
-		$output .= $tagName."=".$dataType;
-		if ($optional eq "Y"){
-			$output .= " (*)";
-		}
-		$output .= "\n\n";
-		$output .= "$description\n\n\n";
-			
-	}
-
-	print "Printed $tagCount output Tags in readme.txt\n";
 	
 	return $output;
 }
@@ -451,19 +479,19 @@ sub createReadmeHtml {
 		}
 		if ($textblock_holder eq "sequenceTags") {
 			$html_string =~ s/\n$//;
-			$html_string .= printHTMLTags("SEQUENCE_");
+			$html_string .= printTags("SEQUENCE_");
 		}
 		if ($textblock_holder eq "globalTags") {
 			$html_string =~ s/\n$//;
-			$html_string .= printHTMLTags("PRIMER_");
+			$html_string .= printTags("PRIMER_");
 		}
 		if ($textblock_holder eq "programTags") {
 			$html_string =~ s/\n$//;
-			$html_string .= printHTMLTags("P3_");
+			$html_string .= printTags("P3_");
 		}
 		if ($textblock_holder eq "outputTags") {
 			$html_string =~ s/\n$//;
-			$html_string .= printHTMLOutputTags();
+			$html_string .= printTags("output");
 		}
 	}
 
@@ -489,78 +517,10 @@ sub createReadmeHtml {
 	$html_string =~ s/<p3_anchor>(.*?)<\/p3_anchor>/<a href=\"#$1\">$1<\/a>/g;
 	
 	# Write the files to the disk
-	my $output_file = $output_folder. "readme.htm";
+	my $output_file = $output_folder. "primer3_manual.htm";
 	string2file($output_file, $html_string);
 
 	return 0;
-}
-
-######################################
-# prints all tags of a certain group #
-######################################
-sub printHTMLTags {
-	my $text = shift;
-	my $output;
-	my $tagCount = 0;	
-	# Now print out all tags
-	foreach my $tag_holder (@xml_tags) {
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $default = get_node_content($tag_holder, "default");
-		my $description = get_node_content($tag_holder, "description");
-		
-		if ($tagName =~ /^$text/) {
-			$tagCount++;
-			
-			# Assemble the html file
-			$output .= "<h3><a name=\"$tagName\">".$tagName."</a></h3>\n\n<p>(";
-			$output .= $dataType."; default ".$default.")</p>\n\n";
-			$output .= "$description\n\n\n";
-		}
-		
-	}
-
-	print "Printed $tagCount $text - Tags in readme.htm\n";
-	
-	return $output;
-}
-
-
-######################################
-# prints all tags of a certain group #
-######################################
-sub printHTMLOutputTags {
-	my $output;
-	my $tagCount = 0;	
-	# Now print out all tags
-	foreach my $tag_holder (@outTagTags) {
-		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
-		my $dataType = get_node_content($tag_holder, "dataType");
-		my $optional = get_node_content($tag_holder, "optional");
-		my $description = get_node_content($tag_holder, "description");
-				
-		$tagCount++;
-		
-		$tagName =~ s/_RLRI_/_\{LEFT,RIGHT,INTERNAL_OLIGO\}_/;
-		$tagName =~ s/_RLRP_/_\{LEFT,RIGHT,PAIR\}_/;
-		$tagName =~ s/_RLR_/_\{LEFT,RIGHT\}_/;
-		
-		# Assemble the txt file
-		$output .= "<h3><a name=\"$tagName\">";
-		$output .= $tagName."=".$dataType;
-		if ($optional eq "Y"){
-			$output .= " (*)";
-		}
-		$output .= "</a></h3>\n\n";
-		$output .= "$description\n\n\n";
-			
-	}
-
-	print "Printed $tagCount output Tags in readme.htm\n";
-	
-	return $output;
 }
 
 

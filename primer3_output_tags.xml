@@ -96,7 +96,9 @@ length.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_EXPLAIN</tagName>
+	<tagName>PRIMER_LEFT_EXPLAIN</tagName>
+	<tagName>PRIMER_INTERNAL_EXPLAIN</tagName>
+	<tagName>PRIMER_RIGHT_EXPLAIN</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -152,7 +154,9 @@ PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_PENALTY</tagName>
+	<tagName>PRIMER_LEFT_PENALTY</tagName>
+	<tagName>PRIMER_INTERNAL_PENALTY</tagName>
+	<tagName>PRIMER_RIGHT_PENALTY</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -165,7 +169,9 @@ objective function.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_SEQUENCE</tagName>
+	<tagName>PRIMER_LEFT_SEQUENCE</tagName>
+	<tagName>PRIMER_INTERNAL_SEQUENCE</tagName>
+	<tagName>PRIMER_RIGHT_SEQUENCE</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -181,7 +187,9 @@ from the input SEQUENCE.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_TM</tagName>
+	<tagName>PRIMER_LEFT_TM</tagName>
+	<tagName>PRIMER_INTERNAL_TM</tagName>
+	<tagName>PRIMER_RIGHT_TM</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -193,7 +201,9 @@ from the input SEQUENCE.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_GC_PERCENT</tagName>
+	<tagName>PRIMER_LEFT_GC_PERCENT</tagName>
+	<tagName>PRIMER_INTERNAL_GC_PERCENT</tagName>
+	<tagName>PRIMER_RIGHT_GC_PERCENT</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -206,7 +216,9 @@ of non-ambiguous bases).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_SELF_ANY</tagName>
+	<tagName>PRIMER_LEFT_SELF_ANY</tagName>
+	<tagName>PRIMER_INTERNAL_SELF_ANY</tagName>
+	<tagName>PRIMER_RIGHT_SELF_ANY</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -218,7 +230,9 @@ of non-ambiguous bases).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_SELF_END</tagName>
+	<tagName>PRIMER_LEFT_SELF_END</tagName>
+	<tagName>PRIMER_INTERNAL_SELF_END</tagName>
+	<tagName>PRIMER_RIGHT_SELF_END</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -269,7 +283,9 @@ this tag is absent if there are no warnings.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_PROBLEMS</tagName>
+	<tagName>PRIMER_LEFT_PROBLEMS</tagName>
+	<tagName>PRIMER_INTERNAL_PROBLEMS</tagName>
+	<tagName>PRIMER_RIGHT_PROBLEMS</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -287,7 +303,9 @@ is specified).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRP_MISPRIMING_SCORE</tagName>
+	<tagName>PRIMER_LEFT_MISPRIMING_SCORE</tagName>
+	<tagName>PRIMER_RIGHT_MISPRIMING_SCORE</tagName>
+	<tagName>PRIMER_PAIR_MISPRIMING_SCORE</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -304,7 +322,9 @@ more reasonable estimator of the likelihood of mispriming).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRP_TEMPLATE_MISPRIMING</tagName>
+	<tagName>PRIMER_LEFT_TEMPLATE_MISPRIMING</tagName>
+	<tagName>PRIMER_RIGHT_TEMPLATE_MISPRIMING</tagName>
+	<tagName>PRIMER_PAIR_TEMPLATE_MISPRIMING</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -386,7 +406,9 @@ corresponding library sequence.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLRI_MIN_SEQ_QUALITY</tagName>
+	<tagName>PRIMER_LEFT_MIN_SEQ_QUALITY</tagName>
+	<tagName>PRIMER_INTERNAL_MIN_SEQ_QUALITY</tagName>
+	<tagName>PRIMER_RIGHT_MIN_SEQ_QUALITY</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
@@ -401,7 +423,8 @@ function.)</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_RLR_END_STABILITY</tagName>
+	<tagName>PRIMER_LEFT_END_STABILITY</tagName>
+	<tagName>PRIMER_RIGHT_END_STABILITY</tagName>
 	<oldTag>
 		<oldTagName></oldTagName>
 		<version>3.0</version>
