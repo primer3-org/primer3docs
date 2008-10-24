@@ -3,6 +3,42 @@
 xmlns:xsi="http://primer3.sourceforge.net/XMLSchema-instance"
 xsi:schemaLocation="http://primer3.sourceforge.net/ primer3_doc_schema.xsd" version="1.0">
 <!--
+Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+Whitehead Institute for Biomedical Research, Steve Rozen
+(http://jura.wi.mit.edu/rozen), and Helen Skaletsky All rights
+reserved.
+
+    This file is part of the primer3 suite and libraries.
+
+    The primer3 suite and libraries are free software;
+    you can redistribute them and/or modify them under the terms
+    of the GNU General Public License as published by the Free
+    Software Foundation; either version 2 of the License, or (at
+    your option) any later version.
+
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software (file gpl-2.0.txt in the source
+    distribution); if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+	
 An example Tag with all possible options:
 	
 <tag>
@@ -118,22 +154,6 @@ the excluded region, and <tt><i>&lt;length&gt;</i></tt> is its length.  This tag
 useful for tasks such as excluding regions of low sequence
 quality or for excluding regions containing repetitive elements
 such as ALUs or LINEs.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_COMMENT</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_COMMENT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<oldTag>
-		<oldTagName>COMMENT</oldTagName>
-		<version>2.0</version>
-	</oldTag>
-	<dataType>string</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[<p>The value of this tag is ignored.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1879,6 +1899,22 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p> </p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_COMMENT</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_COMMENT</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<oldTag>
+		<oldTagName>COMMENT</oldTagName>
+		<version>2.0</version>
+	</oldTag>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The value of this tag is ignored.</p>]]>
 	</description>
 </tag>
 </primer3Doc>

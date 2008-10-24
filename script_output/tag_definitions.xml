@@ -77,14 +77,6 @@ such as ALUs or LINEs.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_COMMENT</tagName>
-	<dataType>string</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[<p>The value of this tag is ignored.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>SEQUENCE_QUALITY</tagName>
 	<dataType>quality list</dataType>
 	<default>empty</default>
@@ -1649,6 +1641,14 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p> </p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_COMMENT</tagName>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The value of this tag is ignored.</p>]]>
 	</description>
 </tag>
 </tagList>

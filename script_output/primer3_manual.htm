@@ -56,27 +56,29 @@
 </p>
 <h2><a name="copyrightLicense">1. COPYRIGHT AND LICENSE</a></h2>
 
-<p>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008<br>
+<p><pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://jura.wi.mit.edu/rozen), and Helen Skaletsky<br>
-All rights reserved.<br>
-<br>
-Most of primer3 is released under the following _new_ BSD license:<br>
-<br>
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:<br>
-<br>
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.<br>
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.<br>
-   * Neither the names of the copyright holders nor contributors may
-be used to endorse or promote products derived from this software
-without specific prior written permission.<br>
-<br>
+(http://jura.wi.mit.edu/rozen), and Helen Skaletsky All rights
+reserved.
+
+    This file is part of the primer3 suite and libraries.
+
+    The primer3 suite and libraries are free software;
+    you can redistribute them and/or modify them under the terms
+    of the GNU General Public License as published by the Free
+    Software Foundation; either version 2 of the License, or (at
+    your option) any later version.
+
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this software (file gpl-2.0.txt in the source
+    distribution); if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -87,10 +89,8 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br>
-<br>
-The oligtm library and tests are released under the GPL.  See
-file src/gpl.txt or go to <a href="http://www.gnu.org/licenses/gpl-2.0.txt">http://www.gnu.org/licenses/gpl-2.0.txt</a>.</p>
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre></p>
 
 <h2><a name="introduction">2. INTRODUCTION</a></h2>
 
@@ -933,11 +933,6 @@ The values of these tags persist between input boulder
 records until or unless they are explicitly reset. Errors 
 in "Global" input tags are fatal because they invalidate 
 the basic conditions under which primers are being picked.</p>
-<h3><a name="PRIMER_COMMENT">PRIMER_COMMENT (string; default empty)</a></h3>
-
-<p>The value of this tag is ignored.</p>
-
-
 <h3><a name="PRIMER_TASK">PRIMER_TASK (string; default pick_pcr_primers)</a></h3>
 
 <p>Probably the most important Tag. It tells primer3 what task to perform.
@@ -2011,6 +2006,11 @@ specified in <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LI
 <h3><a name="PRIMER_INTERNAL_WT_END_QUAL">PRIMER_INTERNAL_WT_END_QUAL (float; default 0.0)</a></h3>
 
 <p> </p>
+
+
+<h3><a name="PRIMER_COMMENT">PRIMER_COMMENT (string; default empty)</a></h3>
+
+<p>The value of this tag is ignored.</p>
 
 
 <h2><a name="programTags">16. "PROGRAM" INPUT TAGS</a></h2>
