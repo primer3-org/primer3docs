@@ -77,19 +77,18 @@ such as ALUs or LINEs.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>SEQUENCE_QUALITY</tagName>
-	<dataType>quality list</dataType>
+	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
+	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
-<![CDATA[<p>A list of space separated integers. There must be exactly
-one integer for each base in <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor> if this argument is
-non-empty.  For example, for the sequence ANNTTCA...
-<p3_anchor>SEQUENCE_QUALITY</p3_anchor> might be 45 10 0 50 30 34 50 67 ....
-High numbers indicate high confidence in the base called at
-that position and low numbers indicate low confidence in the
-base call at that position.  This parameter is only relevant
-if you are using a base calling program that provides
-quality information (for example phred).</p>]]>
+<![CDATA[<p>Middle oligos may not overlap any region specified by this tag.
+The associated value must be a space-separated list of
+
+<start>,<length>
+
+pairs, where <start> is the index of the first base of
+an excluded region, and <length> is its length.  Often one would
+make Target regions excluded regions for internal oligos.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -100,6 +99,15 @@ quality information (for example phred).</p>]]>
 <![CDATA[<p>The sequence of a left primer to check and around which to design
 right primers and optional internal oligos.  Must be a substring
 of <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
+	<dataType>nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The sequence of an internal oligo to check and around which to
+design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -136,6 +144,22 @@ parameter.<br />
 Primer3 selects the position of the right primer by scanning
 right from the left primer for a stop codon.  Ideally the right
 primer will end at or after the stop codon.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>SEQUENCE_QUALITY</tagName>
+	<dataType>quality list</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>A list of space separated integers. There must be exactly
+one integer for each base in <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor> if this argument is
+non-empty.  For example, for the sequence ANNTTCA...
+<p3_anchor>SEQUENCE_QUALITY</p3_anchor> might be 45 10 0 50 30 34 50 67 ....
+High numbers indicate high confidence in the base called at
+that position and low numbers indicate low confidence in the
+base call at that position.  This parameter is only relevant
+if you are using a base calling program that provides
+quality information (for example phred).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -284,6 +308,18 @@ product).</p>]]>
 	<description>
 <![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
 pick a right primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_NUM_RETURN</tagName>
+	<dataType>int</dataType>
+	<default>5</default>
+	<description>
+<![CDATA[<p>The maximum number of primer (pairs) to return.  Primer pairs
+returned are sorted by their &quot;quality&quot;, in other words by the
+value of the objective function (where a lower number indicates a
+better primer pair).  Caution: setting this parameter to a large
+value will increase running time.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -535,6 +571,14 @@ oligo.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_MIN_TM</tagName>
+	<dataType>float</dataType>
+	<default>57.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_TM</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_OPT_TM</tagName>
 	<dataType>float</dataType>
 	<default>60.0</default>
@@ -547,12 +591,28 @@ information.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_OPT_TM</tagName>
+	<dataType>float</dataType>
+	<default>60.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_OPT_TM</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_MAX_TM</tagName>
 	<dataType>float</dataType>
 	<default>63.0</default>
 	<description>
 <![CDATA[<p>Maximum acceptable melting temperature(Celsius) for a primer
 oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_TM</tagName>
+	<dataType>float</dataType>
+	<default>63.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_TM</p3_anchor> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -565,12 +625,53 @@ temperatures of the left and right primers.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_WT_TM_LT</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for primers with Tm under <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_TM_LT</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_TM_GT</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for primers with Tm over <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_TM_GT</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PRODUCT_MIN_TM</tagName>
 	<dataType>float</dataType>
 	<default>-1000000.0</default>
 	<description>
 <![CDATA[<p>The minimum allowed melting temperature of the amplicon.  Please
 see the documentation on <p3_anchor>PRIMER_PRODUCT_MAX_TM</p3_anchor> for details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PRODUCT_OPT_TM</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>The optimum melting temperature for the PCR product. 0 indicates
+that there is no optimum temperature.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -603,6 +704,24 @@ calculating both the primer melting temperature and the oligo
 melting temperature.  If you are planning to use the PCR product
 for hybridization later this behavior will not give you the Tm
 under hybridization conditions.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_LT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for products with a Tm lower than 
+<p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_GT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for products with a Tm higher than  
+<p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -651,7 +770,6 @@ where R is the gas constant (1.987 cal/K mol) and C is the DNA
 concentration.<br />
 <pre>
 deltaH(predicted) =
-
   = dH(CG) + dH(GT) + dH(TG) + .. + dH(CT) +
      + dH(init.w.term.GC) + dH(init.w.term.AT) =
 
@@ -664,7 +782,6 @@ initiation parameters for duplex formation: 'initiation with
 terminal GC' and 'initiation with terminal AT'
 <pre>
 deltaS(predicted) =
-
   = dS(CG) + dS(GT) + dS(TG) + .. + dS(CT) +
     + dS(init.w.term.GC) + dS(init.w.term.AT) =
 
@@ -695,6 +812,14 @@ of divalent cations (in this case you also should use tag <p3_anchor>PRIMER_DNTP
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_SALT_MONOVALENT</tagName>
+	<dataType>float</dataType>
+	<default>50.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SALT_MONOVALENT</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_SALT_DIVALENT</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -721,6 +846,14 @@ melting temperature. Use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> to specify 
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_SALT_DIVALENT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_DNTP_CONC</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -728,6 +861,14 @@ melting temperature. Use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> to specify 
 <![CDATA[<p>The millimolar concentration of deoxyribonucleotide triphosphate. This
 argument is considered only if <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> is specified. See
 <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_DNTP_CONC</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -759,6 +900,210 @@ Biochemistry 43:3537-54 <link>http://dx.doi.org/10.1021/bi034621r</link>].</p>]]
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_DNA_CONC</tagName>
+	<dataType>float</dataType>
+	<default>50.0</default>
+	<description>
+<![CDATA[<p>The nanomolar (nM) concentration of annealing oligos in the PCR.
+Primer3 uses this argument to calculate oligo melting 
+temperatures.  The default (50nM) works well with the standard
+protocol used at the Whitehead/MIT Center for Genome 
+Research--0.5 microliters of 20 micromolar concentration for each
+primer oligo in a 20 microliter reaction with 10 nanograms
+template, 0.025 units/microliter Taq polymerase in 0.1 mM each
+dNTP, 1.5mM MgCl2, 50mM KCl, 10mM Tris-HCL (pH 9.3) using 35
+cycles with an annealing temperature of 56 degrees Celsius.  This
+parameter corresponds to 'c' in equation (ii) of the paper
+[Rychlik W, Spencer WJ and Rhoads
+RE (1990) "Optimization of the annealing temperature for DNA
+amplification in vitro", Nucleic Acids Res 18:6409-12
+<link>http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783</link>],
+where a suitable value (for a
+lower initial concentration of template) is "empirically
+determined".  The value of this parameter is less than the actual
+concentration of oligos in the reaction because it is the
+concentration of annealing oligos, which in turn depends on the
+amount of template (including PCR product) in a given cycle.
+This concentration increases a great deal during a PCR;
+fortunately PCR seems quite robust for a variety of oligo melting
+temperatures.<br />
+<br />
+See ADVICE FOR PICKING PRIMERS.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_DNA_CONC</tagName>
+	<dataType>float</dataType>
+	<default>50.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_DNA_CONC</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_SELF_ANY</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>8.00</default>
+	<description>
+<![CDATA[<p>The maximum allowable local alignment score when testing a single
+primer for (local) self-complementarity and the maximum allowable
+local alignment score when testing for complementarity between
+left and right primers.  Local self-complementarity is taken to
+predict the tendency of primers to anneal to each other without
+necessarily causing self-priming in the PCR.  The scoring system
+gives 1.00 for complementary bases, -0.25 for a match of any base
+(or N) with an N, -1.00 for a mismatch, and -2.00 for a gap.
+Only single-base-pair gaps are allowed.  For example, the 
+alignment
+<pre>
+   5' ATCGNA 3'
+      || | |
+   3' TA-CGT 5'
+</pre>
+is allowed (and yields a score of 1.75), but the alignment
+<pre>
+   5' ATCCGNA 3'
+      ||  | |
+   3' TA--CGT 5'
+</pre>
+is not considered.  Scores are non-negative, and a score of 0.00
+indicates that there is no reasonable local alignment between two
+oligos.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_SELF_ANY</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>12.00</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SELF_ANY</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_SELF_END</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>3.00</default>
+	<description>
+<![CDATA[<p>The maximum allowable 3'-anchored global alignment score when
+testing a single primer for self-complementarity, and the maximum
+allowable 3'-anchored global alignment score when testing for
+complementarity between left and right primers.  The 3'-anchored
+global alignment score is taken to predict the likelihood of
+PCR-priming primer-dimers, for example
+<pre>
+   5' ATGCCCTAGCTTCCGGATG 3'
+                ||| |||||
+             3' AAGTCCTACATTTAGCCTAGT 5'
+</pre>
+or
+<pre>
+   5` AGGCTATGGGCCTCGCGA 3'
+                  ||||||
+               3' AGCGCTCCGGGTATCGGA 5'
+</pre>
+The scoring system is as for the Maximum Complementarity
+argument.  In the examples above the scores are 7.00 and 6.00
+respectively.  Scores are non-negative, and a score of 0.00
+indicates that there is no reasonable 3'-anchored global
+alignment between two oligos.  In order to estimate 3'-anchored
+global alignments for candidate primers and primer pairs, Primer
+assumes that the sequence from which to choose primers is
+presented 5'->3'.  It is nonsensical to provide a larger value
+for this parameter than for the Maximum (local) Complementarity
+parameter because the score of a local alignment will always be at
+least as great as the score of a global alignment.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_SELF_END</tagName>
+	<dataType>decimal 9999.99</dataType>
+	<default>12.00</default>
+	<description>
+<![CDATA[<p><p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> is meaningless when applied
+to internal oligos used for hybridization-based detection, since
+primer-dimer will not occur.  We recommend that
+<p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> be set at least as high as
+<p3_anchor>PRIMER_INTERNAL_SELF_ANY</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_NUM_NS_ACCEPTED</tagName>
+	<dataType>int</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>Maximum number of unknown bases (N) allowable in any primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_NUM_NS_ACCEPTED</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_NUM_NS</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for primers with more than <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> Ns.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_NUM_NS</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MAX_POLY_X</tagName>
+	<dataType>int</dataType>
+	<default>5</default>
+	<description>
+<![CDATA[<p>The maximum allowable length of a mononucleotide repeat,
+for example AAAAAA.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_POLY_X</tagName>
+	<dataType>int</dataType>
+	<default>5</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_POLY_X</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
+	<dataType>int</dataType>
+	<default>-1</default>
+	<description>
+<![CDATA[<p>Minimum number of base pairs between the 3' ends of any two left or ny
+two right primers when returning num_return primer pairs.  The
+objective is get 'truly different' primer pairs.<br />
+<br />
+Primers that end at e.g.  30 and 31 have a three-prime distance of 1.<br />
+<br />
+-1 indicates a primer pair is ok if it has not already appeared in the
+output list (default behavior and behavior in previous releases). This
+is the most liberal behavior.<br />
+<br />
+0 indicates a primer pair is ok if not the left or the right primer 
+already appeared in any of the previous pairs.<br />
+<br />
+n > 0 indicates that a primer pair is ok if:<br />
+<br />
+NOT(3' end of left primer closer than n to the 3' end a left primer in
+an existing pair)<br />
+<br />
+AND<br />
+<br />
+NOT(3' end of right primer closer than n to the 3' end of right primer
+in an existing pair)</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PICK_ANYWAY</tagName>
 	<dataType>boolean</dataType>
 	<default>0</default>
@@ -766,6 +1111,85 @@ Biochemistry 43:3537-54 <link>http://dx.doi.org/10.1021/bi034621r</link>].</p>]]
 <![CDATA[<p>If true use primer provided in <p3_anchor>SEQUENCE_PRIMER</p3_anchor>, <p3_anchor>SEQUENCE_PRIMER_REVCOMP</p3_anchor>, 
 or <p3_anchor>SEQUENCE_INTERNAL_OLIGO</p3_anchor> even if it violates specific 
 constraints.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_SHOW_OLIGO_PROBLEMS</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>If non-zero, cause the tags
+PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO_.._PROBLEMS, to be
+generated.  These tags have empty arguments when there are
+no problems with the corresponding oligo or primer, and
+otherwise list the problems (constraint violations)
+associated with primer or oligo that primer3 was forced to
+choose (for example, as sometimes when <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor>=1
+and PRIMER...INPUT is specified).</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_LOWERCASE_MASKING</tagName>
+	<dataType>int</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>This option allows for intelligent design of primers in sequence in
+which masked regions (for example repeat-masked regions) are
+lower-cased.  (New in v. 1.1.0, added by Maido Remm and Triinu
+Koressaar)<br />
+<br />
+A value of 1 directs primer3 to reject primers overlapping
+lowercase a base exactly at the 3' end.<br />
+<br />
+This property relies on the assumption that masked features
+(e.g. repeats) can partly overlap primer, but they cannot overlap
+the 3'-end of the primer.  In other words, lowercase bases at
+other positions in the primer are accepted, assuming that the
+masked features do not influence the primer performance if they
+do not overlap the 3'-end of primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_EXPLAIN_FLAG</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>If this flag is 1 (non-0), produce <p3_anchor>PRIMER_LEFT_EXPLAIN</p3_anchor>,
+<p3_anchor>PRIMER_RIGHT_EXPLAIN</p3_anchor>, and <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor> output
+tags, which are intended to provide information on the number of
+oligos and primer pairs that primer3 examined, and statistics on
+the number discarded for various reasons.  If -format_output is
+set similar information is produced in the user-oriented output.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_LIBERAL_BASE</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>This parameter provides a quick-and-dirty way to get primer3 to
+accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
+all unrecognized bases to N).  If you wish to include an
+ambiguous base in an oligo, you must set <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> to a
+1 (non-0) value.<br />
+<br />
+Perhaps '-' and '* ' should be squeezed out rather than changed
+to 'N', but currently they simply get converted to N's.  The authors
+invite user comments.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_FIRST_BASE_INDEX</tagName>
+	<dataType>int</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>This parameter is the index of the first base in the input
+sequence.  For input and output using 1-based indexing (such as
+that used in GenBank and to which many users are accustomed) set
+this parameter to 1.  For input and output using 0-based indexing
+set this parameter to 0.  (This parameter also affects the
+indexes in the contents of the files produced when the primer
+file flag is set.)</p>]]>
 	</description>
 </tag>
 <tag>
@@ -783,8 +1207,8 @@ file below.  If this parameter is specified then primer3 locally
 aligns each candidate primer against each library sequence and
 rejects those primers for which the local alignment score times a
 specified weight (see below) exceeds <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>.
-(The maximum value of the weight is arbitrarily set to 100.0.)
-
+(The maximum value of the weight is arbitrarily set to 100.0.)<br />
+<br />
 Each sequence entry in the FASTA-format file must begin with an
 "id line" that starts with '>'.  The contents of the id line is
 "slightly restricted" in that primer3 parses everything after any
@@ -793,8 +1217,8 @@ weight mentioned above.  If the id line contains no asterisk then
 the weight defaults to 1.0.  The alignment scoring system used is
 the same as for calculating complementarity among oligos (e.g.
 <p3_anchor>PRIMER_SELF_ANY</p3_anchor>), except for the handling of IUB/IUPAC ambiguity
-codes (discussed below).  
-
+codes (discussed below).<br />
+<br />
 The remainder of an entry contains the sequence as lines
 following the id line up until a line starting with '>' or
 the end of the file.  Whitespace and newlines are ignored.
@@ -803,20 +1227,20 @@ IUB/IUPAC 'ambiguity' codes ('R, 'Y', 'K', 'M', 'S', 'W',
 'N', including lower case) are retained. For technical
 reasons the length of the sequence must be >= 3. Of course,
 sequences of length < 10 or so are probably useless, but
-will be accepted without complaint.
-
+will be accepted without complaint.<br />
+<br />
 WARNING: always set <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>=0
 if any sequence in the library contains strings of 'N's:
-NNNNNNNNNNNNNNNNNNNN.
-NOWWW
-There are no restrictions on line length.
-
+NNNNNNNNNNNNNNNNNNNN.<br />
+NOWWW<br />
+There are no restrictions on line length.<br />
+<br />
 An empty value for this parameter indicates that no repeat
 library should be used and "turns off" the use of a
-previously specified library.
-
+previously specified library.<br />
+<br />
 Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
-others, 1995-1996, ftp://ncbi.nlm.nih.gov/repository/repbase)
+others, 1995-1996, <link>ftp://ncbi.nlm.nih.gov/repository/repbase</link>)
 is an excellent source of repeat sequences and pointers to the
 literature. (The Repbase files need to be converted to Fasta
 format before they can be used by primer3.)</p>]]>
@@ -886,257 +1310,6 @@ the template is never treated as a consensus (see
 <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).  Primer3 does not
 check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_EXPLAIN_FLAG</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>If this flag is 1 (non-0), produce <p3_anchor>PRIMER_LEFT_EXPLAIN</p3_anchor>,
-<p3_anchor>PRIMER_RIGHT_EXPLAIN</p3_anchor>, and <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor> output
-tags, which are intended to provide information on the number of
-oligos and primer pairs that primer3 examined, and statistics on
-the number discarded for various reasons.  If -format_output is
-set similar information is produced in the user-oriented output.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>P3_SHOW_OLIGO_PROBLEMS</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>If non-zero, cause the tags
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO_.._PROBLEMS, to be
-generated.  These tags have empty arguments when there are
-no problems with the corresponding oligo or primer, and
-otherwise list the problems (constraint violations)
-associated with primer or oligo that primer3 was forced to
-choose (for example, as sometimes when <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor>=1
-and PRIMER...INPUT is specified).</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
-	<dataType>int</dataType>
-	<default>-1</default>
-	<description>
-<![CDATA[<p>Minimum number of base pairs between the 3' ends of any two left or ny
-two right primers when returning num_return primer pairs.  The
-objective is get 'truly different' primer pairs.
-
-Primers that end at e.g.  30 and 31 have a three-prime distance of 1.
-
--1 indicates a primer pair is ok if it has not already appeared in the
-output list (default behavior and behavior in previous releases). This
-is the most liberal behavior.
-
-0 indicates a primer pair is ok if not the left or the right primer 
-already appeared in any of the previous pairs.
-
-n > 0 indicates that a primer pair is ok if:
-
-NOT(3' end of left primer closer than n to the 3' end a left primer in
-an existing pair)
-
-AND
-
-NOT(3' end of right primer closer than n to the 3' end of right primer
-in an existing pair)</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_LOWERCASE_MASKING</tagName>
-	<dataType>int</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>This option allows for intelligent design of primers in sequence in
-which masked regions (for example repeat-masked regions) are
-lower-cased.  (New in v. 1.1.0, added by Maido Remm and Triinu
-Koressaar)
-
-A value of 1 directs primer3 to reject primers overlapping
-lowercase a base exactly at the 3' end.
-
-This property relies on the assumption that masked features
-(e.g. repeats) can partly overlap primer, but they cannot overlap
-the 3'-end of the primer.  In other words, lowercase bases at
-other positions in the primer are accepted, assuming that the
-masked features do not influence the primer performance if they
-do not overlap the 3'-end of primer.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_DNA_CONC</tagName>
-	<dataType>float</dataType>
-	<default>50.0</default>
-	<description>
-<![CDATA[<p>The nanomolar (nM) concentration of annealing oligos in the PCR.
-Primer3 uses this argument to calculate oligo melting
-temperatures.  The default (50nM) works well with the standard
-protocol used at the Whitehead/MIT Center for Genome
-Research--0.5 microliters of 20 micromolar concentration for each
-primer oligo in a 20 microliter reaction with 10 nanograms
-template, 0.025 units/microliter Taq polymerase in 0.1 mM each
-dNTP, 1.5mM MgCl2, 50mM KCl, 10mM Tris-HCL (pH 9.3) using 35
-cycles with an annealing temperature of 56 degrees Celsius.  This
-parameter corresponds to 'c' in equation (ii) of the paper
-[Rychlik W, Spencer WJ and Rhoads
-RE (1990) "Optimization of the annealing temperature for DNA
-amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783],
-where a suitable value (for a
-lower initial concentration of template) is "empirically
-determined".  The value of this parameter is less than the actual
-concentration of oligos in the reaction because it is the
-concentration of annealing oligos, which in turn depends on the
-amount of template (including PCR product) in a given cycle.
-This concentration increases a great deal during a PCR;
-fortunately PCR seems quite robust for a variety of oligo melting
-temperatures.
-
-See ADVICE FOR PICKING PRIMERS.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_NUM_NS_ACCEPTED</tagName>
-	<dataType>int</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>Maximum number of unknown bases (N) allowable in any primer.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_SELF_ANY</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>8.00</default>
-	<description>
-<![CDATA[<p>The maximum allowable local alignment score when testing a single
-primer for (local) self-complementarity and the maximum allowable
-local alignment score when testing for complementarity between
-left and right primers.  Local self-complementarity is taken to
-predict the tendency of primers to anneal to each other without
-necessarily causing self-priming in the PCR.  The scoring system
-gives 1.00 for complementary bases, -0.25 for a match of any base
-(or N) with an N, -1.00 for a mismatch, and -2.00 for a gap.
-Only single-base-pair gaps are allowed.  For example, the
-alignment
-
-5' ATCGNA 3'
-   || | |
-3' TA-CGT 5'
-
-is allowed (and yields a score of 1.75), but the alignment
-
-5' ATCCGNA 3'
-   ||  | |
-3' TA--CGT 5'
-
-is not considered.  Scores are non-negative, and a score of 0.00
-indicates that there is no reasonable local alignment between two
-oligos.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_SELF_END</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>3.00</default>
-	<description>
-<![CDATA[<p>The maximum allowable 3'-anchored global alignment score when
-testing a single primer for self-complementarity, and the maximum
-allowable 3'-anchored global alignment score when testing for
-complementarity between left and right primers.  The 3'-anchored
-global alignment score is taken to predict the likelihood of
-PCR-priming primer-dimers, for example
-
-5' ATGCCCTAGCTTCCGGATG 3'
-             ||| |||||
-          3' AAGTCCTACATTTAGCCTAGT 5'
-
-or
-
-5` AGGCTATGGGCCTCGCGA 3'
-               ||||||
-            3' AGCGCTCCGGGTATCGGA 5'
-
-The scoring system is as for the Maximum Complementarity
-argument.  In the examples above the scores are 7.00 and 6.00
-respectively.  Scores are non-negative, and a score of 0.00
-indicates that there is no reasonable 3'-anchored global
-alignment between two oligos.  In order to estimate 3'-anchored
-global alignments for candidate primers and primer pairs, Primer
-assumes that the sequence from which to choose primers is
-presented 5'->3'.  It is nonsensical to provide a larger value
-for this parameter than for the Maximum (local) Complementarity
-parameter because the score of a local alignment will always be at
-least as great as the score of a global alignment.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>P3_FILE_FLAG</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
-files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File <sequence_id>.for lists all
-acceptable left primers for <sequence_id>, and <sequence_id>.rev
-lists all acceptable right primers for <sequence_id>, where
-<sequence_id> is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
-must be supplied).  In addition, if the input tag
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is 1 (non-0), primer3 produces a file
-<sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_MAX_POLY_X</tagName>
-	<dataType>int</dataType>
-	<default>5</default>
-	<description>
-<![CDATA[<p>The maximum allowable length of a mononucleotide repeat,
-for example AAAAAA.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_LIBERAL_BASE</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>This parameter provides a quick-and-dirty way to get primer3 to
-accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
-all unrecognized bases to N).  If you wish to include an
-ambiguous
-base in an oligo, you must set <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> to a
-1 (non-0) value.
-
-Perhaps '-' and '* ' should be squeezed out rather than changed
-to 'N', but currently they simply get converted to N's.  The authors
-invite user comments.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_NUM_RETURN</tagName>
-	<dataType>int</dataType>
-	<default>5</default>
-	<description>
-<![CDATA[<p>The maximum number of primer (pairs) to return.  Primer pairs
-returned are sorted by their &quot;quality&quot;, in other words by the
-value of the objective function (where a lower number indicates a
-better primer pair).  Caution: setting this parameter to a large
-value will increase running time.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_FIRST_BASE_INDEX</tagName>
-	<dataType>int</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>This parameter is the index of the first base in the input
-sequence.  For input and output using 1-based indexing (such as
-that used in GenBank and to which many users are accustomed) set
-this parameter to 1.  For input and output using 0-based indexing
-set this parameter to 0.  (This parameter also affects the
-indexes in the contents of the files produced when the primer
-file flag is set.)</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1228,15 +1401,6 @@ values for the most stable and for the most labile 5mer are
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_PRODUCT_OPT_TM</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p>The optimum melting temperature for the PCR product. 0 indicates
-that there is no optimum temperature.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_SEQUENCING_LEAD</tagName>
 	<dataType>int</dataType>
 	<default>50</default>
@@ -1277,22 +1441,6 @@ which primer3plus picks the best primer.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_TM_GT</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p>Penalty weight for primers with Tm over <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_TM_LT</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p>Penalty weight for primers with Tm under <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1302,14 +1450,6 @@ which primer3plus picks the best primer.</p>]]>
 </tag>
 <tag>
 	<tagName>PRIMER_WT_COMPL_END</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -1405,22 +1545,6 @@ which primer3plus picks the best primer.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_LT</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_PRODUCT_TM_GT</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1434,114 +1558,6 @@ which primer3plus picks the best primer.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
-	<dataType>interval list</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[<p>Middle oligos may not overlap any region specified by this tag.
-The associated value must be a space-separated list of
-
-<start>,<length>
-
-pairs, where <start> is the index of the first base of
-an excluded region, and <length> is its length.  Often one would
-make Target regions excluded regions for internal oligos.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>SEQUENCE_INTERNAL_OLIGO</tagName>
-	<dataType>nucleotide sequence</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[<p>The sequence of an internal oligo to check and around which to
-design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_OPT_TM</tagName>
-	<dataType>float</dataType>
-	<default>60.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MIN_TM</tagName>
-	<dataType>float</dataType>
-	<default>57.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_TM</tagName>
-	<dataType>float</dataType>
-	<default>63.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_SALT_CONC</tagName>
-	<dataType>float</dataType>
-	<default>50.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_DIVALENT_CONC</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_DNTP_CONC</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_DNA_CONC</tagName>
-	<dataType>float</dataType>
-	<default>50.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_SELF_ANY</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>12.00</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_POLY_X</tagName>
-	<dataType>int</dataType>
-	<default>5</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_SELF_END</tagName>
-	<dataType>decimal 9999.99</dataType>
-	<default>12.00</default>
-	<description>
-<![CDATA[<p><p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> is meaningless when applied
-to internal oligos used for hybridization-based detection, since
-primer-dimer will not occur.  We recommend that
-<p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> be set at least as high as
-<p3_anchor>PRIMER_INTERNAL_SELF_ANY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1581,22 +1597,6 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_TM_GT</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_TM_LT</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_INTERNAL_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1606,14 +1606,6 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 </tag>
 <tag>
 	<tagName>PRIMER_INTERNAL_WT_COMPL_END</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_NUM_NS</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -1650,6 +1642,21 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>The value of this tag is ignored.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3_FILE_FLAG</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
+files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File <sequence_id>.for lists all
+acceptable left primers for <sequence_id>, and <sequence_id>.rev
+lists all acceptable right primers for <sequence_id>, where
+<sequence_id> is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
+must be supplied).  In addition, if the input tag
+<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is 1 (non-0), primer3 produces a file
+<sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>
 </tagList>
