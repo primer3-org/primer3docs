@@ -421,6 +421,8 @@ SEQUENCE_TEMPLATE=ATG...
 ...
 =
 </pre> 
+In the first line "Primer3 File - http://primer3.sourceforge.net" 
+without tailing space. In the second line "P3_FILE_TYPE=settings".
 Valid values for P3_FILE_TYPE are all_parameters, sequence and 
 settings. Up to now, only settings is supported. The third line 
 has to be empty. It is strongly adviced to describe the settings 
