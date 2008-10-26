@@ -554,10 +554,12 @@ sub createReadmeHtml {
 		}
 		if ($textblock_holder eq "sequenceTags") {
 			$html_string =~ s/\n$//;
+			$html_string .= printTable("SEQUENCE_");
 			$html_string .= printTags("SEQUENCE_");
 		}
 		if ($textblock_holder eq "globalTags") {
 			$html_string =~ s/\n$//;
+			$html_string .= printTable("PRIMER_");
 			$html_string .= printTags("PRIMER_");
 		}
 		if ($textblock_holder eq "programTags") {
@@ -596,6 +598,85 @@ sub createReadmeHtml {
 	string2file($output_file, $html_string);
 
 	return 0;
+}
+
+
+####################################################
+# prints a table of all tags of a certain group    #
+# $text can limit the output to certain            #
+# tags, "output" prints all tags                   #
+####################################################
+sub printTable {
+	my $text = shift;
+	my $output = "<table style=\"text-align: left; width: 500px;\" border=\"1\">\n";
+
+	my $tagCount = 0;
+	my @tags;
+	my @to_use_tags;
+	my $tagName;
+
+	if ($text eq "output"){
+		@tags = @outTagTags;
+	} else {
+		@tags = @xml_tags;
+	}
+	# Now read in all tags for the table
+	foreach my $tag_holder (@tags) {
+		# Get all the XML data of one tag
+		my @tagsNames = get_node_content_array($tag_holder, "tagName");
+		
+		if (($tagsNames[0] =~ /^$text/) and ($text ne "output")) {
+			foreach $tagName (@tagsNames) {
+				$tagCount++;
+				push (@to_use_tags, "$tagName");
+			}
+		}
+
+		if ($text eq "output") {
+			foreach $tagName (@tagsNames) {
+				$tagCount++;
+				push (@to_use_tags, "$tagName");
+			}
+		}
+		
+	}
+	my @sort_use_tags = sort(@to_use_tags);
+	my $fields = $#to_use_tags + 1;
+	my $columns = int(($fields / 3)+0.7);
+	
+	my ($a, $b, $c);
+	
+	for (my $i=1 ; $i < $columns + 1 ; $i++ ) {
+		$a = $i - 1;
+		$b = $columns + $i - 1;
+		$c = 2*$columns + $i - 1;
+		$output .= "	  <tr>\n";
+		if (defined($sort_use_tags[$a])){
+			$output .= "	    <td><a href=\"#$sort_use_tags[$a]\">$sort_use_tags[$a]<\/a></td>\n";		
+		} else {
+			$output .= "	    <td>&nbsp;</td>\n";		
+			
+		}
+		if (defined($sort_use_tags[$b])){
+			$output .= "	    <td><a href=\"#$sort_use_tags[$b]\">$sort_use_tags[$b]<\/a></td>\n";		
+		} else {
+			$output .= "	    <td>&nbsp;</td>\n";		
+			
+		}
+		if (defined($sort_use_tags[$c])){
+			$output .= "	    <td><a href=\"#$sort_use_tags[$c]\">$sort_use_tags[$c]<\/a></td>\n";		
+		} else {
+			$output .= "	    <td>&nbsp;</td>\n";		
+			
+		}
+		$output .= "	  </tr>\n";
+	}
+	
+	$output .= "</table>\n";
+
+	print "Printed $tagCount in $text - Table\n";
+	
+	return $output;
 }
 
 
