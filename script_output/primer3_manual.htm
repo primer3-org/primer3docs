@@ -2152,7 +2152,27 @@ Here AU has to write more...</p>
 upon program start. This allows to save and exchange settings 
 tailored to special applications.<br>
 <br>
-Here AU should write more....</p>
+To create a primer3 file a editor able to save txt files is 
+sufficient. The three lines of the file have to be:
+<pre>
+Primer3 File - http://primer3.sourceforge.net
+P3_FILE_TYPE=settings
+
+P3_FILE_ID=Description of the settings
+SEQUENCE_TEMPLATE=ATG...
+...
+...
+...
+=
+</pre> 
+Valid values for P3_FILE_TYPE are all_parameters, sequence and 
+settings. Up to now, only settings is supported. The third line 
+has to be empty. It is strongly adviced to describe the settings 
+using the P3_FILE_ID tag. It will print the description of the 
+settings on the output. From the fourth line on regular 
+boulder-io can be used as it is used in regular input. It also 
+has to be terminated with a single "=". There can be only one 
+input per file.</p>
 
 <h2><a name="example">20. AN EXAMPLE</a></h2>
 
