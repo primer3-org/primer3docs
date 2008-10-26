@@ -673,6 +673,7 @@ NEW VERSION                       - OLD VERSION
 <a href="#PRIMER_TM_FORMULA">PRIMER_TM_FORMULA</a>                 - PRIMER_TM_SANTALUCIA
 
 <a href="#P3_FILE_FLAG">P3_FILE_FLAG</a>                      - PRIMER_FILE_FLAG
+<a href="#P3_COMMENT">P3_COMMENT</a>                        - PRIMER_COMMENT
 
 <a href="#PRIMER_INTERNAL_SALT_MONOVALENT">PRIMER_INTERNAL_SALT_MONOVALENT</a>   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 <a href="#PRIMER_INTERNAL_SALT_DIVALENT">PRIMER_INTERNAL_SALT_DIVALENT</a>     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
@@ -696,7 +697,7 @@ The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY</a>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
 <a href="#PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB</a>        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
 <a href="#PRIMER_INTERNAL_MIN_QUALITY">PRIMER_INTERNAL_MIN_QUALITY</a>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
-<a href="#PRIMER_INTERNAL_NUM_NS_ACCEPTED">PRIMER_INTERNAL_NUM_NS_ACCEPTED</a>   - PRIMER_INTERNAL_OLIGO_NUM_NS_ACCEPTED
+<a href="#PRIMER_INTERNAL_NUM_NS_ACCEPTED">PRIMER_INTERNAL_NUM_NS_ACCEPTED</a>   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
 The following tags IO is replaced by INTERNAL:
 
@@ -2027,6 +2028,11 @@ which primer3plus picks the best primer.</p>
 <p> </p>
 
 
+<h3><a name="PRIMER_INTERNAL_WT_TEMPLATE_MISHYB">PRIMER_INTERNAL_WT_TEMPLATE_MISHYB (float; default 0.0)</a></h3>
+
+<p> </p>
+
+
 <h3><a name="PRIMER_PAIR_WT_PR_PENALTY">PRIMER_PAIR_WT_PR_PENALTY (float; default 1.0)</a></h3>
 
 <p> </p>
@@ -2087,9 +2093,19 @@ which primer3plus picks the best primer.</p>
 <p> </p>
 
 
-<h3><a name="PRIMER_COMMENT">PRIMER_COMMENT (string; default empty)</a></h3>
+<h3><a name="PRIMER_PAIR_ANY">PRIMER_PAIR_ANY (decimal, 9999.99; default xxx)</a></h3>
 
-<p>The value of this tag is ignored.</p>
+<p> </p>
+
+
+<h3><a name="PRIMER_PAIR_END">PRIMER_PAIR_END (decimal, 9999.99; default xxx)</a></h3>
+
+<p> </p>
+
+
+<h3><a name="PRIMER_PRIMERS_IN_PAIRS_MUST_BE_UNIQUE">PRIMER_PRIMERS_IN_PAIRS_MUST_BE_UNIQUE (int; default xxx)</a></h3>
+
+<p> </p>
 
 
 <h2><a name="programTags">17. "PROGRAM" INPUT TAGS</a></h2>
@@ -2097,6 +2113,13 @@ which primer3plus picks the best primer.</p>
 <p>"Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
 itself.)</p>
+<h3><a name="P3_FILE_ID">P3_FILE_ID (string; default empty)</a></h3>
+
+<p>This tag is only valid in primer3 setting files. It should be used to 
+identify the purpose of this settings. It is printed out on the 
+output of primer3.</p>
+
+
 <h3><a name="P3_FILE_FLAG">P3_FILE_FLAG (boolean; default 0)</a></h3>
 
 <p>If the associated value is 1 (non-0), then primer3 creates two output
@@ -2107,6 +2130,11 @@ lists all acceptable right primers for <sequence_id>, where
 must be supplied).  In addition, if the input tag
 <a href="#PRIMER_PICK_INTERNAL_OLIGO">PRIMER_PICK_INTERNAL_OLIGO</a> is 1 (non-0), primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.</p>
+
+
+<h3><a name="P3_COMMENT">P3_COMMENT (string; default empty)</a></h3>
+
+<p>The value of this tag is ignored. It can be used to annotate input.</p>
 
 
 <h2><a name="calculatePenalties">18. HOW PRIMER3 CALCULATES THE PENALTY VALUE</a></h2>

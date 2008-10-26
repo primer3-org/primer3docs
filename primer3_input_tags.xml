@@ -1291,7 +1291,7 @@ values for the most stable and for the most labile 5mer are
 <tag>
 	<tagName>PRIMER_INTERNAL_NUM_NS_ACCEPTED</tagName>
 	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_NUM_NS_ACCEPTED</oldTagName>
+		<oldTagName>PRIMER_INTERNAL_OLIGO_NUM_NS</oldTagName>
 		<version>3.0</version>
 	</oldTag>
 	<dataType>float</dataType>
@@ -1856,6 +1856,14 @@ which primer3plus picks the best primer.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p> </p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_WT_PR_PENALTY</tagName>
 	<dataType>float</dataType>
 	<default>1.0</default>
@@ -1971,28 +1979,55 @@ which primer3plus picks the best primer.</p>]]>
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-
-
 <tag>
-	<tagName>PRIMER_COMMENT</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_COMMENT</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<oldTag>
-		<oldTagName>COMMENT</oldTagName>
-		<version>2.0</version>
-	</oldTag>
-	<dataType>string</dataType>
-	<default>empty</default>
+	<tagName>PRIMER_PAIR_ANY</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>xxx</default>
 	<description>
-<![CDATA[<p>The value of this tag is ignored.</p>]]>
+<![CDATA[<p> </p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_END</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>xxx</default>
+	<description>
+<![CDATA[<p> </p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PRIMERS_IN_PAIRS_MUST_BE_UNIQUE</tagName>
+	<dataType>int</dataType>
+	<default>xxx</default>
+	<description>
+<![CDATA[<p> </p>]]>
 	</description>
 </tag>
 
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
+
+
+<tag>
+	<tagName>P3_FILE_ID</tagName>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>This tag is only valid in primer3 setting files. It should be used to 
+identify the purpose of this settings. It is printed out on the 
+output of primer3.</p>]]>
+	</description>
+</tag>
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
 	<oldTag>
@@ -2012,4 +2047,21 @@ must be supplied).  In addition, if the input tag
 <sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>
+<tag>
+	<tagName>P3_COMMENT</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_COMMENT</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<oldTag>
+		<oldTagName>COMMENT</oldTagName>
+		<version>2.0</version>
+	</oldTag>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The value of this tag is ignored. It can be used to annotate input.</p>]]>
+	</description>
+</tag>
+
 </primer3Doc>

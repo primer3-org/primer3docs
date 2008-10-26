@@ -664,6 +664,7 @@ PRIMER_SALT_DIVALENT              - PRIMER_DIVALENT_CONC
 PRIMER_TM_FORMULA                 - PRIMER_TM_SANTALUCIA
 
 P3_FILE_FLAG                      - PRIMER_FILE_FLAG
+P3_COMMENT                        - PRIMER_COMMENT
 
 PRIMER_INTERNAL_SALT_MONOVALENT   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 PRIMER_INTERNAL_SALT_DIVALENT     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
@@ -687,7 +688,7 @@ PRIMER_INTERNAL_SELF_END          - PRIMER_INTERNAL_OLIGO_SELF_END
 PRIMER_INTERNAL_MISHYB_LIBRARY    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
 PRIMER_INTERNAL_MAX_MISHYB        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
 PRIMER_INTERNAL_MIN_QUALITY       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
-PRIMER_INTERNAL_NUM_NS_ACCEPTED   - PRIMER_INTERNAL_OLIGO_NUM_NS_ACCEPTED
+PRIMER_INTERNAL_NUM_NS_ACCEPTED   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
 The following tags IO is replaced by INTERNAL:
 
@@ -2021,6 +2022,11 @@ PRIMER_WT_TEMPLATE_MISPRIMING (float; default 0.0)
  
 
 
+PRIMER_INTERNAL_WT_TEMPLATE_MISHYB (float; default 0.0)
+
+ 
+
+
 PRIMER_PAIR_WT_PR_PENALTY (float; default 1.0)
 
  
@@ -2081,9 +2087,19 @@ PRIMER_INTERNAL_WT_END_QUAL (float; default 0.0)
  
 
 
-PRIMER_COMMENT (string; default empty)
+PRIMER_PAIR_ANY (decimal, 9999.99; default xxx)
 
-The value of this tag is ignored.
+ 
+
+
+PRIMER_PAIR_END (decimal, 9999.99; default xxx)
+
+ 
+
+
+PRIMER_PRIMERS_IN_PAIRS_MUST_BE_UNIQUE (int; default xxx)
+
+ 
 
 
 17. "PROGRAM" INPUT TAGS
@@ -2091,6 +2107,13 @@ The value of this tag is ignored.
 "Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
 itself.)
+
+P3_FILE_ID (string; default empty)
+
+This tag is only valid in primer3 setting files. It should be used to 
+identify the purpose of this settings. It is printed out on the 
+output of primer3.
+
 
 P3_FILE_FLAG (boolean; default 0)
 
@@ -2102,6 +2125,11 @@ lists all acceptable right primers for <sequence_id>, where
 must be supplied).  In addition, if the input tag
 PRIMER_PICK_INTERNAL_OLIGO is 1 (non-0), primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.
+
+
+P3_COMMENT (string; default empty)
+
+The value of this tag is ignored. It can be used to annotate input.
 
 
 18. HOW PRIMER3 CALCULATES THE PENALTY VALUE

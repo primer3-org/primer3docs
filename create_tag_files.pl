@@ -144,14 +144,17 @@ print "Read in $readtextblocksCount textblocks for processing...\n";
 
 print "\n";
 
-# Create the readme.txt
+# Create the primer3_manual.txt
 createReadmeTxt();
 
 # Create the tag_definitions.xml
 createTagDefinitionsXml();
 
-# Create the readme.htm
+# Create the primer3_manual.htm
 createReadmeHtml();
+
+# Create the tags_list.txt
+createTagList();
 
 
 print"end processing\n";
@@ -434,6 +437,38 @@ sub underlineText {
 }
 
 
+##################################
+# creates the tags_list.txt file #
+##################################
+sub createTagList {
+	# Prepare the strings for the files
+	my $xml_string = "my \@docTags = (";
+	my $tagCount = 0;
+	
+	# Now print out all tags
+	foreach my $tag_holder (@xml_tags) {
+		$tagCount++;
+		
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+	
+		# Assemble the XML file
+		$xml_string .= "\"$tagName\",\n";
+		
+	}
+	
+	# Finish the strings for the files
+	$xml_string .= ");";
+	
+	# Write the files to the disk
+	my $output_file = $output_folder. "tags_list.txt";
+	string2file($output_file, $xml_string);
+
+	print "Printed $tagCount Tags in tags_list.txt\n";
+
+	return 0;
+}
+
 ########################################
 # creates the tag_definitions.xml file #
 ########################################
@@ -473,6 +508,7 @@ sub createTagDefinitionsXml {
 
 	return 0;
 }
+
 
 ###############################
 # creates the readme txt file #
