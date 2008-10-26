@@ -1638,6 +1638,26 @@ primer-dimer will not occur.  We recommend that
 <a href="#PRIMER_INTERNAL_SELF_ANY">PRIMER_INTERNAL_SELF_ANY</a>.</p>
 
 
+<h3><a name="PRIMER_MAX_END_STABILITY">PRIMER_MAX_END_STABILITY (float, 999.9999; default 100.0)</a></h3>
+
+<p>The maximum stability for the last five 3' bases of a left or
+right primer.  Bigger numbers mean more stable 3' ends.  The
+value is the maximum delta G (kcal/mol) for duplex disruption for
+the five 3' bases as calculated using the nearest-neighbor
+parameter values specified by the option of <a href="#PRIMER_TM_SANTALUCIA">PRIMER_TM_SANTALUCIA</a> 
+Table of thermodynamic parameters.<br>
+<br>
+For example if the table of thermodynamic parameters suggested
+by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
+values for the most stable and for the most labile 5mer duplex 
+are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.<br>
+<br>	
+If the table of thermodynamic parameters suggested by 
+<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
+values for the most stable and for the most labile 5mer are 
+13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
+
+
 <h3><a name="PRIMER_NUM_NS_ACCEPTED">PRIMER_NUM_NS_ACCEPTED (int; default 0)</a></h3>
 
 <p>Maximum number of unknown bases (N) allowable in any primer.</p>
@@ -1817,6 +1837,13 @@ literature. (The Repbase files need to be converted to Fasta
 format before they can be used by primer3.)</p>
 
 
+<h3><a name="PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY (string; default empty)</a></h3>
+
+<p>Similar to <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>, except that the event we
+seek to avoid is hybridization of the internal oligo to sequences
+in this library rather than priming from them.</p>
+
+
 <h3><a name="PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS">PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS (boolean; default 1)</a></h3>
 
 <p>If set to 1, treat ambiguity codes as if they were consensus
@@ -1838,6 +1865,13 @@ you know for sure that your library does not have runs of Ns
 <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>.</p>
 
 
+<h3><a name="PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)</a></h3>
+
+<p>Similar to <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a> except that this parameter applies
+to the similarity of candidate internal oligos to the library
+specified in <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY</a>.</p>
+
+
 <h3><a name="PRIMER_MAX_TEMPLATE_MISPRIMING">PRIMER_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)</a></h3>
 
 <p>The maximum allowed similarity to ectopic sites in the
@@ -1845,6 +1879,11 @@ template.  A negative value means do not check.  The scoring
 system is the same as used for <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a>, except
 that an ambiguity code in the template is never treated as a
 consensus (see <a href="#PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS">PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</a>).</p>
+
+
+<h3><a name="PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB">PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)</a></h3>
+
+<p>Not implemented.</p>
 
 
 <h3><a name="PRIMER_PAIR_MAX_MISPRIMING">PRIMER_PAIR_MAX_MISPRIMING (decimal, 9999.99; default 24.00)</a></h3>
@@ -1874,11 +1913,16 @@ oligos) to locations outside of the amplicon.</p>
 <a href="#SEQUENCE_QUALITY">SEQUENCE_QUALITY</a>) allowed within a primer.</p>
 
 
+<h3><a name="PRIMER_INTERNAL_MIN_QUALITY">PRIMER_INTERNAL_MIN_QUALITY (int; default 0)</a></h3>
+
+<p>Equivalent parameter of <a href="#PRIMER_MIN_QUALITY">PRIMER_MIN_QUALITY</a> for the internal oligo.</p>
+
+
 <h3><a name="PRIMER_MIN_END_QUALITY">PRIMER_MIN_END_QUALITY (int; default 0)</a></h3>
 
 <p>The minimum sequence quality (as specified by
 <a href="#SEQUENCE_QUALITY">SEQUENCE_QUALITY</a>) allowed within the 5' pentamer of a
-primer.</p>
+primer. Note that there is no <a href="#PRIMER_INTERNAL_MIN_END_QUALITY">PRIMER_INTERNAL_MIN_END_QUALITY</a>.</p>
 
 
 <h3><a name="PRIMER_QUALITY_RANGE_MIN">PRIMER_QUALITY_RANGE_MIN (int; default 0)</a></h3>
@@ -1913,26 +1957,6 @@ times the number of nucleotide positions from the 3' end to the
 (unique) target to get the 'position penalty'.  The effect of
 this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.</p>
-
-
-<h3><a name="PRIMER_MAX_END_STABILITY">PRIMER_MAX_END_STABILITY (float, 999.9999; default 100.0)</a></h3>
-
-<p>The maximum stability for the last five 3' bases of a left or
-right primer.  Bigger numbers mean more stable 3' ends.  The
-value is the maximum delta G (kcal/mol) for duplex disruption for
-the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by the option of <a href="#PRIMER_TM_SANTALUCIA">PRIMER_TM_SANTALUCIA</a> 
-Table of thermodynamic parameters.</p>
-
-<p>For example if the table of thermodynamic parameters suggested
-by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
-values for the most stable and for the most labile 5mer duplex 
-are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.</p>
-	
-<p>If the table of thermodynamic parameters suggested by 
-<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
-values for the most stable and for the most labile 5mer are 
-13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.</p>
 
 
 <h3><a name="PRIMER_SEQUENCING_LEAD">PRIMER_SEQUENCING_LEAD (int; default 50)</a></h3>
@@ -2036,30 +2060,6 @@ which primer3plus picks the best primer.</p>
 <h3><a name="PRIMER_PAIR_WT_TEMPLATE_MISPRIMING">PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)</a></h3>
 
 <p> </p>
-
-
-<h3><a name="PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY (string; default empty)</a></h3>
-
-<p>Similar to <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>, except that the event we
-seek to avoid is hybridization of the internal oligo to sequences
-in this library rather than priming from them.</p>
-
-
-<h3><a name="PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)</a></h3>
-
-<p>Similar to <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a> except that this parameter applies
-to the similarity of candidate internal oligos to the library
-specified in <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY</a>.</p>
-
-
-<h3><a name="PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB">PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)</a></h3>
-
-<p>Not implemented.</p>
-
-
-<h3><a name="PRIMER_INTERNAL_MIN_QUALITY">PRIMER_INTERNAL_MIN_QUALITY (int; default 0)</a></h3>
-
-<p>Note that there is no <a href="#PRIMER_INTERNAL_MIN_END_QUALITY">PRIMER_INTERNAL_MIN_END_QUALITY</a>.</p>
 
 
 <h3><a name="PRIMER_INTERNAL_WT_COMPL_ANY">PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)</a></h3>

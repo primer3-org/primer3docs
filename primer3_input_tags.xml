@@ -1255,6 +1255,29 @@ primer-dimer will not occur.  We recommend that
 <p3_anchor>PRIMER_INTERNAL_SELF_ANY</p3_anchor>.</p>]]>
 	</description>
 </tag>
+<tag>
+	<tagName>PRIMER_MAX_END_STABILITY</tagName>
+	<dataType>float, 999.9999</dataType>
+	<default>100.0</default>
+	<description>
+<![CDATA[<p>The maximum stability for the last five 3' bases of a left or
+right primer.  Bigger numbers mean more stable 3' ends.  The
+value is the maximum delta G (kcal/mol) for duplex disruption for
+the five 3' bases as calculated using the nearest-neighbor
+parameter values specified by the option of <p3_anchor>PRIMER_TM_SANTALUCIA</p3_anchor> 
+Table of thermodynamic parameters.<br />
+<br />
+For example if the table of thermodynamic parameters suggested
+by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
+values for the most stable and for the most labile 5mer duplex 
+are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.<br />
+<br />	
+If the table of thermodynamic parameters suggested by 
+<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
+values for the most stable and for the most labile 5mer are 
+13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.]]>
+	</description>
+</tag>
 
 
 <tag>
@@ -1452,35 +1475,6 @@ file flag is set.)</p>]]>
 </tag>
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 <tag>
 	<tagName>PRIMER_MISPRIMING_LIBRARY</tagName>
 	<dataType>string</dataType>
@@ -1536,6 +1530,20 @@ format before they can be used by primer3.)</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_MISHYB_LIBRARY</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>Similar to <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>, except that the event we
+seek to avoid is hybridization of the internal oligo to sequences
+in this library rather than priming from them.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</tagName>
 	<dataType>boolean</dataType>
 	<default>1</default>
@@ -1563,6 +1571,20 @@ you know for sure that your library does not have runs of Ns
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_MAX_MISHYB</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_MISHYB</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>decimal,9999.99</dataType>
+	<default>12.00</default>
+	<description>
+<![CDATA[<p>Similar to <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor> except that this parameter applies
+to the similarity of candidate internal oligos to the library
+specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
 	<default>-1.00</default>
@@ -1572,6 +1594,18 @@ template.  A negative value means do not check.  The scoring
 system is the same as used for <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>, except
 that an ambiguity code in the template is never treated as a
 consensus (see <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>decimal, 9999.99</dataType>
+	<default>12.00</default>
+	<description>
+<![CDATA[<p>Not implemented.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1601,6 +1635,8 @@ check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>]]>
 	</description>
 </tag>
+
+
 <tag>
 	<tagName>PRIMER_MIN_QUALITY</tagName>
 	<dataType>int</dataType>
@@ -1611,13 +1647,25 @@ oligos) to locations outside of the amplicon.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_INTERNAL_MIN_QUALITY</tagName>
+	<oldTag>
+		<oldTagName>PRIMER_INTERNAL_OLIGO_MIN_QUALITY</oldTagName>
+		<version>3.0</version>
+	</oldTag>
+	<dataType>int</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_MIN_END_QUALITY</tagName>
 	<dataType>int</dataType>
 	<default>0</default>
 	<description>
 <![CDATA[<p>The minimum sequence quality (as specified by
 <p3_anchor>SEQUENCE_QUALITY</p3_anchor>) allowed within the 5' pentamer of a
-primer.</p>]]>
+primer. Note that there is no <p3_anchor>PRIMER_INTERNAL_MIN_END_QUALITY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1638,6 +1686,8 @@ of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALI
 of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALITY</p3_anchor>).</p>]]>
 	</description>
 </tag>
+
+
 <tag>
 	<tagName>PRIMER_INSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
@@ -1666,29 +1716,8 @@ this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.</p>]]>
 	</description>
 </tag>
-<tag>
-	<tagName>PRIMER_MAX_END_STABILITY</tagName>
-	<dataType>float, 999.9999</dataType>
-	<default>100.0</default>
-	<description>
-<![CDATA[<p>The maximum stability for the last five 3' bases of a left or
-right primer.  Bigger numbers mean more stable 3' ends.  The
-value is the maximum delta G (kcal/mol) for duplex disruption for
-the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by the option of <p3_anchor>PRIMER_TM_SANTALUCIA</p3_anchor> 
-Table of thermodynamic parameters.</p>
 
-<p>For example if the table of thermodynamic parameters suggested
-by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
-values for the most stable and for the most labile 5mer duplex 
-are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.</p>
-	
-<p>If the table of thermodynamic parameters suggested by 
-<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
-values for the most stable and for the most labile 5mer are 
-13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.</p>]]>
-	</description>
-</tag>
+
 <tag>
 	<tagName>PRIMER_SEQUENCING_LEAD</tagName>
 	<dataType>int</dataType>
@@ -1729,6 +1758,39 @@ space from the calculated position of the 3'end to both sides in
 which primer3plus picks the best primer.</p>]]>
 	</description>
 </tag>
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- Flags AU did not yet sort -->
+	
+	
+	
 <tag>
 	<tagName>PRIMER_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
@@ -1847,58 +1909,6 @@ which primer3plus picks the best primer.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MISHYB_LIBRARY</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<dataType>string</dataType>
-	<default>empty</default>
-	<description>
-<![CDATA[<p>Similar to <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>, except that the event we
-seek to avoid is hybridization of the internal oligo to sequences
-in this library rather than priming from them.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_MISHYB</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_MISHYB</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<dataType>decimal,9999.99</dataType>
-	<default>12.00</default>
-	<description>
-<![CDATA[<p>Similar to <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor> except that this parameter applies
-to the similarity of candidate internal oligos to the library
-specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<dataType>decimal, 9999.99</dataType>
-	<default>12.00</default>
-	<description>
-<![CDATA[<p>Not implemented.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MIN_QUALITY</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_MIN_QUALITY</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<dataType>int</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>Note that there is no <p3_anchor>PRIMER_INTERNAL_MIN_END_QUALITY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>

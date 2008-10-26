@@ -1632,6 +1632,26 @@ PRIMER_INTERNAL_SELF_END be set at least as high as
 PRIMER_INTERNAL_SELF_ANY.
 
 
+PRIMER_MAX_END_STABILITY (float, 999.9999; default 100.0)
+
+The maximum stability for the last five 3' bases of a left or
+right primer.  Bigger numbers mean more stable 3' ends.  The
+value is the maximum delta G (kcal/mol) for duplex disruption for
+the five 3' bases as calculated using the nearest-neighbor
+parameter values specified by the option of PRIMER_TM_SANTALUCIA 
+Table of thermodynamic parameters.
+
+For example if the table of thermodynamic parameters suggested
+by SantaLucia 1998, DOI:10.1073/pnas.95.4.1460 is used the deltaG 
+values for the most stable and for the most labile 5mer duplex 
+are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.
+	
+If the table of thermodynamic parameters suggested by 
+Breslauer et al. 1986, 10.1073/pnas.83.11.3746 is used the deltaG 
+values for the most stable and for the most labile 5mer are 
+13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
+
+
 PRIMER_NUM_NS_ACCEPTED (int; default 0)
 
 Maximum number of unknown bases (N) allowable in any primer.
@@ -1811,6 +1831,13 @@ literature. (The Repbase files need to be converted to Fasta
 format before they can be used by primer3.)
 
 
+PRIMER_INTERNAL_MISHYB_LIBRARY (string; default empty)
+
+Similar to PRIMER_MISPRIMING_LIBRARY, except that the event we
+seek to avoid is hybridization of the internal oligo to sequences
+in this library rather than priming from them.
+
+
 PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS (boolean; default 1)
 
 If set to 1, treat ambiguity codes as if they were consensus
@@ -1832,6 +1859,13 @@ The maximum allowed weighted similarity with any sequence in
 PRIMER_MISPRIMING_LIBRARY.
 
 
+PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)
+
+Similar to PRIMER_MAX_MISPRIMING except that this parameter applies
+to the similarity of candidate internal oligos to the library
+specified in PRIMER_INTERNAL_MISHYB_LIBRARY.
+
+
 PRIMER_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
 
 The maximum allowed similarity to ectopic sites in the
@@ -1839,6 +1873,11 @@ template.  A negative value means do not check.  The scoring
 system is the same as used for PRIMER_MAX_MISPRIMING, except
 that an ambiguity code in the template is never treated as a
 consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).
+
+
+PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
+
+Not implemented.
 
 
 PRIMER_PAIR_MAX_MISPRIMING (decimal, 9999.99; default 24.00)
@@ -1868,11 +1907,16 @@ The minimum sequence quality (as specified by
 SEQUENCE_QUALITY) allowed within a primer.
 
 
+PRIMER_INTERNAL_MIN_QUALITY (int; default 0)
+
+Equivalent parameter of PRIMER_MIN_QUALITY for the internal oligo.
+
+
 PRIMER_MIN_END_QUALITY (int; default 0)
 
 The minimum sequence quality (as specified by
 SEQUENCE_QUALITY) allowed within the 5' pentamer of a
-primer.
+primer. Note that there is no PRIMER_INTERNAL_MIN_END_QUALITY.
 
 
 PRIMER_QUALITY_RANGE_MIN (int; default 0)
@@ -1907,26 +1951,6 @@ times the number of nucleotide positions from the 3' end to the
 (unique) target to get the 'position penalty'.  The effect of
 this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.
-
-
-PRIMER_MAX_END_STABILITY (float, 999.9999; default 100.0)
-
-The maximum stability for the last five 3' bases of a left or
-right primer.  Bigger numbers mean more stable 3' ends.  The
-value is the maximum delta G (kcal/mol) for duplex disruption for
-the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by the option of PRIMER_TM_SANTALUCIA 
-Table of thermodynamic parameters.
-
-For example if the table of thermodynamic parameters suggested
-by SantaLucia 1998, DOI:10.1073/pnas.95.4.1460 is used the deltaG 
-values for the most stable and for the most labile 5mer duplex 
-are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.
-	
-If the table of thermodynamic parameters suggested by 
-Breslauer et al. 1986, 10.1073/pnas.83.11.3746 is used the deltaG 
-values for the most stable and for the most labile 5mer are 
-13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
 
 
 PRIMER_SEQUENCING_LEAD (int; default 50)
@@ -2030,30 +2054,6 @@ PRIMER_PAIR_WT_REP_SIM (float; default 0.0)
 PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
 
  
-
-
-PRIMER_INTERNAL_MISHYB_LIBRARY (string; default empty)
-
-Similar to PRIMER_MISPRIMING_LIBRARY, except that the event we
-seek to avoid is hybridization of the internal oligo to sequences
-in this library rather than priming from them.
-
-
-PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)
-
-Similar to PRIMER_MAX_MISPRIMING except that this parameter applies
-to the similarity of candidate internal oligos to the library
-specified in PRIMER_INTERNAL_MISHYB_LIBRARY.
-
-
-PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
-
-Not implemented.
-
-
-PRIMER_INTERNAL_MIN_QUALITY (int; default 0)
-
-Note that there is no PRIMER_INTERNAL_MIN_END_QUALITY.
 
 
 PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
