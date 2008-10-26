@@ -11,6 +11,9 @@ An example Tag with all possible options:
 	</text>
 </textBlock>
 
+Thextblocks added here also have to be added to the array
+@textblocksOrder in create_tag_files.pl to be used.
+	
 -->
 <textBlock>
 	<id>acknowledgments</id>
@@ -76,6 +79,18 @@ You should be able to compile a 3-way binary which includes PPC64 support
 (intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
 end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
 This has not been tested.]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>calculatePenalties</id>
+	<head>HOW PRIMER3 CALCULATES THE PENALTY VALUE</head>
+	<text>
+<![CDATA[The penalty values in are the most important value of each primer,
+because primer3 uses it to choose which primers to select. The 
+calculation can be influecned by the weights which allows to 
+fine tune the selection of primers to your needs.<br />
+<br />
+Here AU has to write more...]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -386,6 +401,18 @@ In all of the error cases above Primer3 prints a message to stderr.]]>
 	</text>
 </textBlock>
 <textBlock>
+	<id>fileFormat</id>
+	<head>PRIMER3 FILE FORMAT</head>
+	<text>
+<![CDATA[Primer3 allows to save settings in a text file and load it 
+upon program start. This allows to save and exchange settings 
+tailored to special applications.<br />
+<br />
+Here AU should write more....
+]]>
+	</text>
+</textBlock>
+<textBlock>
 	<id>globalTags</id>
 	<head>"GLOBAL" INPUT TAGS</head>
 	<text>
@@ -394,7 +421,15 @@ general parameters that primer3 should use in its searches.
 The values of these tags persist between input boulder 
 records until or unless they are explicitly reset. Errors 
 in "Global" input tags are fatal because they invalidate 
-the basic conditions under which primers are being picked.]]>
+the basic conditions under which primers are being picked.<br />
+<br />
+Because the laboratory detection step using internal oligos is 
+independent of the PCR amplification procedure, internal oligo 
+tags have defaults that are independent of the parameters that 
+govern the selection of PCR primers. For example, the melting 
+temperature of an oligo used for hybridization might be 
+considerably lower than that used as a PCR primer.
+<br />]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -773,6 +808,60 @@ waiting for its input on stdin.]]>
 	</text>
 </textBlock>
 <textBlock>
+	<id>licenseExplain</id>
+	<head>FAIR USE OF PRIMER3</head>
+	<text>
+<![CDATA[In this section the developers would like to explain how they 
+would like primer3 to be used. Some of the things written here 
+might be in  conflict with the GPL license. In all this cases 
+the GPL is the legally binding license and issues of this 
+section can be ignored.<br />
+<br />
+The development of primer3 is promoted by a small group of 
+enthusiastic scientists mainly in their free time. We do not gain 
+any financial profit with primer3.<br />
+<br />
+There are two groups of primer3 users, the end user, who runs 
+primer3 to pick its primers and the programmer, who uses primer3 
+in his scripts or his software package. We encourage both to use 
+primer3.<br />
+<br />
+If you are an end user, we as scientists would be very happy if 
+once, when you write an article, you include in the Material and 
+Method section the sentence "Primers were selected using 
+primer3." and reference to our article. First of all, everybody 
+likes to be cited, it gives us a feeling how many people use 
+primer3 and that our efforts are actually useful to somebody 
+else. Furthermore other scientists reading your article could 
+get interested in primer3 and use it as well in the future. 
+This is the best way to say "thank you" to us. Be aware that 
+there is no need to ask us for permission if you install 
+primer3, primer3web or primer3plus on your machine.<br />
+<br />
+If you are a programmer, you probably know the conditions of the 
+GPL well. Be aware of its "viral" character. If you include 
+parts of the primer3 code or the library in your software, you 
+have to release your software also under GPL license. If you 
+only call primer3 from your software and interpret its output, 
+you can use any license you want for your software. If you 
+modify primer3, you have to release your modifications in source 
+code under GPL license as well.<br />
+We choose the GPL license, because we wanted prime3 to evolve 
+and that improvements find their way back into the main 
+distribution of primer3. So if you make useful enhancements, 
+please send us the code. If you are programming a new web 
+interface which runs primer3, please include in the about page 
+of the tool the sentence "&lt;you software name&gt; uses primer3 
+version ...". Please consider releasing your software under GPL 
+license as well, especially if you do not want to maintain it 
+in the future. Be aware that there is no need to ask us for 
+permission if you like to include our software in your tools, 
+but we would be happy to receive an e-mail to inform us about 
+your tool. If there are any issues / bugs / suggestions for 
+primer3, please let us know so we can improve it.]]>
+	</text>
+</textBlock>
+<textBlock>
 	<id>migrateTags</id>
 	<head>HOW TO MIGRATE TAGS TO VERSION 4</head>
 	<text>
@@ -1067,7 +1156,14 @@ by primer3.<br />
   Errors in "Sequence" input tags invalidate the current record, 
 but primer3 will continue to process additional records.<br />
   Errors in "Global" input tags are fatal because they invalidate 
-the basic conditions under which primers are being picked.]]>
+the basic conditions under which primers are being picked.<br />
+<br />
+Because the laboratory detection step using internal oligos is 
+independent of the PCR amplification procedure, internal oligo 
+tags have defaults that are independent of the parameters that 
+govern the selection of PCR primers. For example, the melting 
+temperature of an oligo used for hybridization might be 
+considerably lower than that used as a PCR primer.]]>
 	</text>
 </textBlock>
 <textBlock>

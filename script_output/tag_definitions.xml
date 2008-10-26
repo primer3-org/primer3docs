@@ -119,8 +119,8 @@ substring of the reverse strand of <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>
 	<description>
 <![CDATA[<p>This parameter should be considered EXPERIMENTAL at this point.
 Please check the output carefully; some erroneous inputs might
-cause an error in primer3.
-
+cause an error in primer3.<br />
+<br />
 Index of the first base of a start codon.  This parameter allows
 primer3 to select primer pairs to create in-frame amplicons
 e.g. to create a template for a fusion protein.  Primer3 will
@@ -131,8 +131,8 @@ codon is to the left of available sequence. If this parameter is
 non-negative primer3 signals an error if the codon at the
 position specified by this parameter is not an ATG.  A value less
 than or equal to -10^6 indicates that primer3 should ignore this
-parameter.
-
+parameter.<br />
+<br />
 Primer3 selects the position of the right primer by scanning
 right from the left primer for a stop codon.  Ideally the right
 primer will end at or after the stop codon.</p>]]>
@@ -184,78 +184,78 @@ constrains.</p>]]>
 	<default>pick_pcr_primers</default>
 	<description>
 <![CDATA[<p>Probably the most important Tag. It tells primer3 what task to perform.
-Legal values are:
-<pre>
- - pick_detection_primers
- 
+Legal values are:<br />
+<br />
+   <tt><i>pick_detection_primers</i></tt><br />
+<br />
    Pick primers to detect a sequence (the classic primer3 task). Use 
    the <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>, <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> and 
    <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> to control which primers are picked.
    If <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor> and <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> are 
-   selected primer3 tries to pick primer pairs.
-
- - check_primers
- 
+   selected primer3 tries to pick primer pairs.<br />
+<br />
+   <tt><i>check_primers</i></tt><br />
+<br />
    Primer3 does not pick any primers, it only checks the primers 
    provided in <p3_anchor>SEQUENCE_PRIMER</p3_anchor>, <p3_anchor>SEQUENCE_INTERNAL_OLIGO</p3_anchor> and 
    <p3_anchor>SEQUENCE_PRIMER_REVCOMP</p3_anchor>. Its the only task which does not
    require a sequence. If the sequence is provided, it is used
-   as a template.
-   
- - pick_primer_list
- 
+   as a template.<br />
+<br />
+   <tt><i>pick_primer_list</i></tt><br />
+<br />
    Pick all primers in the sequence or limited by included region.
    It returns the primers sorted by quality starting with the 
    best primers. If <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor> and 
    <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> is selected primer3 does not to pick 
-   primer pairs but treats it as independent lists.
-   
- - pick_sequencing_primers
- 
+   primer pairs but treats it as independent lists.<br />
+<br />
+   <tt><i>pick_sequencing_primers</i></tt><br />
+<br />
    Pick primers suited to sequence a region. <p3_anchor>SEQUENCE_TARGET</p3_anchor> can be 
    used to indicate several targets. The position of each primer is 
-   calculated for optimal sequencing results.
-   
- - pick_pcr_primers
-   
-   Shortcut for the following settings:
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1
-
- - pick_pcr_primers_and_hyb_probe
-   
-   Shortcut for the following settings:
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1
-
- - pick_left_only
-   
-   Shortcut for the following settings:
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0
-
- - pick_right_only
-   
-   Shortcut for the following settings:
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1
-
- - pick_hyb_probe_only
-   
-   Shortcut for the following settings:
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0
-</pre></p>]]>
+   calculated for optimal sequencing results.<br />
+<br />
+   <tt><i>pick_pcr_primers</i></tt><br />
+<br />
+   Shortcut for the following settings:<br />
+   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
+   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
+   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+<br />
+   <tt><i>pick_pcr_primers_and_hyb_probe</i></tt><br />
+<br />
+   Shortcut for the following settings:<br />
+   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
+   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
+   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+<br />
+   <tt><i>pick_left_only</i></tt><br />
+<br />
+   Shortcut for the following settings:<br />
+   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
+   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
+   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0<br />
+<br />
+   <tt><i>pick_right_only</i></tt><br />
+<br />
+   Shortcut for the following settings:<br />
+   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0<br />
+   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
+   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+<br />
+   <tt><i>pick_hyb_probe_only</i></tt><br />
+<br />
+   Shortcut for the following settings:<br />
+   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0<br />
+   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
+   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0<br />
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -263,7 +263,7 @@ Legal values are:
 	<dataType>boolean</dataType>
 	<default>1</default>
 	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
 pick left primers.</p>]]>
 	</description>
 </tag>
@@ -272,7 +272,7 @@ pick left primers.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
 pick an internal oligo (hybridization probe to detect the PCR
 product).</p>]]>
 	</description>
@@ -282,8 +282,61 @@ product).</p>]]>
 	<dataType>boolean</dataType>
 	<default>1</default>
 	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 will attempt to
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
 pick a right primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MIN_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>18</default>
+	<description>
+<![CDATA[<p>Minimum acceptable length of a primer.  Must be greater than 0
+and less than or equal to <p3_anchor>PRIMER_MAX_SIZE</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MIN_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>18</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_SIZE</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_OPT_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>20</default>
+	<description>
+<![CDATA[<p>Optimum length (in bases) of a primer. Primer3 will attempt to 
+pick primers close to this length.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_OPT_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>20</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MAX_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>27</default>
+	<description>
+<![CDATA[<p>Maximum acceptable length (in bases) of a primer.  Currently this
+parameter cannot be larger than 35.  This limit is governed by
+maximum oligo size for which primer3's melting-temperature is
+valid.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_SIZE</tagName>
+	<dataType>int</dataType>
+	<default>27</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_SIZE</p3_anchor> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -463,7 +516,7 @@ product for details.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If this flag is non-0, produce <p3_anchor>PRIMER_LEFT_EXPLAIN</p3_anchor>,
+<![CDATA[<p>If this flag is 1 (non-0), produce <p3_anchor>PRIMER_LEFT_EXPLAIN</p3_anchor>,
 <p3_anchor>PRIMER_RIGHT_EXPLAIN</p3_anchor>, and <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor> output
 tags, which are intended to provide information on the number of
 oligos and primer pairs that primer3 examined, and statistics on
@@ -525,35 +578,6 @@ would, of course, include the primers themselves.</p>]]>
 <![CDATA[<p>Require the specified number of consecutive Gs and Cs at the 3'
 end of both the left and right primer.  (This parameter has no
 effect on the internal oligo if one is requested.)</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_OPT_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>20</default>
-	<description>
-<![CDATA[<p>Optimum length (in bases) of a primer oligo. Primer3 will attempt
-to pick primers close to this length.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_MIN_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>18</default>
-	<description>
-<![CDATA[<p>Minimum acceptable length of a primer.  Must be greater than 0
-and less than or equal to <p3_anchor>PRIMER_MAX_SIZE</p3_anchor>.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_MAX_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>27</default>
-	<description>
-<![CDATA[<p>Maximum acceptable length (in bases) of a primer.  Currently this
-parameter cannot be larger than 35.  This limit is governed by
-maximum oligo size for which primer3's melting-temperature is
-valid.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -811,7 +835,7 @@ do not overlap the 3'-end of primer.</p>]]>
 	<default>50.0</default>
 	<description>
 <![CDATA[<p>Optimum GC percent.  This parameter influences primer selection only if
-<p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> or <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> are non-0.</p>]]>
+<p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> or <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> are 1 (non-0).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -934,13 +958,13 @@ least as great as the score of a global alignment.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If the associated value is non-0, then primer3 creates two output
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
 files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File <sequence_id>.for lists all
 acceptable left primers for <sequence_id>, and <sequence_id>.rev
 lists all acceptable right primers for <sequence_id>, where
 <sequence_id> is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
 must be supplied).  In addition, if the input tag
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is non-0, primer3 produces a file
+<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is 1 (non-0), primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>
@@ -963,7 +987,7 @@ accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
 all unrecognized bases to N).  If you wish to include an
 ambiguous
 base in an oligo, you must set <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> to a
-non-0 value.
+1 (non-0) value.
 
 Perhaps '-' and '* ' should be squeezed out rather than changed
 to 'N', but currently they simply get converted to N's.  The authors
@@ -1102,7 +1126,7 @@ that there is no optimum temperature.</p>]]>
 no optimum product size.  This parameter influences primer
 pair selection only
 if <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3_anchor> or
-<p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3_anchor> is non-0.</p>]]>
+<p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3_anchor> is 1 (non-0).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1377,30 +1401,6 @@ make Target regions excluded regions for internal oligos.</p>]]>
 	<description>
 <![CDATA[<p>The sequence of an internal oligo to check and around which to
 design left and right primers.  Must be a substring of SEQUENCE.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_OPT_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>20</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MIN_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>18</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_SIZE</tagName>
-	<dataType>int</dataType>
-	<default>27</default>
-	<description>
-<![CDATA[<p> </p>]]>
 	</description>
 </tag>
 <tag>

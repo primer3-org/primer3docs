@@ -8,28 +8,31 @@ Index of contents
 2. INTRODUCTION
 3. CITING PRIMER3
 4. REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS
-5. INSTALLATION INSTRUCTIONS - UNIX/LINUX
-6. INSTALLATION INSTRUCTIONS - OSX
-7. INSTALLATION INSTRUCTIONS - WINDOWS
-8. BUILDING OSX UNIVERSAL BINARY
-9. SYSTEM REQUIREMENTS
-10. INVOKING primer3_core
-11. COMMAND LINE TAGS
-12. INPUT AND OUTPUT CONVENTIONS
-13. HOW TO MIGRATE TAGS TO VERSION 4
-14. "SEQUENCE" INPUT TAGS
-15. "GLOBAL" INPUT TAGS
-16. "PROGRAM" INPUT TAGS
-17. AN EXAMPLE
-18. OUTPUT TAGS
-19. EXAMPLE OUTPUT
-20. ADVICE FOR PICKING PRIMERS
-21. CAUTIONS
-22. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
-23. DIFFERENCES FROM EARLIER VERSIONS
-24. EXIT STATUS CODES
-25. THE PRIMER3 WWW INTERFACE
-26. ACKNOWLEDGMENTS
+5. FAIR USE OF PRIMER3
+6. INSTALLATION INSTRUCTIONS - UNIX/LINUX
+7. INSTALLATION INSTRUCTIONS - OSX
+8. INSTALLATION INSTRUCTIONS - WINDOWS
+9. BUILDING OSX UNIVERSAL BINARY
+10. SYSTEM REQUIREMENTS
+11. INVOKING primer3_core
+12. COMMAND LINE TAGS
+13. INPUT AND OUTPUT CONVENTIONS
+14. HOW TO MIGRATE TAGS TO VERSION 4
+15. "SEQUENCE" INPUT TAGS
+16. "GLOBAL" INPUT TAGS
+17. "PROGRAM" INPUT TAGS
+18. HOW PRIMER3 CALCULATES THE PENALTY VALUE
+19. PRIMER3 FILE FORMAT
+20. AN EXAMPLE
+21. OUTPUT TAGS
+22. EXAMPLE OUTPUT
+23. ADVICE FOR PICKING PRIMERS
+24. CAUTIONS
+25. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
+26. DIFFERENCES FROM EARLIER VERSIONS
+27. EXIT STATUS CODES
+28. THE PRIMER3 WWW INTERFACE
+29. ACKNOWLEDGMENTS
 
 
 1. COPYRIGHT AND LICENSE
@@ -123,7 +126,59 @@ to primer3-mail (at) lists.sourceforge.net after replacing (at)
 with @.
 
 
-5. INSTALLATION INSTRUCTIONS - UNIX/LINUX
+5. FAIR USE OF PRIMER3
+======================
+In this section the developers would like to explain how they 
+would like primer3 to be used. Some of the things written here 
+might be in  conflict with the GPL license. In all this cases 
+the GPL is the legally binding license and issues of this 
+section can be ignored.
+
+The development of primer3 is promoted by a small group of 
+enthusiastic scientists mainly in their free time. We do not gain 
+any financial profit with primer3.
+
+There are two groups of primer3 users, the end user, who runs 
+primer3 to pick its primers and the programmer, who uses primer3 
+in his scripts or his software package. We encourage both to use 
+primer3.
+
+If you are an end user, we as scientists would be very happy if 
+once, when you write an article, you include in the Material and 
+Method section the sentence "Primers were selected using 
+primer3." and reference to our article. First of all, everybody 
+likes to be cited, it gives us a feeling how many people use 
+primer3 and that our efforts are actually useful to somebody 
+else. Furthermore other scientists reading your article could 
+get interested in primer3 and use it as well in the future. 
+This is the best way to say "thank you" to us. Be aware that 
+there is no need to ask us for permission if you install 
+primer3, primer3web or primer3plus on your machine.
+
+If you are a programmer, you probably know the conditions of the 
+GPL well. Be aware of its "viral" character. If you include 
+parts of the primer3 code or the library in your software, you 
+have to release your software also under GPL license. If you 
+only call primer3 from your software and interpret its output, 
+you can use any license you want for your software. If you 
+modify primer3, you have to release your modifications in source 
+code under GPL license as well.
+We choose the GPL license, because we wanted prime3 to evolve 
+and that improvements find their way back into the main 
+distribution of primer3. So if you make useful enhancements, 
+please send us the code. If you are programming a new web 
+interface which runs primer3, please include in the about page 
+of the tool the sentence "<you software name> uses primer3 
+version ...". Please consider releasing your software under GPL 
+license as well, especially if you do not want to maintain it 
+in the future. Be aware that there is no need to ask us for 
+permission if you like to include our software in your tools, 
+but we would be happy to receive an e-mail to inform us about 
+your tool. If there are any issues / bugs / suggestions for 
+primer3, please let us know so we can improve it.
+
+
+6. INSTALLATION INSTRUCTIONS - UNIX/LINUX
 =========================================
 Unzip and untar the distribution.
 
@@ -160,7 +215,7 @@ a.k.a. Needleman-Wunsch, plus "half global").  It is provided
 strictly as is; for further documentation please see the code.
 
 
-6. INSTALLATION INSTRUCTIONS - OSX
+7. INSTALLATION INSTRUCTIONS - OSX
 ==================================
 How to install this software
 ============================
@@ -263,7 +318,7 @@ following:
 The first option is just a shortcut to the second.
 
 
-7. INSTALLATION INSTRUCTIONS - WINDOWS
+8. INSTALLATION INSTRUCTIONS - WINDOWS
 ======================================
 How to install this software
 ============================
@@ -360,7 +415,7 @@ could run:
     c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt
 
 
-8. BUILDING OSX UNIVERSAL BINARY
+9. BUILDING OSX UNIVERSAL BINARY
 ================================
 ** To build a processor-native, non-universal binary of primer3, 
 the following is unneccesary**.
@@ -394,8 +449,8 @@ end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.
 This has not been tested.
 
 
-9. SYSTEM REQUIREMENTS
-======================
+10. SYSTEM REQUIREMENTS
+=======================
 Please see http://sourceforge.net/projects/primer3/ for up-to-date
 information.  Primer3 should compile on any Linux/Unix system
 including MacOS 10 and on other systems with POSIX C
@@ -406,7 +461,7 @@ still uses many Kernighan-&-Richie-style function headers, so
 you might have to force your compiler to accept them.
 
 
-10. INVOKING primer3_core
+11. INVOKING primer3_core
 =========================
 By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
@@ -429,7 +484,7 @@ primer3_core input_file.txt
 waiting for its input on stdin.
 
 
-11. COMMAND LINE TAGS
+12. COMMAND LINE TAGS
 =====================
 This parameters are read from command line:
 
@@ -466,7 +521,7 @@ to use new functionality.
    This tag is no longer supported.
 
 
-12. INPUT AND OUTPUT CONVENTIONS
+13. INPUT AND OUTPUT CONVENTIONS
 ================================
 By default, primer3 accepts input in Boulder-io format, a
 pre-XML, pre-RDF, text-based input/output format for
@@ -541,7 +596,7 @@ There are 2 major classes of input tags,  "Sequence" input tags
 and "Global" input tags as described below.
 
 
-13. HOW TO MIGRATE TAGS TO VERSION 4
+14. HOW TO MIGRATE TAGS TO VERSION 4
 ====================================
 From primer3 v2.0 many tags were modified and new tags 
 were introduced. The new primer3 tags are designed with the 
@@ -752,7 +807,7 @@ PRIMER_PAIR_WT_TEMPLATE_MISPRIMING
 
 
 
-14. "SEQUENCE" INPUT TAGS
+15. "SEQUENCE" INPUT TAGS
 =========================
 "Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
@@ -917,7 +972,7 @@ The sequence of an internal oligo to check and around which to
 design left and right primers.  Must be a substring of SEQUENCE.
 
 
-15. "GLOBAL" INPUT TAGS
+16. "GLOBAL" INPUT TAGS
 =======================
 "Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
@@ -926,75 +981,83 @@ records until or unless they are explicitly reset. Errors
 in "Global" input tags are fatal because they invalidate 
 the basic conditions under which primers are being picked.
 
+Because the laboratory detection step using internal oligos is 
+independent of the PCR amplification procedure, internal oligo 
+tags have defaults that are independent of the parameters that 
+govern the selection of PCR primers. For example, the melting 
+temperature of an oligo used for hybridization might be 
+considerably lower than that used as a PCR primer.
+
+
 PRIMER_TASK (string; default pick_pcr_primers)
 
 Probably the most important Tag. It tells primer3 what task to perform.
 Legal values are:
 
- - pick_detection_primers
- 
+   pick_detection_primers
+
    Pick primers to detect a sequence (the classic primer3 task). Use 
    the PRIMER_PICK_LEFT_PRIMER, PRIMER_PICK_INTERNAL_OLIGO and 
    PRIMER_PICK_RIGHT_PRIMER to control which primers are picked.
    If PRIMER_PICK_LEFT_PRIMER and PRIMER_PICK_RIGHT_PRIMER are 
    selected primer3 tries to pick primer pairs.
 
- - check_primers
- 
+   check_primers
+
    Primer3 does not pick any primers, it only checks the primers 
    provided in SEQUENCE_PRIMER, SEQUENCE_INTERNAL_OLIGO and 
    SEQUENCE_PRIMER_REVCOMP. Its the only task which does not
    require a sequence. If the sequence is provided, it is used
    as a template.
-   
- - pick_primer_list
- 
+
+   pick_primer_list
+
    Pick all primers in the sequence or limited by included region.
    It returns the primers sorted by quality starting with the 
    best primers. If PRIMER_PICK_LEFT_PRIMER and 
    PRIMER_PICK_RIGHT_PRIMER is selected primer3 does not to pick 
    primer pairs but treats it as independent lists.
-   
- - pick_sequencing_primers
- 
+
+   pick_sequencing_primers
+
    Pick primers suited to sequence a region. SEQUENCE_TARGET can be 
    used to indicate several targets. The position of each primer is 
    calculated for optimal sequencing results.
-   
- - pick_pcr_primers
-   
+
+   pick_pcr_primers
+
    Shortcut for the following settings:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=1
    PRIMER_PICK_INTERNAL_OLIGO=0
    PRIMER_PICK_RIGHT_PRIMER=1
 
- - pick_pcr_primers_and_hyb_probe
-   
+   pick_pcr_primers_and_hyb_probe
+
    Shortcut for the following settings:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=1
    PRIMER_PICK_INTERNAL_OLIGO=1
    PRIMER_PICK_RIGHT_PRIMER=1
 
- - pick_left_only
-   
+   pick_left_only
+
    Shortcut for the following settings:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=1
    PRIMER_PICK_INTERNAL_OLIGO=0
    PRIMER_PICK_RIGHT_PRIMER=0
 
- - pick_right_only
-   
+   pick_right_only
+
    Shortcut for the following settings:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=0
    PRIMER_PICK_INTERNAL_OLIGO=0
    PRIMER_PICK_RIGHT_PRIMER=1
 
- - pick_hyb_probe_only
-   
+   pick_hyb_probe_only
+
    Shortcut for the following settings:
    PRIMER_TASK=pick_detection_primers
    PRIMER_PICK_LEFT_PRIMER=0
@@ -1005,21 +1068,56 @@ Legal values are:
 
 PRIMER_PICK_LEFT_PRIMER (boolean; default 1)
 
-If the associated value is non-0, then primer3 will attempt to
+If the associated value is 1 (non-0), then primer3 will attempt to
 pick left primers.
 
 
 PRIMER_PICK_INTERNAL_OLIGO (boolean; default 0)
 
-If the associated value is non-0, then primer3 will attempt to
+If the associated value is 1 (non-0), then primer3 will attempt to
 pick an internal oligo (hybridization probe to detect the PCR
 product).
 
 
 PRIMER_PICK_RIGHT_PRIMER (boolean; default 1)
 
-If the associated value is non-0, then primer3 will attempt to
+If the associated value is 1 (non-0), then primer3 will attempt to
 pick a right primer.
+
+
+PRIMER_MIN_SIZE (int; default 18)
+
+Minimum acceptable length of a primer.  Must be greater than 0
+and less than or equal to PRIMER_MAX_SIZE.
+
+
+PRIMER_INTERNAL_MIN_SIZE (int; default 18)
+
+Equivalent parameter of PRIMER_MIN_SIZE for the internal oligo.
+
+
+PRIMER_OPT_SIZE (int; default 20)
+
+Optimum length (in bases) of a primer. Primer3 will attempt to 
+pick primers close to this length.
+
+
+PRIMER_INTERNAL_OPT_SIZE (int; default 20)
+
+Equivalent parameter of PRIMER_OPT_SIZE for the internal oligo.
+
+
+PRIMER_MAX_SIZE (int; default 27)
+
+Maximum acceptable length (in bases) of a primer.  Currently this
+parameter cannot be larger than 35.  This limit is governed by
+maximum oligo size for which primer3's melting-temperature is
+valid.
+
+
+PRIMER_INTERNAL_MAX_SIZE (int; default 27)
+
+Equivalent parameter of PRIMER_MAX_SIZE for the internal oligo.
 
 
 PRIMER_PICK_ANYWAY (boolean; default 0)
@@ -1169,7 +1267,7 @@ product for details.
 
 PRIMER_EXPLAIN_FLAG (boolean; default 0)
 
-If this flag is non-0, produce PRIMER_LEFT_EXPLAIN,
+If this flag is 1 (non-0), produce PRIMER_LEFT_EXPLAIN,
 PRIMER_RIGHT_EXPLAIN, and PRIMER_INTERNAL_EXPLAIN output
 tags, which are intended to provide information on the number of
 oligos and primer pairs that primer3 examined, and statistics on
@@ -1210,26 +1308,6 @@ PRIMER_GC_CLAMP (int; default 0)
 Require the specified number of consecutive Gs and Cs at the 3'
 end of both the left and right primer.  (This parameter has no
 effect on the internal oligo if one is requested.)
-
-
-PRIMER_OPT_SIZE (int; default 20)
-
-Optimum length (in bases) of a primer oligo. Primer3 will attempt
-to pick primers close to this length.
-
-
-PRIMER_MIN_SIZE (int; default 18)
-
-Minimum acceptable length of a primer.  Must be greater than 0
-and less than or equal to PRIMER_MAX_SIZE.
-
-
-PRIMER_MAX_SIZE (int; default 27)
-
-Maximum acceptable length (in bases) of a primer.  Currently this
-parameter cannot be larger than 35.  This limit is governed by
-maximum oligo size for which primer3's melting-temperature is
-valid.
 
 
 PRIMER_OPT_TM (float; default 60.0)
@@ -1448,7 +1526,7 @@ Minimum allowable percentage of Gs and Cs in any primer.
 PRIMER_OPT_GC_PERCENT (float; default 50.0)
 
 Optimum GC percent.  This parameter influences primer selection only if
-PRIMER_WT_GC_PERCENT_GT or PRIMER_WT_GC_PERCENT_LT are non-0.
+PRIMER_WT_GC_PERCENT_GT or PRIMER_WT_GC_PERCENT_LT are 1 (non-0).
 
 
 PRIMER_MAX_GC (float; default 80.0)
@@ -1564,7 +1642,7 @@ accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
 all unrecognized bases to N).  If you wish to include an
 ambiguous
 base in an oligo, you must set PRIMER_NUM_NS_ACCEPTED to a
-non-0 value.
+1 (non-0) value.
 
 Perhaps '-' and '* ' should be squeezed out rather than changed
 to 'N', but currently they simply get converted to N's.  The authors
@@ -1670,7 +1748,7 @@ The optimum size for the PCR product.  0 indicates that there is
 no optimum product size.  This parameter influences primer
 pair selection only
 if PRIMER_PAIR_WT_PRODUCT_SIZE_GT or
-PRIMER_PAIR_WT_PRODUCT_SIZE_LT is non-0.
+PRIMER_PAIR_WT_PRODUCT_SIZE_LT is 1 (non-0).
 
 
 PRIMER_SEQUENCING_LEAD (int; default 50)
@@ -1833,21 +1911,6 @@ PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
  
 
 
-PRIMER_INTERNAL_OPT_SIZE (int; default 20)
-
- 
-
-
-PRIMER_INTERNAL_MIN_SIZE (int; default 18)
-
- 
-
-
-PRIMER_INTERNAL_MAX_SIZE (int; default 27)
-
- 
-
-
 PRIMER_INTERNAL_OPT_TM (float; default 60.0)
 
  
@@ -2006,7 +2069,7 @@ PRIMER_COMMENT (string; default empty)
 The value of this tag is ignored.
 
 
-16. "PROGRAM" INPUT TAGS
+17. "PROGRAM" INPUT TAGS
 ========================
 "Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
@@ -2026,17 +2089,36 @@ and PRIMER...INPUT is specified).
 
 P3_FILE_FLAG (boolean; default 0)
 
-If the associated value is non-0, then primer3 creates two output
+If the associated value is 1 (non-0), then primer3 creates two output
 files for each input SEQUENCE_TEMPLATE.  File <sequence_id>.for lists all
 acceptable left primers for <sequence_id>, and <sequence_id>.rev
 lists all acceptable right primers for <sequence_id>, where
 <sequence_id> is the value of the SEQUENCE_ID tag (which
 must be supplied).  In addition, if the input tag
-PRIMER_PICK_INTERNAL_OLIGO is non-0, primer3 produces a file
+PRIMER_PICK_INTERNAL_OLIGO is 1 (non-0), primer3 produces a file
 <sequence_id>.int, which lists all acceptable internal oligos.
 
 
-17. AN EXAMPLE
+18. HOW PRIMER3 CALCULATES THE PENALTY VALUE
+============================================
+The penalty values in are the most important value of each primer,
+because primer3 uses it to choose which primers to select. The 
+calculation can be influecned by the weights which allows to 
+fine tune the selection of primers to your needs.
+
+Here AU has to write more...
+
+
+19. PRIMER3 FILE FORMAT
+=======================
+Primer3 allows to save settings in a text file and load it 
+upon program start. This allows to save and exchange settings 
+tailored to special applications.
+
+Here AU should write more....
+
+
+20. AN EXAMPLE
 ==============
 One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
@@ -2168,7 +2250,7 @@ It's not the case that we need to surround a simple sequence
 repeat every time we want to pick primers!
 
 
-18. OUTPUT TAGS
+21. OUTPUT TAGS
 ===============
 For each boulderio record passed into primer3 via stdin, exactly
 one boulderio record comes out of primer3 on stdout. These output
@@ -2421,13 +2503,13 @@ only if the input tag PRIMER_START_CODON_POSITION with a
 non-default value is supplied.
 
 
-19. EXAMPLE OUTPUT
+22. EXAMPLE OUTPUT
 ==================
 You should run it yourself.  Use the file 'example' in this
 directory as input.
 
 
-20. ADVICE FOR PICKING PRIMERS
+23. ADVICE FOR PICKING PRIMERS
 ==============================
 We suggest consulting: Wojciech Rychlik (1993) "Selection of
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
@@ -2435,7 +2517,7 @@ in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
 Applications", pp 31-40, Humana Press, Totowa NJ.
 
 
-21. CAUTIONS
+24. CAUTIONS
 ============
 Some of the most important issues in primer picking can be
 addressed only before using primer3. These are sequence quality 
@@ -2470,7 +2552,7 @@ use with those base calling programs (e.g. Phred, Bass/Grace,
 Trout) that output this information.
 
 
-22. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
+25. WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?
 ==================================================
 Try relaxing various parameters, including the
 self-complementarity parameters and max and min oligo melting
@@ -2487,14 +2569,14 @@ at that position.
 Try setting the PRIMER_EXPLAIN_FLAG input tag.
 
 
-23. DIFFERENCES FROM EARLIER VERSIONS
+26. DIFFERENCES FROM EARLIER VERSIONS
 =====================================
 See the file release_notes.txt in this directory. The 
 modified tags ae described in detail in HOW TO MIGRATE TAGS TO 
 VERSION 4.
 
 
-24. EXIT STATUS CODES
+27. EXIT STATUS CODES
 =====================
  0 on normal operation
 -1 under the following conditions:
@@ -2516,7 +2598,7 @@ stderr.
 In all of the error cases above Primer3 prints a message to stderr.
 
 
-25. THE PRIMER3 WWW INTERFACE
+28. THE PRIMER3 WWW INTERFACE
 =============================
 There are two web interfaces available :
 The Whitehead Institute for Biomedical Research provides a basic
@@ -2533,7 +2615,7 @@ Web interface code is available at
 http://sourceforge.net/projects/primer3/.
 
 
-26. ACKNOWLEDGMENTS
+29. ACKNOWLEDGMENTS
 ===================
 Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human
