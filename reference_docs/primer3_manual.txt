@@ -703,7 +703,6 @@ PRIMER_INTERNAL_WT_NUM_NS         - PRIMER_IO_WT_NUM_NS
 PRIMER_INTERNAL_WT_REP_SIM        - PRIMER_IO_WT_REP_SIM
 PRIMER_INTERNAL_WT_SEQ_QUAL       - PRIMER_IO_WT_SEQ_QUAL
 
-
 --------------------------------------------------------------------------------
 OUTPUT TAGS:
 
@@ -732,7 +731,6 @@ PRIMER_PAIR_4_PRODUCT_TM                - PRIMER_PRODUCT_TM_4 (grouped with PAIR
 PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
 
 PRIMER_INTERNAL_EXPLAIN                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
-
 
 Unchanged Tags:
 ---------------------------------------------------------------------------------
@@ -1391,7 +1389,7 @@ http://dx.doi.org/10.1073/pnas.83.11.3746],
 and the method in the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+http://dx.doi.org/10.1093/nar/18.21.6409].
 
 A value of 1 (*RECOMMENDED*) directs primer3 to use the table of
 thermodynamic values and the method for melting temperature
@@ -1540,7 +1538,7 @@ parameter corresponds to 'c' in equation (ii) of the paper
 [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783],
+http://dx.doi.org/10.1093/nar/18.21.6409],
 where a suitable value (for a
 lower initial concentration of template) is "empirically
 determined".  The value of this parameter is less than the actual
@@ -2501,7 +2499,7 @@ f is the melting temperature of the product. Calculated using
 equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+http://dx.doi.org/10.1093/nar/18.21.6409].
 Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
 PRIMER_MIN_PRODUCT_TM is specified.
 
@@ -2519,8 +2517,7 @@ PRIMER_PAIR_T_OPT_A=f
 f is T sub a super OPT from equation (i) in [Rychlik W, Spencer
 WJ and Rhoads RE (1990) "Optimization of the annealing
 temperature for DNA amplification in vitro", Nucleic Acids Res
-18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+18:6409-12. http://dx.doi.org/10.1093/nar/18.21.6409].
 Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.
 

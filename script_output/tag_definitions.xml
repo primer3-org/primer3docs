@@ -31,11 +31,11 @@ Boulder-IO parser will assume that a line ends at a newline.</p>]]>
 <![CDATA[<p>A sub-region of the given sequence in which to pick primers.  For
 example, often the first dozen or so bases of a sequence are
 vector, and should be excluded from consideration. The value for
-this parameter has the form
+this parameter has the form</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-where <tt><i>&lt;start&gt;</i></tt> is the index of the first base to consider,
+<p>where <tt><i>&lt;start&gt;</i></tt> is the index of the first base to consider,
 and <tt><i>&lt;length&gt;</i></tt> is the number of subsequent bases in the
 primer-picking region.</p>]]>
 	</description>
@@ -48,15 +48,15 @@ primer-picking region.</p>]]>
 <![CDATA[<p>If one or more Targets is specified then a legal primer pair must
 flank at least one of them.  A Target might be a simple sequence
 repeat site (for example a CA repeat) or a single-base-pair
-polymorphism.  The value should be a space-separated list of
+polymorphism.  The value should be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
+<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
 Target, and <tt><i>&lt;length&gt;</i></tt> is its length.
 
 For backward compatibility primer3 accepts (but ignores)
-a trailing ,<description> for each element of this argument.</p>]]>
+a trailing ,&lt;description&gt; for each element of this argument.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -65,11 +65,11 @@ a trailing ,<description> for each element of this argument.</p>]]>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>Primer oligos may not overlap any region specified in this tag.
-The associated value must be a space-separated list of
+The associated value must be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of
+<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of
 the excluded region, and <tt><i>&lt;length&gt;</i></tt> is its length.  This tag is
 useful for tasks such as excluding regions of low sequence
 quality or for excluding regions containing repetitive elements
@@ -82,12 +82,12 @@ such as ALUs or LINEs.</p>]]>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>Middle oligos may not overlap any region specified by this tag.
-The associated value must be a space-separated list of
-
-<start>,<length>
-
-pairs, where <start> is the index of the first base of
-an excluded region, and <length> is its length.  Often one would
+The associated value must be a space-separated list of</p>
+<pre>
+<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+</pre>
+<p>pairs, where &lt;start&gt; is the index of the first base of
+an excluded region, and &lt;length&gt; is its length.  Often one would
 make Target regions excluded regions for internal oligos.</p>]]>
 	</description>
 </tag>
@@ -329,11 +329,11 @@ value will increase running time.</p>]]>
 	<description>
 <![CDATA[<p>The associated values specify the lengths of the product that the
 user wants the primers to create, and is a space separated list
-of elements of the form
+of elements of the form</p>
 <pre>
 <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt>
 </pre>
-where an <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt> pair is a legal range of lengths for the
+<p>where an <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt> pair is a legal range of lengths for the
 product.  For example, if one wants PCR products to be between
 100 to 150 bases (inclusive) then one would set this parameter to
 <tt><i>100-150</i></tt>.  If one desires PCR products in either the range from
@@ -683,11 +683,11 @@ that there is no optimum temperature.</p>]]>
 calculates product Tm calculated using the formula from Bolton
 and McCarthy, PNAS 84:1390 (1962) as presented in Sambrook,
 Fritsch and Maniatis, Molecular Cloning, p 11.46 (1989, CSHL
-Press).
+Press).</p>
 <pre>
    Tm = 81.5 + 16.6(log10([Na+])) + .41*(%GC) - 600/length
 </pre>
-Where [Na+] is the molar sodium concentration, (%GC) is the
+<p>Where [Na+] is the molar sodium concentration, (%GC) is the
 percent of Gs and Cs in the sequence, and length is the length of
 the sequence.<br />
 <br />
@@ -744,7 +744,7 @@ from the base sequence" Proc Natl Acad Sci 83:4746-50
 and the method in the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-<link>http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783</link>].<br />
+<link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].<br />
 <br />
 A value of 1 (*RECOMMENDED*) directs primer3 to use the table of
 thermodynamic values and the method for melting temperature
@@ -762,12 +762,12 @@ recommended values):<br />
 <br />
 primer=CGTGACGTGACGGACT<br />
 <br />
-Using default salt and DNA concentrations we have<br />
+Using default salt and DNA concentrations we have</p>
 <pre>
 Tm = deltaH/(deltaS + R*ln(C/4))
 </pre>
-where R is the gas constant (1.987 cal/K mol) and C is the DNA 
-concentration.<br />
+<p>where R is the gas constant (1.987 cal/K mol) and C is the DNA 
+concentration.</p>
 <pre>
 deltaH(predicted) =
   = dH(CG) + dH(GT) + dH(TG) + .. + dH(CT) +
@@ -777,9 +777,9 @@ deltaH(predicted) =
 
   = -128.8 kcal/mol
 </pre>
-where 'init.w.term GC' and 'init.w.term AT' are two
+<p>where 'init.w.term GC' and 'init.w.term AT' are two
 initiation parameters for duplex formation: 'initiation with
-terminal GC' and 'initiation with terminal AT'
+terminal GC' and 'initiation with terminal AT'</p>
 <pre>
 deltaS(predicted) =
   = dS(CG) + dS(GT) + dS(TG) + .. + dS(CT) +
@@ -797,7 +797,7 @@ Tm = -128.800/(-361.736+1.987*ln((5*10^(-8))/4)) =
    = 323.704 K
 
 Tm(C) = 323.704 - 273.15 = 50.554 C
-</pre></p>]]>
+</pre>]]>
 	</description>
 </tag>
 <tag>
@@ -832,11 +832,11 @@ of monovalent cations using formula suggested in the paper [Ahsen von N,
 Wittwer CT, Schutz E (2001) "Oligonucleotide Melting Temperatures under PCR
 Conditions: Nearest-Neighbor Corrections for Mg^(2+), Deoxynucleotide Triphosphate,
 and Dimethyl Sulfoxide Concentrations with Comparision to Alternative Empirical 
-Formulas", Clinical Chemistry 47:1956-61 <link>http://www.clinchem.org/cgi/content/full/47/11/1956</link>].
+Formulas", Clinical Chemistry 47:1956-61 <link>http://www.clinchem.org/cgi/content/full/47/11/1956</link>].</p>
 <pre>
 [Monovalent cations] = [Monovalent cations] + 120*(([divalent cations] - [dNTP])^0.5)
 </pre>
-According to the formula concentration of desoxynucleotide triphosphate
+<p>According to the formula concentration of desoxynucleotide triphosphate
 [dNTP] must be smaller than concentration of divalent cations. If the
 specified concentration of dNTPs is larger than specified concentration of
 divalent cations then the effect of divalent cations is not considered. The
@@ -917,7 +917,7 @@ parameter corresponds to 'c' in equation (ii) of the paper
 [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-<link>http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783</link>],
+<link>http://dx.doi.org/10.1093/nar/18.21.6409</link>],
 where a suitable value (for a
 lower initial concentration of template) is "empirically
 determined".  The value of this parameter is less than the actual
@@ -953,7 +953,7 @@ necessarily causing self-priming in the PCR.  The scoring system
 gives 1.00 for complementary bases, -0.25 for a match of any base
 (or N) with an N, -1.00 for a mismatch, and -2.00 for a gap.
 Only single-base-pair gaps are allowed.  For example, the 
-alignment
+alignment</p>
 <pre>
    5' ATCGNA 3'
       || | |
@@ -965,7 +965,7 @@ is allowed (and yields a score of 1.75), but the alignment
       ||  | |
    3' TA--CGT 5'
 </pre>
-is not considered.  Scores are non-negative, and a score of 0.00
+<p>is not considered.  Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable local alignment between two
 oligos.</p>]]>
 	</description>
@@ -988,7 +988,7 @@ testing a single primer for self-complementarity, and the maximum
 allowable 3'-anchored global alignment score when testing for
 complementarity between left and right primers.  The 3'-anchored
 global alignment score is taken to predict the likelihood of
-PCR-priming primer-dimers, for example
+PCR-priming primer-dimers, for example</p>
 <pre>
    5' ATGCCCTAGCTTCCGGATG 3'
                 ||| |||||
@@ -1000,7 +1000,7 @@ or
                   ||||||
                3' AGCGCTCCGGGTATCGGA 5'
 </pre>
-The scoring system is as for the Maximum Complementarity
+<p>The scoring system is as for the Maximum Complementarity
 argument.  In the examples above the scores are 7.00 and 6.00
 respectively.  Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable 3'-anchored global
@@ -1038,12 +1038,12 @@ parameter values specified by the option of <p3_anchor>PRIMER_TM_SANTALUCIA</p3_
 Table of thermodynamic parameters.<br />
 <br />
 For example if the table of thermodynamic parameters suggested
-by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
+by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
 values for the most stable and for the most labile 5mer duplex 
 are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.<br />
 <br />	
 If the table of thermodynamic parameters suggested by 
-<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
+<a href="http://dx.doi.org/10.1073/pnas.83.11.3746">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
 values for the most stable and for the most labile 5mer are 
 13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.]]>
 	</description>
@@ -1684,13 +1684,13 @@ output of primer3.</p>]]>
 	<default>0</default>
 	<description>
 <![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
-files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File <sequence_id>.for lists all
-acceptable left primers for <sequence_id>, and <sequence_id>.rev
-lists all acceptable right primers for <sequence_id>, where
-<sequence_id> is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
+files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File &lt;sequence_id&gt;.for lists all
+acceptable left primers for &lt;sequence_id&gt;, and &lt;sequence_id&gt;.rev
+lists all acceptable right primers for &lt;sequence_id&gt;, where
+&lt;sequence_id&gt; is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
 must be supplied).  In addition, if the input tag
 <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is 1 (non-0), primer3 produces a file
-<sequence_id>.int, which lists all acceptable internal oligos.</p>]]>
+&lt;sequence_id&gt;.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>
 <tag>

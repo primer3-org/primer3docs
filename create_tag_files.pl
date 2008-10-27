@@ -536,7 +536,7 @@ sub createReadmeHtml {
 			$chapterCount++;		
 			$html_string .= "<h2><a name=\"$textblock_holder\">$chapterCount. ";
 			$html_string .= "$textHead{$textblock_holder}</a></h2>\n\n";
-			$html_string .= "<p>$textBody{$textblock_holder}</p>\n\n";
+			$html_string .= "$textBody{$textblock_holder}\n\n";
 		}
 		# Print out the command line tags at the right spot
 		if ($textblock_holder eq "commandLineTags") {
@@ -548,7 +548,7 @@ sub createReadmeHtml {
 				
 				# Assemble the txt file
 				$html_string .= "<h3>$tagName</h3>\n";
-				$html_string .= "<p>$description</p>\n\n";
+				$html_string .= "$description\n\n";
 			}
 			$html_string .= "\n";
 		}
@@ -608,7 +608,7 @@ sub createReadmeHtml {
 ####################################################
 sub printTable {
 	my $text = shift;
-	my $output = "<table style=\"text-align: left; width: 500px;\" border=\"1\">\n";
+	my $output = "<table style=\"text-align: left; width: 800px;\" border=\"1\">\n";
 
 	my $tagCount = 0;
 	my @tags;

@@ -388,7 +388,7 @@ input tags have defined values.</p>]]>
 equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+<link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
 Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
 PRIMER_MIN_PRODUCT_TM is specified.</p>]]>
 	</description>
@@ -420,8 +420,7 @@ specified.</p>]]>
 <![CDATA[<p>f is T sub a super OPT from equation (i) in [Rychlik W, Spencer
 WJ and Rhoads RE (1990) "Optimization of the annealing
 temperature for DNA amplification in vitro", Nucleic Acids Res
-18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+18:6409-12. <link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
 Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.</p>]]>
 	</description>

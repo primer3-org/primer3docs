@@ -59,7 +59,7 @@
 </p>
 <h2><a name="copyrightLicense">1. COPYRIGHT AND LICENSE</a></h2>
 
-<p><pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://jura.wi.mit.edu/rozen), and Helen Skaletsky All rights
 reserved.
@@ -93,7 +93,7 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-</pre></p>
+</pre>
 
 <h2><a name="introduction">2. INTRODUCTION</a></h2>
 
@@ -201,7 +201,7 @@ primer3, please let us know so we can improve it.</p>
 <br>
 DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
-distribution (primer3_<release>.tar.gz) to Unix/Linux, and then<br>
+distribution (primer3_&lt;release&gt;.tar.gz) to Unix/Linux, and then<br>
 <br>
 $ unzip primer3_1.0.1.tar.gz<br>
 $ tar xvf primer3_1.0.1.tar<br>
@@ -328,8 +328,8 @@ run the binaries.  Let's assume you put the files in
 '~/bin/.  You may run primer3_core by doing either of the 
 following:<br>
 <br>
-	1. ~/bin/primer3_core < yourInputFile<br>
-	2. /Users/<your username>/bin/primer3_core < yourInputFile<br>
+	1. ~/bin/primer3_core &lt; yourInputFile<br>
+	2. /Users/&lt;your username&gt;/bin/primer3_core < yourInputFile<br>
 <br>
 The first option is just a shortcut to the second.</p>
 
@@ -499,36 +499,36 @@ waiting for its input on stdin.</p>
 
 <p>This parameters are read from command line:</p>
 <h3>-about</h3>
-<p><p>This tag generates one line of output: primer3 release 1.1.2
+<p>This tag generates one line of output: primer3 release 1.1.2
 and terminates the program. This allows scripts to 
-query primer3 for its version.</p></p>
+query primer3 for its version.</p>
 
 <h3>-format_output</h3>
-<p><p>This tag indicates that primer3_core should generate
-user-oriented (rather than program-oriented) output.</p></p>
+<p>This tag indicates that primer3_core should generate
+user-oriented (rather than program-oriented) output.</p>
 
 <h3>-strict_tags</h3>
-<p><p>This tag indicates that primer3_core should generate
+<p>This tag indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
-it does not recognize (see INPUT AND OUTPUT CONVENTIONS).</p></p>
+it does not recognize (see INPUT AND OUTPUT CONVENTIONS).</p>
 
 <h3>-p3_settings_file=set.txt</h3>
-<p><p>This tag allows to specify a settings file set.txt. The global 
+<p>This tag allows to specify a settings file set.txt. The global 
 ("PRIMER_...") parameters of these file are read first. 
 Tags appearing in the settings file override identical 
 tags of the default primer3 settings and are modified 
 by identical tags in the command line input. See 
 primer3 file documentation for details on the file 
-format.</p></p>
+format.</p>
 
 <h3>-io_version=XXX</h3>
-<p><p>This tag indicated were XXX is the version of input primer3 should 
+<p>This tag indicated were XXX is the version of input primer3 should 
 read. At the moment only -io_version=3 and -io_version=4
 are supported. Please note that -io_version=4 is required
-to use new functionality.</p></p>
+to use new functionality.</p>
 
 <h3>-2x_compat</h3>
-<p><p>This tag is no longer supported.</p></p>
+<p>This tag is no longer supported.</p>
 
 
 <h2><a name="inputOutputConventions">13. INPUT AND OUTPUT CONVENTIONS</a></h2>
@@ -545,7 +545,7 @@ Primer3 exits with 0 status if it operates correctly.  See EXIT
 STATUS CODES below for additional information.<br>
 <br>
 The syntax of the version of Boulder-io recognized by primer3 is
-as follows:<br>
+as follows:</p>
 <pre>
   o Input consists of a sequence of RECORDs.
 
@@ -559,7 +559,7 @@ as follows:<br>
           followed by '='.
     o the pair must be terminated by a newline character.
 </pre>
-An example of a legal (TAG,VALUE) pair is<br>
+<p>An example of a legal (TAG,VALUE) pair is<br>
 <br>
 <a href="#SEQUENCE_ID">SEQUENCE_ID</a>=my_marker<br>
 <br>
@@ -640,7 +640,7 @@ specify which primers are to be picked.<br>
 <br>
 These Tags are modified:<br>
 <br>
-The "per sequence" tags:<br>
+The "per sequence" tags:</p>
 <pre>
 NEW VERSION                       - OLD VERSION
 ----------------------------------------------------------------------------------------                       
@@ -712,8 +712,7 @@ The following tags IO is replaced by INTERNAL:
 <a href="#PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM</a>        - PRIMER_IO_WT_REP_SIM
 <a href="#PRIMER_INTERNAL_WT_SEQ_QUAL">PRIMER_INTERNAL_WT_SEQ_QUAL</a>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
-
---------------------------------------------------------------------------------<br>
+<p>--------------------------------------------------------------------------------<br>
 OUTPUT TAGS:<br>
 <br>
 There are three big changes on the output:<br>
@@ -722,8 +721,8 @@ There are three big changes on the output:<br>
 - The "PRODUCT" tags are renamed<br>
 <br>
 Now all primer related output follows the rule:
-PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>.
-where <j> is an integer from 0 to n, where n is at most the 
+PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;.
+where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of <a href="#PRIMER_NUM_RETURN">PRIMER_NUM_RETURN</a> - 1.<br>
 <br>
 This allows easy scripting by using the underscores _ to split 
@@ -731,7 +730,7 @@ the name. The first part is PRIMER, the second the type of oligo
 or pair parameters, the third is always a number, starting at 
 0 and the rest is used by the tags.<br>
 <br>
-That affects also (shown for output nr. 5):<br>
+That affects also (shown for output nr. 5):</p>
 <pre>
 NEW VERSION                             - OLD VERSION
 ------------------------------------------------------------------------------------------------------
@@ -742,9 +741,8 @@ NEW VERSION                             - OLD VERSION
 
 <a href="#PRIMER_INTERNAL_EXPLAIN">PRIMER_INTERNAL_EXPLAIN</a>                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 </pre>
-<br>
-Unchanged Tags:<br>
----------------------------------------------------------------------------------<br>
+<p>Unchanged Tags:<br>
+---------------------------------------------------------------------------------</p>
 <pre>
 <a href="#PRIMER_EXPLAIN_FLAG">PRIMER_EXPLAIN_FLAG</a>
 <a href="#PRIMER_PICK_ANYWAY">PRIMER_PICK_ANYWAY</a>
@@ -814,7 +812,7 @@ Unchanged Tags:<br>
 <a href="#PRIMER_PAIR_WT_PRODUCT_SIZE_LT">PRIMER_PAIR_WT_PRODUCT_SIZE_LT</a>
 <a href="#PRIMER_PAIR_WT_REP_SIM">PRIMER_PAIR_WT_REP_SIM</a>
 <a href="#PRIMER_PAIR_WT_TEMPLATE_MISPRIMING">PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</a>
-</pre></p>
+</pre>
 
 <h2><a name="sequenceTags">15. "SEQUENCE" INPUT TAGS</a></h2>
 
@@ -823,7 +821,7 @@ particular input sequence to primer3. They are reset after every
 boulder record. Errors in "Sequence" input tags invalidate the 
 current record, but primer3 will continue to process additional 
 records.</p>
-<table style="text-align: left; width: 500px;" border="1">
+<table style="text-align: left; width: 800px;" border="1">
 	  <tr>
 	    <td><a href="#SEQUENCE_EXCLUDED_REGION">SEQUENCE_EXCLUDED_REGION</a></td>
 	    <td><a href="#SEQUENCE_ID">SEQUENCE_ID</a></td>
@@ -872,11 +870,11 @@ Boulder-IO parser will assume that a line ends at a newline.</p>
 <p>A sub-region of the given sequence in which to pick primers.  For
 example, often the first dozen or so bases of a sequence are
 vector, and should be excluded from consideration. The value for
-this parameter has the form
+this parameter has the form</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-where <tt><i>&lt;start&gt;</i></tt> is the index of the first base to consider,
+<p>where <tt><i>&lt;start&gt;</i></tt> is the index of the first base to consider,
 and <tt><i>&lt;length&gt;</i></tt> is the number of subsequent bases in the
 primer-picking region.</p>
 
@@ -886,25 +884,25 @@ primer-picking region.</p>
 <p>If one or more Targets is specified then a legal primer pair must
 flank at least one of them.  A Target might be a simple sequence
 repeat site (for example a CA repeat) or a single-base-pair
-polymorphism.  The value should be a space-separated list of
+polymorphism.  The value should be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
+<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
 Target, and <tt><i>&lt;length&gt;</i></tt> is its length.
 
 For backward compatibility primer3 accepts (but ignores)
-a trailing ,<description> for each element of this argument.</p>
+a trailing ,&lt;description&gt; for each element of this argument.</p>
 
 
 <h3><a name="SEQUENCE_EXCLUDED_REGION">SEQUENCE_EXCLUDED_REGION (interval list; default empty)</a></h3>
 
 <p>Primer oligos may not overlap any region specified in this tag.
-The associated value must be a space-separated list of
+The associated value must be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
-pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of
+<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of
 the excluded region, and <tt><i>&lt;length&gt;</i></tt> is its length.  This tag is
 useful for tasks such as excluding regions of low sequence
 quality or for excluding regions containing repetitive elements
@@ -914,12 +912,12 @@ such as ALUs or LINEs.</p>
 <h3><a name="SEQUENCE_INTERNAL_EXCLUDED_REGION">SEQUENCE_INTERNAL_EXCLUDED_REGION (interval list; default empty)</a></h3>
 
 <p>Middle oligos may not overlap any region specified by this tag.
-The associated value must be a space-separated list of
-
-<start>,<length>
-
-pairs, where <start> is the index of the first base of
-an excluded region, and <length> is its length.  Often one would
+The associated value must be a space-separated list of</p>
+<pre>
+<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+</pre>
+<p>pairs, where &lt;start&gt; is the index of the first base of
+an excluded region, and &lt;length&gt; is its length.  Often one would
 make Target regions excluded regions for internal oligos.</p>
 
 
@@ -1023,7 +1021,7 @@ govern the selection of PCR primers. For example, the melting
 temperature of an oligo used for hybridization might be 
 considerably lower than that used as a PCR primer.
 <br></p>
-<table style="text-align: left; width: 500px;" border="1">
+<table style="text-align: left; width: 800px;" border="1">
 	  <tr>
 	    <td><a href="#PRIMER_DNA_CONC">PRIMER_DNA_CONC</a></td>
 	    <td><a href="#PRIMER_LIBERAL_BASE">PRIMER_LIBERAL_BASE</a></td>
@@ -1334,11 +1332,11 @@ value will increase running time.</p>
 
 <p>The associated values specify the lengths of the product that the
 user wants the primers to create, and is a space separated list
-of elements of the form
+of elements of the form</p>
 <pre>
 <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt>
 </pre>
-where an <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt> pair is a legal range of lengths for the
+<p>where an <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt> pair is a legal range of lengths for the
 product.  For example, if one wants PCR products to be between
 100 to 150 bases (inclusive) then one would set this parameter to
 <tt><i>100-150</i></tt>.  If one desires PCR products in either the range from
@@ -1574,11 +1572,11 @@ that there is no optimum temperature.</p>
 calculates product Tm calculated using the formula from Bolton
 and McCarthy, PNAS 84:1390 (1962) as presented in Sambrook,
 Fritsch and Maniatis, Molecular Cloning, p 11.46 (1989, CSHL
-Press).
+Press).</p>
 <pre>
    Tm = 81.5 + 16.6(log10([Na+])) + .41*(%GC) - 600/length
 </pre>
-Where [Na+] is the molar sodium concentration, (%GC) is the
+<p>Where [Na+] is the molar sodium concentration, (%GC) is the
 percent of Gs and Cs in the sequence, and length is the length of
 the sequence.<br>
 <br>
@@ -1626,7 +1624,7 @@ from the base sequence" Proc Natl Acad Sci 83:4746-50
 and the method in the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783">http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783</a>].<br>
+<a href="http://dx.doi.org/10.1093/nar/18.21.6409">http://dx.doi.org/10.1093/nar/18.21.6409</a>].<br>
 <br>
 A value of 1 (*RECOMMENDED*) directs primer3 to use the table of
 thermodynamic values and the method for melting temperature
@@ -1644,12 +1642,12 @@ recommended values):<br>
 <br>
 primer=CGTGACGTGACGGACT<br>
 <br>
-Using default salt and DNA concentrations we have<br>
+Using default salt and DNA concentrations we have</p>
 <pre>
 Tm = deltaH/(deltaS + R*ln(C/4))
 </pre>
-where R is the gas constant (1.987 cal/K mol) and C is the DNA 
-concentration.<br>
+<p>where R is the gas constant (1.987 cal/K mol) and C is the DNA 
+concentration.</p>
 <pre>
 deltaH(predicted) =
   = dH(CG) + dH(GT) + dH(TG) + .. + dH(CT) +
@@ -1659,9 +1657,9 @@ deltaH(predicted) =
 
   = -128.8 kcal/mol
 </pre>
-where 'init.w.term GC' and 'init.w.term AT' are two
+<p>where 'init.w.term GC' and 'init.w.term AT' are two
 initiation parameters for duplex formation: 'initiation with
-terminal GC' and 'initiation with terminal AT'
+terminal GC' and 'initiation with terminal AT'</p>
 <pre>
 deltaS(predicted) =
   = dS(CG) + dS(GT) + dS(TG) + .. + dS(CT) +
@@ -1679,7 +1677,7 @@ Tm = -128.800/(-361.736+1.987*ln((5*10^(-8))/4)) =
    = 323.704 K
 
 Tm(C) = 323.704 - 273.15 = 50.554 C
-</pre></p>
+</pre>
 
 
 <h3><a name="PRIMER_SALT_MONOVALENT">PRIMER_SALT_MONOVALENT (float; default 50.0)</a></h3>
@@ -1705,11 +1703,11 @@ of monovalent cations using formula suggested in the paper [Ahsen von N,
 Wittwer CT, Schutz E (2001) "Oligonucleotide Melting Temperatures under PCR
 Conditions: Nearest-Neighbor Corrections for Mg^(2+), Deoxynucleotide Triphosphate,
 and Dimethyl Sulfoxide Concentrations with Comparision to Alternative Empirical 
-Formulas", Clinical Chemistry 47:1956-61 <a href="http://www.clinchem.org/cgi/content/full/47/11/1956">http://www.clinchem.org/cgi/content/full/47/11/1956</a>].
+Formulas", Clinical Chemistry 47:1956-61 <a href="http://www.clinchem.org/cgi/content/full/47/11/1956">http://www.clinchem.org/cgi/content/full/47/11/1956</a>].</p>
 <pre>
 [Monovalent cations] = [Monovalent cations] + 120*(([divalent cations] - [dNTP])^0.5)
 </pre>
-According to the formula concentration of desoxynucleotide triphosphate
+<p>According to the formula concentration of desoxynucleotide triphosphate
 [dNTP] must be smaller than concentration of divalent cations. If the
 specified concentration of dNTPs is larger than specified concentration of
 divalent cations then the effect of divalent cations is not considered. The
@@ -1775,7 +1773,7 @@ parameter corresponds to 'c' in equation (ii) of the paper
 [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783">http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783</a>],
+<a href="http://dx.doi.org/10.1093/nar/18.21.6409">http://dx.doi.org/10.1093/nar/18.21.6409</a>],
 where a suitable value (for a
 lower initial concentration of template) is "empirically
 determined".  The value of this parameter is less than the actual
@@ -1805,7 +1803,7 @@ necessarily causing self-priming in the PCR.  The scoring system
 gives 1.00 for complementary bases, -0.25 for a match of any base
 (or N) with an N, -1.00 for a mismatch, and -2.00 for a gap.
 Only single-base-pair gaps are allowed.  For example, the 
-alignment
+alignment</p>
 <pre>
    5' ATCGNA 3'
       || | |
@@ -1817,7 +1815,7 @@ is allowed (and yields a score of 1.75), but the alignment
       ||  | |
    3' TA--CGT 5'
 </pre>
-is not considered.  Scores are non-negative, and a score of 0.00
+<p>is not considered.  Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable local alignment between two
 oligos.</p>
 
@@ -1834,7 +1832,7 @@ testing a single primer for self-complementarity, and the maximum
 allowable 3'-anchored global alignment score when testing for
 complementarity between left and right primers.  The 3'-anchored
 global alignment score is taken to predict the likelihood of
-PCR-priming primer-dimers, for example
+PCR-priming primer-dimers, for example</p>
 <pre>
    5' ATGCCCTAGCTTCCGGATG 3'
                 ||| |||||
@@ -1846,7 +1844,7 @@ or
                   ||||||
                3' AGCGCTCCGGGTATCGGA 5'
 </pre>
-The scoring system is as for the Maximum Complementarity
+<p>The scoring system is as for the Maximum Complementarity
 argument.  In the examples above the scores are 7.00 and 6.00
 respectively.  Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable 3'-anchored global
@@ -1878,12 +1876,12 @@ parameter values specified by the option of <a href="#PRIMER_TM_SANTALUCIA">PRIM
 Table of thermodynamic parameters.<br>
 <br>
 For example if the table of thermodynamic parameters suggested
-by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460" target="_blank">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
+by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
 values for the most stable and for the most labile 5mer duplex 
 are 6.86 kcal/mol (GCGCG) and 0.86 kcal/mol (TATAT) respectively.<br>
 <br>	
 If the table of thermodynamic parameters suggested by 
-<a href="http://dx.doi.org/10.1073/pnas.83.11.3746" target="_blank">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
+<a href="http://dx.doi.org/10.1073/pnas.83.11.3746">Breslauer et al. 1986, 10.1073/pnas.83.11.3746</a> is used the deltaG 
 values for the most stable and for the most labile 5mer are 
 13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
 
@@ -2352,13 +2350,13 @@ output of primer3.</p>
 <h3><a name="P3_FILE_FLAG">P3_FILE_FLAG (boolean; default 0)</a></h3>
 
 <p>If the associated value is 1 (non-0), then primer3 creates two output
-files for each input <a href="#SEQUENCE_TEMPLATE">SEQUENCE_TEMPLATE</a>.  File <sequence_id>.for lists all
-acceptable left primers for <sequence_id>, and <sequence_id>.rev
-lists all acceptable right primers for <sequence_id>, where
-<sequence_id> is the value of the <a href="#SEQUENCE_ID">SEQUENCE_ID</a> tag (which
+files for each input <a href="#SEQUENCE_TEMPLATE">SEQUENCE_TEMPLATE</a>.  File &lt;sequence_id&gt;.for lists all
+acceptable left primers for &lt;sequence_id&gt;, and &lt;sequence_id&gt;.rev
+lists all acceptable right primers for &lt;sequence_id&gt;, where
+&lt;sequence_id&gt; is the value of the <a href="#SEQUENCE_ID">SEQUENCE_ID</a> tag (which
 must be supplied).  In addition, if the input tag
 <a href="#PRIMER_PICK_INTERNAL_OLIGO">PRIMER_PICK_INTERNAL_OLIGO</a> is 1 (non-0), primer3 produces a file
-<sequence_id>.int, which lists all acceptable internal oligos.</p>
+&lt;sequence_id&gt;.int, which lists all acceptable internal oligos.</p>
 
 
 <h3><a name="P3_COMMENT">P3_COMMENT (string; default empty)</a></h3>
@@ -2382,7 +2380,7 @@ upon program start. This allows to save and exchange settings
 tailored to special applications.<br>
 <br>
 To create a primer3 file a editor able to save txt files is 
-sufficient. The three lines of the file have to be:
+sufficient. The three lines of the file have to be:</p>
 <pre>
 Primer3 File - http://primer3.sourceforge.net
 P3_FILE_TYPE=settings
@@ -2394,7 +2392,7 @@ SEQUENCE_TEMPLATE=ATG...
 ...
 =
 </pre> 
-In the first line "Primer3 File - http://primer3.sourceforge.net" 
+<p>In the first line "Primer3 File - http://primer3.sourceforge.net" 
 without tailing space. In the second line "P3_FILE_TYPE=settings".
 Valid values for P3_FILE_TYPE are all_parameters, sequence and 
 settings. Up to now, only settings is supported. The third line 
@@ -2414,7 +2412,7 @@ the criteria of the experiment.<br>
 We need to come up with a boulder-io record to send to primer3 via
 stdin. There are lots of ways to accomplish this. We could save
 the record into a text file called 'input', and then type the
-UNIX command 'primer3 < input'.<br>
+UNIX command 'primer3 &lt; input'.<br>
 <br>
 Let's look at the input record itself:
 <br>
@@ -2543,8 +2541,8 @@ one boulderio record comes out of primer3 on stdout. These output
 records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br>
-Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>
-where <j> is an integer from 0 to n, where n is at most the 
+Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
+where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of PRIMER_NUM_RETURN. In the documentation the output 
 nr. 5 is shown as for example: PRIMER_LEFT_4_TM.<br>
 <br>
@@ -2731,7 +2729,7 @@ input tags have defined values.</p>
 equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+<a href="http://dx.doi.org/10.1093/nar/18.21.6409">http://dx.doi.org/10.1093/nar/18.21.6409</a>].
 Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
 PRIMER_MIN_PRODUCT_TM is specified.</p>
 
@@ -2749,8 +2747,7 @@ specified.</p>
 <p>f is T sub a super OPT from equation (i) in [Rychlik W, Spencer
 WJ and Rhoads RE (1990) "Optimization of the annealing
 temperature for DNA amplification in vitro", Nucleic Acids Res
-18:6409-12
-http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=2243783].
+18:6409-12. <a href="http://dx.doi.org/10.1093/nar/18.21.6409">http://dx.doi.org/10.1093/nar/18.21.6409</a>].
 Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.</p>
 
@@ -2858,7 +2855,7 @@ VERSION 4.</p>
 
 <h2><a name="exitStatusCodes">27. EXIT STATUS CODES</a></h2>
 
-<p><pre> 0 on normal operation
+<pre> 0 on normal operation
 -1 under the following conditions:
    illegal command-line arguments.
    unable to fflush stdout.
@@ -2867,8 +2864,8 @@ VERSION 4.</p>
 -2 on out-of-memory
 -3 empty input
 -4 error in a "Global" input tag (message in PRIMER_ERROR).
-</pre><br>
-Primer3 calls abort() and dumps core (if possible) if a
+</pre>
+<p>Primer3 calls abort() and dumps core (if possible) if a
 programming error is detected by an assertion violation.<br>
 <br>
 SIGINT and SIGTERM are handled essentially as empty input, except

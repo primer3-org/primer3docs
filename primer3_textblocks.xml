@@ -7,7 +7,7 @@ An example Tag with all possible options:
 	<id></id>
 	<head></head>
 	<text>
-<![CDATA[ ]]>
+<![CDATA[<p> </p>]]>
 	</text>
 </textBlock>
 
@@ -19,7 +19,7 @@ Thextblocks added here also have to be added to the array
 	<id>acknowledgments</id>
 	<head>ACKNOWLEDGMENTS</head>
 	<text>
-<![CDATA[Initial development of Primer3 was funded by Howard Hughes Medical
+<![CDATA[<p>Initial development of Primer3 was funded by Howard Hughes Medical
 Institute and by the National Institutes of Health, National Human
 Genome Research Institute under grants R01-HG00257 (to David C. Page)
 and P50-HG00098 (to Eric S. Lander).<br />
@@ -42,14 +42,14 @@ errors in Primer3.<br />
 Primer3 is now operating as open software development project hosted
 on SourceForge, and we are working out how to acknowledge all who have
 contributed to its enahancement.  Current active developers can be
-found at http://sourceforge.net/projects/primer3/.]]>
+found at http://sourceforge.net/projects/primer3/.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>buildOsX</id>
 	<head>BUILDING OSX UNIVERSAL BINARY</head>
 	<text>
-<![CDATA[** To build a processor-native, non-universal binary of primer3, 
+<![CDATA[<p>** To build a processor-native, non-universal binary of primer3, 
 the following is unneccesary**.<br />
 <br />
 The instructions above should be sufficient.<br />
@@ -78,26 +78,26 @@ the README.OSX.txt.<br />
 You should be able to compile a 3-way binary which includes PPC64 support 
 (intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
 end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
-This has not been tested.]]>
+This has not been tested.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>calculatePenalties</id>
 	<head>HOW PRIMER3 CALCULATES THE PENALTY VALUE</head>
 	<text>
-<![CDATA[The penalty values in are the most important value of each primer,
+<![CDATA[<p>The penalty values in are the most important value of each primer,
 because primer3 uses it to choose which primers to select. The 
 calculation can be influecned by the weights which allows to 
 fine tune the selection of primers to your needs.<br />
 <br />
-Here AU has to write more...]]>
+Here AU has to write more...</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>cautions</id>
 	<head>CAUTIONS</head>
 	<text>
-<![CDATA[Some of the most important issues in primer picking can be
+<![CDATA[<p>Some of the most important issues in primer picking can be
 addressed only before using primer3. These are sequence quality 
 (including making sure the sequence is not vector and not chimeric) 
 and avoiding repetitive elements.<br />
@@ -127,14 +127,14 @@ of the read.<br />
 <br />
 In addition, primer3 takes as input a <p3_anchor>SEQUENCE_QUALITY</p3_anchor> list for
 use with those base calling programs (e.g. Phred, Bass/Grace, 
-Trout) that output this information.]]>
+Trout) that output this information.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>citationRequest</id>
 	<head>CITING PRIMER3</head>
 	<text>
-<![CDATA[We request but do not require that use of this software be cited in
+<![CDATA[<p>We request but do not require that use of this software be cited in
 publications as<br />
 <br />
 Steve Rozen and Helen J. Skaletsky (2000) Primer3 on the WWW for
@@ -146,23 +146,23 @@ NJ, pp 365-386<br />
 The paper is available at
 <link>http://jura.wi.mit.edu/rozen/papers/rozen-and-skaletsky-2000-primer3.pdf</link><br />
 <br />	
-Source code available at <link>http://sourceforge.net/projects/primer3/</link>.]]>
+Source code available at <link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>contact</id>
 	<head>REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS</head>
 	<text>
-<![CDATA[For error reports or requests for enhancements, please send e-mail
+<![CDATA[<p>For error reports or requests for enhancements, please send e-mail
 to primer3-mail (at) lists.sourceforge.net after replacing (at)
-with @.]]>
+with @.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>commandLineTags</id>
 	<head>COMMAND LINE TAGS</head>
 	<text>
-<![CDATA[This parameters are read from command line:]]>
+<![CDATA[<p>This parameters are read from command line:</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -210,23 +210,23 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<id>earlierVersions</id>
 	<head>DIFFERENCES FROM EARLIER VERSIONS</head>
 	<text>
-<![CDATA[See the file release_notes.txt in this directory. The 
+<![CDATA[<p>See the file release_notes.txt in this directory. The 
 modified tags ae described in detail in HOW TO MIGRATE TAGS TO 
-VERSION 4.]]>
+VERSION 4.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>example</id>
 	<head>AN EXAMPLE</head>
 	<text>
-<![CDATA[One might be interested in performing PCR on an STS with a CA
+<![CDATA[<p>One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
 the criteria of the experiment.<br />
 <br />
 We need to come up with a boulder-io record to send to primer3 via
 stdin. There are lots of ways to accomplish this. We could save
 the record into a text file called 'input', and then type the
-UNIX command 'primer3 < input'.<br />
+UNIX command 'primer3 &lt; input'.<br />
 <br />
 Let's look at the input record itself:
 <br />
@@ -346,22 +346,22 @@ values, those defaults will be used in the analysis. For the
 tags with NO default values (like <p3_anchor>SEQUENCE_TARGET</p3_anchor>, for instance), the 
 functionality requested by the those tags will simply be absent. 
 It's not the case that we need to surround a simple sequence 
-repeat every time we want to pick primers!]]>
+repeat every time we want to pick primers!</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>exampleOutput</id>
 	<head>EXAMPLE OUTPUT</head>
 	<text>
-<![CDATA[You should run it yourself.  Use the file 'example' in this
-directory as input.]]>
+<![CDATA[<p>You should run it yourself.  Use the file 'example' in this
+directory as input.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>findNoPrimers</id>
 	<head>WHAT TO DO IF PRIMER3 CANNOT FIND ANY PRIMERS?</head>
 	<text>
-<![CDATA[Try relaxing various parameters, including the
+<![CDATA[<p>Try relaxing various parameters, including the
 self-complementarity parameters and max and min oligo melting
 temperatures.  For example, for very A-T-rich regions you might
 have to increase maximum primer size or decrease minimum melting
@@ -373,7 +373,7 @@ you wish to pick primers.  If necessary you can also allow an N
 in your primer and use an oligo mixture containing all four bases
 at that position.<br />
 <br />
-Try setting the <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor> input tag.]]>
+Try setting the <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor> input tag.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -389,27 +389,27 @@ Try setting the <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor> input tag.]]>
 -2 on out-of-memory
 -3 empty input
 -4 error in a "Global" input tag (message in PRIMER_ERROR).
-</pre><br />
-Primer3 calls abort() and dumps core (if possible) if a
+</pre>
+<p>Primer3 calls abort() and dumps core (if possible) if a
 programming error is detected by an assertion violation.<br />
 <br />
 SIGINT and SIGTERM are handled essentially as empty input, except
 the signal received is returned as the exit status and printed to
 stderr.<br />
 <br />
-In all of the error cases above Primer3 prints a message to stderr.]]>
+In all of the error cases above Primer3 prints a message to stderr.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>fileFormat</id>
 	<head>PRIMER3 FILE FORMAT</head>
 	<text>
-<![CDATA[Primer3 allows to save settings in a text file and load it 
+<![CDATA[<p>Primer3 allows to save settings in a text file and load it 
 upon program start. This allows to save and exchange settings 
 tailored to special applications.<br />
 <br />
 To create a primer3 file a editor able to save txt files is 
-sufficient. The three lines of the file have to be:
+sufficient. The three lines of the file have to be:</p>
 <pre>
 Primer3 File - http://primer3.sourceforge.net
 P3_FILE_TYPE=settings
@@ -421,7 +421,7 @@ SEQUENCE_TEMPLATE=ATG...
 ...
 =
 </pre> 
-In the first line "Primer3 File - http://primer3.sourceforge.net" 
+<p>In the first line "Primer3 File - http://primer3.sourceforge.net" 
 without tailing space. In the second line "P3_FILE_TYPE=settings".
 Valid values for P3_FILE_TYPE are all_parameters, sequence and 
 settings. Up to now, only settings is supported. The third line 
@@ -430,14 +430,14 @@ using the P3_FILE_ID tag. It will print the description of the
 settings on the output. From the fourth line on regular 
 boulder-io can be used as it is used in regular input. It also 
 has to be terminated with a single "=". There can be only one 
-input per file.]]>
+input per file.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>globalTags</id>
 	<head>"GLOBAL" INPUT TAGS</head>
 	<text>
-<![CDATA["Global" input tags start with PRIMER_... and describe the 
+<![CDATA[<p>"Global" input tags start with PRIMER_... and describe the 
 general parameters that primer3 should use in its searches. 
 The values of these tags persist between input boulder 
 records until or unless they are explicitly reset. Errors 
@@ -450,14 +450,14 @@ tags have defaults that are independent of the parameters that
 govern the selection of PCR primers. For example, the melting 
 temperature of an oligo used for hybridization might be 
 considerably lower than that used as a PCR primer.
-<br />]]>
+<br /></p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>inputOutputConventions</id>
 	<head>INPUT AND OUTPUT CONVENTIONS</head>
 	<text>
-<![CDATA[By default, primer3 accepts input in Boulder-io format, a
+<![CDATA[<p>By default, primer3 accepts input in Boulder-io format, a
 pre-XML, pre-RDF, text-based input/output format for
 program-to-program data interchange.  By default, primer3 also
 produces output in the same format.<br />
@@ -469,7 +469,7 @@ Primer3 exits with 0 status if it operates correctly.  See EXIT
 STATUS CODES below for additional information.<br />
 <br />
 The syntax of the version of Boulder-io recognized by primer3 is
-as follows:<br />
+as follows:</p>
 <pre>
   o Input consists of a sequence of RECORDs.
 
@@ -483,7 +483,7 @@ as follows:<br />
           followed by '='.
     o the pair must be terminated by a newline character.
 </pre>
-An example of a legal (TAG,VALUE) pair is<br />
+<p>An example of a legal (TAG,VALUE) pair is<br />
 <br />
 <p3_anchor>SEQUENCE_ID</p3_anchor>=my_marker<br />
 <br />
@@ -527,18 +527,18 @@ only ONCE in any given input record.  This restriction is not
 systematically checked in this beta release: use care.<br />
 <br />
 There are 2 major classes of input tags,  "Sequence" input tags
-and "Global" input tags as described below.]]>
+and "Global" input tags as described below.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>installLinux</id>
 	<head>INSTALLATION INSTRUCTIONS - UNIX/LINUX</head>
 	<text>
-<![CDATA[Unzip and untar the distribution.<br />
+<![CDATA[<p>Unzip and untar the distribution.<br />
 <br />
 DO NOT do this on a PC -- primer3_core will not compile if pc
 newlines get inserted into the source files.  Instead, move the
-distribution (primer3_<release>.tar.gz) to Unix/Linux, and then<br />
+distribution (primer3_&lt;release&gt;.tar.gz) to Unix/Linux, and then<br />
 <br />
 $ unzip primer3_1.0.1.tar.gz<br />
 $ tar xvf primer3_1.0.1.tar<br />
@@ -566,14 +566,14 @@ ntdpal (NucleoTide Dynamic Programming ALignment) is a
 stand-alone program that provides primer3's alignment
 functionality (local, a.k.a. Smith-Waterman, global,
 a.k.a. Needleman-Wunsch, plus "half global").  It is provided
-strictly as is; for further documentation please see the code.]]>
+strictly as is; for further documentation please see the code.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>installMac</id>
 	<head>INSTALLATION INSTRUCTIONS - OSX</head>
 	<text>
-<![CDATA[How to install this software<br />
+<![CDATA[<p>How to install this software<br />
 ============================<br />
 <br />
 1.  Double click on the .tar.gz file to extract the archive.<br />
@@ -668,17 +668,17 @@ run the binaries.  Let's assume you put the files in
 '~/bin/.  You may run primer3_core by doing either of the 
 following:<br />
 <br />
-	1. ~/bin/primer3_core < yourInputFile<br />
-	2. /Users/<your username>/bin/primer3_core < yourInputFile<br />
+	1. ~/bin/primer3_core &lt; yourInputFile<br />
+	2. /Users/&lt;your username&gt;/bin/primer3_core < yourInputFile<br />
 <br />
-The first option is just a shortcut to the second.]]>
+The first option is just a shortcut to the second.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>installWindows</id>
 	<head>INSTALLATION INSTRUCTIONS - WINDOWS</head>
 	<text>
-<![CDATA[How to install this software<br />
+<![CDATA[<p>How to install this software<br />
 ============================<br />
 <br />
 1. Unzip the '.zip' file downloaded from SourceForge.net<br />
@@ -770,14 +770,14 @@ Finally, if you want to run the program without going to
 its folder, assuming primer3_core.exe is in c:/Temp, you 
 could run:<br />
 <br />
-    c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt]]>
+    c:/Temp/primer3_core.exe < c:/someOtherFolder/someOtherFolder/MyData.txt</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>introduction</id>
 	<head>INTRODUCTION</head>
 	<text>
-<![CDATA[Primer3 picks primers for PCR reactions, considering as criteria:
+<![CDATA[<p>Primer3 picks primers for PCR reactions, considering as criteria:
 <br />
 o oligonucleotide melting temperature, size, GC content,
   and primer-dimer possibilities,<br />
@@ -800,14 +800,14 @@ web-based front end to primer3 named primer3web at
 <br />
 Wageningen University Laboratory of Bioinformatics provides a enhanced 
 web-based front end to primer3 named primer3plus at
-<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link>]]>
+<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link></p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>invokingPrimer3</id>
 	<head>INVOKING primer3_core</head>
 	<text>
-<![CDATA[By default, the executable program produced by the Makefile is
+<![CDATA[<p>By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
 lifting of primer picking.  There is also a more user-friendly
 web interface (distributed separately).<br />
@@ -825,14 +825,14 @@ unix convention of<br />
 primer3_core input_file.txt<br />
 <br />
 *will not work*.  Primer3_core will just sit there forever
-waiting for its input on stdin.]]>
+waiting for its input on stdin.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>licenseExplain</id>
 	<head>FAIR USE OF PRIMER3</head>
 	<text>
-<![CDATA[In this section the developers would like to explain how they 
+<![CDATA[<p>In this section the developers would like to explain how they 
 would like primer3 to be used. Some of the things written here 
 might be in  conflict with the GPL license. In all this cases 
 the GPL is the legally binding license and issues of this 
@@ -879,14 +879,14 @@ in the future. Be aware that there is no need to ask us for
 permission if you like to include our software in your tools, 
 but we would be happy to receive an e-mail to inform us about 
 your tool. If there are any issues / bugs / suggestions for 
-primer3, please let us know so we can improve it.]]>
+primer3, please let us know so we can improve it.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>migrateTags</id>
 	<head>HOW TO MIGRATE TAGS TO VERSION 4</head>
 	<text>
-<![CDATA[From primer3 v2.0 many tags were modified and new tags 
+<![CDATA[<p>From primer3 v2.0 many tags were modified and new tags 
 were introduced. The new primer3 tags are designed with the 
 idea in mind that not humans use primer3, but computer scripts 
 and other programs. The modifications make it easier for 
@@ -919,7 +919,7 @@ specify which primers are to be picked.<br />
 <br />
 These Tags are modified:<br />
 <br />
-The "per sequence" tags:<br />
+The "per sequence" tags:</p>
 <pre>
 NEW VERSION                       - OLD VERSION
 ----------------------------------------------------------------------------------------                       
@@ -991,8 +991,7 @@ The following tags IO is replaced by INTERNAL:
 <p3_anchor>PRIMER_INTERNAL_WT_REP_SIM</p3_anchor>        - PRIMER_IO_WT_REP_SIM
 <p3_anchor>PRIMER_INTERNAL_WT_SEQ_QUAL</p3_anchor>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
-
---------------------------------------------------------------------------------<br />
+<p>--------------------------------------------------------------------------------<br />
 OUTPUT TAGS:<br />
 <br />
 There are three big changes on the output:<br />
@@ -1001,8 +1000,8 @@ There are three big changes on the output:<br />
 - The "PRODUCT" tags are renamed<br />
 <br />
 Now all primer related output follows the rule:
-PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>.
-where <j> is an integer from 0 to n, where n is at most the 
+PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;.
+where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of <p3_anchor>PRIMER_NUM_RETURN</p3_anchor> - 1.<br />
 <br />
 This allows easy scripting by using the underscores _ to split 
@@ -1010,7 +1009,7 @@ the name. The first part is PRIMER, the second the type of oligo
 or pair parameters, the third is always a number, starting at 
 0 and the rest is used by the tags.<br />
 <br />
-That affects also (shown for output nr. 5):<br />
+That affects also (shown for output nr. 5):</p>
 <pre>
 NEW VERSION                             - OLD VERSION
 ------------------------------------------------------------------------------------------------------
@@ -1021,9 +1020,8 @@ NEW VERSION                             - OLD VERSION
 
 <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor>                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 </pre>
-<br />
-Unchanged Tags:<br />
----------------------------------------------------------------------------------<br />
+<p>Unchanged Tags:<br />
+---------------------------------------------------------------------------------</p>
 <pre>
 <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor>
 <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor>
@@ -1100,70 +1098,70 @@ Unchanged Tags:<br />
 	<id>outputTags</id>
 	<head>OUTPUT TAGS</head>
 	<text>
-<![CDATA[For each boulderio record passed into primer3 via stdin, exactly
+<![CDATA[<p>For each boulderio record passed into primer3 via stdin, exactly
 one boulderio record comes out of primer3 on stdout. These output
 records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br />
-Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_<j>_<tag_name>
-where <j> is an integer from 0 to n, where n is at most the 
+Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
+where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of PRIMER_NUM_RETURN. In the documentation the output 
 nr. 5 is shown as for example: PRIMER_LEFT_4_TM.<br />
 <br />
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
-represents a float.]]>
+represents a float.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>pickAdvice</id>
 	<head>ADVICE FOR PICKING PRIMERS</head>
 	<text>
-<![CDATA[We suggest consulting: Wojciech Rychlik (1993) "Selection of
+<![CDATA[<p>We suggest consulting: Wojciech Rychlik (1993) "Selection of
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
 in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
-Applications", pp 31-40, Humana Press, Totowa NJ.]]>
+Applications", pp 31-40, Humana Press, Totowa NJ.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>programTags</id>
 	<head>"PROGRAM" INPUT TAGS</head>
 	<text>
-<![CDATA["Program" input tags start with P3_... describe the 
+<![CDATA[<p>"Program" input tags start with P3_... describe the 
 parameters that deal with the behavior of the primer3 program 
-itself.)]]>
+itself.)</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>sequenceTags</id>
 	<head>"SEQUENCE" INPUT TAGS</head>
 	<text>
-<![CDATA["Sequence" input tags start with SEQUENCE_... and describe a 
+<![CDATA[<p>"Sequence" input tags start with SEQUENCE_... and describe a 
 particular input sequence to primer3. They are reset after every 
 boulder record. Errors in "Sequence" input tags invalidate the 
 current record, but primer3 will continue to process additional 
-records.]]>
+records.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>systemRequirements</id>
 	<head>SYSTEM REQUIREMENTS</head>
 	<text>
-<![CDATA[Please see <link>http://sourceforge.net/projects/primer3/</link> for up-to-date
+<![CDATA[<p>Please see <link>http://sourceforge.net/projects/primer3/</link> for up-to-date
 information.  Primer3 should compile on any Linux/Unix system
 including MacOS 10 and on other systems with POSIX C
 (e.g. MSWindows).  The Makefile may need to be modified for
 compilation with C compilers other than gcc.  Our hope is to
 distribute binary for SourceForge in the near future.  Primer3
 still uses many Kernighan-&-Richie-style function headers, so
-you might have to force your compiler to accept them.]]>
+you might have to force your compiler to accept them.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>tagInputTpes</id>
 	<head>Primer3 input tags</head>
 	<text>
-<![CDATA[There are 3 major classes of input tags.  "Sequence" input tags
+<![CDATA[<p>There are 3 major classes of input tags.  "Sequence" input tags
 starting with SEQUENCE_... describe a particular input sequence 
 to primer3, and are reset after every boulder record.  "Global" 
 input tags starting with PRIMER_... describe the general parameters 
@@ -1185,14 +1183,14 @@ independent of the PCR amplification procedure, internal oligo
 tags have defaults that are independent of the parameters that 
 govern the selection of PCR primers. For example, the melting 
 temperature of an oligo used for hybridization might be 
-considerably lower than that used as a PCR primer.]]>
+considerably lower than that used as a PCR primer.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>webInterface</id>
 	<head>THE PRIMER3 WWW INTERFACE</head>
 	<text>
-<![CDATA[There are two web interfaces available :<br />
+<![CDATA[<p>There are two web interfaces available :<br />
 The Whitehead Institute for Biomedical Research provides a basic
 web-based front end to primer3 named primer3web at
 <link>http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi</link><br />
@@ -1204,7 +1202,7 @@ web-based front end to primer3 named primer3plus at
 This distribution does not contain the Primer3 WWW interface.<br />
 <br />
 Web interface code is available at
-<link>http://sourceforge.net/projects/primer3/</link>.]]>
+<link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
 	</text>
 </textBlock>
 </primer3Doc>
