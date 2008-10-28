@@ -2,8 +2,8 @@
 
 # Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 # Whitehead Institute for Biomedical Research, Steve Rozen
-# (http://jura.wi.mit.edu/rozen), and Helen Skaletsky All rights
-# reserved.
+# (http://jura.wi.mit.edu/rozen), Andreas Untergasser and Helen Skaletsky.
+# All rights reserved.
 # 
 #     This file is part of the primer3 suite and libraries.
 # 
@@ -444,7 +444,10 @@ sub createTagList {
 	# Prepare the strings for the files
 	my $xml_string = "my \@docTags = (";
 	my $tagCount = 0;
+	my $oldTagName;
+	my $tag_difference = "New Tag   -  Old Tag\n";
 	
+		
 	# Now print out all tags
 	foreach my $tag_holder (@xml_tags) {
 		$tagCount++;
@@ -458,7 +461,34 @@ sub createTagList {
 	}
 	
 	# Finish the strings for the files
-	$xml_string .= ");";
+	$xml_string .= ");\n\n\n";
+	
+	$xml_string .= "my %docTags = (";
+	
+	# Now print out all tags
+	foreach my $tag_holder (@xml_tags) {
+		$tagCount++;
+		
+		# Get all the XML data of one tag
+		my $tagName = get_node_content($tag_holder, "tagName");
+		my @oldTags = get_node_content_array($tag_holder, "oldTagName");
+	
+		# Assemble the XML file
+		if (!($oldTags[0] eq "")) {
+			foreach $oldTagName (@oldTags) {
+				$xml_string .= "$oldTagName => \"$tagName\",\n";
+				$tag_difference .= "$tagName   -  $oldTagName\n";
+			}
+		}
+		$xml_string .= "$tagName => \"$tagName\",\n";
+	
+	}
+	
+	# Finish the strings for the files
+	$xml_string .= ");\n\n\n";
+	
+	$xml_string .= $tag_difference;
+	
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "tags_list.txt";
@@ -571,20 +601,6 @@ sub createReadmeHtml {
 			$html_string .= printTags("output");
 		}
 	}
-
-	
-	# Lets print the overview table for the HTML file
-#	foreach my $tag_holder (@xml_tags) {
-#		# Get all the XML data of one tag
-#		my $tagName = get_node_content($tag_holder, "tagName");
-	
-	
-		# Assemble the html file
-#		$html_string .= "<a href=\"#$tagName\" style=\"font-size:0.8em\">".$tagName."</a><br>\n\n";
-	
-		
-#	}
-	
 	
 	# Finish the strings for the files
 	$html_string .= html_get_footer();
@@ -700,6 +716,9 @@ sub html_get_header {
   min-width:41em;
   padding:5px;
   text-align:left;
+  }
+  td {
+  font-size:0.78em;
   }
 
   div#page {
