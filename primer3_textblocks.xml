@@ -129,7 +129,7 @@ fine-tune the selection of primers to your needs.<br />
 <br />
 This section will explain the selection process of primers by 
 primer3. In general the selection is a multi step process:<br />
-<br /> 
+<br />
 In the first step, primer3 evaluates every singel primer that 
 can be picked in the region of interest. In this pase the hard 
 limits are tested like <p3_anchor>PRIMER_MAX_GC</p3_anchor> or <p3_anchor>PRIMER_MIN_TM</p3_anchor>. Primers 
@@ -355,6 +355,11 @@ primer, it is calculated like that:</p>
 
 </pre>
 <p>	
+The primers are then sorted by penalty and primer3 tries to pick 
+the primers with the lowest penalty. For the <p3_anchor>PRIMER_TASK</p3_anchor>
+<tt><i>pick_primer_list</i></tt> or <tt><i>pick_sequencing_primers</i></tt> the selection ends at 
+this point. If primer pairs have to be selected, a 
+<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor> is calculated:
 
 </p>]]>
 	</text>
