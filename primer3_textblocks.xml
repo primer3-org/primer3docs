@@ -909,7 +909,7 @@ and that improvements find their way back into the main
 distribution of primer3. So if you make useful enhancements, 
 please send us the code. If you are programming a new web 
 interface which runs primer3, please include in the about page 
-of the tool the sentence "&lt;you software name&gt; uses primer3 
+of the tool the sentence "&lt;your software name&gt; uses primer3 
 version ...". Please consider releasing your software under GPL 
 license as well, especially if you do not want to maintain it 
 in the future. Be aware that there is no need to ask us for 

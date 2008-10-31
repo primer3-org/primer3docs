@@ -720,7 +720,12 @@ sub html_get_header {
   td {
   font-size:0.78em;
   }
-
+  h2 {
+  padding-top:1.2em;
+  }
+  h3 {
+  padding-top:1.2em;
+  }
   div#page {
   background:#FFFFFF;
   margin:25px;
