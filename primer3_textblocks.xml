@@ -124,10 +124,239 @@ This has not been tested.</p>]]>
 	<text>
 <![CDATA[<p>The penalty values in are the most important value of each primer,
 because primer3 uses it to choose which primers to select. The 
-calculation can be influecned by the weights which allows to 
-fine tune the selection of primers to your needs.<br />
+calculation can be influenced by the weights which allows to 
+fine-tune the selection of primers to your needs.<br />
 <br />
-Here AU has to write more...</p>]]>
+This section will explain the selection process of primers by 
+primer3. In general the selection is a multi step process:<br />
+<br /> 
+In the first step, primer3 evaluates every singel primer that 
+can be picked in the region of interest. In this pase the hard 
+limits are tested like <p3_anchor>PRIMER_MAX_GC</p3_anchor> or <p3_anchor>PRIMER_MIN_TM</p3_anchor>. Primers 
+with a GC lower than <p3_anchor>PRIMER_MAX_GC</p3_anchor> or a Tm higher than 
+<p3_anchor>PRIMER_MIN_TM</p3_anchor> are memorized, the primers which fail in one of 
+these tests are excluded. Primer3 can be forced to use primers 
+failing to pass this test by setting <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor> to one 
+(only available for primers provided by the user).<br />
+<br />
+In the second step, primer3 calculates a penalty for each single 
+primer. This penalty is the only score by which primer3 
+evaluates the primers It is also provided as output 
+<p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor>, <p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor> and 
+<p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> (given for primer set Nr. 5). For each 
+primer, it is calculated like that:</p>
+
+<h3>Left Primers:</h3>
+<pre>
+<p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor> =
+
+   <p3_anchor>If PRIMER_LEFT_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than this is added (+):
+
+       + <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> * ( <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> - <p3_anchor>PRIMER_OPT_TM</p3_anchor> )
+
+   If <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than this is added (+):
+
+       + <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> * ( <p3_anchor>PRIMER_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> )
+
+
+   If <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> *
+            ( <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> )
+
+   If <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <p3_anchor>PRIMER_LEFT_4</p3_anchor>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_SIZE_GT</p3_anchor> *
+            ( &lt;primer length&gt; - <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> )
+
+   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_SIZE_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+
+
+   If the primer does not overlap a target than
+       this is added (+):
+	
+       + <p3_anchor>PRIMER_WT_POS_PENALTY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_POSITION_PENALTY</p3_anchor>
+
+
+   These are allways added (+) to the penalty:
+
+       + <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_SELF_ANY</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_SELF_END</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> *
+            <p3_anchor>PRIMER_LEFT_4_TEMPLATE_MISPRIMING</p3_anchor> * 100
+
+       + <p3_anchor>PRIMER_WT_END_STABILITY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_END_STABILITY</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> * &lt;numbers of N in the selected primer&gt;
+
+       + <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_MISPRIMING_SCORE</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> *
+            ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
+              <p3_anchor>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3_anchor> )
+
+</pre>
+
+<h3>Right Primers (identical to Left Primers):</h3>
+<pre>
+<p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> =
+
+   If <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> * ( <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> - <p3_anchor>PRIMER_OPT_TM</p3_anchor> )
+
+   If <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> * ( <p3_anchor>PRIMER_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> )
+
+
+   If <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> *
+            ( <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> )
+
+   If <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <p3_anchor>PRIMER_RIGHT_4</p3_anchor>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_SIZE_GT</p3_anchor> *
+            ( &lt;primer length&gt; - <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> )
+
+   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_SIZE_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+
+
+   If the primer does not overlap a target than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_WT_POS_PENALTY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_POSITION_PENALTY</p3_anchor>
+
+
+   These are allways added (+) to the penalty:
+
+       + <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_SELF_ANY</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_SELF_END</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> *
+            <p3_anchor>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</p3_anchor> * 100
+
+       + <p3_anchor>PRIMER_WT_END_STABILITY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_END_STABILITY</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> * &lt;numbers of N in the selected primer&gt;
+
+       + <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_MISPRIMING_SCORE</p3_anchor>
+
+       + <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> *
+            ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
+              <p3_anchor>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3_anchor> )
+
+</pre>
+
+<h3>Internal Oligos:</h3>
+<pre>
+<p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor> =
+
+   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_TM_GT</p3_anchor> *
+            ( <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> )
+
+   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_TM_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> )
+
+
+   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>
+       than this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3_anchor> *
+	        ( <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> - 
+              <p3_anchor>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</p3_anchor> )
+
+   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>
+       than this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</p3_anchor> -
+              <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <p3_anchor>PRIMER_INTERNAL_4</p3_anchor>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> than 
+       this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_SIZE_GT</p3_anchor> *
+            ( &lt;primer length&gt; - <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> )
+
+   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_INTERNAL_WT_SIZE_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+
+
+   These are allways added (+) to the penalty:
+
+     + <p3_anchor>PRIMER_INTERNAL_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_SELF_ANY</p3_anchor>
+
+     + <p3_anchor>PRIMER_INTERNAL_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_SELF_END</p3_anchor>
+
+     + <p3_anchor>PRIMER_INTERNAL_WT_NUM_NS</p3_anchor> *
+          &lt;numbers of N in the selected primer&gt;
+
+     + <p3_anchor>PRIMER_INTERNAL_WT_REP_SIM</p3_anchor> *
+          <p3_anchor>PRIMER_INTERNAL_4_MISPRIMING_SCORE</p3_anchor>
+
+     + <p3_anchor>PRIMER_INTERNAL_WT_SEQ_QUAL</p3_anchor> * 
+          ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
+            <p3_anchor>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3_anchor> )
+
+</pre>
+<p>	
+
+</p>]]>
 	</text>
 </textBlock>
 <textBlock>

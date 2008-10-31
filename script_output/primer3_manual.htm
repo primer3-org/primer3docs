@@ -2386,10 +2386,239 @@ must be supplied).  In addition, if the input tag
 
 <p>The penalty values in are the most important value of each primer,
 because primer3 uses it to choose which primers to select. The 
-calculation can be influecned by the weights which allows to 
-fine tune the selection of primers to your needs.<br>
+calculation can be influenced by the weights which allows to 
+fine-tune the selection of primers to your needs.<br>
 <br>
-Here AU has to write more...</p>
+This section will explain the selection process of primers by 
+primer3. In general the selection is a multi step process:<br>
+<br> 
+In the first step, primer3 evaluates every singel primer that 
+can be picked in the region of interest. In this pase the hard 
+limits are tested like <a href="#PRIMER_MAX_GC">PRIMER_MAX_GC</a> or <a href="#PRIMER_MIN_TM">PRIMER_MIN_TM</a>. Primers 
+with a GC lower than <a href="#PRIMER_MAX_GC">PRIMER_MAX_GC</a> or a Tm higher than 
+<a href="#PRIMER_MIN_TM">PRIMER_MIN_TM</a> are memorized, the primers which fail in one of 
+these tests are excluded. Primer3 can be forced to use primers 
+failing to pass this test by setting <a href="#PRIMER_PICK_ANYWAY">PRIMER_PICK_ANYWAY</a> to one 
+(only available for primers provided by the user).<br>
+<br>
+In the second step, primer3 calculates a penalty for each single 
+primer. This penalty is the only score by which primer3 
+evaluates the primers It is also provided as output 
+<a href="#PRIMER_LEFT_4_PENALTY">PRIMER_LEFT_4_PENALTY</a>, <a href="#PRIMER_INTERNAL_4_PENALTY">PRIMER_INTERNAL_4_PENALTY</a> and 
+<a href="#PRIMER_RIGHT_4_PENALTY">PRIMER_RIGHT_4_PENALTY</a> (given for primer set Nr. 5). For each 
+primer, it is calculated like that:</p>
+
+<h3>Left Primers:</h3>
+<pre>
+<a href="#PRIMER_LEFT_4_PENALTY">PRIMER_LEFT_4_PENALTY</a> =
+
+   <a href="#If PRIMER_LEFT_4_TM">If PRIMER_LEFT_4_TM</a> &gt; <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> than this is added (+):
+
+       + <a href="#PRIMER_WT_TM_GT">PRIMER_WT_TM_GT</a> * ( <a href="#PRIMER_LEFT_4_TM">PRIMER_LEFT_4_TM</a> - <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> )
+
+   If <a href="#PRIMER_LEFT_4_TM">PRIMER_LEFT_4_TM</a> &lt; <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> than this is added (+):
+
+       + <a href="#PRIMER_WT_TM_LT">PRIMER_WT_TM_LT</a> * ( <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> - <a href="#PRIMER_LEFT_4_TM">PRIMER_LEFT_4_TM</a> )
+
+
+   If <a href="#PRIMER_LEFT_4_GC_PERCENT">PRIMER_LEFT_4_GC_PERCENT</a> &gt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_GC_PERCENT_GT">PRIMER_WT_GC_PERCENT_GT</a> *
+            ( <a href="#PRIMER_LEFT_4_GC_PERCENT">PRIMER_LEFT_4_GC_PERCENT</a> - <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> )
+
+   If <a href="#PRIMER_LEFT_4_GC_PERCENT">PRIMER_LEFT_4_GC_PERCENT</a> &lt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_WT_GC_PERCENT_LT">PRIMER_WT_GC_PERCENT_LT</a> *
+            ( <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> - <a href="#PRIMER_LEFT_4_GC_PERCENT">PRIMER_LEFT_4_GC_PERCENT</a> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <a href="#PRIMER_LEFT_4">PRIMER_LEFT_4</a>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_WT_SIZE_GT">PRIMER_WT_SIZE_GT</a> *
+            ( &lt;primer length&gt; - <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> )
+
+   If &lt;primer length&gt; &lt; <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_WT_SIZE_LT">PRIMER_WT_SIZE_LT</a> *
+            ( <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> - &lt;primer length&gt; )
+
+
+   If the primer does not overlap a target than
+       this is added (+):
+	
+       + <a href="#PRIMER_WT_POS_PENALTY">PRIMER_WT_POS_PENALTY</a> * <a href="#PRIMER_LEFT_4_POSITION_PENALTY">PRIMER_LEFT_4_POSITION_PENALTY</a>
+
+
+   These are allways added (+) to the penalty:
+
+       + <a href="#PRIMER_WT_COMPL_ANY">PRIMER_WT_COMPL_ANY</a> * <a href="#PRIMER_LEFT_4_SELF_ANY">PRIMER_LEFT_4_SELF_ANY</a>
+
+       + <a href="#PRIMER_WT_COMPL_END">PRIMER_WT_COMPL_END</a> * <a href="#PRIMER_LEFT_4_SELF_END">PRIMER_LEFT_4_SELF_END</a>
+
+       + <a href="#PRIMER_WT_TEMPLATE_MISPRIMING">PRIMER_WT_TEMPLATE_MISPRIMING</a> *
+            <a href="#PRIMER_LEFT_4_TEMPLATE_MISPRIMING">PRIMER_LEFT_4_TEMPLATE_MISPRIMING</a> * 100
+
+       + <a href="#PRIMER_WT_END_STABILITY">PRIMER_WT_END_STABILITY</a> * <a href="#PRIMER_LEFT_4_END_STABILITY">PRIMER_LEFT_4_END_STABILITY</a>
+
+       + <a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a> * &lt;numbers of N in the selected primer&gt;
+
+       + <a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a> * <a href="#PRIMER_LEFT_4_MISPRIMING_SCORE">PRIMER_LEFT_4_MISPRIMING_SCORE</a>
+
+       + <a href="#PRIMER_WT_SEQ_QUAL">PRIMER_WT_SEQ_QUAL</a> *
+            ( <a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a> - 
+              <a href="#PRIMER_LEFT_4_MIN_SEQ_QUALITY">PRIMER_LEFT_4_MIN_SEQ_QUALITY</a> )
+
+</pre>
+
+<h3>Right Primers (identical to Left Primers):</h3>
+<pre>
+<a href="#PRIMER_RIGHT_4_PENALTY">PRIMER_RIGHT_4_PENALTY</a> =
+
+   If <a href="#PRIMER_RIGHT_4_TM">PRIMER_RIGHT_4_TM</a> &gt; <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_TM_GT">PRIMER_WT_TM_GT</a> * ( <a href="#PRIMER_RIGHT_4_TM">PRIMER_RIGHT_4_TM</a> - <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> )
+
+   If <a href="#PRIMER_RIGHT_4_TM">PRIMER_RIGHT_4_TM</a> &lt; <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_TM_LT">PRIMER_WT_TM_LT</a> * ( <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> - <a href="#PRIMER_RIGHT_4_TM">PRIMER_RIGHT_4_TM</a> )
+
+
+   If <a href="#PRIMER_RIGHT_4_GC_PERCENT">PRIMER_RIGHT_4_GC_PERCENT</a> &gt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_GC_PERCENT_GT">PRIMER_WT_GC_PERCENT_GT</a> *
+            ( <a href="#PRIMER_RIGHT_4_GC_PERCENT">PRIMER_RIGHT_4_GC_PERCENT</a> - <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> )
+
+   If <a href="#PRIMER_RIGHT_4_GC_PERCENT">PRIMER_RIGHT_4_GC_PERCENT</a> &lt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_GC_PERCENT_LT">PRIMER_WT_GC_PERCENT_LT</a> *
+            ( <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a> - <a href="#PRIMER_RIGHT_4_GC_PERCENT">PRIMER_RIGHT_4_GC_PERCENT</a> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <a href="#PRIMER_RIGHT_4">PRIMER_RIGHT_4</a>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_SIZE_GT">PRIMER_WT_SIZE_GT</a> *
+            ( &lt;primer length&gt; - <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> )
+
+   If &lt;primer length&gt; &lt; <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_SIZE_LT">PRIMER_WT_SIZE_LT</a> *
+            ( <a href="#PRIMER_OPT_SIZE">PRIMER_OPT_SIZE</a> - &lt;primer length&gt; )
+
+
+   If the primer does not overlap a target than 
+       this is added (+):
+
+       + <a href="#PRIMER_WT_POS_PENALTY">PRIMER_WT_POS_PENALTY</a> * <a href="#PRIMER_RIGHT_4_POSITION_PENALTY">PRIMER_RIGHT_4_POSITION_PENALTY</a>
+
+
+   These are allways added (+) to the penalty:
+
+       + <a href="#PRIMER_WT_COMPL_ANY">PRIMER_WT_COMPL_ANY</a> * <a href="#PRIMER_RIGHT_4_SELF_ANY">PRIMER_RIGHT_4_SELF_ANY</a>
+
+       + <a href="#PRIMER_WT_COMPL_END">PRIMER_WT_COMPL_END</a> * <a href="#PRIMER_RIGHT_4_SELF_END">PRIMER_RIGHT_4_SELF_END</a>
+
+       + <a href="#PRIMER_WT_TEMPLATE_MISPRIMING">PRIMER_WT_TEMPLATE_MISPRIMING</a> *
+            <a href="#PRIMER_RIGHT_4_TEMPLATE_MISPRIMING">PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</a> * 100
+
+       + <a href="#PRIMER_WT_END_STABILITY">PRIMER_WT_END_STABILITY</a> * <a href="#PRIMER_RIGHT_4_END_STABILITY">PRIMER_RIGHT_4_END_STABILITY</a>
+
+       + <a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a> * &lt;numbers of N in the selected primer&gt;
+
+       + <a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a> * <a href="#PRIMER_RIGHT_4_MISPRIMING_SCORE">PRIMER_RIGHT_4_MISPRIMING_SCORE</a>
+
+       + <a href="#PRIMER_WT_SEQ_QUAL">PRIMER_WT_SEQ_QUAL</a> *
+            ( <a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a> - 
+              <a href="#PRIMER_RIGHT_4_MIN_SEQ_QUALITY">PRIMER_RIGHT_4_MIN_SEQ_QUALITY</a> )
+
+</pre>
+
+<h3>Internal Oligos:</h3>
+<pre>
+<a href="#PRIMER_INTERNAL_4_PENALTY">PRIMER_INTERNAL_4_PENALTY</a> =
+
+   If <a href="#PRIMER_INTERNAL_4_TM">PRIMER_INTERNAL_4_TM</a> &gt; <a href="#PRIMER_INTERNAL_OPT_TM">PRIMER_INTERNAL_OPT_TM</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_TM_GT">PRIMER_INTERNAL_WT_TM_GT</a> *
+            ( <a href="#PRIMER_INTERNAL_4_TM">PRIMER_INTERNAL_4_TM</a> - <a href="#PRIMER_INTERNAL_OPT_TM">PRIMER_INTERNAL_OPT_TM</a> )
+
+   If <a href="#PRIMER_INTERNAL_4_TM">PRIMER_INTERNAL_4_TM</a> &lt; <a href="#PRIMER_OPT_TM">PRIMER_OPT_TM</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_TM_LT">PRIMER_INTERNAL_WT_TM_LT</a> *
+            ( <a href="#PRIMER_INTERNAL_OPT_TM">PRIMER_INTERNAL_OPT_TM</a> - <a href="#PRIMER_INTERNAL_4_TM">PRIMER_INTERNAL_4_TM</a> )
+
+
+   If <a href="#PRIMER_INTERNAL_4_GC_PERCENT">PRIMER_INTERNAL_4_GC_PERCENT</a> &gt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a>
+       than this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_GC_PERCENT_GT">PRIMER_INTERNAL_WT_GC_PERCENT_GT</a> *
+	        ( <a href="#PRIMER_INTERNAL_4_GC_PERCENT">PRIMER_INTERNAL_4_GC_PERCENT</a> - 
+              <a href="#PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT">PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</a> )
+
+   If <a href="#PRIMER_INTERNAL_4_GC_PERCENT">PRIMER_INTERNAL_4_GC_PERCENT</a> &lt; <a href="#PRIMER_OPT_GC_PERCENT">PRIMER_OPT_GC_PERCENT</a>
+       than this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_GC_PERCENT_LT">PRIMER_INTERNAL_WT_GC_PERCENT_LT</a> *
+            ( <a href="#PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT">PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</a> -
+              <a href="#PRIMER_INTERNAL_4_GC_PERCENT">PRIMER_INTERNAL_4_GC_PERCENT</a> )
+
+
+   The following section uses &lt;primer length&gt; as part of 
+   the term which is given as output in 
+   <a href="#PRIMER_INTERNAL_4">PRIMER_INTERNAL_4</a>=position,&lt;primer length&gt; 
+
+   If &lt;primer length&gt; &gt; <a href="#PRIMER_INTERNAL_OPT_SIZE">PRIMER_INTERNAL_OPT_SIZE</a> than 
+       this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_SIZE_GT">PRIMER_INTERNAL_WT_SIZE_GT</a> *
+            ( &lt;primer length&gt; - <a href="#PRIMER_INTERNAL_OPT_SIZE">PRIMER_INTERNAL_OPT_SIZE</a> )
+
+   If &lt;primer length&gt; &lt; <a href="#PRIMER_INTERNAL_OPT_SIZE">PRIMER_INTERNAL_OPT_SIZE</a> than
+       this is added (+):
+
+       + <a href="#PRIMER_INTERNAL_WT_SIZE_LT">PRIMER_INTERNAL_WT_SIZE_LT</a> *
+            ( <a href="#PRIMER_INTERNAL_OPT_SIZE">PRIMER_INTERNAL_OPT_SIZE</a> - &lt;primer length&gt; )
+
+
+   These are allways added (+) to the penalty:
+
+     + <a href="#PRIMER_INTERNAL_WT_COMPL_ANY">PRIMER_INTERNAL_WT_COMPL_ANY</a> * <a href="#PRIMER_INTERNAL_4_SELF_ANY">PRIMER_INTERNAL_4_SELF_ANY</a>
+
+     + <a href="#PRIMER_INTERNAL_WT_COMPL_END">PRIMER_INTERNAL_WT_COMPL_END</a> * <a href="#PRIMER_INTERNAL_4_SELF_END">PRIMER_INTERNAL_4_SELF_END</a>
+
+     + <a href="#PRIMER_INTERNAL_WT_NUM_NS">PRIMER_INTERNAL_WT_NUM_NS</a> *
+          &lt;numbers of N in the selected primer&gt;
+
+     + <a href="#PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM</a> *
+          <a href="#PRIMER_INTERNAL_4_MISPRIMING_SCORE">PRIMER_INTERNAL_4_MISPRIMING_SCORE</a>
+
+     + <a href="#PRIMER_INTERNAL_WT_SEQ_QUAL">PRIMER_INTERNAL_WT_SEQ_QUAL</a> * 
+          ( <a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a> - 
+            <a href="#PRIMER_INTERNAL_4_MIN_SEQ_QUALITY">PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</a> )
+
+</pre>
+<p>	
+
+</p>
 
 <h2><a name="fileFormat">19. PRIMER3 FILE FORMAT</a></h2>
 

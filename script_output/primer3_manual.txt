@@ -2144,10 +2144,239 @@ The value of this tag is ignored. It can be used to annotate input.
 ============================================
 The penalty values in are the most important value of each primer,
 because primer3 uses it to choose which primers to select. The 
-calculation can be influecned by the weights which allows to 
-fine tune the selection of primers to your needs.
+calculation can be influenced by the weights which allows to 
+fine-tune the selection of primers to your needs.
 
-Here AU has to write more...
+This section will explain the selection process of primers by 
+primer3. In general the selection is a multi step process:
+ 
+In the first step, primer3 evaluates every singel primer that 
+can be picked in the region of interest. In this pase the hard 
+limits are tested like PRIMER_MAX_GC or PRIMER_MIN_TM. Primers 
+with a GC lower than PRIMER_MAX_GC or a Tm higher than 
+PRIMER_MIN_TM are memorized, the primers which fail in one of 
+these tests are excluded. Primer3 can be forced to use primers 
+failing to pass this test by setting PRIMER_PICK_ANYWAY to one 
+(only available for primers provided by the user).
+
+In the second step, primer3 calculates a penalty for each single 
+primer. This penalty is the only score by which primer3 
+evaluates the primers It is also provided as output 
+PRIMER_LEFT_4_PENALTY, PRIMER_INTERNAL_4_PENALTY and 
+PRIMER_RIGHT_4_PENALTY (given for primer set Nr. 5). For each 
+primer, it is calculated like that:
+
+Left Primers:
+
+PRIMER_LEFT_4_PENALTY =
+
+   If PRIMER_LEFT_4_TM > PRIMER_OPT_TM than this is added (+):
+
+       + PRIMER_WT_TM_GT * ( PRIMER_LEFT_4_TM - PRIMER_OPT_TM )
+
+   If PRIMER_LEFT_4_TM < PRIMER_OPT_TM than this is added (+):
+
+       + PRIMER_WT_TM_LT * ( PRIMER_OPT_TM - PRIMER_LEFT_4_TM )
+
+
+   If PRIMER_LEFT_4_GC_PERCENT > PRIMER_OPT_GC_PERCENT than 
+       this is added (+):
+
+       + PRIMER_WT_GC_PERCENT_GT *
+            ( PRIMER_LEFT_4_GC_PERCENT - PRIMER_OPT_GC_PERCENT )
+
+   If PRIMER_LEFT_4_GC_PERCENT < PRIMER_OPT_GC_PERCENT than
+       this is added (+):
+
+       + PRIMER_WT_GC_PERCENT_LT *
+            ( PRIMER_OPT_GC_PERCENT - PRIMER_LEFT_4_GC_PERCENT )
+
+
+   The following section uses <primer length> as part of 
+   the term which is given as output in 
+   PRIMER_LEFT_4=position,<primer length> 
+
+   If <primer length> > PRIMER_OPT_SIZE than
+       this is added (+):
+
+       + PRIMER_WT_SIZE_GT *
+            ( <primer length> - PRIMER_OPT_SIZE )
+
+   If <primer length> < PRIMER_OPT_SIZE than
+       this is added (+):
+
+       + PRIMER_WT_SIZE_LT *
+            ( PRIMER_OPT_SIZE - <primer length> )
+
+
+   If the primer does not overlap a target than
+       this is added (+):
+	
+       + PRIMER_WT_POS_PENALTY * PRIMER_LEFT_4_POSITION_PENALTY
+
+
+   These are allways added (+) to the penalty:
+
+       + PRIMER_WT_COMPL_ANY * PRIMER_LEFT_4_SELF_ANY
+
+       + PRIMER_WT_COMPL_END * PRIMER_LEFT_4_SELF_END
+
+       + PRIMER_WT_TEMPLATE_MISPRIMING *
+            PRIMER_LEFT_4_TEMPLATE_MISPRIMING * 100
+
+       + PRIMER_WT_END_STABILITY * PRIMER_LEFT_4_END_STABILITY
+
+       + PRIMER_WT_NUM_NS * <numbers of N in the selected primer>
+
+       + PRIMER_WT_REP_SIM * PRIMER_LEFT_4_MISPRIMING_SCORE
+
+       + PRIMER_WT_SEQ_QUAL *
+            ( PRIMER_QUALITY_RANGE_MAX - 
+              PRIMER_LEFT_4_MIN_SEQ_QUALITY )
+
+
+
+Right Primers (identical to Left Primers):
+
+PRIMER_RIGHT_4_PENALTY =
+
+   If PRIMER_RIGHT_4_TM > PRIMER_OPT_TM than 
+       this is added (+):
+
+       + PRIMER_WT_TM_GT * ( PRIMER_RIGHT_4_TM - PRIMER_OPT_TM )
+
+   If PRIMER_RIGHT_4_TM < PRIMER_OPT_TM than 
+       this is added (+):
+
+       + PRIMER_WT_TM_LT * ( PRIMER_OPT_TM - PRIMER_RIGHT_4_TM )
+
+
+   If PRIMER_RIGHT_4_GC_PERCENT > PRIMER_OPT_GC_PERCENT than 
+       this is added (+):
+
+       + PRIMER_WT_GC_PERCENT_GT *
+            ( PRIMER_RIGHT_4_GC_PERCENT - PRIMER_OPT_GC_PERCENT )
+
+   If PRIMER_RIGHT_4_GC_PERCENT < PRIMER_OPT_GC_PERCENT than 
+       this is added (+):
+
+       + PRIMER_WT_GC_PERCENT_LT *
+            ( PRIMER_OPT_GC_PERCENT - PRIMER_RIGHT_4_GC_PERCENT )
+
+
+   The following section uses <primer length> as part of 
+   the term which is given as output in 
+   PRIMER_RIGHT_4=position,<primer length> 
+
+   If <primer length> > PRIMER_OPT_SIZE than 
+       this is added (+):
+
+       + PRIMER_WT_SIZE_GT *
+            ( <primer length> - PRIMER_OPT_SIZE )
+
+   If <primer length> < PRIMER_OPT_SIZE than 
+       this is added (+):
+
+       + PRIMER_WT_SIZE_LT *
+            ( PRIMER_OPT_SIZE - <primer length> )
+
+
+   If the primer does not overlap a target than 
+       this is added (+):
+
+       + PRIMER_WT_POS_PENALTY * PRIMER_RIGHT_4_POSITION_PENALTY
+
+
+   These are allways added (+) to the penalty:
+
+       + PRIMER_WT_COMPL_ANY * PRIMER_RIGHT_4_SELF_ANY
+
+       + PRIMER_WT_COMPL_END * PRIMER_RIGHT_4_SELF_END
+
+       + PRIMER_WT_TEMPLATE_MISPRIMING *
+            PRIMER_RIGHT_4_TEMPLATE_MISPRIMING * 100
+
+       + PRIMER_WT_END_STABILITY * PRIMER_RIGHT_4_END_STABILITY
+
+       + PRIMER_WT_NUM_NS * <numbers of N in the selected primer>
+
+       + PRIMER_WT_REP_SIM * PRIMER_RIGHT_4_MISPRIMING_SCORE
+
+       + PRIMER_WT_SEQ_QUAL *
+            ( PRIMER_QUALITY_RANGE_MAX - 
+              PRIMER_RIGHT_4_MIN_SEQ_QUALITY )
+
+
+
+Internal Oligos:
+
+PRIMER_INTERNAL_4_PENALTY =
+
+   If PRIMER_INTERNAL_4_TM > PRIMER_INTERNAL_OPT_TM than
+       this is added (+):
+
+       + PRIMER_INTERNAL_WT_TM_GT *
+            ( PRIMER_INTERNAL_4_TM - PRIMER_INTERNAL_OPT_TM )
+
+   If PRIMER_INTERNAL_4_TM < PRIMER_OPT_TM than
+       this is added (+):
+
+       + PRIMER_INTERNAL_WT_TM_LT *
+            ( PRIMER_INTERNAL_OPT_TM - PRIMER_INTERNAL_4_TM )
+
+
+   If PRIMER_INTERNAL_4_GC_PERCENT > PRIMER_OPT_GC_PERCENT
+       than this is added (+):
+
+       + PRIMER_INTERNAL_WT_GC_PERCENT_GT *
+	        ( PRIMER_INTERNAL_4_GC_PERCENT - 
+              PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT )
+
+   If PRIMER_INTERNAL_4_GC_PERCENT < PRIMER_OPT_GC_PERCENT
+       than this is added (+):
+
+       + PRIMER_INTERNAL_WT_GC_PERCENT_LT *
+            ( PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT -
+              PRIMER_INTERNAL_4_GC_PERCENT )
+
+
+   The following section uses <primer length> as part of 
+   the term which is given as output in 
+   PRIMER_INTERNAL_4=position,<primer length> 
+
+   If <primer length> > PRIMER_INTERNAL_OPT_SIZE than 
+       this is added (+):
+
+       + PRIMER_INTERNAL_WT_SIZE_GT *
+            ( <primer length> - PRIMER_INTERNAL_OPT_SIZE )
+
+   If <primer length> < PRIMER_INTERNAL_OPT_SIZE than
+       this is added (+):
+
+       + PRIMER_INTERNAL_WT_SIZE_LT *
+            ( PRIMER_INTERNAL_OPT_SIZE - <primer length> )
+
+
+   These are allways added (+) to the penalty:
+
+     + PRIMER_INTERNAL_WT_COMPL_ANY * PRIMER_INTERNAL_4_SELF_ANY
+
+     + PRIMER_INTERNAL_WT_COMPL_END * PRIMER_INTERNAL_4_SELF_END
+
+     + PRIMER_INTERNAL_WT_NUM_NS *
+          <numbers of N in the selected primer>
+
+     + PRIMER_INTERNAL_WT_REP_SIM *
+          PRIMER_INTERNAL_4_MISPRIMING_SCORE
+
+     + PRIMER_INTERNAL_WT_SEQ_QUAL * 
+          ( PRIMER_QUALITY_RANGE_MAX - 
+            PRIMER_INTERNAL_4_MIN_SEQ_QUALITY )
+
+
+	
+
+
 
 
 19. PRIMER3 FILE FORMAT
