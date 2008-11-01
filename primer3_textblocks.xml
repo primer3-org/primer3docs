@@ -298,21 +298,21 @@ primer, it is calculated like that:</p>
        + <p3_anchor>PRIMER_INTERNAL_WT_TM_GT</p3_anchor> *
             ( <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> )
 
-   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than
+   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> than
        this is added (+):
 
        + <p3_anchor>PRIMER_INTERNAL_WT_TM_LT</p3_anchor> *
             ( <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> )
 
 
-   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>
+   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</p3_anchor>
        than this is added (+):
 
        + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3_anchor> *
 	        ( <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> - 
               <p3_anchor>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</p3_anchor> )
 
-   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>
+   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT</p3_anchor>
        than this is added (+):
 
        + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3_anchor> *
@@ -360,8 +360,65 @@ the primers with the lowest penalty. For the <p3_anchor>PRIMER_TASK</p3_anchor>
 <tt><i>pick_primer_list</i></tt> or <tt><i>pick_sequencing_primers</i></tt> the selection ends at 
 this point. If primer pairs have to be selected, a 
 <p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor> is calculated:
+<pre>
+<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor> =
 
-</p>]]>
+   To the pair penalty are at first the single primer penalties 
+   added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_PR_PENALTY</p3_anchor> *
+            ( <p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor> + <p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> )
+
+
+   If internal oligo is picked than this is added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_IO_PENALTY</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor>
+	
+
+   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> &gt; <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_TM_GT</p3_anchor> *
+            ( <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> - <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> )
+
+   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> &lt; <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_TM_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> )
+
+
+   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> &gt; <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3_anchor> *
+            ( <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> - <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> )
+
+   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> &lt; <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> than
+       this is added (+):
+
+       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3_anchor> *
+            ( <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> - <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> )
+
+
+   These are allways added (+) to the penalty:
+
+     + <p3_anchor>PRIMER_PAIR_WT_DIFF_TM</p3_anchor> * 
+          &lt;difference in Tm between the left and the right primer&gt;
+
+     + <p3_anchor>PRIMER_PAIR_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_COMPL_ANY</p3_anchor>
+
+     + <p3_anchor>PRIMER_PAIR_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_COMPL_END</p3_anchor>
+
+     + <p3_anchor>PRIMER_PAIR_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_MISPRIMING_SCORE</p3_anchor>
+
+     + <p3_anchor>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3_anchor> *
+          <p3_anchor>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3_anchor>
+
+</pre>
+<p>Primer3 tries to select pairs with the lowest penalty which 
+still fulfill all necessary requirements like non-redundancy or
+product size limits.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -514,7 +571,7 @@ Let's look at the input record itself:
 <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor>=1<br />
 <p3_anchor>PRIMER_PRODUCT_SIZE_RANGE</p3_anchor>=75-100<br />
 <p3_anchor>P3_FILE_FLAG</p3_anchor>=1<br />
-<p3_anchor>PRIMER_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
+<p3_anchor>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
 <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor>=1<br />
 =<br />
 <br />
@@ -594,7 +651,7 @@ ourselves if Primer fails to do so. Setting this flag to 1
 will force Primer to output the primers it considered to a
 forward_primer and a reverse_primer output file.<br />
 <br />
-<p3_anchor>PRIMER_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
+<p3_anchor>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
 <br />
 Normally CA-repeats make poor hybridization probes (because they
 not specific enough).  Therefor we exclude the CA repeat (which
