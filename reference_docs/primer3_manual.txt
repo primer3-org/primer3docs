@@ -659,6 +659,9 @@ PRIMER_PICK_RIGHT_PRIMER          - --- did not exist
 PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
 PRIMER_PICK_LEFT_PRIMER           - --- did not exist
 
+PRIMER_PAIR_WT_TEMPLATE_MISPRIMING- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
+PRIMER_WT_TEMPLATE_MISPRIMING     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
+	
 PRIMER_SALT_MONOVALENT            - PRIMER_SALT_CONC
 PRIMER_SALT_DIVALENT              - PRIMER_DIVALENT_CONC
 PRIMER_TM_FORMULA                 - PRIMER_TM_SANTALUCIA
@@ -731,78 +734,6 @@ PRIMER_PAIR_4_PRODUCT_TM                - PRIMER_PRODUCT_TM_4 (grouped with PAIR
 PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
 
 PRIMER_INTERNAL_EXPLAIN                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
-
-Unchanged Tags:
----------------------------------------------------------------------------------
-
-PRIMER_EXPLAIN_FLAG
-PRIMER_PICK_ANYWAY
-PRIMER_MISPRIMING_LIBRARY
-PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS
-PRIMER_MAX_MISPRIMING
-PRIMER_MAX_TEMPLATE_MISPRIMING
-PRIMER_PAIR_MAX_MISPRIMING
-PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING
-PRIMER_PRODUCT_MIN_TM
-PRIMER_PRODUCT_OPT_TM
-PRIMER_PRODUCT_MAX_TM
-PRIMER_PRODUCT_OPT_SIZE
-PRIMER_PRODUCT_SIZE_RANGE
-PRIMER_GC_CLAMP
-PRIMER_OPT_SIZE
-PRIMER_MIN_SIZE
-PRIMER_MAX_SIZE
-PRIMER_OPT_TM
-PRIMER_MIN_TM
-PRIMER_MAX_TM
-PRIMER_MAX_DIFF_TM
-PRIMER_MIN_GC
-PRIMER_OPT_GC_PERCENT
-PRIMER_MAX_GC
-PRIMER_DNTP_CONC
-PRIMER_SALT_CORRECTIONS
-PRIMER_LOWERCASE_MASKING
-PRIMER_DNA_CONC
-PRIMER_NUM_NS_ACCEPTED
-PRIMER_SELF_ANY
-PRIMER_SELF_END
-PRIMER_MAX_POLY_X
-PRIMER_LIBERAL_BASE
-PRIMER_NUM_RETURN
-PRIMER_FIRST_BASE_INDEX
-PRIMER_MIN_QUALITY
-PRIMER_MIN_END_QUALITY
-PRIMER_QUALITY_RANGE_MIN
-PRIMER_QUALITY_RANGE_MAX
-PRIMER_INSIDE_PENALTY
-PRIMER_OUTSIDE_PENALTY
-PRIMER_MAX_END_STABILITY
-PRIMER_WT_TM_GT
-PRIMER_WT_TM_LT
-PRIMER_WT_SIZE_LT
-PRIMER_WT_SIZE_GT
-PRIMER_WT_GC_PERCENT_LT
-PRIMER_WT_GC_PERCENT_GT
-PRIMER_WT_COMPL_ANY
-PRIMER_WT_COMPL_END
-PRIMER_WT_NUM_NS
-PRIMER_WT_REP_SIM
-PRIMER_WT_SEQ_QUAL
-PRIMER_WT_END_QUAL
-PRIMER_WT_POS_PENALTY
-PRIMER_WT_END_STABILITY
-PRIMER_WT_TEMPLATE_MISPRIMING
-PRIMER_PAIR_WT_PR_PENALTY
-PRIMER_PAIR_WT_IO_PENALTY
-PRIMER_PAIR_WT_DIFF_TM
-PRIMER_PAIR_WT_COMPL_ANY
-PRIMER_PAIR_WT_COMPL_END
-PRIMER_PAIR_WT_PRODUCT_TM_LT
-PRIMER_PAIR_WT_PRODUCT_TM_GT
-PRIMER_PAIR_WT_PRODUCT_SIZE_GT
-PRIMER_PAIR_WT_PRODUCT_SIZE_LT
-PRIMER_PAIR_WT_REP_SIM
-PRIMER_PAIR_WT_TEMPLATE_MISPRIMING
 
 
 
@@ -1318,6 +1249,12 @@ PRIMER_INTERNAL_WT_TM_GT (float; default 1.0)
 Equivalent parameter of PRIMER_WT_TM_GT for the internal oligo.
 
 
+PRIMER_PAIR_WT_DIFF_TM (float; default 0.0)
+
+Penalty weight for the TM difference between the left primer and 
+the right ptimer.
+
+
 PRIMER_PRODUCT_MIN_TM (float; default -1000000.0)
 
 The minimum allowed melting temperature of the amplicon.  Please
@@ -1592,14 +1529,31 @@ PRIMER_INTERNAL_SELF_ANY (decimal, 9999.99; default 12.00)
 Equivalent parameter of PRIMER_SELF_ANY for the internal oligo.
 
 
+PRIMER_WT_COMPL_ANY (float; default 0.0)
+
+Penalty weight for the individual primer self binding value as in 
+PRIMER_SELF_ANY.
+
+
+PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
+
+Equivalent parameter of PRIMER_WT_COMPL_ANY for the internal oligo.
+
+
+PRIMER_PAIR_WT_COMPL_ANY (float; default 0.0)
+
+Penalty weight for the binding value of the primer pair as in 
+PRIMER_SELF_ANY.
+
+
 PRIMER_SELF_END (decimal, 9999.99; default 3.00)
 
 
 PRIMER_SELF_END tries to bind the 3'-END to a identical primer 
-and scores the best binding. This is critical for primer quality 
-because it allows primers use itself as a target and amplify a 
-short piece (forming a primer-dimer). These primer are then 
-unable to bind and amplify the target sequence.
+and scores the best binding it can find. This is critical for 
+primer quality because it allows primers use itself as a target 
+and amplify a short piece (forming a primer-dimer). These primer 
+are then unable to bind and amplify the target sequence.
 PRIMER_SELF_END is the maximum allowable 3'-anchored global 
 alignment score when testing a single primer for 
 self-complementarity, and the maximum allowable 3'-anchored 
@@ -1641,6 +1595,23 @@ PRIMER_INTERNAL_SELF_END be set at least as high as
 PRIMER_INTERNAL_SELF_ANY.
 
 
+PRIMER_WT_COMPL_END (float; default 0.0)
+
+Penalty weight for the individual primer self binding value as in 
+PRIMER_SELF_END.
+
+
+PRIMER_INTERNAL_WT_COMPL_END (float; default 0.0)
+
+Equivalent parameter of PRIMER_WT_COMPL_END for the internal oligo.
+
+
+PRIMER_PAIR_WT_COMPL_END (float; default 0.0)
+
+Penalty weight for the binding value of the primer pair as in 
+PRIMER_SELF_END.
+
+
 PRIMER_MAX_END_STABILITY (float, 999.9999; default 100.0)
 
 The maximum stability for the last five 3' bases of a left or
@@ -1661,6 +1632,12 @@ values for the most stable and for the most labile 5mer are
 13.4 kcal/mol (GCGCG) and 4.6 kcal/mol (TATAC) respectively.
 
 
+PRIMER_WT_END_STABILITY (float; default 0.0)
+
+Penalty factor for the calculated maximum stability for the 
+last five 3' bases of a left or right primer.
+
+
 PRIMER_NUM_NS_ACCEPTED (int; default 0)
 
 Maximum number of unknown bases (N) allowable in any primer.
@@ -1673,7 +1650,7 @@ Equivalent parameter of PRIMER_INTERNAL_NUM_NS_ACCEPTED for the internal oligo.
 
 PRIMER_WT_NUM_NS (float; default 0.0)
 
-Penalty weight for primers with more than PRIMER_NUM_NS_ACCEPTED Ns.
+Penalty weight for the number of Ns in the primer.
 
 
 PRIMER_INTERNAL_WT_NUM_NS (float; default 0.0)
@@ -1789,6 +1766,55 @@ indexes in the contents of the files produced when the primer
 file flag is set.)
 
 
+PRIMER_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
+
+The maximum allowed similarity to ectopic sites in the
+template.  A negative value means do not check.  The scoring
+system is the same as used for PRIMER_MAX_MISPRIMING, except
+that an ambiguity code in the template is never treated as a
+consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).
+
+
+PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
+
+Not implemented.
+
+
+PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
+
+The maximum allowed summed similarity of both primers to
+ectopic sites in the template. A negative value means do not
+check.  The scoring system is the same as used for
+PRIMER_PAIR_MAX_MISPRIMING, except that an ambiguity code in
+the template is never treated as a consensus (see
+PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).  Primer3 does not
+check the similarity of hybridization oligos (internal
+oligos) to locations outside of the amplicon.
+
+
+PRIMER_WT_TEMPLATE_MISPRIMING (float; default 0.0)
+
+Penalty for a single primer binding to the template sequence.
+
+The use of this Tag is modified from primer3 version 2.0 on: 
+The values used with the older versions have to be multiplied 
+by the factor 100 to have the same effect.
+
+
+PRIMER_INTERNAL_WT_TEMPLATE_MISHYB (float; default 0.0)
+
+Equivalent parameter of PRIMER_WT_TEMPLATE_MISPRIMING for the internal oligo.
+
+
+PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
+
+Penalty for a primer pair binding to the template sequence.
+
+The use of this Tag is modified from primer3 version 2.0 on: 
+The values used with the older versions have to be multiplied 
+by the factor 100 to have the same effect.
+
+
 PRIMER_MISPRIMING_LIBRARY (string; default empty)
 
 The name of a file containing a nucleotide sequence library of
@@ -1875,20 +1901,6 @@ to the similarity of candidate internal oligos to the library
 specified in PRIMER_INTERNAL_MISHYB_LIBRARY.
 
 
-PRIMER_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
-
-The maximum allowed similarity to ectopic sites in the
-template.  A negative value means do not check.  The scoring
-system is the same as used for PRIMER_MAX_MISPRIMING, except
-that an ambiguity code in the template is never treated as a
-consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).
-
-
-PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB (decimal, 9999.99; default 12.00)
-
-Not implemented.
-
-
 PRIMER_PAIR_MAX_MISPRIMING (decimal, 9999.99; default 24.00)
 
 The maximum allowed sum of similarities of a primer pair
@@ -1898,16 +1910,21 @@ Library sequence weights are not used in computing the sum
 of similarities.
 
 
-PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
+PRIMER_WT_REP_SIM (float; default 0.0)
 
-The maximum allowed summed similarity of both primers to
-ectopic sites in the template. A negative value means do not
-check.  The scoring system is the same as used for
-PRIMER_PAIR_MAX_MISPRIMING, except that an ambiguity code in
-the template is never treated as a consensus (see
-PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).  Primer3 does not
-check the similarity of hybridization oligos (internal
-oligos) to locations outside of the amplicon.
+Penalty for a single primer binding to any single sequence 
+in PRIMER_MISPRIMING_LIBRARY.
+
+
+PRIMER_INTERNAL_WT_REP_SIM (float; default 0.0)
+
+Equivalent parameter of PRIMER_WT_REP_SIM for the internal oligo.
+
+
+PRIMER_PAIR_WT_REP_SIM (float; default 0.0)
+
+Penalty for a primer pair binding to any single sequence 
+in PRIMER_MISPRIMING_LIBRARY.
 
 
 PRIMER_MIN_QUALITY (int; default 0)
@@ -1940,6 +1957,27 @@ The maximum legal sequence quality (used for error checking
 of PRIMER_MIN_QUALITY and PRIMER_MIN_END_QUALITY).
 
 
+PRIMER_WT_SEQ_QUAL (float; default 0.0)
+
+Penalty weight for the sequence quality of the primer.
+
+
+PRIMER_INTERNAL_WT_SEQ_QUAL (float; default 0.0)
+
+Equivalent parameter of PRIMER_WT_SEQ_QUAL for the internal oligo.
+
+
+PRIMER_PAIR_WT_PR_PENALTY (float; default 1.0)
+
+Penalty factor for the sum of the left and the right primer added 
+to the pair penalty.
+
+
+PRIMER_PAIR_WT_IO_PENALTY (float; default 1.0)
+
+Penalty factor for the internal oligo added to the pair penalty.
+
+
 PRIMER_INSIDE_PENALTY (float; default -1.0)
 
 Non-default values are valid only for sequences with 0 or 1
@@ -1960,6 +1998,11 @@ times the number of nucleotide positions from the 3' end to the
 (unique) target to get the 'position penalty'.  The effect of
 this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.
+
+
+PRIMER_WT_POS_PENALTY (float; default 0.0)
+
+Penalty for the primer which do not overlap the target.
 
 
 PRIMER_SEQUENCING_LEAD (int; default 50)
@@ -1990,102 +2033,7 @@ both sides in which primer3plus picks the best primer. Value only used if
 PRIMER_TASK=pick_sequencing_primers.
 
 
-PRIMER_WT_COMPL_ANY (float; default 0.0)
-
- 
-
-
-PRIMER_WT_COMPL_END (float; default 0.0)
-
- 
-
-
-PRIMER_WT_REP_SIM (float; default 0.0)
-
- 
-
-
-PRIMER_WT_SEQ_QUAL (float; default 0.0)
-
- 
-
-
 PRIMER_WT_END_QUAL (float; default 0.0)
-
- 
-
-
-PRIMER_WT_POS_PENALTY (float; default 0.0)
-
- 
-
-
-PRIMER_WT_END_STABILITY (float; default 0.0)
-
- 
-
-
-PRIMER_WT_TEMPLATE_MISPRIMING (float; default 0.0)
-
- 
-
-
-PRIMER_INTERNAL_WT_TEMPLATE_MISHYB (float; default 0.0)
-
- 
-
-
-PRIMER_PAIR_WT_PR_PENALTY (float; default 1.0)
-
- 
-
-
-PRIMER_PAIR_WT_IO_PENALTY (float; default 1.0)
-
- 
-
-
-PRIMER_PAIR_WT_DIFF_TM (float; default 0.0)
-
- 
-
-
-PRIMER_PAIR_WT_COMPL_ANY (float; default 0.0)
-
- 
-
-
-PRIMER_PAIR_WT_COMPL_END (float; default 0.0)
-
- 
-
-
-PRIMER_PAIR_WT_REP_SIM (float; default 0.0)
-
- 
-
-
-PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (float; default 0.0)
-
- 
-
-
-PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
-
- 
-
-
-PRIMER_INTERNAL_WT_COMPL_END (float; default 0.0)
-
- 
-
-
-PRIMER_INTERNAL_WT_REP_SIM (float; default 0.0)
-
- 
-
-
-PRIMER_INTERNAL_WT_SEQ_QUAL (float; default 0.0)
 
  
 
@@ -2222,7 +2170,7 @@ PRIMER_LEFT_4_PENALTY =
        + PRIMER_WT_COMPL_END * PRIMER_LEFT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
-            PRIMER_LEFT_4_TEMPLATE_MISPRIMING * 100
+            PRIMER_LEFT_4_TEMPLATE_MISPRIMING
 
        + PRIMER_WT_END_STABILITY * PRIMER_LEFT_4_END_STABILITY
 
@@ -2294,7 +2242,7 @@ PRIMER_RIGHT_4_PENALTY =
        + PRIMER_WT_COMPL_END * PRIMER_RIGHT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
-            PRIMER_RIGHT_4_TEMPLATE_MISPRIMING * 100
+            PRIMER_RIGHT_4_TEMPLATE_MISPRIMING
 
        + PRIMER_WT_END_STABILITY * PRIMER_RIGHT_4_END_STABILITY
 
@@ -2318,25 +2266,25 @@ PRIMER_INTERNAL_4_PENALTY =
        + PRIMER_INTERNAL_WT_TM_GT *
             ( PRIMER_INTERNAL_4_TM - PRIMER_INTERNAL_OPT_TM )
 
-   If PRIMER_INTERNAL_4_TM < PRIMER_OPT_TM than
+   If PRIMER_INTERNAL_4_TM < PRIMER_INTERNAL_OPT_TM than
        this is added (+):
 
        + PRIMER_INTERNAL_WT_TM_LT *
             ( PRIMER_INTERNAL_OPT_TM - PRIMER_INTERNAL_4_TM )
 
 
-   If PRIMER_INTERNAL_4_GC_PERCENT > PRIMER_OPT_GC_PERCENT
+   If PRIMER_INTERNAL_4_GC_PERCENT > PRIMER_INTERNAL_OPT_GC_PERCENT
        than this is added (+):
 
        + PRIMER_INTERNAL_WT_GC_PERCENT_GT *
 	        ( PRIMER_INTERNAL_4_GC_PERCENT - 
-              PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT )
+              PRIMER_INTERNAL_OPT_GC_PERCENT )
 
-   If PRIMER_INTERNAL_4_GC_PERCENT < PRIMER_OPT_GC_PERCENT
+   If PRIMER_INTERNAL_4_GC_PERCENT < PRIMER_INTERNAL_OPT_GC_PERCENT
        than this is added (+):
 
        + PRIMER_INTERNAL_WT_GC_PERCENT_LT *
-            ( PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT -
+            ( PRIMER_INTERNAL_OPT_GC_PERCENT -
               PRIMER_INTERNAL_4_GC_PERCENT )
 
 
@@ -2381,7 +2329,64 @@ pick_primer_list or pick_sequencing_primers the selection ends at
 this point. If primer pairs have to be selected, a 
 PRIMER_PAIR_4_PENALTY is calculated:
 
+PRIMER_PAIR_4_PENALTY =
 
+   To the pair penalty are at first the single primer penalties 
+   added (+):
+
+       + PRIMER_PAIR_WT_PR_PENALTY *
+            ( PRIMER_LEFT_4_PENALTY + PRIMER_RIGHT_4_PENALTY )
+
+
+   If internal oligo is picked than this is added (+):
+
+       + PRIMER_PAIR_WT_IO_PENALTY * PRIMER_INTERNAL_4_PENALTY
+	
+
+   If PRIMER_PAIR_4_PRODUCT_TM > PRIMER_PRODUCT_OPT_TM than
+       this is added (+):
+
+       + PRIMER_PAIR_WT_PRODUCT_TM_GT *
+            ( PRIMER_PAIR_4_PRODUCT_TM - PRIMER_PRODUCT_OPT_TM )
+
+   If PRIMER_PAIR_4_PRODUCT_TM < PRIMER_PRODUCT_OPT_TM than
+       this is added (+):
+
+       + PRIMER_PAIR_WT_PRODUCT_TM_LT *
+            ( PRIMER_PRODUCT_OPT_TM - PRIMER_PAIR_4_PRODUCT_TM )
+
+
+   If PRIMER_PAIR_4_PRODUCT_SIZE > PRIMER_PRODUCT_OPT_SIZE than
+       this is added (+):
+
+       + PRIMER_PAIR_WT_PRODUCT_SIZE_GT *
+            ( PRIMER_PAIR_4_PRODUCT_SIZE - PRIMER_PRODUCT_OPT_SIZE )
+
+   If PRIMER_PAIR_4_PRODUCT_SIZE < PRIMER_PRODUCT_OPT_SIZE than
+       this is added (+):
+
+       + PRIMER_PAIR_WT_PRODUCT_SIZE_LT *
+            ( PRIMER_PRODUCT_OPT_SIZE - PRIMER_PAIR_4_PRODUCT_SIZE )
+
+
+   These are allways added (+) to the penalty:
+
+     + PRIMER_PAIR_WT_DIFF_TM * 
+          <difference in Tm between the left and the right primer>
+
+     + PRIMER_PAIR_WT_COMPL_ANY * PRIMER_PAIR_4_COMPL_ANY
+
+     + PRIMER_PAIR_WT_COMPL_END * PRIMER_PAIR_4_COMPL_END
+
+     + PRIMER_PAIR_WT_REP_SIM * PRIMER_PAIR_4_MISPRIMING_SCORE
+
+     + PRIMER_PAIR_WT_TEMPLATE_MISPRIMING *
+          PRIMER_PAIR_4_TEMPLATE_MISPRIMING
+
+
+Primer3 tries to select pairs with the lowest penalty which 
+still fulfill all necessary requirements like non-redundancy or
+product size limits.
 
 
 19. PRIMER3 FILE FORMAT
@@ -2441,7 +2446,7 @@ PRIMER_MAX_SIZE=21
 PRIMER_NUM_NS_ACCEPTED=1
 PRIMER_PRODUCT_SIZE_RANGE=75-100
 P3_FILE_FLAG=1
-PRIMER_INTERNAL_EXCLUDED_REGION=37,21
+SEQUENCE_INTERNAL_EXCLUDED_REGION=37,21
 PRIMER_EXPLAIN_FLAG=1
 =
 
@@ -2521,7 +2526,7 @@ ourselves if Primer fails to do so. Setting this flag to 1
 will force Primer to output the primers it considered to a
 forward_primer and a reverse_primer output file.
 
-PRIMER_INTERNAL_EXCLUDED_REGION=37,21
+SEQUENCE_INTERNAL_EXCLUDED_REGION=37,21
 
 Normally CA-repeats make poor hybridization probes (because they
 not specific enough).  Therefor we exclude the CA repeat (which
@@ -2570,32 +2575,23 @@ s describes user-correctible errors detected in the input
 errors.
 
 
-PRIMER_LEFT=i,n
+PRIMER_WARNING=s (*)
 
-The selected left primer (the primer to the left in the input
-sequence).  i is the 0-based index of the start base of the
-primer, and n is t its length.
-
-
-PRIMER_RIGHT=i,n
-
-The selected right primer (the primer to the right in the input
-sequence).  i is the 0-based index of the last base of the
-primer, and n is its length.
+s lists warnings generated by primer (separated by semicolons);
+this tag is absent if there are no warnings.
 
 
-PRIMER_INTERNAL_OLIGO=i,n
+PRIMER_LEFT_4_PROBLEMS=s (*)
+PRIMER_INTERNAL_4_PROBLEMS=s (*)
+PRIMER_RIGHT_4_PROBLEMS=s (*)
 
-The selected internal oligo. Primer3 outputs this tag if
-PRIMER_PICK_INTERNAL_OLIGO was non-0.  If primer3 fails to pick a
-middle oligo upon request, this tag will not be output.  i is the
-0-based index of start base of the internal oligo, and n is its
-length.
-
-
-PRIMER_PRODUCT_SIZE=x
-
-x is the product size of the PCR product.
+s lists the problems (constraint violations) associated
+with the corresponding primer oligo.  Generated when
+P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
+primer3 was forced to choose a primer or oligo
+that did not satisfy specified design constraints
+(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
+is specified).
 
 
 PRIMER_LEFT_EXPLAIN=s (*)
@@ -2630,22 +2626,32 @@ PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
 PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.
 
 
-PRIMER_PAIR_PENALTY=f
+PRIMER_LEFT_4=i,n
 
-The value of the objective function for this pair (lower is better).
-
-
-PRIMER_LEFT_PENALTY=f
-PRIMER_INTERNAL_PENALTY=f
-PRIMER_RIGHT_PENALTY=f
-
-The contribution of this individual primer or oligo to the
-objective function.
+The selected left primer (the primer to the left in the input
+sequence).  i is the 0-based index of the start base of the
+primer, and n is t its length.
 
 
-PRIMER_LEFT_SEQUENCE=s
-PRIMER_INTERNAL_SEQUENCE=s
-PRIMER_RIGHT_SEQUENCE=s
+PRIMER_INTERNAL_4=i,n
+
+The selected internal oligo. Primer3 outputs this tag if
+PRIMER_PICK_INTERNAL_OLIGO was non-0.  If primer3 fails to pick a
+middle oligo upon request, this tag will not be output.  i is the
+0-based index of start base of the internal oligo, and n is its
+length.
+
+
+PRIMER_RIGHT_4=i,n
+
+The selected right primer (the primer to the right in the input
+sequence).  i is the 0-based index of the last base of the
+primer, and n is its length.
+
+
+PRIMER_LEFT_4_SEQUENCE=s
+PRIMER_INTERNAL_4_SEQUENCE=s
+PRIMER_RIGHT_4_SEQUENCE=s
 
 The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
@@ -2654,90 +2660,32 @@ of the right primer is presented 5' -> 3' on the opposite strand
 from the input SEQUENCE.
 
 
-PRIMER_LEFT_TM=f
-PRIMER_INTERNAL_TM=f
-PRIMER_RIGHT_TM=f
+PRIMER_PAIR_4_PRODUCT_SIZE=x
+
+x is the product size of the PCR product.
+
+
+PRIMER_LEFT_4_PENALTY=f
+PRIMER_INTERNAL_4_PENALTY=f
+PRIMER_RIGHT_4_PENALTY=f
+
+The contribution of this individual primer or oligo to the
+objective function.
+
+
+PRIMER_PAIR_4_PENALTY=f
+
+The value of the objective function for this pair (lower is better).
+
+
+PRIMER_LEFT_4_TM=f
+PRIMER_INTERNAL_4_TM=f
+PRIMER_RIGHT_4_TM=f
 
 The melting TM for the selected oligo.
 
 
-PRIMER_LEFT_GC_PERCENT=f
-PRIMER_INTERNAL_GC_PERCENT=f
-PRIMER_RIGHT_GC_PERCENT=f
-
-The percent GC for the selected oligo (denominator is the number
-of non-ambiguous bases).
-
-
-PRIMER_LEFT_SELF_ANY=f
-PRIMER_INTERNAL_SELF_ANY=f
-PRIMER_RIGHT_SELF_ANY=f
-
-The self-complementarity measures for the selected oligo.
-
-
-PRIMER_LEFT_SELF_END=f
-PRIMER_INTERNAL_SELF_END=f
-PRIMER_RIGHT_SELF_END=f
-
-The self-complementarity measures for the selected oligo.
-
-
-PRIMER_PAIR_COMPL_ANY=f
-
-The inter-pair complementarity measures for the selected left and
-right primer.
-
-
-PRIMER_PAIR_COMPL_END=f
-
-The inter-pair complementarity measures for the selected left and
-right primer.
-
-
-PRIMER_WARNING=s (*)
-
-s lists warnings generated by primer (separated by semicolons);
-this tag is absent if there are no warnings.
-
-
-PRIMER_LEFT_PROBLEMS=s (*)
-PRIMER_INTERNAL_PROBLEMS=s (*)
-PRIMER_RIGHT_PROBLEMS=s (*)
-
-s lists the problems (constraint violations) associated
-with the corresponding primer oligo.  Generated when
-P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
-primer3 was forced to choose a primer or oligo
-that did not satisfy specified design constraints
-(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
-is specified).
-
-
-PRIMER_LEFT_MISPRIMING_SCORE=f, s
-PRIMER_RIGHT_MISPRIMING_SCORE=f, s
-PRIMER_PAIR_MISPRIMING_SCORE=f, s
-
-f is the maximum mispriming score for the right primer
-against any sequence in the given PRIMER_MISPRIMING_LIBRARY;
-s is the id of corresponding library sequence.
-PRIMER_PAIR_MISPRIMING_SCORE is the maximum sum of
-mispriming scores in any single library sequence (perhaps a
-more reasonable estimator of the likelihood of mispriming).
-
-
-PRIMER_LEFT_TEMPLATE_MISPRIMING=f
-PRIMER_RIGHT_TEMPLATE_MISPRIMING=f
-PRIMER_PAIR_TEMPLATE_MISPRIMING=f
-
-Analogous to PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE, except that
-these output tags apply to mispriming within the template sequence.
-This often arises, for example, in genes with repeated exons. For
-backward compatibility, these tags only appear if the corresponding
-input tags have defined values.
-
-
-PRIMER_PRODUCT_TM=f
+PRIMER_PAIR_4_PRODUCT_TM=f
 
 f is the melting temperature of the product. Calculated using
 equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
@@ -2748,7 +2696,7 @@ Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
 PRIMER_MIN_PRODUCT_TM is specified.
 
 
-PRIMER_PRODUCT_TM_OLIGO_TM_DIFF=f
+PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF=f
 
 f is the difference between the melting temperature of the
 product and the melting temperature of the less stable primer.
@@ -2756,7 +2704,7 @@ Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.
 
 
-PRIMER_PAIR_T_OPT_A=f
+PRIMER_PAIR_4_T_OPT_A=f
 
 f is T sub a super OPT from equation (i) in [Rychlik W, Spencer
 WJ and Rhoads RE (1990) "Optimization of the annealing
@@ -2766,7 +2714,71 @@ Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
 specified.
 
 
-PRIMER_INTERNAL_OLIGO_MISHYB_SCORE=f, s
+PRIMER_LEFT_4_GC_PERCENT=f
+PRIMER_INTERNAL_4_GC_PERCENT=f
+PRIMER_RIGHT_4_GC_PERCENT=f
+
+The percent GC for the selected oligo (denominator is the number
+of non-ambiguous bases).
+
+
+PRIMER_LEFT_4_SELF_ANY=f
+PRIMER_INTERNAL_4_SELF_ANY=f
+PRIMER_RIGHT_4_SELF_ANY=f
+
+The self-complementarity measures for the selected oligo.
+
+
+PRIMER_LEFT_4_SELF_END=f
+PRIMER_INTERNAL_4_SELF_END=f
+PRIMER_RIGHT_4_SELF_END=f
+
+The self-complementarity measures for the selected oligo.
+
+
+PRIMER_PAIR_4_COMPL_ANY=f
+
+The inter-pair complementarity measures over the complete primer 
+for selected left and right primer.
+
+
+PRIMER_PAIR_4_COMPL_END=f
+
+The inter-pair complementarity measures for the ends of selected
+left and right primer.
+
+
+PRIMER_LEFT_4_END_STABILITY=f
+PRIMER_RIGHT_4_END_STABILITY=f
+
+f is the delta G of disruption of the five 3' bases of the
+primer.
+
+
+PRIMER_LEFT_4_TEMPLATE_MISPRIMING=f
+PRIMER_RIGHT_4_TEMPLATE_MISPRIMING=f
+PRIMER_PAIR_4_TEMPLATE_MISPRIMING=f
+
+Analogous to PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE, except that
+these output tags apply to mispriming within the template sequence.
+This often arises, for example, in genes with repeated exons. For
+backward compatibility, these tags only appear if the corresponding
+input tags have defined values.
+
+
+PRIMER_LEFT_4_MISPRIMING_SCORE=f, s
+PRIMER_RIGHT_4_MISPRIMING_SCORE=f, s
+PRIMER_PAIR_4_MISPRIMING_SCORE=f, s
+
+f is the maximum mispriming score for the right primer
+against any sequence in the given PRIMER_MISPRIMING_LIBRARY;
+s is the id of corresponding library sequence.
+PRIMER_PAIR_MISPRIMING_SCORE is the maximum sum of
+mispriming scores in any single library sequence (perhaps a
+more reasonable estimator of the likelihood of mispriming).
+
+
+PRIMER_INTERNAL_4_MISHYB_SCORE=f, s
 
 f is the maximum mishybridization score for the right primer
 against any sequence in the given
@@ -2774,21 +2786,14 @@ PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY; s is the id of
 corresponding library sequence.
 
 
-PRIMER_LEFT_MIN_SEQ_QUALITY=i
-PRIMER_INTERNAL_MIN_SEQ_QUALITY=i
-PRIMER_RIGHT_MIN_SEQ_QUALITY=i
+PRIMER_LEFT_4_MIN_SEQ_QUALITY=i
+PRIMER_INTERNAL_4_MIN_SEQ_QUALITY=i
+PRIMER_RIGHT_4_MIN_SEQ_QUALITY=i
 
 i is the minimum _sequence_ quality within the primer
 or oligo (not to be confused with the PRIMER_PAIR_QUALITY
 output tag, which is really the value of the objective
 function.)
-
-
-PRIMER_LEFT_END_STABILITY=f
-PRIMER_RIGHT_END_STABILITY=f
-
-f is the delta G of disruption of the five 3' bases of the
-primer.
 
 
 PRIMER_STOP_CODON_POSITION=i
@@ -2797,6 +2802,13 @@ i is the position of the first base of the stop codon,
 if primer3 found one, or -1 if primer3 did not.  Printed
 only if the input tag PRIMER_START_CODON_POSITION with a
 non-default value is supplied.
+
+
+PRIMER_LEFT_4_POSITION_PENALTY=i
+PRIMER_RIGHT_4_POSITION_PENALTY=i
+
+i is the penalty of the primer by its 
+position.
 
 
 22. EXAMPLE OUTPUT

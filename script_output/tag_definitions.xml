@@ -656,6 +656,15 @@ temperatures of the left and right primers.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_PAIR_WT_DIFF_TM</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the TM difference between the left primer and 
+the right ptimer.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PRODUCT_MIN_TM</tagName>
 	<dataType>float</dataType>
 	<default>-1000000.0</default>
@@ -981,16 +990,42 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_WT_COMPL_ANY</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the individual primer self binding value as in 
+<p3_anchor>PRIMER_SELF_ANY</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_COMPL_ANY</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_COMPL_ANY</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
+<p3_anchor>PRIMER_SELF_ANY</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_SELF_END</tagName>
 	<dataType>decimal, 9999.99</dataType>
 	<default>3.00</default>
 	<description>
 <![CDATA[<p>
 PRIMER_SELF_END tries to bind the 3'-END to a identical primer 
-and scores the best binding. This is critical for primer quality 
-because it allows primers use itself as a target and amplify a 
-short piece (forming a primer-dimer). These primer are then 
-unable to bind and amplify the target sequence.<br />
+and scores the best binding it can find. This is critical for 
+primer quality because it allows primers use itself as a target 
+and amplify a short piece (forming a primer-dimer). These primer 
+are then unable to bind and amplify the target sequence.<br />
 PRIMER_SELF_END is the maximum allowable 3'-anchored global 
 alignment score when testing a single primer for 
 self-complementarity, and the maximum allowable 3'-anchored 
@@ -1036,6 +1071,32 @@ primer-dimer will not occur.  We recommend that
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_WT_COMPL_END</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the individual primer self binding value as in 
+<p3_anchor>PRIMER_SELF_END</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_COMPL_END</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_COMPL_END</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
+<p3_anchor>PRIMER_SELF_END</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_MAX_END_STABILITY</tagName>
 	<dataType>float, 999.9999</dataType>
 	<default>100.0</default>
@@ -1059,6 +1120,15 @@ values for the most stable and for the most labile 5mer are
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_WT_END_STABILITY</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty factor for the calculated maximum stability for the 
+last five 3' bases of a left or right primer.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_NUM_NS_ACCEPTED</tagName>
 	<dataType>int</dataType>
 	<default>0</default>
@@ -1079,7 +1149,7 @@ values for the most stable and for the most labile 5mer are
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for primers with more than <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> Ns.</p>]]>
+<![CDATA[<p>Penalty weight for the number of Ns in the primer.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1226,6 +1296,73 @@ file flag is set.)</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_MAX_TEMPLATE_MISPRIMING</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>-1.00</default>
+	<description>
+<![CDATA[<p>The maximum allowed similarity to ectopic sites in the
+template.  A negative value means do not check.  The scoring
+system is the same as used for <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>, except
+that an ambiguity code in the template is never treated as a
+consensus (see <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>12.00</default>
+	<description>
+<![CDATA[<p>Not implemented.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
+	<dataType>decimal, 9999.99</dataType>
+	<default>-1.00</default>
+	<description>
+<![CDATA[<p>The maximum allowed summed similarity of both primers to
+ectopic sites in the template. A negative value means do not
+check.  The scoring system is the same as used for
+<p3_anchor>PRIMER_PAIR_MAX_MISPRIMING</p3_anchor>, except that an ambiguity code in
+the template is never treated as a consensus (see
+<p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).  Primer3 does not
+check the similarity of hybridization oligos (internal
+oligos) to locations outside of the amplicon.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_TEMPLATE_MISPRIMING</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty for a single primer binding to the template sequence.<br />
+<br />
+The use of this Tag is modified from primer3 version 2.0 on: 
+The values used with the older versions have to be multiplied 
+by the factor 100 to have the same effect.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> for the internal oligo.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty for a primer pair binding to the template sequence.<br />
+<br />
+The use of this Tag is modified from primer3 version 2.0 on: 
+The values used with the older versions have to be multiplied 
+by the factor 100 to have the same effect.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_MISPRIMING_LIBRARY</tagName>
 	<dataType>string</dataType>
 	<default>empty</default>
@@ -1327,26 +1464,6 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_MAX_TEMPLATE_MISPRIMING</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>-1.00</default>
-	<description>
-<![CDATA[<p>The maximum allowed similarity to ectopic sites in the
-template.  A negative value means do not check.  The scoring
-system is the same as used for <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>, except
-that an ambiguity code in the template is never treated as a
-consensus (see <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>12.00</default>
-	<description>
-<![CDATA[<p>Not implemented.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_PAIR_MAX_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
 	<default>24.00</default>
@@ -1359,18 +1476,29 @@ of similarities.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>-1.00</default>
+	<tagName>PRIMER_WT_REP_SIM</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
 	<description>
-<![CDATA[<p>The maximum allowed summed similarity of both primers to
-ectopic sites in the template. A negative value means do not
-check.  The scoring system is the same as used for
-<p3_anchor>PRIMER_PAIR_MAX_MISPRIMING</p3_anchor>, except that an ambiguity code in
-the template is never treated as a consensus (see
-<p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).  Primer3 does not
-check the similarity of hybridization oligos (internal
-oligos) to locations outside of the amplicon.</p>]]>
+<![CDATA[<p>Penalty for a single primer binding to any single sequence 
+in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_REP_SIM</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty for a primer pair binding to any single sequence 
+in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1419,6 +1547,39 @@ of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALI
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_WT_SEQ_QUAL</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the sequence quality of the primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_SEQ_QUAL</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_PR_PENALTY</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Penalty factor for the sum of the left and the right primer added 
+to the pair penalty.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
+	<dataType>float</dataType>
+	<default>1.0</default>
+	<description>
+<![CDATA[<p>Penalty factor for the internal oligo added to the pair penalty.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_INSIDE_PENALTY</tagName>
 	<dataType>float</dataType>
 	<default>-1.0</default>
@@ -1444,6 +1605,14 @@ times the number of nucleotide positions from the 3' end to the
 (unique) target to get the 'position penalty'.  The effect of
 this parameter is to allow primer3 to include nearness to the
 target as a term in the objective function.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_POS_PENALTY</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty for the primer which do not overlap the target.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1487,159 +1656,7 @@ both sides in which primer3plus picks the best primer. Value only used if
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_COMPL_ANY</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_COMPL_END</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_REP_SIM</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_SEQ_QUAL</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_WT_END_QUAL</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_POS_PENALTY</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_END_STABILITY</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_WT_TEMPLATE_MISPRIMING</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_PR_PENALTY</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
-	<dataType>float</dataType>
-	<default>1.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_DIFF_TM</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_COMPL_ANY</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_COMPL_END</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_COMPL_ANY</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_COMPL_END</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_REP_SIM</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_SEQ_QUAL</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
