@@ -73,10 +73,6 @@ errors.</p>]]>
 </tag>
 <tag>
 	<tagName>PRIMER_WARNING</tagName>
-	<oldTag>
-		<oldTagName></oldTagName>
-		<version>3.0</version>
-	</oldTag>
 	<dataType>s</dataType>
 	<optional>Y</optional>
 	<description>
@@ -136,6 +132,17 @@ constraints.  In this case PRIMER_PAIR_EXPLAIN might have a non-0
 number 'considered', even though one or more of
 PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
 PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3_FILE_ID</tagName>
+	<dataType>s</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[<p>s prints out the description tag of the settings file loaded 
+at program start. It will be produced at each output. If no 
+settings file was specified this tag is not present and default 
+parameters are used.</p>]]>
 	</description>
 </tag>
 <tag>

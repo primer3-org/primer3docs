@@ -2641,6 +2641,14 @@ PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
 PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.
 
 
+P3_FILE_ID=s (*)
+
+s prints out the description tag of the settings file loaded 
+at program start. It will be produced at each output. If no 
+settings file was specified this tag is not present and default 
+parameters are used.
+
+
 PRIMER_LEFT_4=i,n
 
 The selected left primer (the primer to the left in the input
