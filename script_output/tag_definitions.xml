@@ -1485,7 +1485,7 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</tagName>
+	<tagName>PRIMER_INTERNAL_WT_LIBRARY_MISHYB</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>

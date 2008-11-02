@@ -368,7 +368,7 @@ primer.</p>]]>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
-<![CDATA[<p>Analogous to PRIMER_{LEFT,RIGHT,PAIR}_MISPRIMING_SCORE, except that
+<![CDATA[<p>Analogous to PRIMER_{LEFT,RIGHT,PAIR}_LIBRARY_MISPRIMING, except that
 these output tags apply to mispriming within the template sequence.
 This often arises, for example, in genes with repeated exons. For
 backward compatibility, these tags only appear if the corresponding
@@ -376,22 +376,22 @@ input tags have defined values.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_LEFT_4_MISPRIMING_SCORE</tagName>
-	<tagName>PRIMER_RIGHT_4_MISPRIMING_SCORE</tagName>
-	<tagName>PRIMER_PAIR_4_MISPRIMING_SCORE</tagName>
+	<tagName>PRIMER_LEFT_4_LIBRARY_MISPRIMING</tagName>
+	<tagName>PRIMER_RIGHT_4_LIBRARY_MISPRIMING</tagName>
+	<tagName>PRIMER_PAIR_4_LIBRARY_MISPRIMING</tagName>
 	<dataType>f, s</dataType>
 	<optional>N</optional>
 	<description>
 <![CDATA[<p>f is the maximum mispriming score for the right primer
 against any sequence in the given <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>;
 s is the id of corresponding library sequence.
-<p3t>PRIMER_PAIR_MISPRIMING_SCORE</p3t> is the maximum sum of
+<p3t>PRIMER_PAIR_LIBRARY_MISPRIMING</p3t> is the maximum sum of
 mispriming scores in any single library sequence (perhaps a
 more reasonable estimator of the likelihood of mispriming).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_4_MISHYB_SCORE</tagName>
+	<tagName>PRIMER_INTERNAL_4_LIBRARY_MISHYB</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_MISHYB_SCORE</oldTagName>
 		<version>3.0</version>
@@ -401,7 +401,7 @@ more reasonable estimator of the likelihood of mispriming).</p>]]>
 	<description>
 <![CDATA[<p>f is the maximum mishybridization score for the right primer
 against any sequence in the given
-<p3t>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</p3t>; s is the id of
+<p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>; s is the id of
 corresponding library sequence.</p>]]>
 	</description>
 </tag>

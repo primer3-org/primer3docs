@@ -1786,7 +1786,7 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</tagName>
+	<tagName>PRIMER_INTERNAL_WT_LIBRARY_MISHYB</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_IO_WT_REP_SIM</oldTagName>
 		<version>3.0</version>
