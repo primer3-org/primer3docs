@@ -990,7 +990,7 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_COMPL_ANY</tagName>
+	<tagName>PRIMER_WT_SELF_ANY</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -999,11 +999,11 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_COMPL_ANY</tagName>
+	<tagName>PRIMER_INTERNAL_WT_SELF_ANY</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_COMPL_ANY</p3t> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SELF_ANY</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1071,7 +1071,7 @@ primer-dimer will not occur.  We recommend that
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_COMPL_END</tagName>
+	<tagName>PRIMER_WT_SELF_END</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -1080,11 +1080,11 @@ primer-dimer will not occur.  We recommend that
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_COMPL_END</tagName>
+	<tagName>PRIMER_INTERNAL_WT_SELF_END</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_COMPL_END</p3t> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SELF_END</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>

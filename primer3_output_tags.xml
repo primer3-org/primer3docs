@@ -93,11 +93,11 @@ this tag is absent if there are no warnings.</p>]]>
 	<description>
 <![CDATA[<p>s lists the problems (constraint violations) associated
 with the corresponding primer oligo.  Generated when
-P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
+<p3t>P3_SHOW_OLIGO_PROBLEMS</p3t> is true (non zero), and
 primer3 was forced to choose a primer or oligo
 that did not satisfy specified design constraints
-(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
-is specified).</p>]]>
+(as when <p3t>PRIMER_PICK_ANYWAY</p3t>=1 and a primer sequence
+is provided).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -109,13 +109,13 @@ is specified).</p>]]>
 	<description>
 <![CDATA[<p>s is a (more or less) self-documenting string containing
 statistics on the possiblities that primer3 considered in
-selecting a single oligo.  For example
-
+selecting a single oligo.  For example</p>
+<pre>
 PRIMER_LEFT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_RIGHT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_INTERNAL_OLIGO_EXPLAIN=considered 87, too many Ns 39, overlap excluded region 40, ok 8
 
-All the categories are exclusive, except the 'considered' category.</p>]]>
+All the categories are exclusive, except the 'considered' category.</pre>]]>
 	</description>
 </tag>
 <tag>
@@ -124,13 +124,13 @@ All the categories are exclusive, except the 'considered' category.</p>]]>
 	<optional>Y</optional>
 	<description>
 <![CDATA[<p>s is a self-documenting string containing statistics on picking a
-primer pair (plus internal oligo if requested).  For exaple
-
+primer pair (plus internal oligo if requested).  For exaple</p>
+<pre>
 PRIMER_PAIR_EXPLAIN=considered 81, unacceptable product size 49, no internal oligo 32, ok 0
 
 All the categories are exclusive, except the 'considered' category.
-
-In some cases primer3 will examine a primer pair before it
+</pre>
+<p>In some cases primer3 will examine a primer pair before it
 discovers that one of the primers in the pair violates specified
 constraints.  In this case PRIMER_PAIR_EXPLAIN might have a non-0
 number 'considered', even though one or more of
@@ -162,7 +162,7 @@ primer, and n is t its length.</p>]]>
 	<optional></optional>
 	<description>
 <![CDATA[<p>The selected internal oligo. Primer3 outputs this tag if
-PRIMER_PICK_INTERNAL_OLIGO was non-0.  If primer3 fails to pick a
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> was non-0.  If primer3 fails to pick a
 middle oligo upon request, this tag will not be output.  i is the
 0-based index of start base of the internal oligo, and n is its
 length.</p>]]>
@@ -191,9 +191,9 @@ primer, and n is its length.</p>]]>
 	<description>
 <![CDATA[<p>The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
-input SEQUENCE (which must be presented 5' -> 3').  The sequence
-of the right primer is presented 5' -> 3' on the opposite strand
-from the input SEQUENCE.</p>]]>
+input <p3t>SEQUENCE_TEMPLATE</p3t> (which must be presented 5' -> 3').  The 
+sequence of the right primer is presented 5' -> 3' on the 
+opposite strand from the input <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -251,8 +251,8 @@ equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
 <link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
-Printed only if a non-default value of PRIMER_MAX_PRODUCT_TM or
-PRIMER_MIN_PRODUCT_TM is specified.</p>]]>
+Printed only if a non-default value of <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or
+<p3t>PRIMER_MIN_PRODUCT_TM</p3t> is specified.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -266,7 +266,7 @@ PRIMER_MIN_PRODUCT_TM is specified.</p>]]>
 	<description>
 <![CDATA[<p>f is the difference between the melting temperature of the
 product and the melting temperature of the less stable primer.
-Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
+Printed only if <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or <p3t>PRIMER_MIN_PRODUCT_TM</p3t> is
 specified.</p>]]>
 	</description>
 </tag>
@@ -279,7 +279,7 @@ specified.</p>]]>
 WJ and Rhoads RE (1990) "Optimization of the annealing
 temperature for DNA amplification in vitro", Nucleic Acids Res
 18:6409-12. <link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
-Printed only if PRIMER_MAX_PRODUCT_TM or PRIMER_MIN_PRODUCT_TM is
+Printed only if <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or <p3t>PRIMER_MIN_PRODUCT_TM</p3t> is
 specified.</p>]]>
 	</description>
 </tag>
@@ -301,7 +301,11 @@ of non-ambiguous bases).</p>]]>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
-<![CDATA[<p>The self-complementarity measures for the selected oligo.</p>]]>
+<![CDATA[<p>The calculated value for the tendency of a primer to bind to 
+itself (interfering with target sequence binding). It will score 
+ANY binding occuring within the entire primer sequence. For 
+details see <p3t>PRIMER_SELF_ANY</p3t>.<br /> 
+The self-complementarity measures for the selected oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -309,7 +313,11 @@ of non-ambiguous bases).</p>]]>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
-<![CDATA[<p>The inter-pair complementarity measures over the complete primer 
+<![CDATA[<p>The calculated value for the tendency of a primer pair to bind to 
+each other (interfering with target sequence binding). It will 
+score ANY binding occuring within the entire primer sequence. 
+For details see <p3t>PRIMER_SELF_ANY</p3t>.<br /> 
+The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.</p>]]>
 	</description>
 </tag>
@@ -320,7 +328,12 @@ for selected left and right primer.</p>]]>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
-<![CDATA[<p>The self-complementarity measures for the ends of selected oligo.</p>]]>
+<![CDATA[<p>The calculated value for the tendency of the 3'-END to bind to a 
+identical primer. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see <p3t>PRIMER_SELF_END</p3t>.<br />
+The self-complementarity measures for the ends of selected oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -328,7 +341,13 @@ for selected left and right primer.</p>]]>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
-<![CDATA[<p>The inter-pair complementarity measures for the ends of selected
+<![CDATA[<p>The calculated value for the tendency of the 3'-ENDs of a primer pair to bind to 
+each other. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see 
+<p3t>PRIMER_SELF_END</p3t>.<br />
+The inter-pair complementarity measures for the ends of selected
 left and right primer.</p>]]>
 	</description>
 </tag>
@@ -364,9 +383,9 @@ input tags have defined values.</p>]]>
 	<optional>N</optional>
 	<description>
 <![CDATA[<p>f is the maximum mispriming score for the right primer
-against any sequence in the given PRIMER_MISPRIMING_LIBRARY;
+against any sequence in the given <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>;
 s is the id of corresponding library sequence.
-PRIMER_PAIR_MISPRIMING_SCORE is the maximum sum of
+<p3t>PRIMER_PAIR_MISPRIMING_SCORE</p3t> is the maximum sum of
 mispriming scores in any single library sequence (perhaps a
 more reasonable estimator of the likelihood of mispriming).</p>]]>
 	</description>
@@ -382,7 +401,7 @@ more reasonable estimator of the likelihood of mispriming).</p>]]>
 	<description>
 <![CDATA[<p>f is the maximum mishybridization score for the right primer
 against any sequence in the given
-PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY; s is the id of
+<p3t>PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY</p3t>; s is the id of
 corresponding library sequence.</p>]]>
 	</description>
 </tag>
@@ -394,7 +413,7 @@ corresponding library sequence.</p>]]>
 	<optional>N</optional>
 	<description>
 <![CDATA[<p>i is the minimum _sequence_ quality within the primer
-or oligo (not to be confused with the PRIMER_PAIR_QUALITY
+or oligo (not to be confused with the <p3t>PRIMER_PAIR_4_PENALTY</p3t>
 output tag, which is really the value of the objective
 function.)</p>]]>
 	</description>
@@ -406,7 +425,7 @@ function.)</p>]]>
 	<description>
 <![CDATA[<p>i is the position of the first base of the stop codon,
 if primer3 found one, or -1 if primer3 did not.  Printed
-only if the input tag PRIMER_START_CODON_POSITION with a
+only if the input tag <p3t>PRIMER_START_CODON_POSITION</p3t> with a
 non-default value is supplied.</p>]]>
 	</description>
 </tag>

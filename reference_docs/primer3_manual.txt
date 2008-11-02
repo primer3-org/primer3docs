@@ -2590,8 +2590,8 @@ with the corresponding primer oligo.  Generated when
 P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
 primer3 was forced to choose a primer or oligo
 that did not satisfy specified design constraints
-(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
-is specified).
+(as when PRIMER_PICK_ANYWAY=1 and a primer sequence
+is provided).
 
 
 PRIMER_LEFT_EXPLAIN=s (*)
@@ -2655,9 +2655,9 @@ PRIMER_RIGHT_4_SEQUENCE=s
 
 The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
-input SEQUENCE (which must be presented 5' -> 3').  The sequence
-of the right primer is presented 5' -> 3' on the opposite strand
-from the input SEQUENCE.
+input SEQUENCE_TEMPLATE (which must be presented 5' -> 3').  The 
+sequence of the right primer is presented 5' -> 3' on the 
+opposite strand from the input SEQUENCE_TEMPLATE.
 
 
 PRIMER_PAIR_4_PRODUCT_SIZE=x
@@ -2726,11 +2726,19 @@ PRIMER_LEFT_4_SELF_ANY=f
 PRIMER_INTERNAL_4_SELF_ANY=f
 PRIMER_RIGHT_4_SELF_ANY=f
 
+The calculated value for the tendency of a primer to bind to 
+itself (interfering with target sequence binding). It will score 
+ANY binding occuring within the entire primer sequence. For 
+details see PRIMER_SELF_ANY. 
 The self-complementarity measures for the selected oligo.
 
 
 PRIMER_PAIR_4_COMPL_ANY=f
 
+The calculated value for the tendency of a primer pair to bind to 
+each other (interfering with target sequence binding). It will 
+score ANY binding occuring within the entire primer sequence. 
+For details see PRIMER_SELF_ANY. 
 The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.
 
@@ -2739,11 +2747,22 @@ PRIMER_LEFT_4_SELF_END=f
 PRIMER_INTERNAL_4_SELF_END=f
 PRIMER_RIGHT_4_SELF_END=f
 
+The calculated value for the tendency of the 3'-END to bind to a 
+identical primer. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see PRIMER_SELF_END.
 The self-complementarity measures for the ends of selected oligo.
 
 
 PRIMER_PAIR_4_COMPL_END=f
 
+The calculated value for the tendency of the 3'-ENDs of a primer pair to bind to 
+each other. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see 
+PRIMER_SELF_END.
 The inter-pair complementarity measures for the ends of selected
 left and right primer.
 
@@ -2791,7 +2810,7 @@ PRIMER_INTERNAL_4_MIN_SEQ_QUALITY=i
 PRIMER_RIGHT_4_MIN_SEQ_QUALITY=i
 
 i is the minimum _sequence_ quality within the primer
-or oligo (not to be confused with the PRIMER_PAIR_QUALITY
+or oligo (not to be confused with the PRIMER_PAIR_4_PENALTY
 output tag, which is really the value of the objective
 function.)
 

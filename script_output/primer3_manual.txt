@@ -666,11 +666,17 @@ PRIMER_SALT_MONOVALENT            - PRIMER_SALT_CONC
 PRIMER_SALT_DIVALENT              - PRIMER_DIVALENT_CONC
 PRIMER_TM_FORMULA                 - PRIMER_TM_SANTALUCIA
 
+PRIMER_WT_SELF_ANY                - PRIMER_WT_COMPL_ANY
+PRIMER_WT_SELF_END                - PRIMER_WT_COMPL_END
+
 P3_FILE_FLAG                      - PRIMER_FILE_FLAG
 P3_COMMENT                        - PRIMER_COMMENT
 
 PRIMER_INTERNAL_SALT_MONOVALENT   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 PRIMER_INTERNAL_SALT_DIVALENT     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
+
+PRIMER_INTERNAL_WT_SELF_ANY       - PRIMER_IO_WT_COMPL_ANY
+PRIMER_INTERNAL_WT_SELF_END       - PRIMER_IO_WT_COMPL_END
 
 The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 
@@ -701,7 +707,6 @@ PRIMER_INTERNAL_WT_SIZE_LT        - PRIMER_IO_WT_SIZE_LT
 PRIMER_INTERNAL_WT_SIZE_GT        - PRIMER_IO_WT_SIZE_GT
 PRIMER_INTERNAL_WT_GC_PERCENT_LT  - PRIMER_IO_WT_GC_PERCENT_LT
 PRIMER_INTERNAL_WT_GC_PERCENT_GT  - PRIMER_IO_WT_GC_PERCENT_GT
-PRIMER_INTERNAL_WT_COMPL_ANY      - PRIMER_IO_WT_COMPL_ANY
 PRIMER_INTERNAL_WT_NUM_NS         - PRIMER_IO_WT_NUM_NS
 PRIMER_INTERNAL_WT_REP_SIM        - PRIMER_IO_WT_REP_SIM
 PRIMER_INTERNAL_WT_SEQ_QUAL       - PRIMER_IO_WT_SEQ_QUAL
@@ -1529,15 +1534,15 @@ PRIMER_INTERNAL_SELF_ANY (decimal, 9999.99; default 12.00)
 Equivalent parameter of PRIMER_SELF_ANY for the internal oligo.
 
 
-PRIMER_WT_COMPL_ANY (float; default 0.0)
+PRIMER_WT_SELF_ANY (float; default 0.0)
 
 Penalty weight for the individual primer self binding value as in 
 PRIMER_SELF_ANY.
 
 
-PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
+PRIMER_INTERNAL_WT_SELF_ANY (float; default 0.0)
 
-Equivalent parameter of PRIMER_WT_COMPL_ANY for the internal oligo.
+Equivalent parameter of PRIMER_WT_SELF_ANY for the internal oligo.
 
 
 PRIMER_PAIR_WT_COMPL_ANY (float; default 0.0)
@@ -1595,15 +1600,15 @@ PRIMER_INTERNAL_SELF_END be set at least as high as
 PRIMER_INTERNAL_SELF_ANY.
 
 
-PRIMER_WT_COMPL_END (float; default 0.0)
+PRIMER_WT_SELF_END (float; default 0.0)
 
 Penalty weight for the individual primer self binding value as in 
 PRIMER_SELF_END.
 
 
-PRIMER_INTERNAL_WT_COMPL_END (float; default 0.0)
+PRIMER_INTERNAL_WT_SELF_END (float; default 0.0)
 
-Equivalent parameter of PRIMER_WT_COMPL_END for the internal oligo.
+Equivalent parameter of PRIMER_WT_SELF_END for the internal oligo.
 
 
 PRIMER_PAIR_WT_COMPL_END (float; default 0.0)
@@ -2165,9 +2170,9 @@ PRIMER_LEFT_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-       + PRIMER_WT_COMPL_ANY * PRIMER_LEFT_4_SELF_ANY
+       + PRIMER_WT_SELF_ANY * PRIMER_LEFT_4_SELF_ANY
 
-       + PRIMER_WT_COMPL_END * PRIMER_LEFT_4_SELF_END
+       + PRIMER_WT_SELF_END * PRIMER_LEFT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
             PRIMER_LEFT_4_TEMPLATE_MISPRIMING
@@ -2237,9 +2242,9 @@ PRIMER_RIGHT_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-       + PRIMER_WT_COMPL_ANY * PRIMER_RIGHT_4_SELF_ANY
+       + PRIMER_WT_SELF_ANY * PRIMER_RIGHT_4_SELF_ANY
 
-       + PRIMER_WT_COMPL_END * PRIMER_RIGHT_4_SELF_END
+       + PRIMER_WT_SELF_END * PRIMER_RIGHT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
             PRIMER_RIGHT_4_TEMPLATE_MISPRIMING
@@ -2277,7 +2282,7 @@ PRIMER_INTERNAL_4_PENALTY =
        than this is added (+):
 
        + PRIMER_INTERNAL_WT_GC_PERCENT_GT *
-	        ( PRIMER_INTERNAL_4_GC_PERCENT - 
+            ( PRIMER_INTERNAL_4_GC_PERCENT - 
               PRIMER_INTERNAL_OPT_GC_PERCENT )
 
    If PRIMER_INTERNAL_4_GC_PERCENT < PRIMER_INTERNAL_OPT_GC_PERCENT
@@ -2307,9 +2312,9 @@ PRIMER_INTERNAL_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-     + PRIMER_INTERNAL_WT_COMPL_ANY * PRIMER_INTERNAL_4_SELF_ANY
+     + PRIMER_INTERNAL_WT_SELF_ANY * PRIMER_INTERNAL_4_SELF_ANY
 
-     + PRIMER_INTERNAL_WT_COMPL_END * PRIMER_INTERNAL_4_SELF_END
+     + PRIMER_INTERNAL_WT_SELF_END * PRIMER_INTERNAL_4_SELF_END
 
      + PRIMER_INTERNAL_WT_NUM_NS *
           <numbers of N in the selected primer>
@@ -2590,8 +2595,8 @@ with the corresponding primer oligo.  Generated when
 P3_SHOW_OLIGO_PROBLEMS is true (non zero), and
 primer3 was forced to choose a primer or oligo
 that did not satisfy specified design constraints
-(as when PRIMER_PICK_ANYWAY=1 and PRIMER...INPUT
-is specified).
+(as when PRIMER_PICK_ANYWAY=1 and a primer sequence
+is provided).
 
 
 PRIMER_LEFT_EXPLAIN=s (*)
@@ -2655,9 +2660,9 @@ PRIMER_RIGHT_4_SEQUENCE=s
 
 The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
-input SEQUENCE (which must be presented 5' -> 3').  The sequence
-of the right primer is presented 5' -> 3' on the opposite strand
-from the input SEQUENCE.
+input SEQUENCE_TEMPLATE (which must be presented 5' -> 3').  The 
+sequence of the right primer is presented 5' -> 3' on the 
+opposite strand from the input SEQUENCE_TEMPLATE.
 
 
 PRIMER_PAIR_4_PRODUCT_SIZE=x
@@ -2726,11 +2731,19 @@ PRIMER_LEFT_4_SELF_ANY=f
 PRIMER_INTERNAL_4_SELF_ANY=f
 PRIMER_RIGHT_4_SELF_ANY=f
 
+The calculated value for the tendency of a primer to bind to 
+itself (interfering with target sequence binding). It will score 
+ANY binding occuring within the entire primer sequence. For 
+details see PRIMER_SELF_ANY. 
 The self-complementarity measures for the selected oligo.
 
 
 PRIMER_PAIR_4_COMPL_ANY=f
 
+The calculated value for the tendency of a primer pair to bind to 
+each other (interfering with target sequence binding). It will 
+score ANY binding occuring within the entire primer sequence. 
+For details see PRIMER_SELF_ANY. 
 The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.
 
@@ -2739,11 +2752,22 @@ PRIMER_LEFT_4_SELF_END=f
 PRIMER_INTERNAL_4_SELF_END=f
 PRIMER_RIGHT_4_SELF_END=f
 
+The calculated value for the tendency of the 3'-END to bind to a 
+identical primer. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see PRIMER_SELF_END.
 The self-complementarity measures for the ends of selected oligo.
 
 
 PRIMER_PAIR_4_COMPL_END=f
 
+The calculated value for the tendency of the 3'-ENDs of a primer pair to bind to 
+each other. This is critical for primer quality because it 
+allows primers use itself as a target and amplify a short piece 
+(forming a primer-dimer). These primer are then unable to bind 
+and amplify the target sequence. For details see 
+PRIMER_SELF_END.
 The inter-pair complementarity measures for the ends of selected
 left and right primer.
 
@@ -2791,7 +2815,7 @@ PRIMER_INTERNAL_4_MIN_SEQ_QUALITY=i
 PRIMER_RIGHT_4_MIN_SEQ_QUALITY=i
 
 i is the minimum _sequence_ quality within the primer
-or oligo (not to be confused with the PRIMER_PAIR_QUALITY
+or oligo (not to be confused with the PRIMER_PAIR_4_PENALTY
 output tag, which is really the value of the objective
 function.)
 
