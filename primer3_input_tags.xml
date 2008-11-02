@@ -73,7 +73,7 @@ An example Tag with all possible options:
 that is reproduced in the output to enable users to identify the 
 source of the chosen primers.<br />
 <br />
-This tag must be present if <p3_anchor>P3_FILE_FLAG</p3_anchor> is non-zero.</p>]]>
+This tag must be present if <p3t>P3_FILE_FLAG</p3t> is non-zero.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -87,7 +87,7 @@ This tag must be present if <p3_anchor>P3_FILE_FLAG</p3_anchor> is non-zero.</p>
 	<description>
 <![CDATA[<p>The sequence from which to choose primers.  The sequence
 must be presented 5' -> 3' (see the discussion of the
-<p3_anchor>PRIMER_SELF_END</p3_anchor> argument).  The bases may be upper or lower case.
+<p3t>PRIMER_SELF_END</p3t> argument).  The bases may be upper or lower case.
 No newlines should be inserted into the sequence, because the
 Boulder-IO parser will assume that a line ends at a newline.</p>]]>
 	</description>
@@ -184,7 +184,7 @@ make Target regions excluded regions for internal oligos.</p>]]>
 	<description>
 <![CDATA[<p>The sequence of a left primer to check and around which to design
 right primers and optional internal oligos.  Must be a substring
-of <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>]]>
+of <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -198,7 +198,7 @@ of <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>]]>
 	<description>
 <![CDATA[<p>The sequence of an internal oligo to check and around which to
 design left and right primers.  Must be a substring of 
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>]]>
+<p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -212,7 +212,7 @@ design left and right primers.  Must be a substring of
 	<description>
 <![CDATA[<p>The sequence of a right primer to check and around which to
 design left primers and optional internal oligos.  Must be a
-substring of the reverse strand of <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.</p>]]>
+substring of the reverse strand of <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -257,9 +257,9 @@ primer will end at or after the stop codon.</p>]]>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>A list of space separated integers. There must be exactly
-one integer for each base in <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor> if this argument is
+one integer for each base in <p3t>SEQUENCE_TEMPLATE</p3t> if this argument is
 non-empty.  For example, for the sequence ANNTTCA...
-<p3_anchor>SEQUENCE_QUALITY</p3_anchor> might be 45 10 0 50 30 34 50 67 ....
+<p3t>SEQUENCE_QUALITY</p3t> might be 45 10 0 50 30 34 50 67 ....
 High numbers indicate high confidence in the base called at
 that position and low numbers indicate low confidence in the
 base call at that position.  This parameter is only relevant
@@ -322,16 +322,16 @@ Legal values are:<br />
    <tt><i>pick_detection_primers</i></tt><br />
 <br />
    Pick primers to detect a sequence (the classic primer3 task). Use 
-   the <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>, <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> and 
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> to control which primers are picked.
-   If <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor> and <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> are 
+   the <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>, <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> and 
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> to control which primers are picked.
+   If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> are 
    selected primer3 tries to pick primer pairs.<br />
 <br />
    <tt><i>check_primers</i></tt><br />
 <br />
    Primer3 does not pick any primers, it only checks the primers 
-   provided in <p3_anchor>SEQUENCE_PRIMER</p3_anchor>, <p3_anchor>SEQUENCE_INTERNAL_OLIGO</p3_anchor> and 
-   <p3_anchor>SEQUENCE_PRIMER_REVCOMP</p3_anchor>. Its the only task which does not
+   provided in <p3t>SEQUENCE_PRIMER</p3t>, <p3t>SEQUENCE_INTERNAL_OLIGO</p3t> and 
+   <p3t>SEQUENCE_PRIMER_REVCOMP</p3t>. Its the only task which does not
    require a sequence. If the sequence is provided, it is used
    as a template.<br />
 <br />
@@ -339,55 +339,55 @@ Legal values are:<br />
 <br />
    Pick all primers in the sequence or limited by included region.
    It returns the primers sorted by quality starting with the 
-   best primers. If <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor> and 
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor> is selected primer3 does not to pick 
+   best primers. If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and 
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> is selected primer3 does not to pick 
    primer pairs but treats it as independent lists.<br />
 <br />
    <tt><i>pick_sequencing_primers</i></tt><br />
 <br />
-   Pick primers suited to sequence a region. <p3_anchor>SEQUENCE_TARGET</p3_anchor> can be 
+   Pick primers suited to sequence a region. <p3t>SEQUENCE_TARGET</p3t> can be 
    used to indicate several targets. The position of each primer is 
    calculated for optimal sequencing results.<br />
 <br />
    <tt><i>pick_pcr_primers</i></tt><br />
 <br />
    Shortcut for the following settings:<br />
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
    <tt><i>pick_pcr_primers_and_hyb_probe</i></tt><br />
 <br />
    Shortcut for the following settings:<br />
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
    <tt><i>pick_left_only</i></tt><br />
 <br />
    Shortcut for the following settings:<br />
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0<br />
+   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=0<br />
 <br />
    <tt><i>pick_right_only</i></tt><br />
 <br />
    Shortcut for the following settings:<br />
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0<br />
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=0<br />
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=0<br />
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
    <tt><i>pick_hyb_probe_only</i></tt><br />
 <br />
    Shortcut for the following settings:<br />
-   <p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-   <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=0<br />
-   <p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
-   <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=0<br />
+   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=0<br />
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=0<br />
 </p>]]>
 	</description>
 </tag>
@@ -479,8 +479,8 @@ would, of course, include the primers themselves.</p>]]>
 	<description>
 <![CDATA[<p>The optimum size for the PCR product.  0 indicates that there is
 no optimum product size.  This parameter influences primer pair 
-selection only if <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3_anchor> or
-<p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3_anchor> is non-0.<br />
+selection only if <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t> or
+<p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t> is non-0.<br />
 This parameter increases calculation time, so set this only if 
 you need a exact product size.</p>]]>
 	</description>
@@ -490,7 +490,7 @@ you need a exact product size.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for products shorter than <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for products shorter than <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -498,7 +498,7 @@ you need a exact product size.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for products longer than <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for products longer than <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 
@@ -509,7 +509,7 @@ you need a exact product size.</p>]]>
 	<default>18</default>
 	<description>
 <![CDATA[<p>Minimum acceptable length of a primer.  Must be greater than 0
-and less than or equal to <p3_anchor>PRIMER_MAX_SIZE</p3_anchor>.</p>]]>
+and less than or equal to <p3t>PRIMER_MAX_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -521,7 +521,7 @@ and less than or equal to <p3_anchor>PRIMER_MAX_SIZE</p3_anchor>.</p>]]>
 	<dataType>int</dataType>
 	<default>18</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_SIZE</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MIN_SIZE</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -546,7 +546,7 @@ pick primers close to this length.</p>]]>
 	<dataType>int</dataType>
 	<default>20</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_OPT_SIZE</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -569,7 +569,7 @@ valid.</p>]]>
 	<dataType>int</dataType>
 	<default>27</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_SIZE</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_SIZE</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -577,7 +577,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for primers shorter than <p3_anchor>PRIMER_OPT_SIZE</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for primers shorter than <p3t>PRIMER_OPT_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -589,7 +589,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_SIZE_LT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SIZE_LT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -597,7 +597,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for primers longer than <p3_anchor>PRIMER_OPT_SIZE</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for primers longer than <p3t>PRIMER_OPT_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -609,7 +609,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_INTERNAL_WT_SIZE_GT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_INTERNAL_WT_SIZE_GT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -631,7 +631,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>20.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_GC</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MIN_GC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -640,7 +640,7 @@ valid.</p>]]>
 	<default>50.0</default>
 	<description>
 <![CDATA[<p>Optimum GC percent.  This parameter influences primer selection only if
-<p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> or <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> are non-0.</p>]]>
+<p3t>PRIMER_WT_GC_PERCENT_GT</p3t> or <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> are non-0.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -652,7 +652,7 @@ valid.</p>]]>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_OPT_GC_PERCENT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -673,7 +673,7 @@ by Primer.</p>]]>
 	<dataType>float</dataType>
 	<default>80.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_GC</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_GC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -682,7 +682,7 @@ by Primer.</p>]]>
 	<default>1.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for primers with GC percent lower than
-<p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>.</p>]]>
+<p3t>PRIMER_OPT_GC_PERCENT</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -694,7 +694,7 @@ by Primer.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -703,7 +703,7 @@ by Primer.</p>]]>
 	<default>1.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for primers with GC percent higher than
-<p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor>.</p>]]>
+<p3t>PRIMER_OPT_GC_PERCENT</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -715,7 +715,7 @@ by Primer.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -750,7 +750,7 @@ oligo.</p>]]>
 	<dataType>float</dataType>
 	<default>57.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_TM</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MIN_TM</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -761,7 +761,7 @@ oligo.</p>]]>
 <![CDATA[<p>Optimum melting temperature (Celsius) for a primer oligo. Primer3
 will try to pick primers with melting temperatures are close to
 this temperature.  The oligo melting temperature formula used can
-be specified by user. Please see <p3_anchor>PRIMER_TM_FORMULA</p3_anchor> for more
+be specified by user. Please see <p3t>PRIMER_TM_FORMULA</p3t> for more
 information.</p>]]>
 	</description>
 </tag>
@@ -774,7 +774,7 @@ information.</p>]]>
 	<dataType>float</dataType>
 	<default>60.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_OPT_TM</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_OPT_TM</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -795,7 +795,7 @@ oligo.</p>]]>
 	<dataType>float</dataType>
 	<default>63.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_TM</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_TM</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -812,7 +812,7 @@ temperatures of the left and right primers.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for primers with Tm lower than <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for primers with Tm lower than <p3t>PRIMER_OPT_TM</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -824,7 +824,7 @@ temperatures of the left and right primers.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TM_LT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -832,7 +832,7 @@ temperatures of the left and right primers.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Penalty weight for primers with Tm over <p3_anchor>PRIMER_OPT_TM</p3_anchor>.</p>]]>
+<![CDATA[<p>Penalty weight for primers with Tm over <p3t>PRIMER_OPT_TM</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -844,7 +844,7 @@ temperatures of the left and right primers.</p>]]>
 	<dataType>float</dataType>
 	<default>1.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TM_GT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -862,7 +862,7 @@ the right ptimer.</p>]]>
 	<default>-1000000.0</default>
 	<description>
 <![CDATA[<p>The minimum allowed melting temperature of the amplicon.  Please
-see the documentation on <p3_anchor>PRIMER_PRODUCT_MAX_TM</p3_anchor> for details.</p>]]>
+see the documentation on <p3t>PRIMER_PRODUCT_MAX_TM</p3t> for details.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -912,7 +912,7 @@ under hybridization conditions.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for products with a Tm lower than 
-<p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor>.</p>]]>
+<p3t>PRIMER_PRODUCT_OPT_TM</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -921,7 +921,7 @@ under hybridization conditions.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for products with a Tm higher than  
-<p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor>.</p>]]>
+<p3t>PRIMER_PRODUCT_OPT_TM</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -957,11 +957,11 @@ view of polymer, dumbbell and oligonucleotide DNA nearest-neighbor
 thermodynamics", Proc Natl Acad Sci 95:1460-65
 <link>http://dx.doi.org/10.1073/pnas.95.4.1460</link>].<br />
 <br />
-Use tag <p3_anchor>PRIMER_SALT_CORRECTIONS</p3_anchor>, to specify the salt correction
+Use tag <p3t>PRIMER_SALT_CORRECTIONS</p3t>, to specify the salt correction
 method for melting temperature calculation.<br />
 <br />
 Example of calculating the melting temperature of an oligo if
-<p3_anchor>PRIMER_TM_SANTALUCIA</p3_anchor>=1 and <p3_anchor>PRIMER_SALT_CORRECTIONS</p3_anchor>=1
+<p3t>PRIMER_TM_SANTALUCIA</p3t>=1 and <p3t>PRIMER_SALT_CORRECTIONS</p3t>=1
 recommended values):<br />
 <br />
 primer=CGTGACGTGACGGACT<br />
@@ -1015,8 +1015,8 @@ Tm(C) = 323.704 - 273.15 = 50.554 C
 	<description>
 <![CDATA[<p>The millimolar (mM) concentration of monovalent salt cations (usually KCl) in the PCR.
 Primer3 uses this argument to calculate oligo and primer melting
-temperatures. Use tag <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> to specify the concentration
-of divalent cations (in this case you also should use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor>).</p>]]>
+temperatures. Use tag <p3t>PRIMER_SALT_DIVALENT</p3t> to specify the concentration
+of divalent cations (in this case you also should use tag <p3t>PRIMER_DNTP_CONC</p3t>).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1028,7 +1028,7 @@ of divalent cations (in this case you also should use tag <p3_anchor>PRIMER_DNTP
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SALT_MONOVALENT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_SALT_MONOVALENT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1058,7 +1058,7 @@ specified concentration of dNTPs is larger than specified concentration of
 divalent cations then the effect of divalent cations is not considered. The
 concentration of dNTPs is included to the formula beacause of some magnesium is bound by the
 dNTP. Attained concentration of monovalent cations is used to calculate oligo/primer
-melting temperature. Use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> to specify the concentration of dNTPs.</p>]]>
+melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1070,7 +1070,7 @@ melting temperature. Use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> to specify 
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_SALT_DIVALENT</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1079,8 +1079,8 @@ melting temperature. Use tag <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> to specify 
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>The millimolar concentration of deoxyribonucleotide triphosphate. This
-argument is considered only if <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> is specified. See
-<p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor>.</p>]]>
+argument is considered only if <p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See
+<p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1092,7 +1092,7 @@ argument is considered only if <p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor> is sp
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_DNTP_CONC</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DNTP_CONC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1164,7 +1164,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_DNA_CONC</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DNA_CONC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -1212,7 +1212,7 @@ oligos.</p>]]>
 	<dataType>decimal, 9999.99</dataType>
 	<default>12.00</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_SELF_ANY</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_SELF_ANY</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1221,7 +1221,7 @@ oligos.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for the individual primer self binding value as in 
-<p3_anchor>PRIMER_SELF_ANY</p3_anchor>.</p>]]>
+<p3t>PRIMER_SELF_ANY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1233,7 +1233,7 @@ oligos.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_COMPL_ANY</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1242,7 +1242,7 @@ oligos.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
-<p3_anchor>PRIMER_SELF_ANY</p3_anchor>.</p>]]>
+<p3t>PRIMER_SELF_ANY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1283,7 +1283,7 @@ global alignments for candidate primers and primer pairs, Primer
 assumes that the sequence from which to choose primers is
 presented 5'->3'. It is nonsensical to provide a larger value
 for this parameter than for the Maximum (local) Complementarity
-parameter (<p3_anchor>PRIMER_SELF_ANY</p3_anchor>) because the score of a local 
+parameter (<p3t>PRIMER_SELF_ANY</p3t>) because the score of a local 
 alignment will always be at least as great as the score of a 
 global alignment.</p>]]>
 	</description>
@@ -1297,11 +1297,11 @@ global alignment.</p>]]>
 	<dataType>decimal 9999.99</dataType>
 	<default>12.00</default>
 	<description>
-<![CDATA[<p><p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> is meaningless when applied
+<![CDATA[<p><p3t>PRIMER_INTERNAL_SELF_END</p3t> is meaningless when applied
 to internal oligos used for hybridization-based detection, since
 primer-dimer will not occur.  We recommend that
-<p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor> be set at least as high as
-<p3_anchor>PRIMER_INTERNAL_SELF_ANY</p3_anchor>.</p>]]>
+<p3t>PRIMER_INTERNAL_SELF_END</p3t> be set at least as high as
+<p3t>PRIMER_INTERNAL_SELF_ANY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1310,7 +1310,7 @@ primer-dimer will not occur.  We recommend that
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for the individual primer self binding value as in 
-<p3_anchor>PRIMER_SELF_END</p3_anchor>.</p>]]>
+<p3t>PRIMER_SELF_END</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1322,7 +1322,7 @@ primer-dimer will not occur.  We recommend that
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_COMPL_END</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1331,7 +1331,7 @@ primer-dimer will not occur.  We recommend that
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
-<p3_anchor>PRIMER_SELF_END</p3_anchor>.</p>]]>
+<p3t>PRIMER_SELF_END</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1343,7 +1343,7 @@ primer-dimer will not occur.  We recommend that
 right primer.  Bigger numbers mean more stable 3' ends.  The
 value is the maximum delta G (kcal/mol) for duplex disruption for
 the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by the option of <p3_anchor>PRIMER_TM_SANTALUCIA</p3_anchor> 
+parameter values specified by the option of <p3t>PRIMER_TM_SANTALUCIA</p3t> 
 Table of thermodynamic parameters.<br />
 <br />
 For example if the table of thermodynamic parameters suggested
@@ -1385,7 +1385,7 @@ last five 3' bases of a left or right primer.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1405,7 +1405,7 @@ last five 3' bases of a left or right primer.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_NUM_NS</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -1428,7 +1428,7 @@ for example AAAAAA.</p>]]>
 	<dataType>int</dataType>
 	<default>5</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MAX_POLY_X</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_POLY_X</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -1469,8 +1469,8 @@ in an existing pair)</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If true use primer provided in <p3_anchor>SEQUENCE_PRIMER</p3_anchor>, <p3_anchor>SEQUENCE_PRIMER_REVCOMP</p3_anchor>, 
-or <p3_anchor>SEQUENCE_INTERNAL_OLIGO</p3_anchor> even if it violates specific 
+<![CDATA[<p>If true use primer provided in <p3t>SEQUENCE_PRIMER</p3t>, <p3t>SEQUENCE_PRIMER_REVCOMP</p3t>, 
+or <p3t>SEQUENCE_INTERNAL_OLIGO</p3t> even if it violates specific 
 constraints.</p>]]>
 	</description>
 </tag>
@@ -1485,7 +1485,7 @@ generated.  These tags have empty arguments when there are
 no problems with the corresponding oligo or primer, and
 otherwise list the problems (constraint violations)
 associated with primer or oligo that primer3 was forced to
-choose (for example, as sometimes when <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor>=1
+choose (for example, as sometimes when <p3t>PRIMER_PICK_ANYWAY</p3t>=1
 and PRIMER...INPUT is specified).</p>]]>
 	</description>
 </tag>
@@ -1519,8 +1519,8 @@ do not overlap the 3'-end of primer.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If this flag is 1 (non-0), produce <p3_anchor>PRIMER_LEFT_EXPLAIN</p3_anchor>,
-<p3_anchor>PRIMER_RIGHT_EXPLAIN</p3_anchor>, and <p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor> output
+<![CDATA[<p>If this flag is 1 (non-0), produce <p3t>PRIMER_LEFT_EXPLAIN</p3t>,
+<p3t>PRIMER_RIGHT_EXPLAIN</p3t>, and <p3t>PRIMER_INTERNAL_EXPLAIN</p3t> output
 tags, which are intended to provide information on the number of
 oligos and primer pairs that primer3 examined, and statistics on
 the number discarded for various reasons.  If -format_output is
@@ -1537,7 +1537,7 @@ set similar information is produced in the user-oriented output.</p>]]>
 <![CDATA[<p>This parameter provides a quick-and-dirty way to get primer3 to
 accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
 all unrecognized bases to N).  If you wish to include an
-ambiguous base in an oligo, you must set <p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor> to a
+ambiguous base in an oligo, you must set <p3t>PRIMER_NUM_NS_ACCEPTED</p3t> to a
 1 (non-0) value.<br />
 <br />
 Perhaps '-' and '* ' should be squeezed out rather than changed
@@ -1570,9 +1570,9 @@ file flag is set.)</p>]]>
 	<description>
 <![CDATA[<p>The maximum allowed similarity to ectopic sites in the
 template.  A negative value means do not check.  The scoring
-system is the same as used for <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>, except
+system is the same as used for <p3t>PRIMER_MAX_MISPRIMING</p3t>, except
 that an ambiguity code in the template is never treated as a
-consensus (see <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).</p>]]>
+consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1595,9 +1595,9 @@ consensus (see <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).</p>
 <![CDATA[<p>The maximum allowed summed similarity of both primers to
 ectopic sites in the template. A negative value means do not
 check.  The scoring system is the same as used for
-<p3_anchor>PRIMER_PAIR_MAX_MISPRIMING</p3_anchor>, except that an ambiguity code in
+<p3t>PRIMER_PAIR_MAX_MISPRIMING</p3t>, except that an ambiguity code in
 the template is never treated as a consensus (see
-<p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>).  Primer3 does not
+<p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).  Primer3 does not
 check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>]]>
 	</description>
@@ -1619,7 +1619,7 @@ by the factor 100 to have the same effect.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> for the internal oligo.]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> for the internal oligo.]]>
 	</description>
 </tag>
 <tag>
@@ -1649,7 +1649,7 @@ FASTA format (W. B. Pearson and D.J. Lipman, PNAS 85:8 pp
 file below.  If this parameter is specified then primer3 locally
 aligns each candidate primer against each library sequence and
 rejects those primers for which the local alignment score times a
-specified weight (see below) exceeds <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor>.
+specified weight (see below) exceeds <p3t>PRIMER_MAX_MISPRIMING</p3t>.
 (The maximum value of the weight is arbitrarily set to 100.0.)<br />
 <br />
 Each sequence entry in the FASTA-format file must begin with an
@@ -1659,7 +1659,7 @@ optional asterisk ('*') as a floating point number to use as the
 weight mentioned above.  If the id line contains no asterisk then
 the weight defaults to 1.0.  The alignment scoring system used is
 the same as for calculating complementarity among oligos (e.g.
-<p3_anchor>PRIMER_SELF_ANY</p3_anchor>), except for the handling of IUB/IUPAC ambiguity
+<p3t>PRIMER_SELF_ANY</p3t>), except for the handling of IUB/IUPAC ambiguity
 codes (discussed below).<br />
 <br />
 The remainder of an entry contains the sequence as lines
@@ -1672,7 +1672,7 @@ reasons the length of the sequence must be >= 3. Of course,
 sequences of length < 10 or so are probably useless, but
 will be accepted without complaint.<br />
 <br />
-WARNING: always set <p3_anchor>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3_anchor>=0
+WARNING: always set <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=0
 if any sequence in the library contains strings of 'N's:
 NNNNNNNNNNNNNNNNNNNN.<br />
 NOWWW<br />
@@ -1698,7 +1698,7 @@ format before they can be used by primer3.)</p>]]>
 	<dataType>string</dataType>
 	<default>empty</default>
 	<description>
-<![CDATA[<p>Similar to <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>, except that the event we
+<![CDATA[<p>Similar to <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>, except that the event we
 seek to avoid is hybridization of the internal oligo to sequences
 in this library rather than priming from them.</p>]]>
 	</description>
@@ -1727,7 +1727,7 @@ you know for sure that your library does not have runs of Ns
 	<default>12.00</default>
 	<description>
 <![CDATA[<p>The maximum allowed weighted similarity with any sequence in
-<p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
+<p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1739,9 +1739,9 @@ you know for sure that your library does not have runs of Ns
 	<dataType>decimal,9999.99</dataType>
 	<default>12.00</default>
 	<description>
-<![CDATA[<p>Similar to <p3_anchor>PRIMER_MAX_MISPRIMING</p3_anchor> except that this parameter applies
+<![CDATA[<p>Similar to <p3t>PRIMER_MAX_MISPRIMING</p3t> except that this parameter applies
 to the similarity of candidate internal oligos to the library
-specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
+specified in <p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1751,7 +1751,7 @@ specified in <p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>.</p>]]>
 	<description>
 <![CDATA[<p>The maximum allowed sum of similarities of a primer pair
 (one similarity for each primer) with any single sequence in
-<p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.  
+<p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.  
 Library sequence weights are not used in computing the sum
 of similarities.</p>]]>
 	</description>
@@ -1762,7 +1762,7 @@ of similarities.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty for a single primer binding to any single sequence 
-in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
+in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1774,7 +1774,7 @@ in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_REP_SIM</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1783,7 +1783,7 @@ in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty for a primer pair binding to any single sequence 
-in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
+in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 
@@ -1794,7 +1794,7 @@ in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	<default>0</default>
 	<description>
 <![CDATA[<p>The minimum sequence quality (as specified by
-<p3_anchor>SEQUENCE_QUALITY</p3_anchor>) allowed within a primer.</p>]]>
+<p3t>SEQUENCE_QUALITY</p3t>) allowed within a primer.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1806,7 +1806,7 @@ in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	<dataType>int</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MIN_QUALITY</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1815,8 +1815,8 @@ in <p3_anchor>PRIMER_MISPRIMING_LIBRARY</p3_anchor>.</p>]]>
 	<default>0</default>
 	<description>
 <![CDATA[<p>The minimum sequence quality (as specified by
-<p3_anchor>SEQUENCE_QUALITY</p3_anchor>) allowed within the 5' pentamer of a
-primer. Note that there is no <p3_anchor>PRIMER_INTERNAL_MIN_END_QUALITY</p3_anchor>.</p>]]>
+<p3t>SEQUENCE_QUALITY</p3t>) allowed within the 5' pentamer of a
+primer. Note that there is no <p3t>PRIMER_INTERNAL_MIN_END_QUALITY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1825,7 +1825,7 @@ primer. Note that there is no <p3_anchor>PRIMER_INTERNAL_MIN_END_QUALITY</p3_anc
 	<default>0</default>
 	<description>
 <![CDATA[<p>The minimum legal sequence quality (used for error checking
-of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALITY</p3_anchor>).</p>]]>
+of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1834,7 +1834,7 @@ of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALI
 	<default>100</default>
 	<description>
 <![CDATA[<p>The maximum legal sequence quality (used for error checking
-of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALITY</p3_anchor>).</p>]]>
+of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1854,7 +1854,7 @@ of <p3_anchor>PRIMER_MIN_QUALITY</p3_anchor> and <p3_anchor>PRIMER_MIN_END_QUALI
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SEQ_QUAL</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 
@@ -1921,7 +1921,7 @@ target as a term in the objective function.</p>]]>
 	<description>
 <![CDATA[<p>Defines the space from the 3'end of the primer to the point 
 were the trace signals are readable. Value only used if 
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_sequencing_primers.</p>]]>
+<p3t>PRIMER_TASK</p3t>=pick_sequencing_primers.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1931,7 +1931,7 @@ were the trace signals are readable. Value only used if
 	<description>
 <![CDATA[<p>Defines the space from the 3'end of the primer to the 3'end of 
 the next primer on the same strand. Value only used if 
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_sequencing_primers.</p>]]>
+<p3t>PRIMER_TASK</p3t>=pick_sequencing_primers.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1941,7 +1941,7 @@ the next primer on the same strand. Value only used if
 	<description>
 <![CDATA[<p>Defines the space from the 3'end of the primer to the 3'end of 
 the next primer on the reverse strand. Value only used if 
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_sequencing_primers.</p>]]>
+<p3t>PRIMER_TASK</p3t>=pick_sequencing_primers.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1951,7 +1951,7 @@ the next primer on the reverse strand. Value only used if
 	<description>
 <![CDATA[<p>Defines the space from the calculated position of the 3'end to 
 both sides in which primer3plus picks the best primer. Value only used if 
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_sequencing_primers.</p>]]>
+<p3t>PRIMER_TASK</p3t>=pick_sequencing_primers.</p>]]>
 	</description>
 </tag>
 
@@ -2068,12 +2068,12 @@ output of primer3.</p>]]>
 	<default>0</default>
 	<description>
 <![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
-files for each input <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>.  File &lt;sequence_id&gt;.for lists all
+files for each input <p3t>SEQUENCE_TEMPLATE</p3t>.  File &lt;sequence_id&gt;.for lists all
 acceptable left primers for &lt;sequence_id&gt;, and &lt;sequence_id&gt;.rev
 lists all acceptable right primers for &lt;sequence_id&gt;, where
-&lt;sequence_id&gt; is the value of the <p3_anchor>SEQUENCE_ID</p3_anchor> tag (which
+&lt;sequence_id&gt; is the value of the <p3t>SEQUENCE_ID</p3t> tag (which
 must be supplied).  In addition, if the input tag
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> is 1 (non-0), primer3 produces a file
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> is 1 (non-0), primer3 produces a file
 &lt;sequence_id&gt;.int, which lists all acceptable internal oligos.</p>]]>
 	</description>
 </tag>

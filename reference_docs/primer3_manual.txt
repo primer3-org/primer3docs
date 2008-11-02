@@ -2729,17 +2729,17 @@ PRIMER_RIGHT_4_SELF_ANY=f
 The self-complementarity measures for the selected oligo.
 
 
-PRIMER_LEFT_4_SELF_END=f
-PRIMER_INTERNAL_4_SELF_END=f
-PRIMER_RIGHT_4_SELF_END=f
-
-The self-complementarity measures for the selected oligo.
-
-
 PRIMER_PAIR_4_COMPL_ANY=f
 
 The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.
+
+
+PRIMER_LEFT_4_SELF_END=f
+PRIMER_INTERNAL_4_SELF_END=f
+PRIMER_RIGHT_4_SELF_END=f
+
+The self-complementarity measures for the ends of selected oligo.
 
 
 PRIMER_PAIR_4_COMPL_END=f

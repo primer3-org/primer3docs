@@ -132,288 +132,288 @@ primer3. In general the selection is a multi step process:<br />
 <br />
 In the first step, primer3 evaluates every singel primer that 
 can be picked in the region of interest. In this pase the hard 
-limits are tested like <p3_anchor>PRIMER_MAX_GC</p3_anchor> or <p3_anchor>PRIMER_MIN_TM</p3_anchor>. Primers 
-with a GC lower than <p3_anchor>PRIMER_MAX_GC</p3_anchor> or a Tm higher than 
-<p3_anchor>PRIMER_MIN_TM</p3_anchor> are memorized, the primers which fail in one of 
+limits are tested like <p3t>PRIMER_MAX_GC</p3t> or <p3t>PRIMER_MIN_TM</p3t>. Primers 
+with a GC lower than <p3t>PRIMER_MAX_GC</p3t> or a Tm higher than 
+<p3t>PRIMER_MIN_TM</p3t> are memorized, the primers which fail in one of 
 these tests are excluded. Primer3 can be forced to use primers 
-failing to pass this test by setting <p3_anchor>PRIMER_PICK_ANYWAY</p3_anchor> to one 
+failing to pass this test by setting <p3t>PRIMER_PICK_ANYWAY</p3t> to one 
 (only available for primers provided by the user).<br />
 <br />
 In the second step, primer3 calculates a penalty for each single 
 primer. This penalty is the only score by which primer3 
 evaluates the primers It is also provided as output 
-<p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor>, <p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor> and 
-<p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> (given for primer set Nr. 5). For each 
+<p3t>PRIMER_LEFT_4_PENALTY</p3t>, <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> and 
+<p3t>PRIMER_RIGHT_4_PENALTY</p3t> (given for primer set Nr. 5). For each 
 primer, it is calculated like that:</p>
 
 <h3>Left Primers:</h3>
 <pre>
-<p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor> =
+<p3t>PRIMER_LEFT_4_PENALTY</p3t> =
 
-   <p3_anchor>If PRIMER_LEFT_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than this is added (+):
+   <p3t>If PRIMER_LEFT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> than this is added (+):
 
-       + <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> * ( <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> - <p3_anchor>PRIMER_OPT_TM</p3_anchor> )
+       + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_LEFT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
-   If <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than this is added (+):
+   If <p3t>PRIMER_LEFT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> than this is added (+):
 
-       + <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> * ( <p3_anchor>PRIMER_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_LEFT_4_TM</p3_anchor> )
+       + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_LEFT_4_TM</p3t> )
 
 
-   If <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> *
-            ( <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
+            ( <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> - <p3t>PRIMER_OPT_GC_PERCENT</p3t> )
 
-   If <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than
+   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_LEFT_4_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
+            ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> )
 
 
    The following section uses &lt;primer length&gt; as part of 
    the term which is given as output in 
-   <p3_anchor>PRIMER_LEFT_4</p3_anchor>=position,&lt;primer length&gt; 
+   <p3t>PRIMER_LEFT_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_SIZE_GT</p3_anchor> *
-            ( &lt;primer length&gt; - <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> )
+       + <p3t>PRIMER_WT_SIZE_GT</p3t> *
+            ( &lt;primer length&gt; - <p3t>PRIMER_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_SIZE_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+       + <p3t>PRIMER_WT_SIZE_LT</p3t> *
+            ( <p3t>PRIMER_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
    If the primer does not overlap a target than
        this is added (+):
 	
-       + <p3_anchor>PRIMER_WT_POS_PENALTY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_POSITION_PENALTY</p3_anchor>
+       + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_LEFT_4_POSITION_PENALTY</p3t>
 
 
    These are allways added (+) to the penalty:
 
-       + <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_SELF_ANY</p3_anchor>
+       + <p3t>PRIMER_WT_COMPL_ANY</p3t> * <p3t>PRIMER_LEFT_4_SELF_ANY</p3t>
 
-       + <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_SELF_END</p3_anchor>
+       + <p3t>PRIMER_WT_COMPL_END</p3t> * <p3t>PRIMER_LEFT_4_SELF_END</p3t>
 
-       + <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> *
-            <p3_anchor>PRIMER_LEFT_4_TEMPLATE_MISPRIMING</p3_anchor>
+       + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> *
+            <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING</p3t>
 
-       + <p3_anchor>PRIMER_WT_END_STABILITY</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_END_STABILITY</p3_anchor>
+       + <p3t>PRIMER_WT_END_STABILITY</p3t> * <p3t>PRIMER_LEFT_4_END_STABILITY</p3t>
 
-       + <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> * &lt;numbers of N in the selected primer&gt;
+       + <p3t>PRIMER_WT_NUM_NS</p3t> * &lt;numbers of N in the selected primer&gt;
 
-       + <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_LEFT_4_MISPRIMING_SCORE</p3_anchor>
+       + <p3t>PRIMER_WT_REP_SIM</p3t> * <p3t>PRIMER_LEFT_4_MISPRIMING_SCORE</p3t>
 
-       + <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> *
-            ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
-              <p3_anchor>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3_anchor> )
+       + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
+            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+              <p3t>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3t> )
 
 </pre>
 
 <h3>Right Primers (identical to Left Primers):</h3>
 <pre>
-<p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> =
+<p3t>PRIMER_RIGHT_4_PENALTY</p3t> =
 
-   If <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_TM_GT</p3_anchor> * ( <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> - <p3_anchor>PRIMER_OPT_TM</p3_anchor> )
+       + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_RIGHT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
-   If <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_TM</p3_anchor> than 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_TM_LT</p3_anchor> * ( <p3_anchor>PRIMER_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_RIGHT_4_TM</p3_anchor> )
+       + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_RIGHT_4_TM</p3t> )
 
 
-   If <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_GC_PERCENT_GT</p3_anchor> *
-            ( <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
+            ( <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> - <p3t>PRIMER_OPT_GC_PERCENT</p3t> )
 
-   If <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> than 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_GC_PERCENT_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_OPT_GC_PERCENT</p3_anchor> - <p3_anchor>PRIMER_RIGHT_4_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
+            ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> )
 
 
    The following section uses &lt;primer length&gt; as part of 
    the term which is given as output in 
-   <p3_anchor>PRIMER_RIGHT_4</p3_anchor>=position,&lt;primer length&gt; 
+   <p3t>PRIMER_RIGHT_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_SIZE_GT</p3_anchor> *
-            ( &lt;primer length&gt; - <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> )
+       + <p3t>PRIMER_WT_SIZE_GT</p3t> *
+            ( &lt;primer length&gt; - <p3t>PRIMER_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> than 
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_SIZE_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+       + <p3t>PRIMER_WT_SIZE_LT</p3t> *
+            ( <p3t>PRIMER_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
    If the primer does not overlap a target than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_WT_POS_PENALTY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_POSITION_PENALTY</p3_anchor>
+       + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_RIGHT_4_POSITION_PENALTY</p3t>
 
 
    These are allways added (+) to the penalty:
 
-       + <p3_anchor>PRIMER_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_SELF_ANY</p3_anchor>
+       + <p3t>PRIMER_WT_COMPL_ANY</p3t> * <p3t>PRIMER_RIGHT_4_SELF_ANY</p3t>
 
-       + <p3_anchor>PRIMER_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_SELF_END</p3_anchor>
+       + <p3t>PRIMER_WT_COMPL_END</p3t> * <p3t>PRIMER_RIGHT_4_SELF_END</p3t>
 
-       + <p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor> *
-            <p3_anchor>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</p3_anchor>
+       + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> *
+            <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</p3t>
 
-       + <p3_anchor>PRIMER_WT_END_STABILITY</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_END_STABILITY</p3_anchor>
+       + <p3t>PRIMER_WT_END_STABILITY</p3t> * <p3t>PRIMER_RIGHT_4_END_STABILITY</p3t>
 
-       + <p3_anchor>PRIMER_WT_NUM_NS</p3_anchor> * &lt;numbers of N in the selected primer&gt;
+       + <p3t>PRIMER_WT_NUM_NS</p3t> * &lt;numbers of N in the selected primer&gt;
 
-       + <p3_anchor>PRIMER_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_RIGHT_4_MISPRIMING_SCORE</p3_anchor>
+       + <p3t>PRIMER_WT_REP_SIM</p3t> * <p3t>PRIMER_RIGHT_4_MISPRIMING_SCORE</p3t>
 
-       + <p3_anchor>PRIMER_WT_SEQ_QUAL</p3_anchor> *
-            ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
-              <p3_anchor>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3_anchor> )
+       + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
+            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+              <p3t>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3t> )
 
 </pre>
 
 <h3>Internal Oligos:</h3>
 <pre>
-<p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor> =
+<p3t>PRIMER_INTERNAL_4_PENALTY</p3t> =
 
-   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &gt; <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> than
+   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_TM_GT</p3_anchor> *
-            ( <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> )
+       + <p3t>PRIMER_INTERNAL_WT_TM_GT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_4_TM</p3t> - <p3t>PRIMER_INTERNAL_OPT_TM</p3t> )
 
-   If <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> &lt; <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> than
+   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_TM_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_INTERNAL_4_TM</p3_anchor> )
+       + <p3t>PRIMER_INTERNAL_WT_TM_LT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_OPT_TM</p3t> - <p3t>PRIMER_INTERNAL_4_TM</p3t> )
 
 
-   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &gt; <p3_anchor>PRIMER_INTERNAL_OPT_GC_PERCENT</p3_anchor>
+   If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
        than this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3_anchor> *
-	        ( <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> - 
-              <p3_anchor>PRIMER_INTERNAL_OPT_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3t> *
+	        ( <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> - 
+              <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t> )
 
-   If <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> &lt; <p3_anchor>PRIMER_INTERNAL_OPT_GC_PERCENT</p3_anchor>
+   If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
        than this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_INTERNAL_OPT_GC_PERCENT</p3_anchor> -
-              <p3_anchor>PRIMER_INTERNAL_4_GC_PERCENT</p3_anchor> )
+       + <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t> -
+              <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> )
 
 
    The following section uses &lt;primer length&gt; as part of 
    the term which is given as output in 
-   <p3_anchor>PRIMER_INTERNAL_4</p3_anchor>=position,&lt;primer length&gt; 
+   <p3t>PRIMER_INTERNAL_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> than 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> than 
        this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_SIZE_GT</p3_anchor> *
-            ( &lt;primer length&gt; - <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> )
+       + <p3t>PRIMER_INTERNAL_WT_SIZE_GT</p3t> *
+            ( &lt;primer length&gt; - <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> than
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_INTERNAL_WT_SIZE_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor> - &lt;primer length&gt; )
+       + <p3t>PRIMER_INTERNAL_WT_SIZE_LT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
    These are allways added (+) to the penalty:
 
-     + <p3_anchor>PRIMER_INTERNAL_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_SELF_ANY</p3_anchor>
+     + <p3t>PRIMER_INTERNAL_WT_COMPL_ANY</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_ANY</p3t>
 
-     + <p3_anchor>PRIMER_INTERNAL_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_SELF_END</p3_anchor>
+     + <p3t>PRIMER_INTERNAL_WT_COMPL_END</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_END</p3t>
 
-     + <p3_anchor>PRIMER_INTERNAL_WT_NUM_NS</p3_anchor> *
+     + <p3t>PRIMER_INTERNAL_WT_NUM_NS</p3t> *
           &lt;numbers of N in the selected primer&gt;
 
-     + <p3_anchor>PRIMER_INTERNAL_WT_REP_SIM</p3_anchor> *
-          <p3_anchor>PRIMER_INTERNAL_4_MISPRIMING_SCORE</p3_anchor>
+     + <p3t>PRIMER_INTERNAL_WT_REP_SIM</p3t> *
+          <p3t>PRIMER_INTERNAL_4_MISPRIMING_SCORE</p3t>
 
-     + <p3_anchor>PRIMER_INTERNAL_WT_SEQ_QUAL</p3_anchor> * 
-          ( <p3_anchor>PRIMER_QUALITY_RANGE_MAX</p3_anchor> - 
-            <p3_anchor>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3_anchor> )
+     + <p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t> * 
+          ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+            <p3t>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3t> )
 
 </pre>
 <p>	
 The primers are then sorted by penalty and primer3 tries to pick 
-the primers with the lowest penalty. For the <p3_anchor>PRIMER_TASK</p3_anchor>
+the primers with the lowest penalty. For the <p3t>PRIMER_TASK</p3t>
 <tt><i>pick_primer_list</i></tt> or <tt><i>pick_sequencing_primers</i></tt> the selection ends at 
 this point. If primer pairs have to be selected, a 
-<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor> is calculated:
+<p3t>PRIMER_PAIR_4_PENALTY</p3t> is calculated:
 <pre>
-<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor> =
+<p3t>PRIMER_PAIR_4_PENALTY</p3t> =
 
    To the pair penalty are at first the single primer penalties 
    added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_PR_PENALTY</p3_anchor> *
-            ( <p3_anchor>PRIMER_LEFT_4_PENALTY</p3_anchor> + <p3_anchor>PRIMER_RIGHT_4_PENALTY</p3_anchor> )
+       + <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> *
+            ( <p3t>PRIMER_LEFT_4_PENALTY</p3t> + <p3t>PRIMER_RIGHT_4_PENALTY</p3t> )
 
 
    If internal oligo is picked than this is added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_IO_PENALTY</p3_anchor> * <p3_anchor>PRIMER_INTERNAL_4_PENALTY</p3_anchor>
+       + <p3t>PRIMER_PAIR_WT_IO_PENALTY</p3t> * <p3t>PRIMER_INTERNAL_4_PENALTY</p3t>
 	
 
-   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> &gt; <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_TM_GT</p3_anchor> *
-            ( <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> - <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> )
+       + <p3t>PRIMER_PAIR_WT_PRODUCT_TM_GT</p3t> *
+            ( <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> - <p3t>PRIMER_PRODUCT_OPT_TM</p3t> )
 
-   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> &lt; <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_TM_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_PRODUCT_OPT_TM</p3_anchor> - <p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor> )
+       + <p3t>PRIMER_PAIR_WT_PRODUCT_TM_LT</p3t> *
+            ( <p3t>PRIMER_PRODUCT_OPT_TM</p3t> - <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> )
 
 
-   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> &gt; <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3_anchor> *
-            ( <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> - <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> )
+       + <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t> *
+            ( <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> - <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> )
 
-   If <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> &lt; <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> than
        this is added (+):
 
-       + <p3_anchor>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3_anchor> *
-            ( <p3_anchor>PRIMER_PRODUCT_OPT_SIZE</p3_anchor> - <p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor> )
+       + <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t> *
+            ( <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> - <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> )
 
 
    These are allways added (+) to the penalty:
 
-     + <p3_anchor>PRIMER_PAIR_WT_DIFF_TM</p3_anchor> * 
+     + <p3t>PRIMER_PAIR_WT_DIFF_TM</p3t> * 
           &lt;difference in Tm between the left and the right primer&gt;
 
-     + <p3_anchor>PRIMER_PAIR_WT_COMPL_ANY</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_COMPL_ANY</p3_anchor>
+     + <p3t>PRIMER_PAIR_WT_COMPL_ANY</p3t> * <p3t>PRIMER_PAIR_4_COMPL_ANY</p3t>
 
-     + <p3_anchor>PRIMER_PAIR_WT_COMPL_END</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_COMPL_END</p3_anchor>
+     + <p3t>PRIMER_PAIR_WT_COMPL_END</p3t> * <p3t>PRIMER_PAIR_4_COMPL_END</p3t>
 
-     + <p3_anchor>PRIMER_PAIR_WT_REP_SIM</p3_anchor> * <p3_anchor>PRIMER_PAIR_4_MISPRIMING_SCORE</p3_anchor>
+     + <p3t>PRIMER_PAIR_WT_REP_SIM</p3t> * <p3t>PRIMER_PAIR_4_MISPRIMING_SCORE</p3t>
 
-     + <p3_anchor>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3_anchor> *
-          <p3_anchor>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3_anchor>
+     + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> *
+          <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t>
 
 </pre>
 <p>Primer3 tries to select pairs with the lowest penalty which 
@@ -449,11 +449,11 @@ Excluded Regions. The beginning of a sequencing read is often
 problematic because of primer peaks, and the end of the read
 often contains many low-quality or even meaningless called bases.
 Therefore when picking primers from single-pass sequence it is
-often best to use the <p3_anchor>SEQUENCE_INCLUDED_REGION</p3_anchor> parameter to 
+often best to use the <p3t>SEQUENCE_INCLUDED_REGION</p3t> parameter to 
 ensure that primer3 chooses primers in the high quality region 
 of the read.<br />
 <br />
-In addition, primer3 takes as input a <p3_anchor>SEQUENCE_QUALITY</p3_anchor> list for
+In addition, primer3 takes as input a <p3t>SEQUENCE_QUALITY</p3t> list for
 use with those base calling programs (e.g. Phred, Bass/Grace, 
 Trout) that output this information.</p>]]>
 	</text>
@@ -558,91 +558,91 @@ UNIX command 'primer3 &lt; input'.<br />
 <br />
 Let's look at the input record itself:
 <br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=example<br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
-<p3_anchor>SEQUENCE_TARGET</p3_anchor>=37,21<br />
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
-<p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
-<p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
-<p3_anchor>PRIMER_OPT_SIZE</p3_anchor>=18<br />
-<p3_anchor>PRIMER_MIN_SIZE</p3_anchor>=15<br />
-<p3_anchor>PRIMER_MAX_SIZE</p3_anchor>=21<br />
-<p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor>=1<br />
-<p3_anchor>PRIMER_PRODUCT_SIZE_RANGE</p3_anchor>=75-100<br />
-<p3_anchor>P3_FILE_FLAG</p3_anchor>=1<br />
-<p3_anchor>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
-<p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor>=1<br />
+<p3t>SEQUENCE_ID</p3t>=example<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
+<p3t>SEQUENCE_TARGET</p3t>=37,21<br />
+<p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+<p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
+<p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
+<p3t>PRIMER_OPT_SIZE</p3t>=18<br />
+<p3t>PRIMER_MIN_SIZE</p3t>=15<br />
+<p3t>PRIMER_MAX_SIZE</p3t>=21<br />
+<p3t>PRIMER_NUM_NS_ACCEPTED</p3t>=1<br />
+<p3t>PRIMER_PRODUCT_SIZE_RANGE</p3t>=75-100<br />
+<p3t>P3_FILE_FLAG</p3t>=1<br />
+<p3t>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3t>=37,21<br />
+<p3t>PRIMER_EXPLAIN_FLAG</p3t>=1<br />
 =<br />
 <br />
 A breakdown of the reasoning behind each of the TAG=VALUE pairs
 is below:<br />
 <br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=example<br />
+<p3t>SEQUENCE_ID</p3t>=example<br />
 <br />
 The main intent of this tag is to provide an identifier for the
 sequence that is meaningful to the user, for example when primer3
 processes multiple records, and by default this tag is optional.
-However, this tag is _required_ when <p3_anchor>P3_FILE_FLAG</p3_anchor> is non-0
+However, this tag is _required_ when <p3t>P3_FILE_FLAG</p3t> is non-0
 Because it provides the names of the files that contain lists
 of oligos that primer3 considered.<br />
 <br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
 <br />
-The <p3_anchor>SEQUENCE_TEMPLATE</p3_anchor> tag is of ultimate importance. Without it, primer3
+The <p3t>SEQUENCE_TEMPLATE</p3t> tag is of ultimate importance. Without it, primer3
 has no idea what to do. This sequence is 92 bases long. Note that
 there is no newline until the sequence terminates completely.<br />
 <br />
-<p3_anchor>SEQUENCE_TARGET</p3_anchor>=37,21<br />
+<p3t>SEQUENCE_TARGET</p3t>=37,21<br />
 <br />
 There is a simple sequence repeat in our sequence, which starts
 at base 37, and has a length of 21 bases. We want primer3 to
 choose primers which flank the repeat site, so we let primer3 know
 that we consider this site to be important.<br />
 <br />
-<p3_anchor>PRIMER_TASK</p3_anchor>=pick_detection_primers<br />
+<p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
 <br />
-The <p3_anchor>PRIMER_TASK</p3_anchor> is of ultimate importance it tells primer3 which 
+The <p3t>PRIMER_TASK</p3t> is of ultimate importance it tells primer3 which 
 type of primers to pick. You can select typical primers for PCR 
 detection, primers for cloning or for sequencing.<br />
 <br />
-<p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>=1<br />
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>=1<br />
-<p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>=1<br />
+<p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
+<p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
 We would like to pick a left primer, a internal oligo and a 
 right primer, so we set this flags to 1 (true). In combination 
-with the <p3_anchor>PRIMER_TASK</p3_anchor> this tags control which primers are 
+with the <p3t>PRIMER_TASK</p3t> this tags control which primers are 
 picked.<br />
 <br />
-<p3_anchor>PRIMER_OPT_SIZE</p3_anchor>=18<br />
+<p3t>PRIMER_OPT_SIZE</p3t>=18<br />
 <br />
 Since our sequence length is rather small (only 92 bases
-long), we lower the <p3_anchor>PRIMER_OPT_SIZE</p3_anchor> from 20 to 18. It's
+long), we lower the <p3t>PRIMER_OPT_SIZE</p3t> from 20 to 18. It's
 more likely that primer3 will succeed if it shoots for smaller
 primers with such a small sequence.<br />
 <br />
-<p3_anchor>PRIMER_MIN_SIZE</p3_anchor>=15<br />
-<p3_anchor>PRIMER_MAX_SIZE</p3_anchor>=21<br />
+<p3t>PRIMER_MIN_SIZE</p3t>=15<br />
+<p3t>PRIMER_MAX_SIZE</p3t>=21<br />
 <br />
 With the lowering of optimal primer size, it's good to lower
 the minimum and maximum sizes as well.<br />
 <br />
-<p3_anchor>PRIMER_NUM_NS_ACCEPTED</p3_anchor>=1<br />
+<p3t>PRIMER_NUM_NS_ACCEPTED</p3t>=1<br />
 <br />
 Again, since we've got such a small sequence with a
 non-negligible amount of unknown bases (N's) in it, let's make
 primer3's job easier by allowing it to pick primers that have
 at most 1 unknown base.<br />
 <br />
-<p3_anchor>PRIMER_PRODUCT_SIZE_RANGE</p3_anchor>=75-100<br />
+<p3t>PRIMER_PRODUCT_SIZE_RANGE</p3t>=75-100<br />
 <br />
 We reduce the product size range from the default of 100-300
 because our source sequence is only 108 base pairs long.  If we
 insisted on a product size of 100 base pairs primer3 would have
 few possibilities to choose from.<br />
 <br />
-<p3_anchor>P3_FILE_FLAG</p3_anchor>=1<br />
+<p3t>P3_FILE_FLAG</p3t>=1<br />
 <br />
 Since we've got such a small sequence, Primer might fail to
 pick primers. We want to get the list of primers it
@@ -651,13 +651,13 @@ ourselves if Primer fails to do so. Setting this flag to 1
 will force Primer to output the primers it considered to a
 forward_primer and a reverse_primer output file.<br />
 <br />
-<p3_anchor>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3_anchor>=37,21<br />
+<p3t>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3t>=37,21<br />
 <br />
 Normally CA-repeats make poor hybridization probes (because they
 not specific enough).  Therefor we exclude the CA repeat (which
 is the TARGET) from consideration for the middle oligo.<br />
 <br />
-<p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor>=1<br />
+<p3t>PRIMER_EXPLAIN_FLAG</p3t>=1<br />
 <br />
 We want to see statistics about the oligos and oligo triples
 (left primer, internal oligo, right primer) that primer3
@@ -668,10 +668,10 @@ examined.<br />
 The '=' character terminates the record.<br />
 <br />
 There are some boulderio tags that we never even
-specified. (<p3_anchor>SEQUENCE_INCLUDED_REGION</p3_anchor>, <p3_anchor>SEQUENCE_EXCLUDED_REGION</p3_anchor>, 
+specified. (<p3t>SEQUENCE_INCLUDED_REGION</p3t>, <p3t>SEQUENCE_EXCLUDED_REGION</p3t>, 
 et al.), which is perfectly legal.  For the tags with default 
 values, those defaults will be used in the analysis. For the 
-tags with NO default values (like <p3_anchor>SEQUENCE_TARGET</p3_anchor>, for instance), the 
+tags with NO default values (like <p3t>SEQUENCE_TARGET</p3t>, for instance), the 
 functionality requested by the those tags will simply be absent. 
 It's not the case that we need to surround a simple sequence 
 repeat every time we want to pick primers!</p>]]>
@@ -701,7 +701,7 @@ you wish to pick primers.  If necessary you can also allow an N
 in your primer and use an oligo mixture containing all four bases
 at that position.<br />
 <br />
-Try setting the <p3_anchor>PRIMER_EXPLAIN_FLAG</p3_anchor> input tag.</p>]]>
+Try setting the <p3t>PRIMER_EXPLAIN_FLAG</p3t> input tag.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -813,31 +813,31 @@ as follows:</p>
 </pre>
 <p>An example of a legal (TAG,VALUE) pair is<br />
 <br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=my_marker<br />
+<p3t>SEQUENCE_ID</p3t>=my_marker<br />
 <br />
 and an example of a BOULDER-IO record is<br />
 <br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=test1<br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
+<p3t>SEQUENCE_ID</p3t>=test1<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
 =<br />
 <br />
 Many records can be sent, one after another. Below is an example
 of three different records which might be passed through a
 boulder-io stream:<br />
 <br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=test1<br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
+<p3t>SEQUENCE_ID</p3t>=test1<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=GACTGATCGATGCTAGCTACGATCGATCGATGCATGCTAGCTAGCTAGCTGCTAGC<br />
 =<br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=test2<br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT<br />
+<p3t>SEQUENCE_ID</p3t>=test2<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=CATCATCATCATCGATGCTAGCATCNNACGTACGANCANATGCATCGATCGT<br />
 =<br />
-<p3_anchor>SEQUENCE_ID</p3_anchor>=test3<br />
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC<br />
+<p3t>SEQUENCE_ID</p3t>=test3<br />
+<p3t>SEQUENCE_TEMPLATE</p3t>=NACGTAGCTAGCATGCACNACTCGACNACGATGCACNACAGCTGCATCGATGC<br />
 =<br />
 <br />
 Primer3 reads boulder-io on stdin and echos its input and returns
 results in boulder-io format on stdout.  Primer3 indicates many
-user-correctable errors by a value in the <p3_anchor>PRIMER_ERROR</p3_anchor> tag (see
+user-correctable errors by a value in the <p3t>PRIMER_ERROR</p3t> tag (see
 below) and indicates other errors, including system configuration
 errors, resource errors (such out-of-memory errors), and detected
 programming errors by a message on stderr and a non-zero exit
@@ -846,7 +846,7 @@ status.<br />
 Below is the list of input tags that primer3 recognizes.
 Primer3 echos and ignores any tags it does not recognize, unless
 the -strict_tags flag is set on the command line, in which case
-primer3 prints an error in the <p3_anchor>PRIMER_ERROR</p3_anchor> output tag (see
+primer3 prints an error in the <p3t>PRIMER_ERROR</p3t> output tag (see
 below), and prints additional information on stdout; this option
 can be useful for debugging systems that incorporate primer.<br />
 <br />
@@ -1241,8 +1241,8 @@ modified tags.<br />
 <br />
 The handling of PRIMER_TASK changed completely. In the past we 
 used it to tell primer3 what task to perform. Now the task is 
-complemented with <p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>, 
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor> and <p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>, which 
+complemented with <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>, 
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> and <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>, which 
 specify which primers are to be picked.<br />
 <br />
 These Tags are modified:<br />
@@ -1251,76 +1251,76 @@ The "per sequence" tags:</p>
 <pre>
 NEW VERSION                       - OLD VERSION
 ----------------------------------------------------------------------------------------                       
-<p3_anchor>SEQUENCE_ID</p3_anchor>                       - PRIMER_SEQUENCE_ID
-<p3_anchor>SEQUENCE_TEMPLATE</p3_anchor>                 - SEQUENCE
-<p3_anchor>SEQUENCE_QUALITY</p3_anchor>                  - PRIMER_SEQUENCE_QUALITY
-<p3_anchor>SEQUENCE_INCLUDED_REGION</p3_anchor>          - INCLUDED_REGION
-<p3_anchor>SEQUENCE_TARGET</p3_anchor>                   - TARGET
-<p3_anchor>SEQUENCE_EXCLUDED_REGION</p3_anchor>          - EXCLUDED_REGION
-<p3_anchor>SEQUENCE_START_CODON_POSITION</p3_anchor>     - PRIMER_START_CODON_POSITION
-<p3_anchor>SEQUENCE_PRIMER</p3_anchor>                   - PRIMER_LEFT_INPUT
-<p3_anchor>SEQUENCE_PRIMER_REVCOMP</p3_anchor>           - PRIMER_RIGHT_INPUT
+<p3t>SEQUENCE_ID</p3t>                       - PRIMER_SEQUENCE_ID
+<p3t>SEQUENCE_TEMPLATE</p3t>                 - SEQUENCE
+<p3t>SEQUENCE_QUALITY</p3t>                  - PRIMER_SEQUENCE_QUALITY
+<p3t>SEQUENCE_INCLUDED_REGION</p3t>          - INCLUDED_REGION
+<p3t>SEQUENCE_TARGET</p3t>                   - TARGET
+<p3t>SEQUENCE_EXCLUDED_REGION</p3t>          - EXCLUDED_REGION
+<p3t>SEQUENCE_START_CODON_POSITION</p3t>     - PRIMER_START_CODON_POSITION
+<p3t>SEQUENCE_PRIMER</p3t>                   - PRIMER_LEFT_INPUT
+<p3t>SEQUENCE_PRIMER_REVCOMP</p3t>           - PRIMER_RIGHT_INPUT
 
 
-<p3_anchor>SEQUENCE_INTERNAL_OLIGO</p3_anchor>           - PRIMER_INTERNAL_OLIGO_INPUT
-<p3_anchor>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3_anchor> - PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION
+<p3t>SEQUENCE_INTERNAL_OLIGO</p3t>           - PRIMER_INTERNAL_OLIGO_INPUT
+<p3t>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3t> - PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION
 
 --------------------------------------------------------------------------------
 The "global" tags:
 
 NEW VERSION                       - OLD VERSION
 
-<p3_anchor>PRIMER_TASK</p3_anchor>                       - PRIMER_TASK (the use is modified)
-<p3_anchor>PRIMER_PICK_RIGHT_PRIMER</p3_anchor>          - --- did not exist
-<p3_anchor>PRIMER_PICK_INTERNAL_OLIGO</p3_anchor>        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
-<p3_anchor>PRIMER_PICK_LEFT_PRIMER</p3_anchor>           - --- did not exist
+<p3t>PRIMER_TASK</p3t>                       - PRIMER_TASK (the use is modified)
+<p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>          - --- did not exist
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
+<p3t>PRIMER_PICK_LEFT_PRIMER</p3t>           - --- did not exist
 
-<p3_anchor>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3_anchor>- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
-<p3_anchor>PRIMER_WT_TEMPLATE_MISPRIMING</p3_anchor>     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
+<p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
+<p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t>     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
 	
-<p3_anchor>PRIMER_SALT_MONOVALENT</p3_anchor>            - PRIMER_SALT_CONC
-<p3_anchor>PRIMER_SALT_DIVALENT</p3_anchor>              - PRIMER_DIVALENT_CONC
-<p3_anchor>PRIMER_TM_FORMULA</p3_anchor>                 - PRIMER_TM_SANTALUCIA
+<p3t>PRIMER_SALT_MONOVALENT</p3t>            - PRIMER_SALT_CONC
+<p3t>PRIMER_SALT_DIVALENT</p3t>              - PRIMER_DIVALENT_CONC
+<p3t>PRIMER_TM_FORMULA</p3t>                 - PRIMER_TM_SANTALUCIA
 
-<p3_anchor>P3_FILE_FLAG</p3_anchor>                      - PRIMER_FILE_FLAG
-<p3_anchor>P3_COMMENT</p3_anchor>                        - PRIMER_COMMENT
+<p3t>P3_FILE_FLAG</p3t>                      - PRIMER_FILE_FLAG
+<p3t>P3_COMMENT</p3t>                        - PRIMER_COMMENT
 
-<p3_anchor>PRIMER_INTERNAL_SALT_MONOVALENT</p3_anchor>   - PRIMER_INTERNAL_OLIGO_SALT_CONC
-<p3_anchor>PRIMER_INTERNAL_SALT_DIVALENT</p3_anchor>     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
+<p3t>PRIMER_INTERNAL_SALT_MONOVALENT</p3t>   - PRIMER_INTERNAL_OLIGO_SALT_CONC
+<p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t>     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
 
 The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 
-<p3_anchor>PRIMER_INTERNAL_OPT_SIZE</p3_anchor>          - PRIMER_INTERNAL_OLIGO_OPT_SIZE
-<p3_anchor>PRIMER_INTERNAL_MIN_SIZE</p3_anchor>          - PRIMER_INTERNAL_OLIGO_MIN_SIZE
-<p3_anchor>PRIMER_INTERNAL_MAX_SIZE</p3_anchor>          - PRIMER_INTERNAL_OLIGO_MAX_SIZE
-<p3_anchor>PRIMER_INTERNAL_OPT_TM</p3_anchor>            - PRIMER_INTERNAL_OLIGO_OPT_TM
-<p3_anchor>PRIMER_INTERNAL_MIN_TM</p3_anchor>            - PRIMER_INTERNAL_OLIGO_MIN_TM
-<p3_anchor>PRIMER_INTERNAL_MAX_TM</p3_anchor>            - PRIMER_INTERNAL_OLIGO_MAX_TM
-<p3_anchor>PRIMER_INTERNAL_MIN_GC</p3_anchor>            - PRIMER_INTERNAL_OLIGO_MIN_GC
-<p3_anchor>PRIMER_INTERNAL_OPT_GC_PERCENT</p3_anchor>    - PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT
-<p3_anchor>PRIMER_INTERNAL_MAX_GC</p3_anchor>            - PRIMER_INTERNAL_OLIGO_MAX_GC
-<p3_anchor>PRIMER_INTERNAL_DNTP_CONC</p3_anchor>         - PRIMER_INTERNAL_OLIGO_DNTP_CONC
-<p3_anchor>PRIMER_INTERNAL_DNA_CONC</p3_anchor>          - PRIMER_INTERNAL_OLIGO_DNA_CONC
-<p3_anchor>PRIMER_INTERNAL_SELF_ANY</p3_anchor>          - PRIMER_INTERNAL_OLIGO_SELF_ANY
-<p3_anchor>PRIMER_INTERNAL_MAX_POLY_X</p3_anchor>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
-<p3_anchor>PRIMER_INTERNAL_SELF_END</p3_anchor>          - PRIMER_INTERNAL_OLIGO_SELF_END
-<p3_anchor>PRIMER_INTERNAL_MISHYB_LIBRARY</p3_anchor>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
-<p3_anchor>PRIMER_INTERNAL_MAX_MISHYB</p3_anchor>        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
-<p3_anchor>PRIMER_INTERNAL_MIN_QUALITY</p3_anchor>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
-<p3_anchor>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3_anchor>   - PRIMER_INTERNAL_OLIGO_NUM_NS
+<p3t>PRIMER_INTERNAL_OPT_SIZE</p3t>          - PRIMER_INTERNAL_OLIGO_OPT_SIZE
+<p3t>PRIMER_INTERNAL_MIN_SIZE</p3t>          - PRIMER_INTERNAL_OLIGO_MIN_SIZE
+<p3t>PRIMER_INTERNAL_MAX_SIZE</p3t>          - PRIMER_INTERNAL_OLIGO_MAX_SIZE
+<p3t>PRIMER_INTERNAL_OPT_TM</p3t>            - PRIMER_INTERNAL_OLIGO_OPT_TM
+<p3t>PRIMER_INTERNAL_MIN_TM</p3t>            - PRIMER_INTERNAL_OLIGO_MIN_TM
+<p3t>PRIMER_INTERNAL_MAX_TM</p3t>            - PRIMER_INTERNAL_OLIGO_MAX_TM
+<p3t>PRIMER_INTERNAL_MIN_GC</p3t>            - PRIMER_INTERNAL_OLIGO_MIN_GC
+<p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>    - PRIMER_INTERNAL_OLIGO_OPT_GC_PERCENT
+<p3t>PRIMER_INTERNAL_MAX_GC</p3t>            - PRIMER_INTERNAL_OLIGO_MAX_GC
+<p3t>PRIMER_INTERNAL_DNTP_CONC</p3t>         - PRIMER_INTERNAL_OLIGO_DNTP_CONC
+<p3t>PRIMER_INTERNAL_DNA_CONC</p3t>          - PRIMER_INTERNAL_OLIGO_DNA_CONC
+<p3t>PRIMER_INTERNAL_SELF_ANY</p3t>          - PRIMER_INTERNAL_OLIGO_SELF_ANY
+<p3t>PRIMER_INTERNAL_MAX_POLY_X</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
+<p3t>PRIMER_INTERNAL_SELF_END</p3t>          - PRIMER_INTERNAL_OLIGO_SELF_END
+<p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
+<p3t>PRIMER_INTERNAL_MAX_MISHYB</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
+<p3t>PRIMER_INTERNAL_MIN_QUALITY</p3t>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
+<p3t>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3t>   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
 The following tags IO is replaced by INTERNAL:
 
-<p3_anchor>PRIMER_INTERNAL_WT_TM_GT</p3_anchor>          - PRIMER_IO_WT_TM_GT
-<p3_anchor>PRIMER_INTERNAL_WT_TM_LT</p3_anchor>          - PRIMER_IO_WT_TM_LT
-<p3_anchor>PRIMER_INTERNAL_WT_SIZE_LT</p3_anchor>        - PRIMER_IO_WT_SIZE_LT
-<p3_anchor>PRIMER_INTERNAL_WT_SIZE_GT</p3_anchor>        - PRIMER_IO_WT_SIZE_GT
-<p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3_anchor>  - PRIMER_IO_WT_GC_PERCENT_LT
-<p3_anchor>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3_anchor>  - PRIMER_IO_WT_GC_PERCENT_GT
-<p3_anchor>PRIMER_INTERNAL_WT_COMPL_ANY</p3_anchor>      - PRIMER_IO_WT_COMPL_ANY
-<p3_anchor>PRIMER_INTERNAL_WT_NUM_NS</p3_anchor>         - PRIMER_IO_WT_NUM_NS
-<p3_anchor>PRIMER_INTERNAL_WT_REP_SIM</p3_anchor>        - PRIMER_IO_WT_REP_SIM
-<p3_anchor>PRIMER_INTERNAL_WT_SEQ_QUAL</p3_anchor>       - PRIMER_IO_WT_SEQ_QUAL
+<p3t>PRIMER_INTERNAL_WT_TM_GT</p3t>          - PRIMER_IO_WT_TM_GT
+<p3t>PRIMER_INTERNAL_WT_TM_LT</p3t>          - PRIMER_IO_WT_TM_LT
+<p3t>PRIMER_INTERNAL_WT_SIZE_LT</p3t>        - PRIMER_IO_WT_SIZE_LT
+<p3t>PRIMER_INTERNAL_WT_SIZE_GT</p3t>        - PRIMER_IO_WT_SIZE_GT
+<p3t>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3t>  - PRIMER_IO_WT_GC_PERCENT_LT
+<p3t>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3t>  - PRIMER_IO_WT_GC_PERCENT_GT
+<p3t>PRIMER_INTERNAL_WT_COMPL_ANY</p3t>      - PRIMER_IO_WT_COMPL_ANY
+<p3t>PRIMER_INTERNAL_WT_NUM_NS</p3t>         - PRIMER_IO_WT_NUM_NS
+<p3t>PRIMER_INTERNAL_WT_REP_SIM</p3t>        - PRIMER_IO_WT_REP_SIM
+<p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
 <p>--------------------------------------------------------------------------------<br />
 OUTPUT TAGS:<br />
@@ -1333,7 +1333,7 @@ There are three big changes on the output:<br />
 Now all primer related output follows the rule:
 PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;.
 where &lt;j&gt; is an integer from 0 to n, where n is at most the 
-value of <p3_anchor>PRIMER_NUM_RETURN</p3_anchor> - 1.<br />
+value of <p3t>PRIMER_NUM_RETURN</p3t> - 1.<br />
 <br />
 This allows easy scripting by using the underscores _ to split 
 the name. The first part is PRIMER, the second the type of oligo 
@@ -1344,12 +1344,12 @@ That affects also (shown for output nr. 5):</p>
 <pre>
 NEW VERSION                             - OLD VERSION
 ------------------------------------------------------------------------------------------------------
-<p3_anchor>PRIMER_PAIR_4_PENALTY</p3_anchor>                   - PRIMER_PAIR_PENALTY_4 (number moved behind PAIR)
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_SIZE</p3_anchor>              - PRIMER_PRODUCT_SIZE_4 (grouped with PAIR)
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM</p3_anchor>                - PRIMER_PRODUCT_TM_4 (grouped with PAIR)
-<p3_anchor>PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF</p3_anchor>  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
+<p3t>PRIMER_PAIR_4_PENALTY</p3t>                   - PRIMER_PAIR_PENALTY_4 (number moved behind PAIR)
+<p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t>              - PRIMER_PRODUCT_SIZE_4 (grouped with PAIR)
+<p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t>                - PRIMER_PRODUCT_TM_4 (grouped with PAIR)
+<p3t>PRIMER_PAIR_4_PRODUCT_TM_OLIGO_TM_DIFF</p3t>  - PRIMER_PRODUCT_TM_OLIGO_TM_DIFF_4 (grouped with PAIR)
 
-<p3_anchor>PRIMER_INTERNAL_EXPLAIN</p3_anchor>                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
+<p3t>PRIMER_INTERNAL_EXPLAIN</p3t>                 - PRIMER_INTERNAL_OLIGO_EXPLAIN
 </pre>]]>
 	</text>
 </textBlock>

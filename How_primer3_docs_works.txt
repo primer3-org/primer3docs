@@ -47,7 +47,7 @@ will remove them for the txt files and modify them for html files:
 <br />
 	a html newline, it will be removed in txt files (not replaced 
 	by a \n)
-<p3_anchor>.....</p3_anchor>
+<p3t>.....</p3t>
 	Will be turned into a link to the anchor. All tag descriptions 
 	Are automatically anchors. Like that it will link to its 
 	description (or be removed in txt files).

@@ -344,8 +344,8 @@ sub createReadmeTxt {
 	$txt_string =~ s/<\/i>//g;
 	$txt_string =~ s/<tt>//g;
 	$txt_string =~ s/<\/tt>//g;
-	$txt_string =~ s/<p3_anchor>//g;
-	$txt_string =~ s/<\/p3_anchor>//g;
+	$txt_string =~ s/<p3t>//g;
+	$txt_string =~ s/<\/p3t>//g;
 	
 
 	# Write the files to the disk
@@ -607,7 +607,7 @@ sub createReadmeHtml {
 	
 	$html_string =~ s/<br \/>/<br>/g;
 	$html_string =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
-	$html_string =~ s/<p3_anchor>(.*?)<\/p3_anchor>/<a href=\"#$1\">$1<\/a>/g;
+	$html_string =~ s/<p3t>(.*?)<\/p3t>/<a href=\"#$1\">$1<\/a>/g;
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "primer3_manual.htm";

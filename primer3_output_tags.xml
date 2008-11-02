@@ -305,22 +305,22 @@ of non-ambiguous bases).</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_LEFT_4_SELF_END</tagName>
-	<tagName>PRIMER_INTERNAL_4_SELF_END</tagName>
-	<tagName>PRIMER_RIGHT_4_SELF_END</tagName>
-	<dataType>f</dataType>
-	<optional>N</optional>
-	<description>
-<![CDATA[<p>The self-complementarity measures for the selected oligo.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_PAIR_4_COMPL_ANY</tagName>
 	<dataType>f</dataType>
 	<optional>N</optional>
 	<description>
 <![CDATA[<p>The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_LEFT_4_SELF_END</tagName>
+	<tagName>PRIMER_INTERNAL_4_SELF_END</tagName>
+	<tagName>PRIMER_RIGHT_4_SELF_END</tagName>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[<p>The self-complementarity measures for the ends of selected oligo.</p>]]>
 	</description>
 </tag>
 <tag>
