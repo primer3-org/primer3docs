@@ -1302,7 +1302,7 @@ file flag is set.)</p>]]>
 	<description>
 <![CDATA[<p>The maximum allowed similarity to ectopic sites in the
 template.  A negative value means do not check.  The scoring
-system is the same as used for <p3t>PRIMER_MAX_MISPRIMING</p3t>, except
+system is the same as used for <p3t>PRIMER_MAX_LIBRARY_MISPRIMING</p3t>, except
 that an ambiguity code in the template is never treated as a
 consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 	</description>
@@ -1323,8 +1323,8 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 <![CDATA[<p>The maximum allowed summed similarity of both primers to
 ectopic sites in the template. A negative value means do not
 check.  The scoring system is the same as used for
-<p3t>PRIMER_PAIR_MAX_MISPRIMING</p3t>, except that an ambiguity code in
-the template is never treated as a consensus (see
+<p3t>PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</p3t>, except that an ambiguity code 
+in the template is never treated as a consensus (see
 <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).  Primer3 does not
 check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>]]>
@@ -1376,7 +1376,7 @@ FASTA format (W. B. Pearson and D.J. Lipman, PNAS 85:8 pp
 file below.  If this parameter is specified then primer3 locally
 aligns each candidate primer against each library sequence and
 rejects those primers for which the local alignment score times a
-specified weight (see below) exceeds <p3t>PRIMER_MAX_MISPRIMING</p3t>.
+specified weight (see below) exceeds <p3t>PRIMER_MAX_LIBRARY_MISPRIMING</p3t>.
 (The maximum value of the weight is arbitrarily set to 100.0.)<br />
 <br />
 Each sequence entry in the FASTA-format file must begin with an
@@ -1445,7 +1445,7 @@ you know for sure that your library does not have runs of Ns
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_MAX_MISPRIMING</tagName>
+	<tagName>PRIMER_MAX_LIBRARY_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
 	<default>12.00</default>
 	<description>
@@ -1454,17 +1454,17 @@ you know for sure that your library does not have runs of Ns
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_MAX_MISHYB</tagName>
+	<tagName>PRIMER_INTERNAL_MAX_LIBRARY_MISHYB</tagName>
 	<dataType>decimal,9999.99</dataType>
 	<default>12.00</default>
 	<description>
-<![CDATA[<p>Similar to <p3t>PRIMER_MAX_MISPRIMING</p3t> except that this parameter applies
+<![CDATA[<p>Similar to <p3t>PRIMER_MAX_LIBRARY_MISPRIMING</p3t> except that this parameter applies
 to the similarity of candidate internal oligos to the library
 specified in <p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_PAIR_MAX_MISPRIMING</tagName>
+	<tagName>PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
 	<default>24.00</default>
 	<description>
@@ -1476,7 +1476,7 @@ of similarities.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_REP_SIM</tagName>
+	<tagName>PRIMER_WT_LIBRARY_MISPRIMING</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -1485,15 +1485,15 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_INTERNAL_WT_REP_SIM</tagName>
+	<tagName>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_REP_SIM</p3t> for the internal oligo.</p>]]>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_PAIR_WT_REP_SIM</tagName>
+	<tagName>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>

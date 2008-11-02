@@ -654,23 +654,34 @@ The "global" tags:
 
 NEW VERSION                       - OLD VERSION
 
-PRIMER_TASK                       - PRIMER_TASK (the use is modified)
+PRIMER_TASK                       - PRIMER_TASK (modified use)
 PRIMER_PICK_RIGHT_PRIMER          - --- did not exist
-PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
+PRIMER_PICK_INTERNAL_OLIGO        - PRIMER_PICK_INTERNAL_OLIGO (modified use)
 PRIMER_PICK_LEFT_PRIMER           - --- did not exist
 
-PRIMER_PAIR_WT_TEMPLATE_MISPRIMING- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
-PRIMER_WT_TEMPLATE_MISPRIMING     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
+PRIMER_PAIR_WT_TEMPLATE_MISPRIMING    - PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (modified use)
+PRIMER_WT_TEMPLATE_MISPRIMING         - PRIMER_WT_TEMPLATE_MISPRIMING (modified use)
+PRIMER_MAX_LIBRARY_MISPRIMING         - PRIMER_MAX_MISPRIMING
+PRIMER_INTERNAL_MAX_LIBRARY_MISHYB    - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
+PRIMER_PAIR_MAX_LIBRARY_MISPRIMING    - PRIMER_PAIR_MAX_MISPRIMING
+PRIMER_WT_LIBRARY_MISPRIMING          - PRIMER_WT_REP_SIM
+PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING - PRIMER_INTERNAL_WT_REP_SIM
+PRIMER_PAIR_WT_LIBRARY_MISPRIMING     - PRIMER_PAIR_WT_REP_SIM
 	
 PRIMER_SALT_MONOVALENT            - PRIMER_SALT_CONC
 PRIMER_SALT_DIVALENT              - PRIMER_DIVALENT_CONC
 PRIMER_TM_FORMULA                 - PRIMER_TM_SANTALUCIA
+
+PRIMER_WT_SELF_ANY                - PRIMER_WT_COMPL_ANY
+PRIMER_WT_SELF_END                - PRIMER_WT_COMPL_END
 
 P3_FILE_FLAG                      - PRIMER_FILE_FLAG
 P3_COMMENT                        - PRIMER_COMMENT
 
 PRIMER_INTERNAL_SALT_MONOVALENT   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 PRIMER_INTERNAL_SALT_DIVALENT     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
+PRIMER_INTERNAL_WT_SELF_ANY       - PRIMER_IO_WT_COMPL_ANY
+PRIMER_INTERNAL_WT_SELF_END       - PRIMER_IO_WT_COMPL_END
 
 The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 
@@ -689,7 +700,6 @@ PRIMER_INTERNAL_SELF_ANY          - PRIMER_INTERNAL_OLIGO_SELF_ANY
 PRIMER_INTERNAL_MAX_POLY_X        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
 PRIMER_INTERNAL_SELF_END          - PRIMER_INTERNAL_OLIGO_SELF_END
 PRIMER_INTERNAL_MISHYB_LIBRARY    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
-PRIMER_INTERNAL_MAX_MISHYB        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
 PRIMER_INTERNAL_MIN_QUALITY       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
 PRIMER_INTERNAL_NUM_NS_ACCEPTED   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
@@ -701,9 +711,7 @@ PRIMER_INTERNAL_WT_SIZE_LT        - PRIMER_IO_WT_SIZE_LT
 PRIMER_INTERNAL_WT_SIZE_GT        - PRIMER_IO_WT_SIZE_GT
 PRIMER_INTERNAL_WT_GC_PERCENT_LT  - PRIMER_IO_WT_GC_PERCENT_LT
 PRIMER_INTERNAL_WT_GC_PERCENT_GT  - PRIMER_IO_WT_GC_PERCENT_GT
-PRIMER_INTERNAL_WT_COMPL_ANY      - PRIMER_IO_WT_COMPL_ANY
 PRIMER_INTERNAL_WT_NUM_NS         - PRIMER_IO_WT_NUM_NS
-PRIMER_INTERNAL_WT_REP_SIM        - PRIMER_IO_WT_REP_SIM
 PRIMER_INTERNAL_WT_SEQ_QUAL       - PRIMER_IO_WT_SEQ_QUAL
 
 --------------------------------------------------------------------------------
@@ -1529,15 +1537,15 @@ PRIMER_INTERNAL_SELF_ANY (decimal, 9999.99; default 12.00)
 Equivalent parameter of PRIMER_SELF_ANY for the internal oligo.
 
 
-PRIMER_WT_COMPL_ANY (float; default 0.0)
+PRIMER_WT_SELF_ANY (float; default 0.0)
 
 Penalty weight for the individual primer self binding value as in 
 PRIMER_SELF_ANY.
 
 
-PRIMER_INTERNAL_WT_COMPL_ANY (float; default 0.0)
+PRIMER_INTERNAL_WT_SELF_ANY (float; default 0.0)
 
-Equivalent parameter of PRIMER_WT_COMPL_ANY for the internal oligo.
+Equivalent parameter of PRIMER_WT_SELF_ANY for the internal oligo.
 
 
 PRIMER_PAIR_WT_COMPL_ANY (float; default 0.0)
@@ -1595,15 +1603,15 @@ PRIMER_INTERNAL_SELF_END be set at least as high as
 PRIMER_INTERNAL_SELF_ANY.
 
 
-PRIMER_WT_COMPL_END (float; default 0.0)
+PRIMER_WT_SELF_END (float; default 0.0)
 
 Penalty weight for the individual primer self binding value as in 
 PRIMER_SELF_END.
 
 
-PRIMER_INTERNAL_WT_COMPL_END (float; default 0.0)
+PRIMER_INTERNAL_WT_SELF_END (float; default 0.0)
 
-Equivalent parameter of PRIMER_WT_COMPL_END for the internal oligo.
+Equivalent parameter of PRIMER_WT_SELF_END for the internal oligo.
 
 
 PRIMER_PAIR_WT_COMPL_END (float; default 0.0)
@@ -1770,7 +1778,7 @@ PRIMER_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
 
 The maximum allowed similarity to ectopic sites in the
 template.  A negative value means do not check.  The scoring
-system is the same as used for PRIMER_MAX_MISPRIMING, except
+system is the same as used for PRIMER_MAX_LIBRARY_MISPRIMING, except
 that an ambiguity code in the template is never treated as a
 consensus (see PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).
 
@@ -1785,8 +1793,8 @@ PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING (decimal, 9999.99; default -1.00)
 The maximum allowed summed similarity of both primers to
 ectopic sites in the template. A negative value means do not
 check.  The scoring system is the same as used for
-PRIMER_PAIR_MAX_MISPRIMING, except that an ambiguity code in
-the template is never treated as a consensus (see
+PRIMER_PAIR_MAX_LIBRARY_MISPRIMING, except that an ambiguity code 
+in the template is never treated as a consensus (see
 PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS).  Primer3 does not
 check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.
@@ -1826,7 +1834,7 @@ FASTA format (W. B. Pearson and D.J. Lipman, PNAS 85:8 pp
 file below.  If this parameter is specified then primer3 locally
 aligns each candidate primer against each library sequence and
 rejects those primers for which the local alignment score times a
-specified weight (see below) exceeds PRIMER_MAX_MISPRIMING.
+specified weight (see below) exceeds PRIMER_MAX_LIBRARY_MISPRIMING.
 (The maximum value of the weight is arbitrarily set to 100.0.)
 
 Each sequence entry in the FASTA-format file must begin with an
@@ -1888,20 +1896,20 @@ you know for sure that your library does not have runs of Ns
 (or Xs), then set this flag to 0.
 
 
-PRIMER_MAX_MISPRIMING (decimal, 9999.99; default 12.00)
+PRIMER_MAX_LIBRARY_MISPRIMING (decimal, 9999.99; default 12.00)
 
 The maximum allowed weighted similarity with any sequence in
 PRIMER_MISPRIMING_LIBRARY.
 
 
-PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)
+PRIMER_INTERNAL_MAX_LIBRARY_MISHYB (decimal,9999.99; default 12.00)
 
-Similar to PRIMER_MAX_MISPRIMING except that this parameter applies
+Similar to PRIMER_MAX_LIBRARY_MISPRIMING except that this parameter applies
 to the similarity of candidate internal oligos to the library
 specified in PRIMER_INTERNAL_MISHYB_LIBRARY.
 
 
-PRIMER_PAIR_MAX_MISPRIMING (decimal, 9999.99; default 24.00)
+PRIMER_PAIR_MAX_LIBRARY_MISPRIMING (decimal, 9999.99; default 24.00)
 
 The maximum allowed sum of similarities of a primer pair
 (one similarity for each primer) with any single sequence in
@@ -1910,18 +1918,18 @@ Library sequence weights are not used in computing the sum
 of similarities.
 
 
-PRIMER_WT_REP_SIM (float; default 0.0)
+PRIMER_WT_LIBRARY_MISPRIMING (float; default 0.0)
 
 Penalty for a single primer binding to any single sequence 
 in PRIMER_MISPRIMING_LIBRARY.
 
 
-PRIMER_INTERNAL_WT_REP_SIM (float; default 0.0)
+PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING (float; default 0.0)
 
-Equivalent parameter of PRIMER_WT_REP_SIM for the internal oligo.
+Equivalent parameter of PRIMER_WT_LIBRARY_MISPRIMING for the internal oligo.
 
 
-PRIMER_PAIR_WT_REP_SIM (float; default 0.0)
+PRIMER_PAIR_WT_LIBRARY_MISPRIMING (float; default 0.0)
 
 Penalty for a primer pair binding to any single sequence 
 in PRIMER_MISPRIMING_LIBRARY.
@@ -2165,9 +2173,9 @@ PRIMER_LEFT_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-       + PRIMER_WT_COMPL_ANY * PRIMER_LEFT_4_SELF_ANY
+       + PRIMER_WT_SELF_ANY * PRIMER_LEFT_4_SELF_ANY
 
-       + PRIMER_WT_COMPL_END * PRIMER_LEFT_4_SELF_END
+       + PRIMER_WT_SELF_END * PRIMER_LEFT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
             PRIMER_LEFT_4_TEMPLATE_MISPRIMING
@@ -2176,7 +2184,7 @@ PRIMER_LEFT_4_PENALTY =
 
        + PRIMER_WT_NUM_NS * <numbers of N in the selected primer>
 
-       + PRIMER_WT_REP_SIM * PRIMER_LEFT_4_MISPRIMING_SCORE
+       + PRIMER_WT_LIBRARY_MISPRIMING * PRIMER_LEFT_4_MISPRIMING_SCORE
 
        + PRIMER_WT_SEQ_QUAL *
             ( PRIMER_QUALITY_RANGE_MAX - 
@@ -2237,9 +2245,9 @@ PRIMER_RIGHT_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-       + PRIMER_WT_COMPL_ANY * PRIMER_RIGHT_4_SELF_ANY
+       + PRIMER_WT_SELF_ANY * PRIMER_RIGHT_4_SELF_ANY
 
-       + PRIMER_WT_COMPL_END * PRIMER_RIGHT_4_SELF_END
+       + PRIMER_WT_SELF_END * PRIMER_RIGHT_4_SELF_END
 
        + PRIMER_WT_TEMPLATE_MISPRIMING *
             PRIMER_RIGHT_4_TEMPLATE_MISPRIMING
@@ -2248,7 +2256,7 @@ PRIMER_RIGHT_4_PENALTY =
 
        + PRIMER_WT_NUM_NS * <numbers of N in the selected primer>
 
-       + PRIMER_WT_REP_SIM * PRIMER_RIGHT_4_MISPRIMING_SCORE
+       + PRIMER_WT_LIBRARY_MISPRIMING * PRIMER_RIGHT_4_MISPRIMING_SCORE
 
        + PRIMER_WT_SEQ_QUAL *
             ( PRIMER_QUALITY_RANGE_MAX - 
@@ -2277,7 +2285,7 @@ PRIMER_INTERNAL_4_PENALTY =
        than this is added (+):
 
        + PRIMER_INTERNAL_WT_GC_PERCENT_GT *
-	        ( PRIMER_INTERNAL_4_GC_PERCENT - 
+            ( PRIMER_INTERNAL_4_GC_PERCENT - 
               PRIMER_INTERNAL_OPT_GC_PERCENT )
 
    If PRIMER_INTERNAL_4_GC_PERCENT < PRIMER_INTERNAL_OPT_GC_PERCENT
@@ -2307,14 +2315,14 @@ PRIMER_INTERNAL_4_PENALTY =
 
    These are allways added (+) to the penalty:
 
-     + PRIMER_INTERNAL_WT_COMPL_ANY * PRIMER_INTERNAL_4_SELF_ANY
+     + PRIMER_INTERNAL_WT_SELF_ANY * PRIMER_INTERNAL_4_SELF_ANY
 
-     + PRIMER_INTERNAL_WT_COMPL_END * PRIMER_INTERNAL_4_SELF_END
+     + PRIMER_INTERNAL_WT_SELF_END * PRIMER_INTERNAL_4_SELF_END
 
      + PRIMER_INTERNAL_WT_NUM_NS *
           <numbers of N in the selected primer>
 
-     + PRIMER_INTERNAL_WT_REP_SIM *
+     + PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING *
           PRIMER_INTERNAL_4_MISPRIMING_SCORE
 
      + PRIMER_INTERNAL_WT_SEQ_QUAL * 
@@ -2378,7 +2386,7 @@ PRIMER_PAIR_4_PENALTY =
 
      + PRIMER_PAIR_WT_COMPL_END * PRIMER_PAIR_4_COMPL_END
 
-     + PRIMER_PAIR_WT_REP_SIM * PRIMER_PAIR_4_MISPRIMING_SCORE
+     + PRIMER_PAIR_WT_LIBRARY_MISPRIMING * PRIMER_PAIR_4_MISPRIMING_SCORE
 
      + PRIMER_PAIR_WT_TEMPLATE_MISPRIMING *
           PRIMER_PAIR_4_TEMPLATE_MISPRIMING

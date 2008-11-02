@@ -208,7 +208,7 @@ primer, it is calculated like that:</p>
 
        + <p3t>PRIMER_WT_NUM_NS</p3t> * &lt;numbers of N in the selected primer&gt;
 
-       + <p3t>PRIMER_WT_REP_SIM</p3t> * <p3t>PRIMER_LEFT_4_MISPRIMING_SCORE</p3t>
+       + <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_LEFT_4_MISPRIMING_SCORE</p3t>
 
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
@@ -280,7 +280,7 @@ primer, it is calculated like that:</p>
 
        + <p3t>PRIMER_WT_NUM_NS</p3t> * &lt;numbers of N in the selected primer&gt;
 
-       + <p3t>PRIMER_WT_REP_SIM</p3t> * <p3t>PRIMER_RIGHT_4_MISPRIMING_SCORE</p3t>
+       + <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_RIGHT_4_MISPRIMING_SCORE</p3t>
 
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
@@ -346,7 +346,7 @@ primer, it is calculated like that:</p>
      + <p3t>PRIMER_INTERNAL_WT_NUM_NS</p3t> *
           &lt;numbers of N in the selected primer&gt;
 
-     + <p3t>PRIMER_INTERNAL_WT_REP_SIM</p3t> *
+     + <p3t>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</p3t> *
           <p3t>PRIMER_INTERNAL_4_MISPRIMING_SCORE</p3t>
 
      + <p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t> * 
@@ -410,7 +410,7 @@ this point. If primer pairs have to be selected, a
 
      + <p3t>PRIMER_PAIR_WT_COMPL_END</p3t> * <p3t>PRIMER_PAIR_4_COMPL_END</p3t>
 
-     + <p3t>PRIMER_PAIR_WT_REP_SIM</p3t> * <p3t>PRIMER_PAIR_4_MISPRIMING_SCORE</p3t>
+     + <p3t>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_PAIR_4_MISPRIMING_SCORE</p3t>
 
      + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> *
           <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t>
@@ -1270,13 +1270,19 @@ The "global" tags:
 
 NEW VERSION                       - OLD VERSION
 
-<p3t>PRIMER_TASK</p3t>                       - PRIMER_TASK (the use is modified)
+<p3t>PRIMER_TASK</p3t>                       - PRIMER_TASK (modified use)
 <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>          - --- did not exist
-<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>        - PRIMER_PICK_INTERNAL_OLIGO (modified use)
 <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>           - --- did not exist
 
-<p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
-<p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t>     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
+<p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>    - PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (modified use)
+<p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t>         - PRIMER_WT_TEMPLATE_MISPRIMING (modified use)
+<p3t>PRIMER_MAX_LIBRARY_MISPRIMING</p3t>         - PRIMER_MAX_MISPRIMING
+<p3t>PRIMER_INTERNAL_MAX_LIBRARY_MISHYB</p3t>    - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
+<p3t>PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</p3t>    - PRIMER_PAIR_MAX_MISPRIMING
+<p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t>          - PRIMER_WT_REP_SIM
+<p3t>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</p3t> - PRIMER_INTERNAL_WT_REP_SIM
+<p3t>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</p3t>     - PRIMER_PAIR_WT_REP_SIM
 	
 <p3t>PRIMER_SALT_MONOVALENT</p3t>            - PRIMER_SALT_CONC
 <p3t>PRIMER_SALT_DIVALENT</p3t>              - PRIMER_DIVALENT_CONC
@@ -1290,7 +1296,6 @@ NEW VERSION                       - OLD VERSION
 
 <p3t>PRIMER_INTERNAL_SALT_MONOVALENT</p3t>   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 <p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t>     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
-
 <p3t>PRIMER_INTERNAL_WT_SELF_ANY</p3t>       - PRIMER_IO_WT_COMPL_ANY
 <p3t>PRIMER_INTERNAL_WT_SELF_END</p3t>       - PRIMER_IO_WT_COMPL_END
 
@@ -1311,7 +1316,6 @@ The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 <p3t>PRIMER_INTERNAL_MAX_POLY_X</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
 <p3t>PRIMER_INTERNAL_SELF_END</p3t>          - PRIMER_INTERNAL_OLIGO_SELF_END
 <p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
-<p3t>PRIMER_INTERNAL_MAX_MISHYB</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
 <p3t>PRIMER_INTERNAL_MIN_QUALITY</p3t>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
 <p3t>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3t>   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
@@ -1324,7 +1328,6 @@ The following tags IO is replaced by INTERNAL:
 <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3t>  - PRIMER_IO_WT_GC_PERCENT_LT
 <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3t>  - PRIMER_IO_WT_GC_PERCENT_GT
 <p3t>PRIMER_INTERNAL_WT_NUM_NS</p3t>         - PRIMER_IO_WT_NUM_NS
-<p3t>PRIMER_INTERNAL_WT_REP_SIM</p3t>        - PRIMER_IO_WT_REP_SIM
 <p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
 <p>--------------------------------------------------------------------------------<br />

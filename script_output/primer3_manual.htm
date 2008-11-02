@@ -671,13 +671,19 @@ The "global" tags:
 
 NEW VERSION                       - OLD VERSION
 
-<a href="#PRIMER_TASK">PRIMER_TASK</a>                       - PRIMER_TASK (the use is modified)
+<a href="#PRIMER_TASK">PRIMER_TASK</a>                       - PRIMER_TASK (modified use)
 <a href="#PRIMER_PICK_RIGHT_PRIMER">PRIMER_PICK_RIGHT_PRIMER</a>          - --- did not exist
-<a href="#PRIMER_PICK_INTERNAL_OLIGO">PRIMER_PICK_INTERNAL_OLIGO</a>        - PRIMER_PICK_INTERNAL_OLIGO (the use is modified)
+<a href="#PRIMER_PICK_INTERNAL_OLIGO">PRIMER_PICK_INTERNAL_OLIGO</a>        - PRIMER_PICK_INTERNAL_OLIGO (modified use)
 <a href="#PRIMER_PICK_LEFT_PRIMER">PRIMER_PICK_LEFT_PRIMER</a>           - --- did not exist
 
-<a href="#PRIMER_PAIR_WT_TEMPLATE_MISPRIMING">PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</a>- PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (the use is modified)	
-<a href="#PRIMER_WT_TEMPLATE_MISPRIMING">PRIMER_WT_TEMPLATE_MISPRIMING</a>     - PRIMER_WT_TEMPLATE_MISPRIMING (the use is modified)	
+<a href="#PRIMER_PAIR_WT_TEMPLATE_MISPRIMING">PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</a>    - PRIMER_PAIR_WT_TEMPLATE_MISPRIMING (modified use)
+<a href="#PRIMER_WT_TEMPLATE_MISPRIMING">PRIMER_WT_TEMPLATE_MISPRIMING</a>         - PRIMER_WT_TEMPLATE_MISPRIMING (modified use)
+<a href="#PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING</a>         - PRIMER_MAX_MISPRIMING
+<a href="#PRIMER_INTERNAL_MAX_LIBRARY_MISHYB">PRIMER_INTERNAL_MAX_LIBRARY_MISHYB</a>    - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
+<a href="#PRIMER_PAIR_MAX_LIBRARY_MISPRIMING">PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</a>    - PRIMER_PAIR_MAX_MISPRIMING
+<a href="#PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING</a>          - PRIMER_WT_REP_SIM
+<a href="#PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING">PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</a> - PRIMER_INTERNAL_WT_REP_SIM
+<a href="#PRIMER_PAIR_WT_LIBRARY_MISPRIMING">PRIMER_PAIR_WT_LIBRARY_MISPRIMING</a>     - PRIMER_PAIR_WT_REP_SIM
 	
 <a href="#PRIMER_SALT_MONOVALENT">PRIMER_SALT_MONOVALENT</a>            - PRIMER_SALT_CONC
 <a href="#PRIMER_SALT_DIVALENT">PRIMER_SALT_DIVALENT</a>              - PRIMER_DIVALENT_CONC
@@ -691,7 +697,6 @@ NEW VERSION                       - OLD VERSION
 
 <a href="#PRIMER_INTERNAL_SALT_MONOVALENT">PRIMER_INTERNAL_SALT_MONOVALENT</a>   - PRIMER_INTERNAL_OLIGO_SALT_CONC
 <a href="#PRIMER_INTERNAL_SALT_DIVALENT">PRIMER_INTERNAL_SALT_DIVALENT</a>     - PRIMER_INTERNAL_OLIGO_DIVALENT_CONC
-
 <a href="#PRIMER_INTERNAL_WT_SELF_ANY">PRIMER_INTERNAL_WT_SELF_ANY</a>       - PRIMER_IO_WT_COMPL_ANY
 <a href="#PRIMER_INTERNAL_WT_SELF_END">PRIMER_INTERNAL_WT_SELF_END</a>       - PRIMER_IO_WT_COMPL_END
 
@@ -712,7 +717,6 @@ The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 <a href="#PRIMER_INTERNAL_MAX_POLY_X">PRIMER_INTERNAL_MAX_POLY_X</a>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
 <a href="#PRIMER_INTERNAL_SELF_END">PRIMER_INTERNAL_SELF_END</a>          - PRIMER_INTERNAL_OLIGO_SELF_END
 <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY</a>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
-<a href="#PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB</a>        - PRIMER_INTERNAL_OLIGO_MAX_MISHYB
 <a href="#PRIMER_INTERNAL_MIN_QUALITY">PRIMER_INTERNAL_MIN_QUALITY</a>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
 <a href="#PRIMER_INTERNAL_NUM_NS_ACCEPTED">PRIMER_INTERNAL_NUM_NS_ACCEPTED</a>   - PRIMER_INTERNAL_OLIGO_NUM_NS
 
@@ -725,7 +729,6 @@ The following tags IO is replaced by INTERNAL:
 <a href="#PRIMER_INTERNAL_WT_GC_PERCENT_LT">PRIMER_INTERNAL_WT_GC_PERCENT_LT</a>  - PRIMER_IO_WT_GC_PERCENT_LT
 <a href="#PRIMER_INTERNAL_WT_GC_PERCENT_GT">PRIMER_INTERNAL_WT_GC_PERCENT_GT</a>  - PRIMER_IO_WT_GC_PERCENT_GT
 <a href="#PRIMER_INTERNAL_WT_NUM_NS">PRIMER_INTERNAL_WT_NUM_NS</a>         - PRIMER_IO_WT_NUM_NS
-<a href="#PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM</a>        - PRIMER_IO_WT_REP_SIM
 <a href="#PRIMER_INTERNAL_WT_SEQ_QUAL">PRIMER_INTERNAL_WT_SEQ_QUAL</a>       - PRIMER_IO_WT_SEQ_QUAL
 </pre>
 <p>--------------------------------------------------------------------------------<br>
@@ -997,7 +1000,7 @@ considerably lower than that used as a PCR primer.
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_DNA_CONC">PRIMER_INTERNAL_DNA_CONC</a></td>
-	    <td><a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a></td>
+	    <td><a href="#PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING</a></td>
 	    <td><a href="#PRIMER_PRODUCT_OPT_SIZE">PRIMER_PRODUCT_OPT_SIZE</a></td>
 	  </tr>
 	  <tr>
@@ -1011,7 +1014,7 @@ considerably lower than that used as a PCR primer.
 	    <td><a href="#PRIMER_PRODUCT_SIZE_RANGE">PRIMER_PRODUCT_SIZE_RANGE</a></td>
 	  </tr>
 	  <tr>
-	    <td><a href="#PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB</a></td>
+	    <td><a href="#PRIMER_INTERNAL_MAX_LIBRARY_MISHYB">PRIMER_INTERNAL_MAX_LIBRARY_MISHYB</a></td>
 	    <td><a href="#PRIMER_MAX_TEMPLATE_MISPRIMING">PRIMER_MAX_TEMPLATE_MISPRIMING</a></td>
 	    <td><a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a></td>
 	  </tr>
@@ -1097,62 +1100,62 @@ considerably lower than that used as a PCR primer.
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_SELF_END">PRIMER_INTERNAL_SELF_END</a></td>
-	    <td><a href="#PRIMER_PAIR_MAX_MISPRIMING">PRIMER_PAIR_MAX_MISPRIMING</a></td>
+	    <td><a href="#PRIMER_PAIR_MAX_LIBRARY_MISPRIMING">PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</a></td>
 	    <td><a href="#PRIMER_WT_GC_PERCENT_LT">PRIMER_WT_GC_PERCENT_LT</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_END_QUAL">PRIMER_INTERNAL_WT_END_QUAL</a></td>
 	    <td><a href="#PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING">PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</a></td>
-	    <td><a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a></td>
+	    <td><a href="#PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_GC_PERCENT_GT">PRIMER_INTERNAL_WT_GC_PERCENT_GT</a></td>
 	    <td><a href="#PRIMER_PAIR_WT_COMPL_ANY">PRIMER_PAIR_WT_COMPL_ANY</a></td>
-	    <td><a href="#PRIMER_WT_POS_PENALTY">PRIMER_WT_POS_PENALTY</a></td>
+	    <td><a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_GC_PERCENT_LT">PRIMER_INTERNAL_WT_GC_PERCENT_LT</a></td>
 	    <td><a href="#PRIMER_PAIR_WT_COMPL_END">PRIMER_PAIR_WT_COMPL_END</a></td>
-	    <td><a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a></td>
+	    <td><a href="#PRIMER_WT_POS_PENALTY">PRIMER_WT_POS_PENALTY</a></td>
 	  </tr>
 	  <tr>
-	    <td><a href="#PRIMER_INTERNAL_WT_NUM_NS">PRIMER_INTERNAL_WT_NUM_NS</a></td>
+	    <td><a href="#PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING">PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</a></td>
 	    <td><a href="#PRIMER_PAIR_WT_DIFF_TM">PRIMER_PAIR_WT_DIFF_TM</a></td>
 	    <td><a href="#PRIMER_WT_SELF_ANY">PRIMER_WT_SELF_ANY</a></td>
 	  </tr>
 	  <tr>
-	    <td><a href="#PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM</a></td>
+	    <td><a href="#PRIMER_INTERNAL_WT_NUM_NS">PRIMER_INTERNAL_WT_NUM_NS</a></td>
 	    <td><a href="#PRIMER_PAIR_WT_IO_PENALTY">PRIMER_PAIR_WT_IO_PENALTY</a></td>
 	    <td><a href="#PRIMER_WT_SELF_END">PRIMER_WT_SELF_END</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_SELF_ANY">PRIMER_INTERNAL_WT_SELF_ANY</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_SIZE_GT">PRIMER_PAIR_WT_PRODUCT_SIZE_GT</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_LIBRARY_MISPRIMING">PRIMER_PAIR_WT_LIBRARY_MISPRIMING</a></td>
 	    <td><a href="#PRIMER_WT_SEQ_QUAL">PRIMER_WT_SEQ_QUAL</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_SELF_END">PRIMER_INTERNAL_WT_SELF_END</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_SIZE_LT">PRIMER_PAIR_WT_PRODUCT_SIZE_LT</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_SIZE_GT">PRIMER_PAIR_WT_PRODUCT_SIZE_GT</a></td>
 	    <td><a href="#PRIMER_WT_SIZE_GT">PRIMER_WT_SIZE_GT</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_SEQ_QUAL">PRIMER_INTERNAL_WT_SEQ_QUAL</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_TM_GT">PRIMER_PAIR_WT_PRODUCT_TM_GT</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_SIZE_LT">PRIMER_PAIR_WT_PRODUCT_SIZE_LT</a></td>
 	    <td><a href="#PRIMER_WT_SIZE_LT">PRIMER_WT_SIZE_LT</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_SIZE_GT">PRIMER_INTERNAL_WT_SIZE_GT</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_TM_LT">PRIMER_PAIR_WT_PRODUCT_TM_LT</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_TM_GT">PRIMER_PAIR_WT_PRODUCT_TM_GT</a></td>
 	    <td><a href="#PRIMER_WT_TEMPLATE_MISPRIMING">PRIMER_WT_TEMPLATE_MISPRIMING</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_SIZE_LT">PRIMER_INTERNAL_WT_SIZE_LT</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_PR_PENALTY">PRIMER_PAIR_WT_PR_PENALTY</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_PRODUCT_TM_LT">PRIMER_PAIR_WT_PRODUCT_TM_LT</a></td>
 	    <td><a href="#PRIMER_WT_TM_GT">PRIMER_WT_TM_GT</a></td>
 	  </tr>
 	  <tr>
 	    <td><a href="#PRIMER_INTERNAL_WT_TEMPLATE_MISHYB">PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</a></td>
-	    <td><a href="#PRIMER_PAIR_WT_REP_SIM">PRIMER_PAIR_WT_REP_SIM</a></td>
+	    <td><a href="#PRIMER_PAIR_WT_PR_PENALTY">PRIMER_PAIR_WT_PR_PENALTY</a></td>
 	    <td><a href="#PRIMER_WT_TM_LT">PRIMER_WT_TM_LT</a></td>
 	  </tr>
 	  <tr>
@@ -2018,7 +2021,7 @@ file flag is set.)</p>
 
 <p>The maximum allowed similarity to ectopic sites in the
 template.  A negative value means do not check.  The scoring
-system is the same as used for <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a>, except
+system is the same as used for <a href="#PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING</a>, except
 that an ambiguity code in the template is never treated as a
 consensus (see <a href="#PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS">PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</a>).</p>
 
@@ -2033,8 +2036,8 @@ consensus (see <a href="#PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS">PRIMER_LIB_AMBIGU
 <p>The maximum allowed summed similarity of both primers to
 ectopic sites in the template. A negative value means do not
 check.  The scoring system is the same as used for
-<a href="#PRIMER_PAIR_MAX_MISPRIMING">PRIMER_PAIR_MAX_MISPRIMING</a>, except that an ambiguity code in
-the template is never treated as a consensus (see
+<a href="#PRIMER_PAIR_MAX_LIBRARY_MISPRIMING">PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</a>, except that an ambiguity code 
+in the template is never treated as a consensus (see
 <a href="#PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS">PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</a>).  Primer3 does not
 check the similarity of hybridization oligos (internal
 oligos) to locations outside of the amplicon.</p>
@@ -2074,7 +2077,7 @@ FASTA format (W. B. Pearson and D.J. Lipman, PNAS 85:8 pp
 file below.  If this parameter is specified then primer3 locally
 aligns each candidate primer against each library sequence and
 rejects those primers for which the local alignment score times a
-specified weight (see below) exceeds <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a>.
+specified weight (see below) exceeds <a href="#PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING</a>.
 (The maximum value of the weight is arbitrarily set to 100.0.)<br>
 <br>
 Each sequence entry in the FASTA-format file must begin with an
@@ -2136,20 +2139,20 @@ you know for sure that your library does not have runs of Ns
 (or Xs), then set this flag to 0.</p>
 
 
-<h3><a name="PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING (decimal, 9999.99; default 12.00)</a></h3>
+<h3><a name="PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING (decimal, 9999.99; default 12.00)</a></h3>
 
 <p>The maximum allowed weighted similarity with any sequence in
 <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>.</p>
 
 
-<h3><a name="PRIMER_INTERNAL_MAX_MISHYB">PRIMER_INTERNAL_MAX_MISHYB (decimal,9999.99; default 12.00)</a></h3>
+<h3><a name="PRIMER_INTERNAL_MAX_LIBRARY_MISHYB">PRIMER_INTERNAL_MAX_LIBRARY_MISHYB (decimal,9999.99; default 12.00)</a></h3>
 
-<p>Similar to <a href="#PRIMER_MAX_MISPRIMING">PRIMER_MAX_MISPRIMING</a> except that this parameter applies
+<p>Similar to <a href="#PRIMER_MAX_LIBRARY_MISPRIMING">PRIMER_MAX_LIBRARY_MISPRIMING</a> except that this parameter applies
 to the similarity of candidate internal oligos to the library
 specified in <a href="#PRIMER_INTERNAL_MISHYB_LIBRARY">PRIMER_INTERNAL_MISHYB_LIBRARY</a>.</p>
 
 
-<h3><a name="PRIMER_PAIR_MAX_MISPRIMING">PRIMER_PAIR_MAX_MISPRIMING (decimal, 9999.99; default 24.00)</a></h3>
+<h3><a name="PRIMER_PAIR_MAX_LIBRARY_MISPRIMING">PRIMER_PAIR_MAX_LIBRARY_MISPRIMING (decimal, 9999.99; default 24.00)</a></h3>
 
 <p>The maximum allowed sum of similarities of a primer pair
 (one similarity for each primer) with any single sequence in
@@ -2158,18 +2161,18 @@ Library sequence weights are not used in computing the sum
 of similarities.</p>
 
 
-<h3><a name="PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM (float; default 0.0)</a></h3>
+<h3><a name="PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING (float; default 0.0)</a></h3>
 
 <p>Penalty for a single primer binding to any single sequence 
 in <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>.</p>
 
 
-<h3><a name="PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM (float; default 0.0)</a></h3>
+<h3><a name="PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING">PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING (float; default 0.0)</a></h3>
 
-<p>Equivalent parameter of <a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a> for the internal oligo.</p>
+<p>Equivalent parameter of <a href="#PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING</a> for the internal oligo.</p>
 
 
-<h3><a name="PRIMER_PAIR_WT_REP_SIM">PRIMER_PAIR_WT_REP_SIM (float; default 0.0)</a></h3>
+<h3><a name="PRIMER_PAIR_WT_LIBRARY_MISPRIMING">PRIMER_PAIR_WT_LIBRARY_MISPRIMING (float; default 0.0)</a></h3>
 
 <p>Penalty for a primer pair binding to any single sequence 
 in <a href="#PRIMER_MISPRIMING_LIBRARY">PRIMER_MISPRIMING_LIBRARY</a>.</p>
@@ -2423,7 +2426,7 @@ primer, it is calculated like that:</p>
 
        + <a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a> * &lt;numbers of N in the selected primer&gt;
 
-       + <a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a> * <a href="#PRIMER_LEFT_4_MISPRIMING_SCORE">PRIMER_LEFT_4_MISPRIMING_SCORE</a>
+       + <a href="#PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING</a> * <a href="#PRIMER_LEFT_4_MISPRIMING_SCORE">PRIMER_LEFT_4_MISPRIMING_SCORE</a>
 
        + <a href="#PRIMER_WT_SEQ_QUAL">PRIMER_WT_SEQ_QUAL</a> *
             ( <a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a> - 
@@ -2495,7 +2498,7 @@ primer, it is calculated like that:</p>
 
        + <a href="#PRIMER_WT_NUM_NS">PRIMER_WT_NUM_NS</a> * &lt;numbers of N in the selected primer&gt;
 
-       + <a href="#PRIMER_WT_REP_SIM">PRIMER_WT_REP_SIM</a> * <a href="#PRIMER_RIGHT_4_MISPRIMING_SCORE">PRIMER_RIGHT_4_MISPRIMING_SCORE</a>
+       + <a href="#PRIMER_WT_LIBRARY_MISPRIMING">PRIMER_WT_LIBRARY_MISPRIMING</a> * <a href="#PRIMER_RIGHT_4_MISPRIMING_SCORE">PRIMER_RIGHT_4_MISPRIMING_SCORE</a>
 
        + <a href="#PRIMER_WT_SEQ_QUAL">PRIMER_WT_SEQ_QUAL</a> *
             ( <a href="#PRIMER_QUALITY_RANGE_MAX">PRIMER_QUALITY_RANGE_MAX</a> - 
@@ -2561,7 +2564,7 @@ primer, it is calculated like that:</p>
      + <a href="#PRIMER_INTERNAL_WT_NUM_NS">PRIMER_INTERNAL_WT_NUM_NS</a> *
           &lt;numbers of N in the selected primer&gt;
 
-     + <a href="#PRIMER_INTERNAL_WT_REP_SIM">PRIMER_INTERNAL_WT_REP_SIM</a> *
+     + <a href="#PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING">PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</a> *
           <a href="#PRIMER_INTERNAL_4_MISPRIMING_SCORE">PRIMER_INTERNAL_4_MISPRIMING_SCORE</a>
 
      + <a href="#PRIMER_INTERNAL_WT_SEQ_QUAL">PRIMER_INTERNAL_WT_SEQ_QUAL</a> * 
@@ -2625,7 +2628,7 @@ this point. If primer pairs have to be selected, a
 
      + <a href="#PRIMER_PAIR_WT_COMPL_END">PRIMER_PAIR_WT_COMPL_END</a> * <a href="#PRIMER_PAIR_4_COMPL_END">PRIMER_PAIR_4_COMPL_END</a>
 
-     + <a href="#PRIMER_PAIR_WT_REP_SIM">PRIMER_PAIR_WT_REP_SIM</a> * <a href="#PRIMER_PAIR_4_MISPRIMING_SCORE">PRIMER_PAIR_4_MISPRIMING_SCORE</a>
+     + <a href="#PRIMER_PAIR_WT_LIBRARY_MISPRIMING">PRIMER_PAIR_WT_LIBRARY_MISPRIMING</a> * <a href="#PRIMER_PAIR_4_MISPRIMING_SCORE">PRIMER_PAIR_4_MISPRIMING_SCORE</a>
 
      + <a href="#PRIMER_PAIR_WT_TEMPLATE_MISPRIMING">PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</a> *
           <a href="#PRIMER_PAIR_4_TEMPLATE_MISPRIMING">PRIMER_PAIR_4_TEMPLATE_MISPRIMING</a>
