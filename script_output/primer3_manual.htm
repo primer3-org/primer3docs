@@ -1211,6 +1211,28 @@ Legal values are:<br>
    used to indicate several targets. The position of each primer is 
    calculated for optimal sequencing results.<br>
 <br>
+   <tt><i>pick_cloning_primers</i></tt><br>
+<br>
+   Pick primers suited to clone a gene were the start nucleotide and 
+   the end nucleotide of the PCR fragment must be fixed, for example 
+   to clone an ORF. <a href="#SEQUENCE_INCLUDED_REGION">SEQUENCE_INCLUDED_REGION</a> must be used to 
+   indicate the first and the last nucleotide. Due to these 
+   limitations primer3 can only vary the length of the primers. Set 
+   <a href="#PRIMER_PICK_ANYWAY">PRIMER_PICK_ANYWAY</a>=1 to obtain primers even if they violate 
+   specific constraints.<br>
+<br>
+   <tt><i>pick_discriminative_primers</i></tt><br>
+<br>
+   Pick primers suited to select primers which bind with their end at 
+   a specific position. This can be used to forec the end of a primer 
+   at a polymorphic site which allowing to discriminate allelic 
+   variations. <a href="#SEQUENCE_INCLUDED_REGION">SEQUENCE_INCLUDED_REGION</a> must be used to 
+   indicate the last nucleotide of the forward (first nucleotide of 
+   included region) and the reverse primer (last nucleotide of 
+   included region). Due to these limitations primer3 can only vary 
+   the length of the primers. Set <a href="#PRIMER_PICK_ANYWAY">PRIMER_PICK_ANYWAY</a>=1 to obtain 
+   primers even if they violate specific constraints.<br>
+<br>
    <tt><i>pick_pcr_primers</i></tt><br>
 <br>
    Shortcut for the following settings:<br>
