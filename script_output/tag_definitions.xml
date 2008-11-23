@@ -75,6 +75,17 @@ such as ALUs or LINEs.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>SEQUENCE_PRIMER_OVERLAP_POS</tagName>
+	<dataType>quality list</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>A list of space separated integers. If this list is not empty primer3
+tries to pick primerpairs were the forward or the reverse primer 
+overlaps one of these positions for at least 
+<p3t>PRIMER_POS_OVERLAP_TO_END_DIST</p3t> nucleotides.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
 	<dataType>interval list</dataType>
 	<default>empty</default>
@@ -341,6 +352,15 @@ returned are sorted by their &quot;quality&quot;, in other words by the
 value of the objective function (where a lower number indicates a
 better primer pair).  Caution: setting this parameter to a large
 value will increase running time.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_POS_OVERLAP_TO_END_DIST</tagName>
+	<dataType>int</dataType>
+	<default>5</default>
+	<description>
+<![CDATA[<p>The minimum distance of nucleotides a end of a primer has to 
+have to one of the positions in <p3t>SEQUENCE_PRIMER_OVERLAP_POS</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>

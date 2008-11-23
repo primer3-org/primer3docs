@@ -819,6 +819,14 @@ quality or for excluding regions containing repetitive elements
 such as ALUs or LINEs.
 
 
+SEQUENCE_PRIMER_OVERLAP_POS (quality list; default empty)
+
+A list of space separated integers. If this list is not empty primer3
+tries to pick primerpairs were the forward or the reverse primer 
+overlaps one of these positions for at least 
+PRIMER_POS_OVERLAP_TO_END_DIST nucleotides.
+
+
 SEQUENCE_INTERNAL_EXCLUDED_REGION (interval list; default empty)
 
 Middle oligos may not overlap any region specified by this tag.
@@ -1058,6 +1066,12 @@ returned are sorted by their "quality", in other words by the
 value of the objective function (where a lower number indicates a
 better primer pair).  Caution: setting this parameter to a large
 value will increase running time.
+
+
+PRIMER_POS_OVERLAP_TO_END_DIST (int; default 5)
+
+The minimum distance of nucleotides a end of a primer has to 
+have to one of the positions in SEQUENCE_PRIMER_OVERLAP_POS.
 
 
 PRIMER_PRODUCT_SIZE_RANGE (size range list; default 100-300)
