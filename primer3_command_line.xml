@@ -50,7 +50,7 @@ An example Tag with all possible options:
 <tag>
 	<tagName>-about</tagName>
 	<description>
-<![CDATA[<p>This argument generates one line of output: primer3 release 1.1.2 (???But we will be at v 2.0.0 ....???)
+<![CDATA[<p>This argument generates one line of output: primer3 release 2.0.0
 and terminates the program. This allows scripts to 
 query primer3 for its version.</p>]]>
 	</description>
@@ -67,7 +67,7 @@ user-oriented (rather than program-oriented) output.</p>]]>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
-it does not recognize (see INPUT AND OUTPUT CONVENTIONS) ???Do we really need see...</p>]]>
+it does not recognize (see INPUT AND OUTPUT CONVENTIONS) ???Do we really need see... ??? What do you mean??</p>]]>
 	</description>
 </tag>
 <tag>
@@ -76,10 +76,10 @@ it does not recognize (see INPUT AND OUTPUT CONVENTIONS) ???Do we really need se
 <![CDATA[<p>This argument specifies a settings file,
 <i>file path</i>. Primer3 reads the global 
 ("PRIMER_...") parameters from this file first. 
-Tags appearing in the settings file override
+Tags appearing in the settings file overwrite
 default primer3 settings. The values set in
-the settings files can be modified 
-by identical tags in the command line input (???). See 
+the settings files can be overwritten 
+by tags in the command line input. See 
 primer3 file documentation for details on the file 
 format.</p>]]>
 	</description>
@@ -92,7 +92,7 @@ io version <i>n</i> input and output conventions.
 <i>n</i> can be 3 (for mostly backward
 compatible behavior) or 4.
 -io_version=4 is required
-to use functionality that is new in relase 2????.</p>]]>
+to use functionality that is new in relase 2.0.0.</p>]]>
 	</description>
 </tag>
 
