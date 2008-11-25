@@ -3,7 +3,7 @@
 <!--
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://jura.wi.mit.edu/rozen), Andreas Untergasser and Helen Skaletsky.
+(http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
 
     This file is part of the primer3 suite and libraries.
@@ -84,7 +84,7 @@ found at http://sourceforge.net/projects/primer3/.</p>]]>
 </textBlock>
 <textBlock>
 	<id>buildOsX</id>
-	<head>BUILDING OSX UNIVERSAL BINARY</head>
+	<head>BUILDING A Mac OSX UNIVERSAL BINARY</head>
 	<text>
 <![CDATA[<p>** To build a processor-native, non-universal binary of primer3, 
 the following is unneccesary**.<br />
@@ -150,22 +150,22 @@ primer, it is calculated like that:</p>
 <pre>
 <p3t>PRIMER_LEFT_4_PENALTY</p3t> =
 
-   <p3t>If PRIMER_LEFT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> than this is added (+):
+   <p3t>If PRIMER_LEFT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then this is added (+):
 
        + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_LEFT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
-   If <p3t>PRIMER_LEFT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> than this is added (+):
+   If <p3t>PRIMER_LEFT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> then this is added (+):
 
        + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_LEFT_4_TM</p3t> )
 
 
-   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
+   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
             ( <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> - <p3t>PRIMER_OPT_GC_PERCENT</p3t> )
 
-   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than
+   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
@@ -176,20 +176,20 @@ primer, it is calculated like that:</p>
    the term which is given as output in 
    <p3t>PRIMER_LEFT_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> than
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_GT</p3t> *
             ( &lt;primer length&gt; - <p3t>PRIMER_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> than
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_LT</p3t> *
             ( <p3t>PRIMER_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
-   If the primer does not overlap a target than
+   If the primer does not overlap a target then
        this is added (+):
 	
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_LEFT_4_POSITION_PENALTY</p3t>
@@ -220,24 +220,24 @@ primer, it is calculated like that:</p>
 <pre>
 <p3t>PRIMER_RIGHT_4_PENALTY</p3t> =
 
-   If <p3t>PRIMER_RIGHT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> than 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_RIGHT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
-   If <p3t>PRIMER_RIGHT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> than 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_RIGHT_4_TM</p3t> )
 
 
-   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
             ( <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> - <p3t>PRIMER_OPT_GC_PERCENT</p3t> )
 
-   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> than 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
@@ -248,20 +248,20 @@ primer, it is calculated like that:</p>
    the term which is given as output in 
    <p3t>PRIMER_RIGHT_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> than 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_GT</p3t> *
             ( &lt;primer length&gt; - <p3t>PRIMER_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> than 
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_LT</p3t> *
             ( <p3t>PRIMER_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
-   If the primer does not overlap a target than 
+   If the primer does not overlap a target then 
        this is added (+):
 
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_RIGHT_4_POSITION_PENALTY</p3t>
@@ -292,13 +292,13 @@ primer, it is calculated like that:</p>
 <pre>
 <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> =
 
-   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> than
+   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_TM_GT</p3t> *
             ( <p3t>PRIMER_INTERNAL_4_TM</p3t> - <p3t>PRIMER_INTERNAL_OPT_TM</p3t> )
 
-   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> than
+   If <p3t>PRIMER_INTERNAL_4_TM</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_TM_LT</p3t> *
@@ -306,14 +306,14 @@ primer, it is calculated like that:</p>
 
 
    If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
-       than this is added (+):
+       then this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3t> *
             ( <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> - 
               <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t> )
 
    If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
-       than this is added (+):
+       then this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_LT</p3t> *
             ( <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t> -
@@ -324,13 +324,13 @@ primer, it is calculated like that:</p>
    the term which is given as output in 
    <p3t>PRIMER_INTERNAL_4</p3t>=position,&lt;primer length&gt; 
 
-   If &lt;primer length&gt; &gt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> than 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> then 
        this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_SIZE_GT</p3t> *
             ( &lt;primer length&gt; - <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> than
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_SIZE_LT</p3t> *
@@ -370,31 +370,31 @@ this point. If primer pairs have to be selected, a
             ( <p3t>PRIMER_LEFT_4_PENALTY</p3t> + <p3t>PRIMER_RIGHT_4_PENALTY</p3t> )
 
 
-   If internal oligo is picked than this is added (+):
+   If internal oligo is picked then this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_IO_PENALTY</p3t> * <p3t>PRIMER_INTERNAL_4_PENALTY</p3t>
 	
 
-   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_PRODUCT_TM_GT</p3t> *
             ( <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> - <p3t>PRIMER_PRODUCT_OPT_TM</p3t> )
 
-   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_PRODUCT_TM_LT</p3t> *
             ( <p3t>PRIMER_PRODUCT_OPT_TM</p3t> - <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> )
 
 
-   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t> *
             ( <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> - <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> )
 
-   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> than
+   If <p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t> &lt; <p3t>PRIMER_PRODUCT_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t> *
@@ -482,15 +482,15 @@ Source code available at <link>http://sourceforge.net/projects/primer3/</link>.<
 	<head>REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS</head>
 	<text>
 <![CDATA[<p>For error reports or requests for enhancements, please send e-mail
-to primer3-mail (at) lists.sourceforge.net after replacing (at)
-with @.</p>]]>
+WHERE TO SEND EMAIL?
+.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
 	<id>commandLineTags</id>
-	<head>COMMAND LINE TAGS</head>
+	<head>COMMAND LINE ARGUMENTS</head>
 	<text>
-<![CDATA[<p>This parameters are read from command line:</p>]]>
+<![CDATA[<p>These parameters are read from command line:</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -499,7 +499,7 @@ with @.</p>]]>
 	<text>
 <![CDATA[<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://jura.wi.mit.edu/rozen), Andreas Untergasser and Helen Skaletsky All rights
+(http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky All rights
 reserved.
 
     This file is part of the primer3 suite and libraries.
@@ -899,7 +899,7 @@ strictly as is; for further documentation please see the code.</p>]]>
 </textBlock>
 <textBlock>
 	<id>installMac</id>
-	<head>INSTALLATION INSTRUCTIONS - OSX</head>
+	<head>INSTALLATION INSTRUCTIONS - Mac OSX</head>
 	<text>
 <![CDATA[<p>How to install this software<br />
 ============================<br />
@@ -1160,52 +1160,50 @@ waiting for its input on stdin.</p>]]>
 	<id>licenseExplain</id>
 	<head>FAIR USE OF PRIMER3</head>
 	<text>
-<![CDATA[<p>In this section the developers would like to explain how they 
-would like primer3 to be used. Some of the things written here 
-might be in  conflict with the GPL license. In all this cases 
-the GPL is the legally binding license and issues of this 
-section can be ignored.<br />
-<br />
+<![CDATA[<p>
 The development of primer3 is promoted by a small group of 
-enthusiastic scientists mainly in their free time. We do not gain 
+enthusiastic scientists mainly in their free time.They do not gain 
 any financial profit with primer3.<br />
 <br />
-There are two groups of primer3 users, the end user, who runs 
-primer3 to pick its primers and the programmer, who uses primer3 
-in his scripts or his software package. We encourage both to use 
-primer3.<br />
+There are two groups of primer3 users: end users, who run 
+primer3 to pick their primers and programmers, who use primer3 
+in their scripts or software packages. We encourage both to use 
+primer3.
 <br />
-If you are an end user, we as scientists would be very happy if 
-once, when you write an article, you include in the Material and 
-Method section the sentence "Primers were selected using 
-primer3." and reference to our article. First of all, everybody 
-likes to be cited, it gives us a feeling how many people use 
-primer3 and that our efforts are actually useful to somebody 
-else. Furthermore other scientists reading your article could 
-get interested in primer3 and use it as well in the future. 
-This is the best way to say "thank you" to us. Be aware that 
-there is no need to ask us for permission if you install 
-primer3, primer3web or primer3plus on your machine.<br />
 <br />
-If you are a programmer, you probably know the conditions of the 
-GPL well. Be aware of its "viral" character. If you include 
-parts of the primer3 code or the library in your software, you 
-have to release your software also under GPL license. If you 
-only call primer3 from your software and interpret its output, 
-you can use any license you want for your software. If you 
-modify primer3, you have to release your modifications in source 
-code under GPL license as well.<br />
-We choose the GPL license, because we wanted prime3 to evolve 
-and that improvements find their way back into the main 
-distribution of primer3. So if you make useful enhancements, 
-please send us the code. If you are programming a new web 
+If you are an end user, we request but do not
+require that use of this software be cited in publications
+as listed above under CITING PRIMER3.
+<br />
+<br />
+If you are a programmer, you  will see that primer3 is now distributed
+under teh GNU  General Public License, version  2 or (at  your option) any
+later version of the License (GPL2). 
+
+As we understand it, if you include parts of the primer3 sourde code
+in your source code or link to primer3 binary libraries in your
+executable, you have to release your software also under GPL2. If you
+only call primer3 from your software and interpret its output, you can
+use any license you want for your software. If you modify primer3 and
+then release your modified sofware, you have to release your
+modifications in source code under GPL2 as well.
+<br />
+<br />
+We chose GPL2 because we wanted primer3 to evolve 
+and for the improvements find their way back into the main 
+distribution. So if you make useful enhancements, 
+please send us the code (Andreas, send the code to who?)
+If you are programming a new web 
 interface which runs primer3, please include in the about page 
 of the tool the sentence "&lt;your software name&gt; uses primer3 
-version ...". Please consider releasing your software under GPL 
-license as well, especially if you do not want to maintain it 
-in the future. Be aware that there is no need to ask us for 
-permission if you like to include our software in your tools, 
-but we would be happy to receive an e-mail to inform us about 
+version ...". Please consider releasing your software under GPL2 
+as well, especially if you do not want to maintain it 
+in the future. 
+<br />
+<br />
+There is no need to ask us for 
+permission to include our primer in your tools
+but we would be happy to receive an e-mail to inform us about (WHERE TO SEND EMAIL?)
 your tool. If there are any issues / bugs / suggestions for 
 primer3, please let us know so we can improve it.</p>]]>
 	</text>
@@ -1425,10 +1423,8 @@ records.</p>]]>
 information.  Primer3 should compile on any Linux/Unix system
 including MacOS 10 and on other systems with POSIX C
 (e.g. MSWindows).  The Makefile may need to be modified for
-compilation with C compilers other than gcc.  Our hope is to
-distribute binary for SourceForge in the near future.  Primer3
-still uses many Kernighan-&-Richie-style function headers, so
-you might have to force your compiler to accept them.</p>]]>
+compilation with C compilers other than gcc.
+</p>]]>
 	</text>
 </textBlock>
 <textBlock>
