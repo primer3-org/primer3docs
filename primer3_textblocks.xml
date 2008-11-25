@@ -130,8 +130,11 @@ fine-tune the selection of primers to your needs.<br />
 This section will explain the selection process of primers by 
 primer3. In general the selection is a multi step process:<br />
 <br />
-In the first step, primer3 evaluates every singel primer that 
-can be picked in the region of interest. In this pase the hard 
+In the first step, primer3 evaluates every primer that 
+can be picked in the region of interest, possibly subject to
+constraints due to target regions, product size ranges, and
+so forth, that might preclude the use of primers in the
+eventually selected primer pairs. In this pass the hard 
 limits are tested like <p3t>PRIMER_MAX_GC</p3t> or <p3t>PRIMER_MIN_TM</p3t>. Primers 
 with a GC lower than <p3t>PRIMER_MAX_GC</p3t> or a Tm higher than 
 <p3t>PRIMER_MIN_TM</p3t> are memorized, the primers which fail in one of 
@@ -139,7 +142,7 @@ these tests are excluded. Primer3 can be forced to use primers
 failing to pass this test by setting <p3t>PRIMER_PICK_ANYWAY</p3t> to one 
 (only available for primers provided by the user).<br />
 <br />
-In the second step, primer3 calculates a penalty for each single 
+In the second step, primer3 calculates a penalty for each
 primer. This penalty is the only score by which primer3 
 evaluates the primers It is also provided as output 
 <p3t>PRIMER_LEFT_4_PENALTY</p3t>, <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> and 
