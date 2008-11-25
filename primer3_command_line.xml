@@ -67,14 +67,14 @@ user-oriented (rather than program-oriented) output.</p>]]>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
-it does not recognize (see INPUT AND OUTPUT CONVENTIONS) ???Do we really need see... ??? What do you mean??</p>]]>
+it does not recognize.</p>]]>
 	</description>
 </tag>
 <tag>
 	<tagName>-p3_settings_file=<i>file_path</i> </tagName>
 	<description>
 <![CDATA[<p>This argument specifies a settings file,
-<i>file path</i>. Primer3 reads the global 
+<i>file_path</i>. Primer3 reads the global 
 ("PRIMER_...") parameters from this file first. 
 Tags appearing in the settings file overwrite
 default primer3 settings. The values set in
@@ -87,19 +87,19 @@ format.</p>]]>
 <tag>
 	<tagName>-io_version=<i>n</i></tagName>
 	<description>
-<![CDATA[<p>This tag directs primer3 to use
+<![CDATA[<p>This argument directs primer3 to use
 io version <i>n</i> input and output conventions.
 <i>n</i> can be 3 (for mostly backward
 compatible behavior) or 4.
 -io_version=4 is required
-to use functionality that is new in relase 2.0.0.</p>]]>
+to use functionality that is new in release 2.0.0.</p>]]>
 	</description>
 </tag>
 
 <tag>
 	<tagName>-2x_compat</tagName>
 	<description>
-<![CDATA[<p>This tag is no longer supported.</p>]]>
+<![CDATA[<p>This argument is no longer supported.</p>]]>
 	</description>
 </tag>
 </primer3Doc>
