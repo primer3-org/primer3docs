@@ -373,9 +373,9 @@ Legal values are:<br />
    <tt><i>pick_discriminative_primers</i></tt><br />
 <br />
    Pick primers suited to select primers which bind with their end at 
-   a specific position. This can be used to forec the end of a primer 
-   at a polymorphic site which allowing to discriminate allelic 
-   variations. <p3t>SEQUENCE_INCLUDED_REGION</p3t> must be used to 
+   a specific position. This can be used to force the end of a primer 
+   to a polymorphic site, with the goal of discriminating between
+   sequence variants. <p3t>SEQUENCE_INCLUDED_REGION</p3t> must be used to 
    indicate the last nucleotide of the forward (first nucleotide of 
    included region) and the reverse primer (last nucleotide of 
    included region). Due to these limitations primer3 can only vary 
