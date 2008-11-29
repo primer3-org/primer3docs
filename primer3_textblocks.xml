@@ -71,10 +71,8 @@ the original web interface was designed by Richard Resnick.  Lincoln
 Stein championed the use of the Boulder-IO format and the idea of
 making primer3 a software component.  In addition, among others, Ernst
 Molitor, Carl Foeller, and James Bonfield contributed to the early
-design of primer3. We also thank Centerline Software, Inc., for uses
-of its TestCenter memory-error, -leak, and test-coverage checker,
-which helped us discover and correct a number of otherwise latent
-errors in Primer3.<br />
+design of primer3. 
+<br />
 <br />
 Primer3 is now operating as open software development project hosted
 on SourceForge, and we are working out how to acknowledge all who have
