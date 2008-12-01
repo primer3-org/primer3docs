@@ -1585,9 +1585,11 @@ do not overlap the 3'-end of primer.</p>]]>
 	<default>0</default>
 	<description>
 <![CDATA[<p>If this flag is 1 (non-0), produce <p3t>PRIMER_LEFT_EXPLAIN</p3t>,
-<p3t>PRIMER_RIGHT_EXPLAIN</p3t>, and <p3t>PRIMER_INTERNAL_EXPLAIN</p3t> output
-tags, which are intended to provide information on the number of
-oligos and primer pairs that primer3 examined, and statistics on
+<p3t>PRIMER_RIGHT_EXPLAIN</p3t>, <p3t>PRIMER_INTERNAL_EXPLAIN</p3t> and/or
+<p3t>PRIMER_PAIR_EXPLAIN</p3t> output
+tags as appropriate.  
+These output tags are intended to provide information on the number of
+oligos and primer pairs that primer3 examined and counts of
 the number discarded for various reasons.  If -format_output is
 set similar information is produced in the user-oriented output.</p>]]>
 	</description>

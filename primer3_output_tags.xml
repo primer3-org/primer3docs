@@ -110,8 +110,17 @@ selecting a single oligo.  For example</p>
 PRIMER_LEFT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_RIGHT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_INTERNAL_OLIGO_EXPLAIN=considered 87, too many Ns 39, overlap excluded region 40, ok 8
-
-All the categories are exclusive, except the 'considered' category.</pre>]]>
+</pre>
+All the categories are exclusive, except the 'considered' category.
+In some cases the ok count may be higher than the actual number 
+of ok oligos. This is because a primer can be considered as part of
+pair before all of the primer's characteristics have been
+computed and checked.  If a primer is never in a legal
+pair or never in a pair with a fully evaluated penalty, then
+this may occur.  This 
+situation never results in a primer pair that contains
+an illegal primer.
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -123,15 +132,51 @@ All the categories are exclusive, except the 'considered' category.</pre>]]>
 primer pair (plus internal oligo if requested).  For exaple</p>
 <pre>
 PRIMER_PAIR_EXPLAIN=considered 81, unacceptable product size 49, no internal oligo 32, ok 0
-
-All the categories are exclusive, except the 'considered' category.
 </pre>
-<p>In some cases primer3 will examine a primer pair before it
-discovers that one of the primers in the pair violates specified
-constraints.  In this case PRIMER_PAIR_EXPLAIN might have a non-0
+The purpose of this string is to provide information
+in the case that not enough primer pairs are returned.  This
+information can be used, for example, to decide
+which constraints to relax. In some cases the
+information in this string can also give insight into
+the causes of long running time.
+
+The counts in the string are only approximate,
+because of several reasons:
+
+<ul>
+
+<li>When there are multiple <p3t>PRODUCT_SIZE_RANGE</p3t>s,
+a primer pair may not be ok in one size range but ok
+in another.  Approximately, the counts for each statistic
+are summed over all product size ranges. 
+</li>
+
+<li>When <p3t>PRIMER_MIN_THREE_PRIME_DISTANCE</p3t>
+is &gt; -1, the number of ok primer pairs 
+reported may be larger than the actual
+number. The discrepancy is due to a primer
+in the pair that would overlap a primer in a
+'better' (lower penalty) pair.  (The search
+algorithm does not record state 
+that would allow it to detect 
+when a pair that was formerly ok becomes
+not ok as the result of
+another primer being inserted
+into the output list before it is.)
+</li>
+
+<li>In some instances, 
+primer3 will examine a primer pair before it
+discovers that one of the individual
+primers in the pair violates specified
+constraints.  In this case 
+<p3t>PRIMER_PAIR_EXPLAIN</p3t> might have a non-0
 number 'considered', even though one or more of
-PRIMER_LEFT_EXPLAIN, PRIMER_RIGHT_EXPLAIN, or
-PRIMER_INTERNAL_OLIGO_EXPLAIN has 'ok 0'.</p>]]>
+<p3t>PRIMER_LEFT_EXPLAIN</p3t>, <p3t>PRIMER_RIGHT_EXPLAIN</p3t>, or
+<p3t>PRIMER_INTERNAL_OLIGO_EXPLAIN</p3t> has 'ok 0'.
+</li>
+</ul>
+</p>]]>
 	</description>
 </tag>
 <tag>
