@@ -483,8 +483,7 @@ Source code available at <link>http://sourceforge.net/projects/primer3/</link>.<
 	<head>REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS</head>
 	<text>
 <![CDATA[<p>For error reports or requests for enhancements, please send e-mail
-WHERE TO SEND EMAIL?
-.</p>]]>
+to primer3-admins [at] lists.sourceforge.net</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1193,7 +1192,7 @@ modifications in source code under GPL2 as well.
 We chose GPL2 because we wanted primer3 to evolve 
 and for the improvements find their way back into the main 
 distribution. So if you make useful enhancements, 
-please send us the code (Andreas, send the code to who?)
+please send us the code to primer3-admins [at] lists.sourceforge.net
 If you are programming a new web 
 interface which runs primer3, please include in the about page 
 of the tool the sentence "&lt;your software name&gt; uses primer3 
