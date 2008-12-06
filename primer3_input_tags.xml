@@ -1260,6 +1260,19 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
+    <tagName>PRIMER_PAIR_COMPL_ANY</tagName>
+    <oldTag>
+        <oldTagName>PRIMER_PAIR_ANY</oldTagName>
+        <version>3.0</version>
+    </oldTag>
+    <dataType>decimal, 9999.99</dataType>
+    <default>8.00</default>
+    <description>
+<![CDATA[<p>PRIMER_PAIR_COMPL_ANY describes the tendency of the left primer 
+to bind to the right primer. It is similar to <p3t>PRIMER_SELF_ANY</p3t>.</p>]]>
+    </description>
+</tag>
+<tag>
 	<tagName>PRIMER_WT_SELF_ANY</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_WT_COMPL_ANY</oldTagName>
@@ -1351,6 +1364,20 @@ primer-dimer will not occur.  We recommend that
 <p3t>PRIMER_INTERNAL_SELF_END</p3t> be set at least as high as
 <p3t>PRIMER_INTERNAL_SELF_ANY</p3t>.</p>]]>
 	</description>
+</tag>
+<tag>
+    <tagName>PRIMER_PAIR_COMPL_END</tagName>
+    <oldTag>
+        <oldTagName>PRIMER_PAIR_END</oldTagName>
+        <version>3.0</version>
+    </oldTag>
+    <dataType>decimal, 9999.99</dataType>
+    <default>3.00</default>
+    <description>
+<![CDATA[<p>PRIMER_PAIR_COMPL_END tries to bind the 3'-END of the left primer 
+to the right primer and scores the best binding it can find.
+It is similar to <p3t>PRIMER_SELF_END</p3t>.</p>]]>
+    </description>
 </tag>
 <tag>
 	<tagName>PRIMER_WT_SELF_END</tagName>
@@ -2025,37 +2052,9 @@ both sides in which primer3plus picks the best primer. Value only used if
 </tag>
 
 
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<!-- Flags AU did not yet sort -->
-	
-	
-	
+<!-- Flags not sorted and of no function -->
 <tag>
 	<tagName>PRIMER_WT_END_QUAL</tagName>
 	<dataType>float</dataType>
@@ -2077,27 +2076,6 @@ both sides in which primer3plus picks the best primer. Value only used if
 	</description>
 </tag>
 
-	
-<tag>
-	<tagName>PRIMER_PAIR_ANY</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>8.00</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_END</tagName>
-	<dataType>decimal, 9999.99</dataType>
-	<default>3.00</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
-
-	
-	
-	
 	
 	
 	

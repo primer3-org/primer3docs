@@ -1289,6 +1289,8 @@ NEW VERSION                       - OLD VERSION
 
 <p3t>PRIMER_WT_SELF_ANY</p3t>                - PRIMER_WT_COMPL_ANY
 <p3t>PRIMER_WT_SELF_END</p3t>                - PRIMER_WT_COMPL_END
+<p3t>PRIMER_PAIR_COMPL_ANY</p3t>             - PRIMER_PAIR_ANY
+<p3t>PRIMER_PAIR_COMPL_END</p3t>             - PRIMER_PAIR_END
 
 <p3t>P3_FILE_FLAG</p3t>                      - PRIMER_FILE_FLAG
 <p3t>P3_COMMENT</p3t>                        - PRIMER_COMMENT
