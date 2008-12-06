@@ -444,20 +444,22 @@ sub createTagList {
 	# Prepare the strings for the files
 	my $xml_string = "my \@docTags = (";
 	my $tagCount = 0;
-	my $oldTagName;
+	my ($oldTagName, $tagName);
 	my $tag_difference = "New Tag   -  Old Tag\n";
-	
+	my $default_set = "Default Settings:\n\n";
+	my $dev_val;
 		
 	# Now print out all tags
 	foreach my $tag_holder (@xml_tags) {
 		$tagCount++;
 		
 		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
+		$tagName = get_node_content($tag_holder, "tagName");
+		$dev_val = get_node_content($tag_holder, "default");
 	
 		# Assemble the XML file
 		$xml_string .= "\"$tagName\",\n";
-		
+		$default_set .= "$tagName=$dev_val\n";
 	}
 	
 	# Finish the strings for the files
@@ -470,7 +472,7 @@ sub createTagList {
 		$tagCount++;
 		
 		# Get all the XML data of one tag
-		my $tagName = get_node_content($tag_holder, "tagName");
+		$tagName = get_node_content($tag_holder, "tagName");
 		my @oldTags = get_node_content_array($tag_holder, "oldTagName");
 	
 		# Assemble the XML file
@@ -489,6 +491,9 @@ sub createTagList {
 	
 	$xml_string .= $tag_difference;
 	
+    $xml_string .= "\n\n";
+	
+	$xml_string .= $default_set;
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "tags_list.txt";

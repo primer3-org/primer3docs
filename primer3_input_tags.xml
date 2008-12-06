@@ -723,7 +723,7 @@ by Primer.</p>]]>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_LT</tagName>
 	<dataType>float</dataType>
-	<default>1.0</default>
+	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for primers with GC percent lower than
 <p3t>PRIMER_OPT_GC_PERCENT</p3t>.</p>]]>
@@ -736,7 +736,7 @@ by Primer.</p>]]>
 		<version>3.0</version>
 	</oldTag>
 	<dataType>float</dataType>
-	<default>1.0</default>
+	<default>0.0</default>
 	<description>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> for the internal oligo.</p>]]>
 	</description>
@@ -744,7 +744,7 @@ by Primer.</p>]]>
 <tag>
 	<tagName>PRIMER_WT_GC_PERCENT_GT</tagName>
 	<dataType>float</dataType>
-	<default>1.0</default>
+	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for primers with GC percent higher than
 <p3t>PRIMER_OPT_GC_PERCENT</p3t>.</p>]]>
@@ -757,7 +757,7 @@ by Primer.</p>]]>
 		<version>3.0</version>
 	</oldTag>
 	<dataType>float</dataType>
-	<default>1.0</default>
+	<default>0.0</default>
 	<description>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> for the internal oligo.</p>]]>
 	</description>
@@ -1434,8 +1434,8 @@ last five 3' bases of a left or right primer.</p>]]>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_NUM_NS</oldTagName>
 		<version>3.0</version>
 	</oldTag>
-	<dataType>float</dataType>
-	<default>0.0</default>
+	<dataType>int</dataType>
+	<default>0</default>
 	<description>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_INTERNAL_NUM_NS_ACCEPTED</p3t> for the internal oligo.</p>]]>
 	</description>
@@ -1649,7 +1649,7 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 		<version>3.0</version>
 	</oldTag>
 	<dataType>decimal, 9999.99</dataType>
-	<default>12.00</default>
+	<default>-1.00</default>
 	<description>
 <![CDATA[<p>Not implemented.</p>]]>
 	</description>
@@ -1948,13 +1948,14 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	<default>1.0</default>
 	<description>
 <![CDATA[<p>Penalty factor for the sum of the left and the right primer added 
-to the pair penalty.</p>]]>
+to the pair penalty. Setting this value below 1.0 will increase 
+runtime overproportionally.</p>]]>
 	</description>
 </tag>
 <tag>
 	<tagName>PRIMER_PAIR_WT_IO_PENALTY</tagName>
 	<dataType>float</dataType>
-	<default>1.0</default>
+	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty factor for the internal oligo added to the pair penalty.</p>]]>
 	</description>
@@ -1990,7 +1991,7 @@ target as a term in the objective function.</p>]]>
 <tag>
 	<tagName>PRIMER_WT_POS_PENALTY</tagName>
 	<dataType>float</dataType>
-	<default>0.0</default>
+	<default>1.0</default>
 	<description>
 <![CDATA[<p>Penalty for the primer which do not overlap the target.</p>]]>
 	</description>
@@ -2095,7 +2096,7 @@ both sides in which primer3plus picks the best primer. Value only used if
 <tag>
 	<tagName>PRIMER_PAIR_ANY</tagName>
 	<dataType>decimal, 9999.99</dataType>
-	<default>xxx</default>
+	<default>8.00</default>
 	<description>
 <![CDATA[<p> </p>]]>
 	</description>
@@ -2103,7 +2104,7 @@ both sides in which primer3plus picks the best primer. Value only used if
 <tag>
 	<tagName>PRIMER_PAIR_END</tagName>
 	<dataType>decimal, 9999.99</dataType>
-	<default>xxx</default>
+	<default>3.00</default>
 	<description>
 <![CDATA[<p> </p>]]>
 	</description>
