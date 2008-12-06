@@ -1336,6 +1336,8 @@ There are three big changes on the output:<br />
 - INTERNAL_OLIGO is now replaced by INTERNAL.<br />
 - The first version is numbered 0.<br />
 - The "PRODUCT" tags are renamed<br />
+- The errors are modified<br />
+- Errors caused by a specific primer are given as <p3t>PRIMER_LEFT_4_PROBLEMS</p3t><br />
 <br />
 Now all primer related output follows the rule:
 PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;.

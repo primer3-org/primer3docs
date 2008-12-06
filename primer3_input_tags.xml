@@ -1539,21 +1539,6 @@ or <p3t>SEQUENCE_INTERNAL_OLIGO</p3t> even if it violates specific
 constraints.</p>]]>
 	</description>
 </tag>
-<tag>
-	<tagName>PRIMER_SHOW_OLIGO_PROBLEMS</tagName>
-	<dataType>boolean</dataType>
-	<default>0</default>
-	<description>
-<![CDATA[<p>If non-zero, cause the tags
-PRIMER_{LEFT,RIGHT,INTERNAL_OLIGO_.._PROBLEMS, to be
-generated.  These tags have empty arguments when there are
-no problems with the corresponding oligo or primer, and
-otherwise list the problems (constraint violations)
-associated with primer or oligo that primer3 was forced to
-choose (for example, as sometimes when <p3t>PRIMER_PICK_ANYWAY</p3t>=1
-and PRIMER...INPUT is specified).</p>]]>
-	</description>
-</tag>
 
 
 <tag>
@@ -2109,18 +2094,7 @@ both sides in which primer3plus picks the best primer. Value only used if
 <![CDATA[<p> </p>]]>
 	</description>
 </tag>
-<tag>
-	<tagName>PRIMER_PRIMERS_IN_PAIRS_MUST_BE_UNIQUE</tagName>
-	<dataType>int</dataType>
-	<default>xxx</default>
-	<description>
-<![CDATA[<p> </p>]]>
-	</description>
-</tag>
 
-
-
-	
 	
 	
 	
