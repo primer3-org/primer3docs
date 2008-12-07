@@ -550,7 +550,6 @@ See also the file release_notes.txt in this directory.
 	<id>example</id>
 	<head>AN EXAMPLE</head>
 	<text>
-** Andreas, can we move this section up to right after "INPUT AND OUTPUT CONVENTIONS"? **
 <![CDATA[<p>One might be interested in performing PCR on an STS with a CA
 repeat in the middle of it. Primers need to be chosen based on
 the criteria of the experiment.<br />
@@ -617,7 +616,6 @@ detection, primers for cloning or for sequencing.<br />
 <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
 <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
-Andreas, it looks like the file 'example' (in the directory above the src dir) is now out of synch with the docs.
 We would like to pick a left primer, an internal oligo and a 
 right primer, so we set these flags to 1 (true). In combination 
 with the <p3t>PRIMER_TASK</p3t> this tags control which primers are 
@@ -625,9 +623,9 @@ picked.<br />
 <br />
 <p3t>PRIMER_OPT_SIZE</p3t>=18<br />
 <br />
-Since our sequence length is rather small (only 92 bases Andreas, where did 92 come from?
-long), we lower the <p3t>PRIMER_OPT_SIZE</p3t> from 20 to 18. It
-is more likely that primer3 will succeed if it aims for smaller
+Since our sequence length is rather small (only 108 bases long), 
+we lower the <p3t>PRIMER_OPT_SIZE</p3t> from 20 to 18. It is 
+more likely that primer3 will succeed if it aims for smaller
 primers.<br />
 <br />
 <p3t>PRIMER_MIN_SIZE</p3t>=15<br />
@@ -743,14 +741,13 @@ In all of the error cases above Primer3 prints a message to stderr.</p>]]>
 	<id>fileFormat</id>
 	<head>PRIMER3 FILE FORMAT</head>
 	<text>
-<![CDATA[<p>Primer3 can read global settings from a
-separate a file a program start up. This allows 
-user to save and exchange settings 
+<![CDATA[<p>Primer3 can read global settings from a text file at program 
+start up. This allows the user to save and exchange settings 
 tailored to special applications.<br />
 <br />
-Such a primer3 settings file is simply a text file.
-The three lines of the file have to be:</p>
-** Andreas, I cannot really follow this **
+Such a primer3 settings file is a text file. The first three 
+lines of the file have to be as described below followed by tags 
+as they would be provided at standard input:</p>
 <pre>
 Primer3 File - http://primer3.sourceforge.net
 P3_FILE_TYPE=settings
@@ -864,12 +861,11 @@ below), and prints additional information on stdout; this option
 can be useful for debugging systems that incorporate primer3.<br />
 <br />
 
-* Andreas, this next sentence is not correct, I think.
-I think that if a tag appears more than once, the
-new value silently over-writes the previous value, correct? *
-Except for tags with the type "interval list" each tag is allowed
-only ONCE in any given input record.  This restriction is not
-systematically checked in this beta release: use care.
+* Steve, I think you are right - I would write this: *
+Except for tags with the type "interval list" each tag should only
+appear ONCE in any given input record.  This restriction is not
+systematically checked and if a tag appears more than once, the
+new value silently over-writes the previous value.
 
 
 </p>]]>
@@ -1051,11 +1047,6 @@ We *strongly* recommend you install ActiveState perl
 as this was used to test our primer3 builds, and it is 
 known to work.<br />
 <br />
-Andreas, is the test script still different for Windows?
-***The perl test script for windows has a different name, 
-at the moment, than that for the Unix/Linux versions. See 
-below.***<br />
-<br />
 1. Click on 'Start > Run...'<br />
 2. Type 'cmd' into the space provided<br />
 3. Hit enter (or select 'OK')<br />
@@ -1071,7 +1062,7 @@ below.***<br />
     command-line window from windows explorer, this will 
     fill in the location for you<br />
 <br />
-5. On the command line, run 'perl p3testz.pl -w' in this 
+5. On the command line, run 'perl p3test.pl --windows' in this 
    directory<br />
 6. You should see [OK] for all of the tests.<br />
 <br />
@@ -1196,37 +1187,36 @@ require that use of this software be cited in publications
 as listed above under CITING PRIMER3.
 <br />
 <br />
-If you are a programmer, you  will see that primer3 is now distributed
-under the GNU  General Public License, version  2 or (at  your option) any
-later version of the License (GPL2). 
+If you are a programmer, you  will see that primer3 is now 
+distributed under the GNU  General Public License, version 2 or 
+(at  your option) any later version of the License (GPL2). 
 
-As we understand it, if you include parts of the primer3 source code
-in your source code or link to primer3 binary libraries in your
-executable, you have to release your software also under GPL2. If you
-only call primer3 from your software and interpret its output, you can
-use any license you want for your software. If you modify primer3 and
-then release your modified software, you have to release your
-modifications in source code under GPL2 as well.
+As we understand it, if you include parts of the primer3 source 
+code in your source code or link to primer3 binary libraries in 
+your executable, you have to release your software also under 
+GPL2. If you only call primer3 from your software and interpret 
+its output, you can use any license you want for your software. 
+If you modify primer3 and then release your modified software, 
+you have to release your modifications in source code under 
+GPL2 as well.
 <br />
 <br />
-We chose GPL2 because we wanted primer3 to evolve 
-and for the improvements to find their way back into the main 
-distribution. 
+We chose GPL2 because we wanted primer3 to evolve and for the 
+improvements to find their way back into the main distribution. 
 
 Andreas,do you want to keep this next sentence?
-So if you make useful enhancements, 
-please send us the code to primer3-admins [at] lists.sourceforge.net
+So if you make useful enhancements, please send us the code to 
+primer3-admins [at] lists.sourceforge.net
 
-If you are programming a new web 
-interface which runs primer3, please include in the about page 
-of the tool the sentence "&lt;your software name&gt; uses primer3 
-version ...". Please consider releasing your software under GPL2 
-as well, especially if you do not want to maintain it 
-in the future. 
+If you are programming a new web interface which runs primer3, 
+please include in the about page of the tool the sentence 
+"&lt;your software name&gt; uses primer3 version ...". 
+Please consider releasing your software under GPL2 as well, 
+especially if you do not want to maintain it in the future. 
 <br />
 <br />
-There is no need to ask us for 
-permission to include primer3 in your tools
+There is no need to ask us for permission to include primer3 
+in your tools, 
 
 Andreas, as discussed by us by email, should we direct people to the primer3 web site?
 but we would be happy to receive an e-mail to inform us about (WHERE TO SEND EMAIL?)
@@ -1239,29 +1229,22 @@ primer3, please let us know so we can improve it.</p>]]>
 	<id>migrateTags</id>
 	<head>HOW TO MIGRATE TAGS TO IO VERSION 4</head>
 	<text>
-<![CDATA[<p>With primer3 release 2.0,
-many Boulder-IO tags were modified and new tags 
-were introduced. The new primer3 tags are designed with the 
-idea in mind that computer scripts 
-and other programs use primer3_core.
-The modifications make it easier for 
-programs to read and write primer3
-input and output.<br />
+<![CDATA[<p>With primer3 release 2.0, many Boulder-IO tags were 
+modified and new tags were introduced. The new primer3 tags are 
+designed with the idea in mind that computer scripts and other 
+programs use primer3_core. The modifications make it easier for 
+programs to read and write primer3 input and output.<br />
 <br />
-For temporary backward compatibility 
-a command line argument 
-(-io_version=3) allows the use of 
-primer3 tags the are nearly identical
-to the previous version. 
-However, new functionality is 
-not available with the old tags. 
+For temporary backward compatibility a command line argument 
+(-io_version=3) allows the use of primer3 tags the are nearly 
+identical to the previous version. However, new functionality 
+is not available with the old tags. 
 
-*** Andreas, even for io_version=3 ? Which defaults changed?
-Furthermore the primer3 default
-values have changed in version 2.0. 
+Furthermore the primer3 default values and the use of 
+<p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> and <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>
+have changed in version 2.0. 
 
-The backward 
-compatibility might be dropped in the next 
+The backward compatibility might be dropped in the next 
 release of primer3.<br />
 <br />
 There are three classes of input: "Sequence" input tags describe 
@@ -1462,11 +1445,10 @@ records.</p>]]>
 	<head>SYSTEM REQUIREMENTS</head>
 	<text>
 <![CDATA[<p>Please see <link>http://sourceforge.net/projects/primer3/</link> for up-to-date
-information.  Primer3 should compile on any Linux/Unix system
-including MacOS 10 and on other systems with POSIX C
-Andreas: POSIX or ANSI?  Is the Microsoft compiler / library POSIX?
-(e.g. MSWindows).  The Makefile will probably need to be modified for
-compilation with C compilers other than gcc.
+information.  Primer3 should compile on any system using with an 
+ANSI C compiler like Linux/Unix, MacOS 10 or MS Windows.  The 
+Makefile will probably need to be modified for compilation with 
+C compilers other than gcc.
 </p>]]>
 	</text>
 </textBlock>

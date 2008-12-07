@@ -1125,6 +1125,7 @@ melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentr
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
+* Steve: If we have 10 mM ATP 10 mM CTP 10 mM GTP and 10 mM TTP - Is this value 10 or 40?
 <![CDATA[<p>The millimolar concentration of deoxyribonucleotide triphosphate. This
 argument is considered only if <p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See
 <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
@@ -1175,6 +1176,7 @@ Biochemistry 43:3537-54 <link>http://dx.doi.org/10.1021/bi034621r</link>].</p>]]
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
+* Steve: So this is not the template concentration? How does it correlate to it?
 <![CDATA[<p>The nanomolar (nM) concentration of annealing oligos in the PCR.
 Primer3 uses this argument to calculate oligo melting 
 temperatures.  The default (50nM) works well with the standard
@@ -1956,7 +1958,7 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	<description>
 <![CDATA[<p>Penalty factor for the sum of the left and the right primer added 
 to the pair penalty. Setting this value below 1.0 will increase 
-*Andreas, I thought it was also increasing the weight of items computer on the pair, such as pair mispriming, project size, etc..
+*Steve, It forces primer3 to check more pairs because primer3 can not discard them based on single primer penalties.
 running time.</p>]]>
 	</description>
 </tag>

@@ -88,11 +88,13 @@ this tag is absent if there are no warnings.</p>]]>
     <dataType>i</dataType>
     <optional>N</optional>
     <description>
-<![CDATA[<p>i is the number of returned primers. PRIMER_PAIR_NUM_RETURNED
-is 0 if the primers returned are not pairs (for example 
-sequencing primers or primer lists). It is generated if 
-there are no errors and <p3t>PRIMER_ERROR</p3t> is not 
-present.</p>]]>
+<![CDATA[<p>i is the number of primers returned on the standard output stream. 
+If for example only left primers were requested, 
+PRIMER_RIGHT_NUM_RETURNED, PRIMER_INTERNAL_NUM_RETURNED and 
+PRIMER_PAIR_NUM_RETURNED will be 0. PRIMER_PAIR_NUM_RETURNED is 0
+if the primers returned are not pairs (for example sequencing 
+primers or primer lists). These Tags are allways generated if 
+there are no errors and <p3t>PRIMER_ERROR</p3t> is not present.</p>]]>
     </description>
 </tag>
 <tag>
