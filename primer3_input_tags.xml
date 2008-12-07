@@ -86,10 +86,13 @@ This tag must be present if <p3t>P3_FILE_FLAG</p3t> is non-zero.</p>]]>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>The sequence from which to choose primers.  The sequence
-must be presented 5' -> 3' (see the discussion of the
-<p3t>PRIMER_SELF_END</p3t> argument).  The bases may be upper or lower case.
-No newlines should be inserted into the sequence, because the
-Boulder-IO parser will assume that a line ends at a newline.</p>]]>
+must be presented 5' -> 3' (i.e, in the normal way).
+In general, the bases may be upper or lower case, but 
+lower case letters are treated 
+specially if <p3t>PRIMER_LOWERCASE_MASKING</p3t> is set.
+The entire sequence MUST be all on a single line. 
+(In other words, the sequence cannot span several lines.)
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -142,7 +145,7 @@ Target, and <tt><i>&lt;length&gt;</i></tt> is its length.</p>]]>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
-<![CDATA[<p>Primer oligos may not overlap any region specified in this tag.
+<![CDATA[<p>Primers and oligos may not overlap any region specified in this tag.
 The associated value must be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
@@ -160,7 +163,7 @@ such as ALUs or LINEs.</p>]]>
     <default>empty</default>
     <description>
 <![CDATA[<p>A list of space separated integers. If this list is not empty primer3
-tries to pick primerpairs were the forward or the reverse primer 
+tries to pick primer pairs were the forward or the reverse primer 
 overlaps one of these positions for at least 
 <p3t>PRIMER_POS_OVERLAP_TO_END_DIST</p3t> nucleotides.</p>]]>
     </description>
@@ -285,7 +288,7 @@ quality information (for example phred).</p>]]>
 	<description>
 <![CDATA[<p>Forces the 5' end of the left primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constrains.</p>]]>
+constraints.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -295,7 +298,7 @@ constrains.</p>]]>
 	<description>
 <![CDATA[<p>Forces the 3' end of the left primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constrains.</p>]]>
+constraints.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -305,7 +308,7 @@ constrains.</p>]]>
 	<description>
 <![CDATA[<p>Forces the 5' end of the right primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constrains.</p>]]>
+constraints.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -315,7 +318,7 @@ constrains.</p>]]>
 	<description>
 <![CDATA[<p>Forces the 3' end of the right primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constrains.</p>]]>
+constraints.</p>]]>
 	</description>
 </tag>
 
@@ -327,7 +330,7 @@ constrains.</p>]]>
 	<dataType>string</dataType>
 	<default>pick_pcr_primers</default>
 	<description>
-<![CDATA[<p>Probably the most important Tag. It tells primer3 what task to perform.
+<![CDATA[<p>This tag tells primer3 what task to perform.
 Legal values are:<br />
 <br />
    <tt><i>pick_detection_primers</i></tt><br />
@@ -376,8 +379,8 @@ Legal values are:<br />
    a specific position. This can be used to force the end of a primer 
    to a polymorphic site, with the goal of discriminating between
    sequence variants. <p3t>SEQUENCE_INCLUDED_REGION</p3t> must be used to 
-   indicate the last nucleotide of the forward (first nucleotide of 
-   included region) and the reverse primer (last nucleotide of 
+   indicate the last nucleotide of the left (first nucleotide of 
+   included region) and the right primer (last nucleotide of 
    included region). Due to these limitations primer3 can only vary 
    the length of the primers. Set <p3t>PRIMER_PICK_ANYWAY</p3t>=1 to obtain 
    primers even if they violate specific constraints.<br />
@@ -802,7 +805,7 @@ oligo.</p>]]>
 	<dataType>float</dataType>
 	<default>60.0</default>
 	<description>
-<![CDATA[<p>Optimum melting temperature (Celsius) for a primer oligo. Primer3
+<![CDATA[<p>Optimum melting temperature (Celsius) for a primer. Primer3
 will try to pick primers with melting temperatures are close to
 this temperature.  The oligo melting temperature formula used can
 be specified by user. Please see <p3t>PRIMER_TM_FORMULA</p3t> for more
@@ -897,7 +900,7 @@ temperatures of the left and right primers.</p>]]>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Penalty weight for the TM difference between the left primer and 
-the right ptimer.</p>]]>
+the right primer.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -981,7 +984,7 @@ under hybridization conditions.</p>]]>
 v. 1.1.0, added by Maido Remm and Triinu Koressaar.)<br />
 <br />
 A value of 0 directs primer3 to a backward compatible calculation
-(in other words, the only calculation availble in previous
+(in other words, the only calculation available in previous
 version of primer3).<br />
 <br />
 This backward compatible calculation uses the table of
@@ -1091,16 +1094,16 @@ Primer3 converts concentration of divalent cations to concentration
 of monovalent cations using formula suggested in the paper [Ahsen von N,
 Wittwer CT, Schutz E (2001) "Oligonucleotide Melting Temperatures under PCR
 Conditions: Nearest-Neighbor Corrections for Mg^(2+), Deoxynucleotide Triphosphate,
-and Dimethyl Sulfoxide Concentrations with Comparision to Alternative Empirical 
+and Dimethyl Sulfoxide Concentrations with Comparison to Alternative Empirical 
 Formulas", Clinical Chemistry 47:1956-61 <link>http://www.clinchem.org/cgi/content/full/47/11/1956</link>].</p>
 <pre>
 [Monovalent cations] = [Monovalent cations] + 120*(([divalent cations] - [dNTP])^0.5)
 </pre>
-<p>According to the formula concentration of desoxynucleotide triphosphate
+<p>According to the formula concentration of deoxynucleotide triphosphate
 [dNTP] must be smaller than concentration of divalent cations. If the
 specified concentration of dNTPs is larger than specified concentration of
 divalent cations then the effect of divalent cations is not considered. The
-concentration of dNTPs is included to the formula beacause of some magnesium is bound by the
+concentration of dNTPs is included to the formula because of some magnesium is bound by the
 dNTP. Attained concentration of monovalent cations is used to calculate oligo/primer
 melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</p>]]>
 	</description>
@@ -1177,7 +1180,7 @@ Primer3 uses this argument to calculate oligo melting
 temperatures.  The default (50nM) works well with the standard
 protocol used at the Whitehead/MIT Center for Genome 
 Research--0.5 microliters of 20 micromolar concentration for each
-primer oligo in a 20 microliter reaction with 10 nanograms
+primer in a 20 microliter reaction with 10 nanograms
 template, 0.025 units/microliter Taq polymerase in 0.1 mM each
 dNTP, 1.5mM MgCl2, 50mM KCl, 10mM Tris-HCL (pH 9.3) using 35
 cycles with an annealing temperature of 56 degrees Celsius.  This
@@ -1220,7 +1223,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	<description>
 <![CDATA[<p>PRIMER_SELF_ANY describes the tendency of a primer to bind to 
 itself (interfering with target sequence binding). It will score 
-ANY binding occuring within the entire primer sequence.<br />
+ANY binding occurring within the entire primer sequence.<br />
 It is the maximum allowable local alignment score when testing 
 a single primer for (local) self-complementarity and the 
 maximum allowable local alignment score when testing for 
@@ -1261,10 +1264,6 @@ oligos.</p>]]>
 </tag>
 <tag>
     <tagName>PRIMER_PAIR_COMPL_ANY</tagName>
-    <oldTag>
-        <oldTagName>PRIMER_PAIR_ANY</oldTagName>
-        <version>3.0</version>
-    </oldTag>
     <dataType>decimal, 9999.99</dataType>
     <default>8.00</default>
     <description>
@@ -1315,7 +1314,7 @@ to bind to the right primer. It is similar to <p3t>PRIMER_SELF_ANY</p3t>.</p>]]>
 PRIMER_SELF_END tries to bind the 3'-END to a identical primer 
 and scores the best binding it can find. This is critical for 
 primer quality because it allows primers use itself as a target 
-and amplify a short piece (forming a primer-dimer). These primer 
+and amplify a short piece (forming a primer-dimer). These primers 
 are then unable to bind and amplify the target sequence.<br />
 PRIMER_SELF_END is the maximum allowable 3'-anchored global 
 alignment score when testing a single primer for 
@@ -1367,10 +1366,6 @@ primer-dimer will not occur.  We recommend that
 </tag>
 <tag>
     <tagName>PRIMER_PAIR_COMPL_END</tagName>
-    <oldTag>
-        <oldTagName>PRIMER_PAIR_END</oldTagName>
-        <version>3.0</version>
-    </oldTag>
     <dataType>decimal, 9999.99</dataType>
     <default>3.00</default>
     <description>
@@ -1535,11 +1530,11 @@ are acceptable and have special interpretations:
 -1 indicates that a given primer can appear in
 multiple primer pairs returned by primer3
 The only requirement is that each primer pair
-be unqiue.  This is the default behavior and the behavior
+be unique.  This is the default behavior and the behavior
 in previous releases).  This is also the most liberal
 behavior.<br />
 <br />
-0 indicates a primer pair is ok if neither the left or the right primer 
+0 indicates a primer pair is acceptable if neither the left or the right primer 
 already appeared in any of the previous pairs.<br />
 <br />
 For n &gt; 0:
@@ -1961,7 +1956,8 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	<description>
 <![CDATA[<p>Penalty factor for the sum of the left and the right primer added 
 to the pair penalty. Setting this value below 1.0 will increase 
-runtime overproportionally.</p>]]>
+*Andreas, I thought it was also increasing the weight of items computer on the pair, such as pair mispriming, project size, etc..
+running time.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -2103,14 +2099,17 @@ output of primer3.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates two output
+<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates 
+one or more output
 files for each input <p3t>SEQUENCE_TEMPLATE</p3t>.  File &lt;sequence_id&gt;.for lists all
 acceptable left primers for &lt;sequence_id&gt;, and &lt;sequence_id&gt;.rev
 lists all acceptable right primers for &lt;sequence_id&gt;, where
 &lt;sequence_id&gt; is the value of the <p3t>SEQUENCE_ID</p3t> tag (which
-must be supplied).  In addition, if the input tag
-<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> is 1 (non-0), primer3 produces a file
-&lt;sequence_id&gt;.int, which lists all acceptable internal oligos.</p>]]>
+must be supplied).  If internal oligos
+are requested, primer3 produces a file
+&lt;sequence_id&gt;.int, which lists all
+acceptable internal oligos.  Obviously, &lt;sequence_id&gt; needs
+to be a string that will work as a file name.</p>]]>
 	</description>
 </tag>
 <tag>
