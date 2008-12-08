@@ -777,6 +777,15 @@ end of both the left and right primer.  (This parameter has no
 effect on the internal oligo if one is requested.)</p>]]>
 	</description>
 </tag>
+<tag>
+    <tagName>PRIMER_MAX_END_GC</tagName>
+    <dataType>int</dataType>
+    <default>5</default>
+    <description>
+<![CDATA[<p>The maximum number of Gs or Cs allowed in the last five 3' 
+bases of a left or right primer.</p>]]>
+    </description>
+</tag>
 
 
 <tag>
@@ -1125,11 +1134,11 @@ melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentr
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-* Andreas, please see my e-mail and check w/ Triinu and/or Maido
-* Steve: If we have 10 mM ATP 10 mM CTP 10 mM GTP and 10 mM TTP - Is this value 10 or 40?
-<![CDATA[<p>The millimolar concentration of deoxyribonucleotide triphosphate. This
-argument is considered only if <p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See
-<p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
+<![CDATA[<p>The millimolar concentration of the sum of all 
+deoxyribonucleotide triphosphate. A reaction mix containing 
+0.2 mM ATP, 0.2 mM CTP, 0.2 mM GTP and 0.2 mM TTP would have a 
+PRIMER_DNTP_CONC=0.8. This argument is considered only if 
+<p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
