@@ -485,7 +485,7 @@ Source code available at <link>http://sourceforge.net/projects/primer3/</link>.<
 	<text>
 <![CDATA[<p>For reporting errors
 or requesting enhancements, please see 
-http://primer3.sourceforge.net/</p>]]>
+http://primer3.sourceforge.net/contact.php</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1201,9 +1201,8 @@ GPL2 as well.
 We chose GPL2 because we wanted primer3 to evolve and for the 
 improvements to find their way back into the main distribution. 
 
-Andreas,do you want to keep this next sentence?
-So if you make useful enhancements, please send us the code to 
-primer3-admins [at] lists.sourceforge.net
+So if you make useful enhancements, please contact us: 
+http://primer3.sourceforge.net/contact.php
 
 If you are programming a new web interface which runs primer3, 
 please include in the about page of the tool the sentence 
@@ -1215,11 +1214,9 @@ especially if you do not want to maintain it in the future.
 There is no need to ask us for permission to include primer3 
 in your tools, 
 
-Andreas, as discussed by us by email, should we direct people to the primer3 web site?
-but we would be happy to receive an e-mail to inform us about (WHERE TO SEND EMAIL?)
-your tool. 
 If there are any issues / bugs / suggestions for 
-primer3, please let us know so we can improve it.</p>]]>
+primer3, please let us know so we can improve it:
+http://primer3.sourceforge.net/contact.php</p>]]>
 	</text>
 </textBlock>
 <textBlock>
