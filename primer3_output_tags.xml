@@ -89,13 +89,31 @@ this tag is absent if there are no warnings.</p>]]>
     <optional>N</optional>
     <description>
 <![CDATA[<p>i is the number of primers
-or primer pairs returned on the standard output stream. 
-If for example only left primers were requested, 
+or primer pairs returned on standard output. 
+These tags are always generated under
+IO version 4 if there are no internal errors and
+and if <p3t>PRIMER_ERROR</p3t> is not present.
+<br />
+If primer pairs were requested, 
+PRIMER_LEFT_NUM_RETURNED and
+PRIMER_RIGHT_NUM_RETURNED will be equal to the
+number of pairs returned, even if the
+actual number of distinct left or right primers
+was lower than the number of pairs.  If primer
+pairs with internal oligos were requested,
+PRIMER_INTERNAL_NUM_RETURNED will also be set
+to the number of pairs returned.
+<br />
+If only left or right primers or hybridization
+(internal) oligos were requested, PRIMER_PAIR_NUM_RETURNED
+will be 0 and only the relevant tag
+will have a non-zero value.
+For example, if only left primers were requested, 
 PRIMER_RIGHT_NUM_RETURNED, PRIMER_INTERNAL_NUM_RETURNED and 
 PRIMER_PAIR_NUM_RETURNED will be 0. PRIMER_PAIR_NUM_RETURNED is 0
 if the primers returned are not pairs (for example sequencing 
-primers or primer lists). These Tags are allways generated if 
-there are no errors and <p3t>PRIMER_ERROR</p3t> is not present.</p>]]>
+primers or primer lists). 
+</p>]]>
     </description>
 </tag>
 <tag>
