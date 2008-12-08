@@ -95,12 +95,12 @@ http://sourceforge.net/projects/primer3/ for the current release.<br />
 <br />
 These instructions assume you want to build binaries compatible 
 with *both* of the current processor architectures used by the Apple
-platform (i,e. the binaries will be run on both PPC and intel platforms).<br />
+platform (i,e. the binaries will be run on both PPC and Intel platforms).<br />
 <br />
 Provided you have the OS X developer tools installed
 (you can download from http://developer.apple.com after
 registering for a free account), you can compile a universal
-build (intel and PPC native) of primer3.<br />
+build (Intel and PPC native) of primer3.<br />
 <br />
 o you must be running OS X > 10.4 and should have the most
 	recent version of XCode<br />
@@ -112,7 +112,7 @@ Additional instructions for 'installing' the binaries may be found in
 the README.OSX.txt.<br />
 <br />
 You should be able to compile a 3-way binary which includes PPC64 support 
-(intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
+(Intel, PPC, PPC64) by adding the `-arch ppc64` flag to the 
 end of both the CFLAGS and LDFLAGS lines at the top of Makefile.OSX.  
 This has not been tested.</p>]]>
 	</text>
@@ -145,7 +145,7 @@ In the second step, primer3 calculates a penalty for each
 primer. This penalty is the only score by which primer3 
 evaluates the primers It is also provided as output 
 <p3t>PRIMER_LEFT_4_PENALTY</p3t>, <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> and 
-<p3t>PRIMER_RIGHT_4_PENALTY</p3t> (shown for the figth primer set). For each 
+<p3t>PRIMER_RIGHT_4_PENALTY</p3t> (shown for the fifth primer set). For each 
 primer, it is calculated like that:</p>
 
 <h3>Left Primers:</h3>
@@ -434,7 +434,7 @@ and avoiding repetitive elements.<br />
 <br />
 Techniques for avoiding problems include a thorough understanding
 of possible vector contaminants and cloning artifacts coupled
-with database searches using blast, fasta, or other similarity
+with database searches using blast, Fasta, or other similarity
 searching program to screen for vector contaminants and possible
 repeats.  Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
 others, 1995-1996, <link>ftp://ncbi.nlm.nih.gov/repository/repbase</link>)
@@ -450,7 +450,7 @@ quality bases should be changed to N's or can be made part of
 Excluded Regions. The beginning of a sequencing read is often
 problematic because of primer peaks, and the end of the read
 often contains many low-quality or even meaningless called bases.
-Therefore when picking primers from single-pass sequence it is
+Therefore, when picking primers from single-pass sequence it is
 often best to use the <p3t>SEQUENCE_INCLUDED_REGION</p3t> parameter to 
 ensure that primer3 chooses primers in the high quality region 
 of the read.<br />
@@ -662,7 +662,7 @@ forwar primers and reverse primers to output files.<br />
 <p3t>SEQUENCE_INTERNAL_EXCLUDED_REGION</p3t>=37,21<br />
 <br />
 Normally CA-repeats make poor hybridization probes (because they
-not specific enough).  Therefore we exclude the CA repeat (which
+not specific enough).  Therefore, we exclude the CA repeat (which
 is the TARGET) from consideration for the internal oligo.<br />
 <br />
 <p3t>PRIMER_EXPLAIN_FLAG</p3t>=1<br />
@@ -690,7 +690,8 @@ repeat every time we want to pick primers!</p>]]>
 	<id>exampleOutput</id>
 	<head>EXAMPLE OUTPUT</head>
 	<text>
-<![CDATA[<p>You should run it yourself.  Use the file 'example' in this
+<![CDATA[<p>You should run it yourself.  Use the file 'example' 
+that came with this distribution
 directory as input.</p>]]>
 	</text>
 </textBlock>
@@ -860,14 +861,10 @@ primer3 prints an error in the <p3t>PRIMER_ERROR</p3t> output tag (see
 below), and prints additional information on stdout; this option
 can be useful for debugging systems that incorporate primer3.<br />
 <br />
-
-* Steve, I think you are right - I would write this: *
 Except for tags with the type "interval list" each tag should only
 appear ONCE in any given input record.  This restriction is not
-systematically checked and if a tag appears more than once, the
+systematically checked, and if a tag appears more than once, the
 new value silently over-writes the previous value.
-
-
 </p>]]>
 	</text>
 </textBlock>
