@@ -112,9 +112,9 @@ For example, if only left primers were requested,
 PRIMER_RIGHT_NUM_RETURNED, PRIMER_INTERNAL_NUM_RETURNED and 
 PRIMER_PAIR_NUM_RETURNED will be 0.<br />
 <br />
-Some task like pick_sequencing_primers or
-pick_primer_list return left and right primers
-which are not primer pairs. In this case 
+Some tasks, such as pick_sequencing_primers or
+pick_primer_list, return left and right primers
+that are not parts of primer pairs. In this case 
 PRIMER_PAIR_NUM_RETURNED will be 0.
 </p>]]>
     </description>
