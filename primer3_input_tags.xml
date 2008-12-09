@@ -1139,7 +1139,7 @@ melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentr
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>The millimolar concentration of the sum of all 
-deoxyribonucleotide triphosphate. A reaction mix containing 
+deoxyribonucleotide triphosphates. A reaction mix containing 
 0.2 mM ATP, 0.2 mM CTP, 0.2 mM GTP and 0.2 mM TTP would have a 
 PRIMER_DNTP_CONC=0.8. This argument is considered only if 
 <p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
