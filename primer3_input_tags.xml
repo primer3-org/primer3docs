@@ -1984,25 +1984,19 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 	<default>1.0</default>
 	<description>
 <![CDATA[<p>Penalty factor for the sum of the left and the right primer added 
-to the pair penalty. Setting this value below 1.0 will increase running time.
-*Steve, It forces primer3 to check more pairs because primer3 can not discard them based on single primer penalties.
-* Andreas, is the following corect:
+to the pair penalty. Setting this value below 1.0 will increase 
+running time.<br />
 <br />
-<br />
-As <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> or
-the per-primer penalties it multiplies
-become lower with respect to 
-various pair penalties 
-(for example <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t>
+* Steve: It is correct, I would write:
+As <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> or the per-primer 
+penalties it multiplies become lower with respect to various 
+pair penalties (for example <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t>
 <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t>
-<p3t>PRIMER_PAIR_WT_DIFF_TM</p3t>, etc.)
-the running time of the search for
-primer pairs is likely to grow substantially.
-The reason is that the search algorithm
-must evaluate the penalty for
-more primer pairs (as opposed to
-evaluating the penalties of on
-individual oligos).
+<p3t>PRIMER_PAIR_WT_DIFF_TM</p3t>, etc.) the running time of the 
+search for primer pairs is likely to grow substantially. The 
+reason is that the search algorithm must calculate the penalty 
+for more primer pairs (as opposed to excluding them based on 
+the penalties of the individual oligos).
 
 </p>]]>
 	</description>
