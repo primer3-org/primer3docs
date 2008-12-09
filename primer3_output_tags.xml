@@ -395,7 +395,7 @@ of non-ambiguous bases).</p>]]>
 <![CDATA[<p>The calculated value for the tendency of a primer to bind to 
 itself (interfering with target sequence binding). It will score 
 ANY binding occurring within the entire primer sequence. For 
-details see <p3t>PRIMER_SELF_ANY</p3t>.<br /> 
+details see <p3t>PRIMER_MAX_SELF_ANY</p3t>.<br /> 
 The self-complementarity measures for the selected oligo.</p>]]>
 	</description>
 </tag>
@@ -407,7 +407,7 @@ The self-complementarity measures for the selected oligo.</p>]]>
 <![CDATA[<p>The calculated value for the tendency of a primer pair to bind to 
 each other (interfering with target sequence binding). It will 
 score ANY binding occurring within the entire primer sequence. 
-For details see <p3t>PRIMER_SELF_ANY</p3t>.<br /> 
+For details see <p3t>PRIMER_MAX_SELF_ANY</p3t>.<br /> 
 The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.</p>]]>
 	</description>
@@ -423,7 +423,7 @@ for selected left and right primer.</p>]]>
 identical primer. This is critical for primer quality because it 
 allows primers use itself as a target and amplify a short piece 
 (forming a primer-dimer). These primer are then unable to bind 
-and amplify the target sequence. For details see <p3t>PRIMER_SELF_END</p3t>.<br />
+and amplify the target sequence. For details see <p3t>PRIMER_MAX_SELF_END</p3t>.<br />
 The self-complementarity measures for the ends of selected oligo.</p>]]>
 	</description>
 </tag>
@@ -437,7 +437,7 @@ each other. This is critical for primer quality because it
 allows primers use itself as a target and amplify a short piece 
 (forming a primer-dimer). These primer are then unable to bind 
 and amplify the target sequence. For details see 
-<p3t>PRIMER_SELF_END</p3t>.<br />
+<p3t>PRIMER_MAX_SELF_END</p3t>.<br />
 The inter-pair complementarity measures for the ends of selected
 left and right primer.</p>]]>
 	</description>
