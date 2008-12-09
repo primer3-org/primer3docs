@@ -1394,6 +1394,44 @@ PRIMER_PAIR_4_LIBRARY_MISPRIMING                   - PRIMER_PAIR_4_MISPRIMING_SC
 	</text>
 </textBlock>
 <textBlock>
+    <id>outputHelp</id>
+    <head>OUTPUT HELP</head>
+    <text>
+<![CDATA[<h3><a name=p3w_primer_start>start (Start Position)</a></h3>
+<p>The position of the 5' base of the primer.
+For a Left Primer or Hyb Oligo this position is the position
+of the leftmost base.  For a Right primer it is the position of
+the <i><strong>rightmost</strong></i> base.</p>
+
+<h3><a name=p3w_primer_len>len (Oligo Length)</a></h3>
+<p>The length of the primer or oligo.</p>
+
+<h3><a name=p3w_primer_tm>tm (Melting Temperature)</a></h3>
+<p>The melting temperature of the primer or oligo.</p>
+
+<h3><a name=p3w_primer_gc>gc%</strong></a></h2>
+<p>The percent of G or C bases in the primer or oligo.</p>
+
+<h3><a name=p3w_primer_any>any (Self Complementarity)</a></h3>
+<p>The self-complementarity score of the oligo or primer (taken as
+a measure of its tendency to anneal to itself or form
+secondary structure).</p>
+
+<h3><a name=p3w_primer_three>3' (Self Complementarity)</a></h3>
+<p>The 3' self-complementarity of the primer or oligo (taken
+as a measure of its tendency to form a primer-dimer with itself).</p>
+
+<h3><a name=p3w_primer_repeat>rep (Mispriming or Mishyb Library Similarity)</a></h2>
+<p>The similarity to the specified Mispriming or Mishyb library.</p>
+
+<h3><a name=p3w_primer_seq>seq (Primer Sequence, 5' to 3')</a></h3>
+<p>The sequence of the selected primer or oligo, always 5' to 3' so the
+right primer is on the opposite strand from the one supplied in
+the source input.  (The right primer sequence is the sequence
+you would want synthesized in a primer order.)</p>]]>
+    </text>
+</textBlock>
+<textBlock>
 	<id>outputTags</id>
 	<head>OUTPUT TAGS</head>
 	<text>
