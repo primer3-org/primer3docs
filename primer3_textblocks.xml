@@ -1229,10 +1229,13 @@ designed with the idea in mind that computer scripts and other
 programs use primer3_core. The modifications make it easier for 
 programs to read and write primer3 input and output.<br />
 <br />
-For temporary backward compatibility a command line argument 
+For temporary backward compatibility, a command line argument 
 (-io_version=3) allows the use of primer3 tags the are nearly 
-identical to the previous version. However, new functionality 
-is not available with the old tags. 
+identical to the previous version. However, even with
+-io_version=3, the text of some warning and error messages has 
+changed, as have some details of the PRIMER_..._EXPLAIN
+output tags.  New functionality is not available with the
+-io_version=3 tags.
 
 Furthermore the primer3 default values and the use of 
 <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> and <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>
