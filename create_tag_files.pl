@@ -90,7 +90,6 @@ my @textblocksPrimer3WebHelp = (
 "contact",
 "sequenceTags",
 "globalTags",
-"programTags",
 "outputHelp",
 "calculatePenalties",
 "fileFormat",
