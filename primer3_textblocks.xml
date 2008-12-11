@@ -1470,6 +1470,48 @@ itself.)</p>]]>
 	</text>
 </textBlock>
 <textBlock>
+    <id>providedMisprimingLibs</id>
+    <head>POVIDED MISPRIMING LIBRARIES</head>
+    <text>
+<![CDATA[<p>This selection indicates what mispriming library (if any) Primer3 
+should use to screen for interspersed repeats or for other 
+sequence to avoid as a location for primers. The human and 
+rodent libraries on the web page are adapted from Repbase 
+(J. Jurka, A.F.A. Smit, C. Pethiyagoda, et al., 1995-1996)
+<a href="ftp://ftp.ncbi.nih.gov/repository/repbase">ftp://ftp.ncbi.nih.gov/repository/repbase</a>).
+The human library is humrep.ref concatenated with simple.ref,
+translated to FASTA format. There are two rodent libraries. One 
+is rodrep.ref translated to FASTA format, and the other is 
+rodrep.ref concatenated with simple.ref, translated to FASTA 
+format.</p>
+<p>The <i>Drosophila</i> library is the concatenation of two libraries
+from the <a href="http://www.fruitfly.org">Berkeley Drosophila Genome Project</a>:<br>
+<blockquote>
+1. A library of transposable elements
+<a href="http://genomebiology.com/2002/3/12/research/0084">
+<i>The transposable elements of the Drosophila melanogaster euchromatin - a genomics perspective</i>
+J.S. Kaminker, C.M. Bergman, B. Kronmiller, J. Carlson, R. Svirskas, S. Patel, E. Frise, D.A. Wheeler, S.E. Lewis, G.M. Rubin, M. Ashburner and S.E. Celniker
+Genome Biology (2002) 3(12):research0084.1-0084.20</a>, 
+<a href="http://www.fruitfly.org/p_disrupt/datasets/ASHBURNER/D_mel_transposon_sequence_set.fasta">
+http://www.fruitfly.org/p_disrupt/datasets/ASHBURNER/D_mel_transposon_sequence_set.fasta</a>
+<br><br>
+2. A library of repetitive DNA sequences <a href="http://www.fruitfly.org/sequence/sequence_db/na_re.dros">
+http://www.fruitfly.org/sequence/sequence_db/na_re.dros</a>.
+</blockquote>
+Both were downloaded 6/23/04.<br>
+<br>
+The contents of the libraries can be viewed at the following links:<br>
+<br>
+<ul>
+<li><a href="show_humrep_and_simple.cgi">HUMAN</a> (contains microsatellites)</li>
+<li><a href="show_rodrep_and_simple.cgi">RODENT_AND_SIMPLE</a> (contains microsatellites)</li>
+<li><a href="show_rodent_ref.cgi">RODENT</a> (does not contain microsatellites)</li>
+<li><a href="show_drosophila_w_transposons.cgi">DROSOPHILA</a></li>
+</ul>
+<br></p>]]>
+    </text>
+</textBlock>
+<textBlock>
 	<id>sequenceTags</id>
 	<head>"SEQUENCE" INPUT TAGS</head>
 	<text>

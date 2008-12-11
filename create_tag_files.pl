@@ -91,6 +91,7 @@ my @textblocksPrimer3WebHelp = (
 "sequenceTags",
 "globalTags",
 "outputHelp",
+"providedMisprimingLibs",
 "calculatePenalties",
 "pickAdvice",
 "cautions",
