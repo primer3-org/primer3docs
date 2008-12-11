@@ -92,7 +92,6 @@ my @textblocksPrimer3WebHelp = (
 "globalTags",
 "outputHelp",
 "calculatePenalties",
-"fileFormat",
 "pickAdvice",
 "cautions",
 "findNoPrimers",
