@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<primer3Doc xmlns="http://primer3.sourceforge.net/"
-xmlns:xsi="http://primer3.sourceforge.net/XMLSchema-instance"
-xsi:schemaLocation="http://primer3.sourceforge.net/ primer3_doc_schema.xsd" version="1.0">
+<primer3Doc version="1.0">
 <!--
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http::/purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
+(http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
 
     This file is part of the primer3 suite and libraries.
@@ -1190,45 +1188,36 @@ Biochemistry 43:3537-54 <link>http://dx.doi.org/10.1021/bi034621r</link>].</p>]]
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-* Steve: I confirmed with Maido - Have a look:
-<![CDATA[<p>The nanomolar (nM) concentration of one single primer in the PCR 
-(as opposed to the sum of the concentrations of all primers present
-in the reaction mix).<br />
-For example if a reaction mix has 50 nM forward primer and 50 nM
-reverse primer this value would be 50 (and not 100).<br />
-<br />
-Primer3 uses this argument to calculate oligo melting 
+
+<![CDATA[<p>
+<p>
+A value to use as nanomolar (nM) concentration of each annealing oligo 
+over the course the PCR.
+Primer3 uses this argument to esimate oligo melting
 temperatures. This parameter corresponds to 'c' in equation (ii) 
 of the paper [SantaLucia (1998) A unified view of polymer, dumbbell, 
 and oligonucleotide DNA nearest-neighbor thermodynamics. 
-Proc. Natl. Acad. Sci, 95:1460-1465
-<link>http://www.pnas.org/content/95/4/1460.full.pdf+html</link>],
+Proc Natl Acad Sci 95:1460-1465
+<a href="http://www.pnas.org/content/95/4/1460.full.pdf+html">http://www.pnas.org/content/95/4/1460.full.pdf+html</a>],
 where a suitable value (for a lower initial concentration of template) 
-is "empirically determined".<br />
-<br />
-To be more precise, the value of this parameter is the actual
-concentration of unique sites annealing to each other in the reaction mix.
-These sites can be on primers as well as on template DNA. At the start 
-of the PCR reaction, the amount of annealing sites on DNA can be
-neglected compared to the amount of annealing sites on primers.
-This is why the concentration of a single primer can be used as 
-a good approximation to calculate the Tm for the most critical first 
-steps of a PCR reaction.<br />
-<br />
-Nevertheless depends the concentration of annealing oligos also on the
-amount of template (including PCR product) in a given cycle.
-This concentration increases a great deal during a PCR;
-fortunately PCR seems quite robust for a variety of oligo melting
-temperatures.<br />
-<br />
+is "empirically determined".<br>
+<br>
 The default (50nM) works well with the standard
 protocol used at the Whitehead/MIT Center for Genome 
 Research--0.5 microliters of 20 micromolar concentration for each
 primer in a 20 microliter reaction with 10 nanograms
 template, 0.025 units/microliter Taq polymerase in 0.1 mM each
 dNTP, 1.5mM MgCl2, 50mM KCl, 10mM Tris-HCL (pH 9.3) using 35
-cycles with an annealing temperature of 56 degrees Celsius.<br />
-<br />
+cycles with an annealing temperature of 56 degrees Celsius.<br>
+<br>
+The value of this parameter is less than the actual
+concentration of oligos in the initial reaction mix because it is the
+concentration of annealing oligos, which in turn depends on the
+amount of template (including PCR product) in a given cycle.
+This concentration increases a great deal during a PCR;
+fortunately PCR seems quite robust for a variety of oligo melting
+temperatures.
+<br>
 See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</description>
 </tag>
@@ -2000,7 +1989,6 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 to the pair penalty. Setting this value below 1.0 will increase 
 running time.<br />
 <br />
-* Steve: It is correct, I would write:
 As <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> or the per-primer 
 penalties it multiplies become lower with respect to various 
 pair penalties (for example <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t>

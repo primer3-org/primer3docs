@@ -295,7 +295,7 @@ sub createReadmeTxt {
 	$txt_string .= "\n";
 
 # Create a Index
-	$txt_string .= underlineText("Index of contents","=")."\n";
+	$txt_string .= underlineText("Contents","=")."\n";
 	my $chapterCount = 0;
 	foreach my $textblock_holder (@textblocksOrder) {
 		if ($textHead{$textblock_holder} ne ""){
@@ -572,8 +572,11 @@ sub createReadmeHtml {
 	# Prepare the strings for the files
 	my $html_string = html_get_header();
 
+	# Create a main title
+	$html_string .= "<h1>PRIMER3 RELEASE $scriptP3Version MANUAL</h1>\n";
+
 	# Create a Index
-	$html_string .= "<h2>Index of contents</h2>";
+	$html_string .= "<h2>CONTENTS</h2>";
 	my $chapterCount = 0;
 	$html_string .= "<p>\n";
 	foreach my $textblock_holder (@textblocksOrder) {
@@ -811,7 +814,7 @@ sub html_get_header {
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>primer3 release $scriptP3Version - Readme</title>
+  <title>primer3 release $scriptP3Version - manual</title>
   <style type="text/css">
   body {
   background-color:white;
