@@ -1989,7 +1989,6 @@ of <p3t>PRIMER_MIN_QUALITY</p3t> and <p3t>PRIMER_MIN_END_QUALITY</p3t>).</p>]]>
 to the pair penalty. Setting this value below 1.0 will increase 
 running time.<br />
 <br />
-* Steve: It is correct, I would write:
 As <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> or the per-primer 
 penalties it multiplies become lower with respect to various 
 pair penalties (for example <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t>
