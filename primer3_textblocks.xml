@@ -70,9 +70,15 @@ The original web interface was designed by Richard Resnick.  Lincoln
 Stein designed Boulder-IO format in the days before XML and RDF, and
 championed the idea of making primer3 a software component, which
 has been key to its wide utility.
-In addition, among others, Ernst
-Molitor, Carl Foeller, and James Bonfield contributed to the early
-design of primer3. 
+
+In addition, among others, Ernst Molitor, Carl Foeller, and James Bonfield
+contributed to the early
+design of primer3. Brant Faircloth has helped with 
+ensuring that primer3 runs on Windows and MacOS and with the
+primer3 web site. 
+Triinu Koressaar and Maido Remm modernized the melting 
+temperature calculations.
+
 <br />
 <br />
 Primer3 is now operating as an open software development project hosted
@@ -121,10 +127,12 @@ This has not been tested.</p>]]>
 	<id>calculatePenalties</id>
 	<head>HOW PRIMER3 CALCULATES THE PENALTY VALUE</head>
 	<text>
-<![CDATA[<p>The penalty values in are the most important value of each primer,
-because primer3 uses it to choose which primers to select. The 
-calculation can be influenced by the weights which allows to 
-fine-tune the selection of primers to your needs.<br />
+<![CDATA[<p>
+In essense, the penalty values define what is the best primer
+pair.
+The calculation of penalty values
+takes into consideration penalty weights, which allow
+one to fine-tune the selection of primers to specific needs.<br />
 <br />
 This section will explain the selection process of primers by 
 primer3. In general the selection is a multi step process:<br />

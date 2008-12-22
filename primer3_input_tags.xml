@@ -504,14 +504,14 @@ product.  For example, if one wants PCR products to be between
 100 to 150 bases or in the range from 200 to 250 bases then one
 would set this parameter to <tt><i>100-150 200-250</i></tt>.<br />
 <br />
-Primer3 favors ranges to the left side of the parameter string.
+Primer3 favors product-size ranges to the left side of the parameter string.
 Primer3 will return legal primers pairs in the first range
 regardless the value of the objective function for these pairs.
 Only if there are an insufficient number of primers in the first
 range will primer3 return primers in a subsequent range.<br />
 <br />
 For those with primarily a computational background,
-the PCR product size is size (in base pairs) 
+the PCR product size is the size (in base pairs) 
 of the DNA fragment that would be produced by the
 PCR reaction on the given sequence template.  This
 would, of course, include the primers themselves.</p>]]>
