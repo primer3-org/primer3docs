@@ -748,7 +748,7 @@ In all of the error cases above Primer3 prints a message to stderr.</p>]]>
 </textBlock>
 <textBlock>
 	<id>fileFormat</id>
-	<head>PRIMER3 FILE FORMAT</head>
+	<head>PRIMER3 SETTINGS FILE FORMAT</head>
 	<text>
 <![CDATA[<p>Primer3 can read global settings from a text file at program 
 start up. This allows the user to save and exchange settings 
@@ -1448,10 +1448,14 @@ one Boulder-IO record comes out of primer3 on stdout. These output
 records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br />
-Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
+<br />
+For -io_version=4 (the default), tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
 where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of <p3t>PRIMER_NUM_RETURN</p3t>. In the documentation the output 
 nr. 5 is shown as for example: <p3t>PRIMER_LEFT_4_TM</p3t>.<br />
+<br />
+For -io_verion=3, when &lt;j&gt;=0, the tag has the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;tag_name&gt;
+<br />
 <br />
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f

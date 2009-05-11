@@ -1562,7 +1562,7 @@ are acceptable and have special interpretations:
 multiple primer pairs returned by primer3
 The only requirement is that each primer pair
 be unique.  This is the default behavior and the behavior
-in previous releases).  This is also the most liberal
+in previous releases.  This is also the most liberal
 behavior.<br />
 <br />
 0 indicates a primer pair is acceptable if neither the left or the right primer 
