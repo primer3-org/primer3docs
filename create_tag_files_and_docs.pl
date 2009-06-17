@@ -486,7 +486,8 @@ sub createTagList {
 	my $tagCount = 0;
 	my ($oldTagName, $tagName);
 	my $tag_difference = "New Tag   -  Old Tag\n";
-	my $default_set = "Default Settings:\n\n";
+    my $default_set = "Default Settings:\n\n";
+    my $default_hash = "my %defaultSettings = (\n";
 	my $dev_val;
 		
 	# Now print out all tags
@@ -499,11 +500,16 @@ sub createTagList {
 	
 		# Assemble the XML file
 		$xml_string .= "\"$tagName\",\n";
-		$default_set .= "$tagName=$dev_val\n";
+        $default_set .= "$tagName=$dev_val\n";
+        $default_hash .= "  \"$tagName\"=>\"$dev_val\",\n";
 	}
 	
 	# Finish the strings for the files
 	$xml_string .= ");\n\n\n";
+	
+    $default_set .= "\n\n";
+
+    $default_hash .= ");\n\n\n";
 	
 	$xml_string .= "my %docTags = (";
 	
@@ -534,6 +540,8 @@ sub createTagList {
     $xml_string .= "\n\n";
 	
 	$xml_string .= $default_set;
+	
+	$xml_string .= $default_hash;
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "tags_list.txt";
