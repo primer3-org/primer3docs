@@ -205,14 +205,16 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_LEFT_4_POSITION_PENALTY</p3t>
 
 
-   These are allways added (+) to the penalty:
+   These are allways added (+) to the penalty
+   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+      is substituted with text below this caclulation):
 
-       + <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_LEFT_4_SELF_ANY</p3t>
+    <i>+ <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_LEFT_4_SELF_ANY</p3t>
 
        + <p3t>PRIMER_WT_SELF_END</p3t> * <p3t>PRIMER_LEFT_4_SELF_END</p3t>
 
        + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> *
-            <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING</p3t>
+            <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING</p3t></i>
 
        + <p3t>PRIMER_WT_END_STABILITY</p3t> * <p3t>PRIMER_LEFT_4_END_STABILITY</p3t>
 
@@ -223,6 +225,39 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
               <p3t>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3t> )
+      
+      If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+          the above calculation is replaced by this:
+
+ <i>
+     If ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &le; <p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_SELF_ANY_TH</p3t> *
+                  (<p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t> - (<p3t>PRIMER_LEFT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_SELF_ANY_TH</p3t> *
+            (1/(<p3t>PRIMER_LEFT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &le; <p3t>PRIMER_LEFT_4_SELF_END_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_SELF_END_TH</p3t> *
+               (<p3t>PRIMER_LEFT_4_SELF_END_TH</p3t> - (<p3t>PRIMER_LEFT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_LEFT_4_SELF_END_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_SELF_END_TH</p3t> *
+       (1/(<p3t>PRIMER_LEFT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &le; <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+       (<p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</p3t> - (<p3t>PRIMER_LEFT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+      (1/(<p3t>PRIMER_LEFT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</p3t>));
+
+    If ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &le; <p3t>PRIMER_LEFT_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_HAIRPIN</p3t> *
+             (<p3t>PRIMER_LEFT_4_HAIRPIN</p3t> - (<p3t>PRIMER_LEFT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_LEFT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_LEFT_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_HAIRPIN</p3t> *
+            (1/(<p3t>PRIMER_LEFT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_LEFT_4_HAIRPIN</p3t>));
+ </i>
 
 </pre>
 
@@ -277,14 +312,16 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_RIGHT_4_POSITION_PENALTY</p3t>
 
 
-   These are allways added (+) to the penalty:
+   These are allways added (+) to the penalty
+   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+      is substituted with text below this caclulation):
 
-       + <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_RIGHT_4_SELF_ANY</p3t>
+   <i> + <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_RIGHT_4_SELF_ANY</p3t>
 
        + <p3t>PRIMER_WT_SELF_END</p3t> * <p3t>PRIMER_RIGHT_4_SELF_END</p3t>
 
        + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> *
-            <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</p3t>
+            <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING</p3t></i>
 
        + <p3t>PRIMER_WT_END_STABILITY</p3t> * <p3t>PRIMER_RIGHT_4_END_STABILITY</p3t>
 
@@ -295,7 +332,39 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
               <p3t>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3t> )
+     
+     If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+         the above calculation is replaced by this:
 
+<i>
+    If ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_RIGHT_4_SELF_ANY_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_SELF_ANY_TH</p3t> *
+                  (<p3t>PRIMER_RIGHT_4_SELF_ANY_TH</p3t> - (<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_RIGHT_4_SELF_ANY_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_SELF_ANY_TH</p3t> *
+            (1/(<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_RIGHT_4_SELF_END_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_SELF_END_TH</p3t> *
+               (<p3t>PRIMER_RIGHT_4_SELF_END_TH</p3t> - (<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_RIGHT_4_SELF_END_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_WT_SELF_END_TH</p3t> *
+               (1/(<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+       (<p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t> - (<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+      (1/(<p3t>>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>));
+
+    If ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_RIGHT_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_HAIRPIN</p3t> *
+             (<p3t>PRIMER_RIGHT_4_HAIRPIN</p3t> - (<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_RIGHT_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_WT_HAIRPIN</p3t> *
+            (1/(<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_HAIRPIN</p3t>));
+</i>
 </pre>
 
 <h3>Internal Oligos:</h3>
@@ -347,11 +416,13 @@ primer, it is calculated like that:</p>
             ( <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
-   These are allways added (+) to the penalty:
+   These are always added (+) to the penalty:
+   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+      is substituted with text below this caclulation):
+      
+  <i>+ <p3t>PRIMER_INTERNAL_WT_SELF_ANY</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_ANY</p3t>
 
-     + <p3t>PRIMER_INTERNAL_WT_SELF_ANY</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_ANY</p3t>
-
-     + <p3t>PRIMER_INTERNAL_WT_SELF_END</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_END</p3t>
+     + <p3t>PRIMER_INTERNAL_WT_SELF_END</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_END</p3t></i>
 
      + <p3t>PRIMER_INTERNAL_WT_NUM_NS</p3t> *
           &lt;numbers of N in the selected primer&gt;
@@ -363,6 +434,30 @@ primer, it is calculated like that:</p>
           ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
             <p3t>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3t> )
 
+   If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+   the above calculation is replaced by this:
+<i>
+   If ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &le; <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>) then is added (+):
+    + <p3t>PRIMER_INTERNAL_WT_SELF_ANY_TH</p3t> *
+        (<p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t> - (<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &gt; <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>) then is added (+):
+    + <p3t>PRIMER_INTERNAL_WT_SELF_ANY_TH</p3t> *
+        (1/(<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &le; <p3t>PRIMER_INTERNAL_4_SELF_END_TH</p3t>) then is added (+):
+     + <p3t>PRIMER_INTERNAL_WT_SELF_END_TH</p3t> *
+         (<p3t>PRIMER_INTERNAL_4_SELF_END_TH</p3t> - (<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &gt; <p3t>PRIMER_INTERNAL_4_SELF_END_TH</p3t>) then is added (+):
+      + <p3t>PRIMER_INTERNAL_WT_SELF_END_TH</p3t> *
+          (1/(<p3t> TM">PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>));
+
+    If ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &le; <p3t>PRIMER_INTERNAL_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_INTERNAL_WT_HAIRPIN</p3t> *
+        (<p3t>PRIMER_INTERNAL_4_HAIRPIN</p3t> - (<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 - 1))
+    else if ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &gt; <p3t>PRIMER_INTERNAL_4_HAIRPIN</p3t>) then is added (+):
+      + <p3t>PRIMER_INTERNAL_WT_HAIRPIN</p3t> *
+        (1/(<p3t> TM">PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_HAIRPIN</p3t>));
+</i>
 </pre>
 <p>	
 The primers are then sorted by penalty and primer3 tries to pick 
@@ -412,19 +507,52 @@ this point. If primer pairs have to be selected, a
 
 
    These are allways added (+) to the penalty:
-
+   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+       is substituted with text below this caclulation):
+       
      + <p3t>PRIMER_PAIR_WT_DIFF_TM</p3t> * 
           &lt;difference in Tm between the left and the right primer&gt;
 
-     + <p3t>PRIMER_PAIR_WT_COMPL_ANY</p3t> * <p3t>PRIMER_PAIR_4_COMPL_ANY</p3t>
+  <i>+ <p3t>PRIMER_PAIR_WT_COMPL_ANY</p3t> * <p3t>PRIMER_PAIR_4_COMPL_ANY</p3t>
 
-     + <p3t>PRIMER_PAIR_WT_COMPL_END</p3t> * <p3t>PRIMER_PAIR_4_COMPL_END</p3t>
+     + <p3t>PRIMER_PAIR_WT_COMPL_END</p3t> * <p3t>PRIMER_PAIR_4_COMPL_END</p3t></i>
 
      + <p3t>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_PAIR_4_LIBRARY_MISPRIMING</p3t>
 
      + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> *
           <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t>
 
+     If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+     the above calculation is replaced by this:
+<i>
+   If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5) &le; <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_COMPL_ANY_TH</p3t> *
+       (<p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t> - (min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5 - 1))
+  else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5) &gt; <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_COMPL_ANY_TH</p3t> *
+      (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>));
+ 
+   If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_COMPL_END_TH</p3t> *
+       (<p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t> - (<p3t>PRIMER_PAIR_4_TM</p3t>; - 5 - 1))
+  else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>) then is added (+):
+    + <p3t>PRIMER_PAIR_WT_COMPL_END_TH</p3t> *
+         (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>));
+
+  If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+    (<p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING_TH</p3t> - (min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+  else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING_TH</p3t> *
+     (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING_TH</p3t>));
+
+  If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_PAIR_4_HAIRPIN</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_HAIRPIN</p3t> *
+      (<p3t>PRIMER_PAIR_4_HAIRPIN</p3t> - (min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
+  else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_PAIR_4_HAIRPIN</p3t>) then is added (+):
+   + <p3t>PRIMER_PAIR_WT_HAIRPIN</p3t> *
+      (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_HAIRPIN</p3t>));
+</i>
 </pre>
 <p>Primer3 tries to select pairs with the lowest penalty which 
 still fulfill all necessary requirements like non-redundancy or
@@ -953,6 +1081,9 @@ If you do not use gcc, then you will probably have
 to modify the makefile to
 use your (ANSI) C compiler with the compile
 and link flags it understands.<br />
+<u>Important</u> New script has to be executed when installing primer3 version
+2.1.0 and newer:<br />
+$ ./configure.sh
 <br />
 $ make all<br />
 <br />

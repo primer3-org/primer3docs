@@ -400,6 +400,29 @@ The self-complementarity measures for the selected oligo.</p>]]>
 	</description>
 </tag>
 <tag>
+   <tagName>PRIMER_LEFT_4_SELF_ANY_TH</tagName>
+   <tagName>PRIMER_INTERNAL_4_SELF_ANY_TH</tagName>
+   <tagName>PRIMER_RIGHT_4_SELF_ANY_TH</tagName>
+   <dataType>f</dataType>
+   <optional>N</optional>
+   <description>
+   <![CDATA[<p>The calculated value for the tendency of a primer to bind to
+itself (interfering with target sequence binding). It will calculate the
+melting temperature for ANY binding occurring within the entire primer
+sequence. For details see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.
+The self-complementarity measures for the selected oligo.</p>]]>
+   </description>
+</tag>
+<tag>
+   <tagName>PRIMER_RIGHT_4_HAIRPIN</tagName>
+   <dataType>f</dataType>
+   <optional>N</optional>
+   <description>
+   <![CDATA[<p>The calculated value of melting temperature of hairpin structure of primer. 
+   For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
+   </description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_4_COMPL_ANY</tagName>
 	<dataType>f</dataType>
 	<optional>N</optional>
@@ -411,6 +434,28 @@ For details see <p3t>PRIMER_MAX_SELF_ANY</p3t>.<br />
 The inter-pair complementarity measures over the complete primer 
 for selected left and right primer.</p>]]>
 	</description>
+</tag>
+<tag>
+    <tagName>PRIMER_PAIR_4_COMPL_ANY_TH</tagName>
+    <dataType>f</dataType>
+    <optional>N</optional>
+    <description>
+    <![CDATA[<p>The calculated value for the tendency of a primer pair to
+bind to each other (interfering with target sequence binding). It will
+calculate the melting temperature of ANY binding occurring within the entire
+primer sequence. For details see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.
+The inter-pair complementarity measures over the complete primer for
+selected left and right primer.</p>]]>
+    </description>
+</tag>
+<tag>
+     <tagName>PRIMER_PAIR_4_HAIRPIN</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>The calculated value of melting temperature for more stable
+hairpin structure of primer from pair. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
+     </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_SELF_END</tagName>
@@ -428,6 +473,40 @@ The self-complementarity measures for the ends of selected oligo.</p>]]>
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_LEFT_4_SELF_END_TH</tagName>
+     <tagName>PRIMER_INTERNAL_4_SELF_END_TH</tagName>
+     <tagName>PRIMER_RIGHT_4_SELF_END_TH</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>The calculated value for the tendency of the 3'-END to bind
+to a identical primer. This is critical for primer quality because it allows
+primers use itself as a target and amplify a short piece (forming a
+primer-dimer). These primer are then unable to bind and amplify the target
+sequence. For details see <p3t>PRIMER_MAX_SELF_END_TH</p3t>.
+The self-complementarity measures for the ends of selected oligo.</p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_LEFT_4_HAIRPIN</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>The calculated value of melting temperature of hairpin
+structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_INTERNAL_4_HAIRPIN</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>The calculated value of melting temperature of hairpin
+structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t>
+     </p>]]>
+     </description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_4_COMPL_END</tagName>
 	<dataType>f</dataType>
 	<optional>N</optional>
@@ -441,6 +520,20 @@ and amplify the target sequence. For details see
 The inter-pair complementarity measures for the ends of selected
 left and right primer.</p>]]>
 	</description>
+</tag>
+<tag>
+     <tagName>PRIMER_PAIR_4_COMPL_END_TH</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>The calculated value for the tendency of the 3'-ENDs of a
+primer pair to bind to each other. This is critical for primer quality
+because it allows primers use itself as a target and amplify a short piece
+(forming a primer-dimer). These primer are then unable to bind and amplify
+the target sequence. For details see <p3t>PRIMER_MAX_SELF_END_TH</p3t>.
+The inter-pair complementarity measures for the ends of selected left and
+right primer.</p>]]>
+     </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_END_STABILITY</tagName>
@@ -465,6 +558,18 @@ This often arises, for example, in genes with repeated exons. For
 backward compatibility, these tags only appear if the corresponding
 input tags have defined values.</p>]]>
 	</description>
+</tag>
+<tag>
+     <tagName>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</tagName>
+     <tagName>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</tagName>
+     <tagName>PRIMER_PAIR_4_TEMPLATE_MISPRIMING_TH</tagName>
+     <dataType>f</dataType>
+     <optional>N</optional>
+     <description>
+     <![CDATA[<p>These output tags apply to mispriming within the template sequence and the calculation
+method is based on thermodynamical approach. This often arises, for example,
+in genes with repeated exons.</p>]]>
+     </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_LIBRARY_MISPRIMING</tagName>

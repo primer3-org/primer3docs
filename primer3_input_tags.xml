@@ -1233,8 +1233,16 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DNA_CONC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
-
-
+<tag>
+     <tagName>PRIMER_THERMODYNAMICAL_ALIGNMENT</tagName>
+     <dataType>boolean</dataType>
+     <default>0</default>
+     <description>
+<![CDATA[<p>If the associated value equals to 1, then primer3 will calculate
+oligos secondary structures (dimers, hairpins, template mispriming) by
+thermodynamical approach.</p>]]>
+     </description>
+</tag>	       
 <tag>
 	<tagName>PRIMER_MAX_SELF_ANY</tagName>
     <oldTag>
@@ -1274,6 +1282,82 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
+          <tagName>PRIMER_MAX_SELF_ANY_TH</tagName>
+	  <dataType>decimal, 9999,99</dataType>
+	  <default>47.00</default>
+	  <description>
+<![CDATA[<p> The same as PRIMER_MAX_SELF_ANY but all calculations are based on
+	  thermodynamical approach. The melting temperature of the most stable
+	  structure is calculated. To calculate secondary structures nearest-neighbor
+	  parameters for perfect matches, single internal mismatches, terminal
+	  mismatches, dangling ends have been used. Also parameters for
+increments for length dependence of
+bulge and internal loops have been used. This parameter is calculated only
+if PRIMER_THERMODYNAMICAL_ALIGNMENT=1. The by default value is 10 degrees
+lower than the default value of PRIMER_MIN_TM. For example, the alignment
+width length 15nt</p>
+<pre>
+  5' ATTAGATAGAGCATC 3'
+  3' TAATCTATCTCGTAG 5'
+</pre>
+is allowed (and yields a melting temperature of 32.1493
+width by default
+primer3 parameters), but the alignment
+<pre>
+     T        C
+  5'  GCGGCCGC GCGC 3'
+  3'  CGCCGGCG CGCG 5'
+     A        A
+</pre>
+<p>is not considered (Tm=57.0997 and the length of oligo is 14nt).
+<ul type="square">Thermodynamical parameters and methods for finding
+the most stable structure are described in following papers:
+<li>[SantaLucia JR (1998) "A unified view of polymer, dumbbell and
+oligonucleotide DNA nearest-neighbor
+thermodynamics", Proc Natl Acad Sci 95:1460-65
+<link> http://dx.doi.org/10.1073/pnas.95.4.1460</link>]
+</li><li>
+[SantaLucia JR and Hicks D (2004) "The thermodynamics of DNA structural
+motifs", Annu Rev Biophys Biomol Struct 33:415-40
+<link>http://dx.doi.org/10.1146/annurev.biophys.32.110601.141800</link>]
+</li><li>
+[Bommarito S, Peyret N and SantaLucia J Jr (2000) "Thermodynamic parameters
+for DNA sequences with dangling ends", Nucleic Acids Res 28(9):1929-34
+<link>http://dx.doi.org/10.1093/nar/28.9.1929</link>]
+</li><li>
+[Peyret N, Seneviratne PA, Allawi HT, SantaLucia J Jr. (1999)
+"Nearest-neighbor thermodynamics and NMR of DNA sequences with internal A.A,
+C.C, G.G, and T.T mismatches", Biochemistry 38(12):3468-77
+<link>http://dx.doi.org/10.1021/bi9825091</link>]
+</li><li>
+[Allawi HT and SantaLucia J Jr. (1998) "Nearest-Neighbor Thermodynamics of
+Internal A&#183;C Mismatches in DNA:  Sequence Dependence and pH Effects",
+Biochemistry 37(26):9435-44
+<link>http://dx.doi.org/10.1021/bi9803729</link>
+</li><li>
+[Allawi HT and SantaLucia J Jr. (1998) "Thermodynamics of internal C.T
+mismatches in DNA." Nucleic Acids Res 26(11):2694-701<link>http://dx.doi.org/10.1093/nar/26.11.2694</link>]
+</li><li>
+[Allawi HT and SantaLucia J Jr. (1998) "Nearest neighbor thermodynamic
+parameters for internal G.A mismatches in DNA." Biochemistry 37(8):2170-9
+<link>http://dx.doi.org/10.1021/bi9724873</link>]
+</li><li>
+[Allawi HT and SantaLucia J Jr. (1997) "Thermodynamics and NMR of internal
+G.T mismatches in DNA." Biochemistry 36(34):10581-94
+<link>http://dx.doi.org/10.1021/bi962590c</link>]
+</li><li>
+[SantaLucia J Jr and Peyret N. (2001) "Method and system for predicting
+nucleic acid hybridization thermodynamics and computer-readable storage
+medium for use therein" World Intellectual Property Organization, WO 01/94611
+<link>http://www.wipo.int/pctdb/en/wo.jsp?wo=2001094611</link>]
+</li></ul>
+<br>
+Predicting secondary structures can improve primer design by eliminating
+sequences with high possibility to form alternative secondary structures.
+	  </p>]]>
+	  </description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_MAX_SELF_ANY</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_SELF_ANY</oldTagName>
@@ -1286,12 +1370,29 @@ oligos.</p>]]>
 	</description>
 </tag>
 <tag>
+       <tagName>PRIMER_INTERNAL_MAX_SELF_ANY_TH</tagName>
+       <dataType>decimal, 9999.99</dataType>
+       <default>47.00</default>
+               <description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_SELF_ANY_TH</p3t> for the internal oligo.</p>]]>
+	       </description>
+</tag>
+<tag>
     <tagName>PRIMER_PAIR_MAX_COMPL_ANY</tagName>
     <dataType>decimal, 9999.99</dataType>
     <default>8.00</default>
     <description>
 <![CDATA[<p>PRIMER_PAIR_MAX_COMPL_ANY describes the tendency of the left primer 
 to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p>]]>
+    </description>
+</tag>
+<tag>
+    <tagName>PRIMER_PAIR_MAX_COMPL_ANY_TH</tagName>
+    <dataType>decimal, 9999.99</dataType>
+    <default>47.00</default>
+    <description>
+    <![CDATA[<p>PRIMER_PAIR_MAX_COMPL_ANY_TH describes the tendency of the left primer 
+    to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.</p>]]>
     </description>
 </tag>
 <tag>
@@ -1308,6 +1409,15 @@ to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_WT_SELF_ANY_TH</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty weight for the individual primer self binding value as in 
+     <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.</p>]]>
+     </description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_WT_SELF_ANY</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_IO_WT_COMPL_ANY</oldTagName>
@@ -1320,6 +1430,14 @@ to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p
 	</description>
 </tag>
 <tag>
+      <tagName>PRIMER_INTERNAL_WT_SELF_ANY_TH</tagName>
+      <dataType>float</dataType>
+      <default>0.0</default>
+      <description>
+      <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SELF_ANY_TH</p3t> for the internal oligo.</p>]]>
+      </description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_ANY</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1327,6 +1445,14 @@ to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p
 <![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
 <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p>]]>
 	</description>
+</tag>
+<tag>
+       <tagName>PRIMER_PAIR_WT_COMPL_ANY_TH</tagName>
+       <dataType>float</dataType>
+       <default>0.0</default>
+       <description>
+       <![CDATA[<p>Penalty weight for the binding value of the primer pair as in <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.</p>]]>
+       </description>
 </tag>
 <tag>
 	<tagName>PRIMER_MAX_SELF_END</tagName>
@@ -1376,6 +1502,17 @@ global alignment.</p>]]>
 	</description>
 </tag>
 <tag>
+        <tagName>PRIMER_MAX_SELF_END_TH</tagName>
+	<dataType>decimal 9999.99</dataType>
+	<default>47.00</default>
+	<description>
+	<![CDATA[<p>Same as <p3t>PRIMER_MAX_SELF_END</p3t> but is based on
+thermodynamical approach - the stability of structure is analyzed. The value
+of tag is expressed as melting temperature. See
+<p3t>PRIMER_MAX_SELF_ANY_TH</p3t> for details.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_MAX_SELF_END</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_SELF_END</oldTagName>
@@ -1392,6 +1529,16 @@ primer-dimer will not occur.  We recommend that
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_INTERNAL_MAX_SELF_END_TH</tagName>
+     <dataType>decimal 9999.99</dataType>
+     <default>47.00</default>
+     <description>
+     <![CDATA[<p><p3t>Same as <p3t>PRIMER_INTERNAL_MAX_SELF_END</p3t> but for
+calculating the score (melting temperature of structure) thermodynamical
+approach is used.</p>]]>
+     </description>
+</tag>
+<tag>
     <tagName>PRIMER_PAIR_MAX_COMPL_END</tagName>
     <dataType>decimal, 9999.99</dataType>
     <default>3.00</default>
@@ -1400,6 +1547,15 @@ primer-dimer will not occur.  We recommend that
 to the right primer and scores the best binding it can find.
 It is similar to <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
     </description>
+</tag>
+<tag>
+   <tagName>PRIMER_PAIR_MAX_COMPL_END_TH</tagName>
+   <dataType>decimal, 9999.99</dataType>
+   <default>47.00</default>
+   <description>
+   <![CDATA[<p>Same as <p3t>PRIMER_PAIR_MAX_COMPL_END</p3t> but for calculating the
+score (melting temperature of structure) thermodynamical approach is used.</p>]]>
+   </description>
 </tag>
 <tag>
 	<tagName>PRIMER_WT_SELF_END</tagName>
@@ -1415,6 +1571,15 @@ It is similar to <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
+      <tagName>PRIMER_WT_SELF_END_TH</tagName>
+      <dataType>float</dataType>
+      <default>0.0</default>
+      <description>
+      <![CDATA[<p>Penalty weight for the individual primer self binding
+value as in <p3t>PRIMER_MAX_SELF_END_TH</p3t></p>]]>
+      </description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_WT_SELF_END</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_IO_WT_COMPL_END</oldTagName>
@@ -1427,6 +1592,14 @@ It is similar to <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_INTERNAL_WT_SELF_END_TH</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_SELF_END_TH</p3t> for the internal oligo.</p>]]>
+     </description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_WT_COMPL_END</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1434,6 +1607,86 @@ It is similar to <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
 <![CDATA[<p>Penalty weight for the binding value of the primer pair as in 
 <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
 	</description>
+</tag>
+<tag>
+     <tagName>PRIMER_PAIR_WT_COMPL_END_TH</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty weight for the binding value of the primer pair as in <p3t>PRIMER_MAX_SELF_END_TH</p3t>.</p>]]>
+     </description>
+</tag>
+<tag>
+    <tagName>PRIMER_MAX_HAIRPIN</tagName>
+    <dataType>float</dataType>
+    <default>47.0</default>
+    <description>
+    <![CDATA[<p>This is the most stable monomer structure of internal oligo
+calculated by thermodynamic approach. The hairpin loops,
+bulge loops, internal loops, internal single mismatches, dangling ends,
+terminal mismatches have been considered. This parameter is calculated only
+if PRIMER_THERMODYNAMICAL_ALIGNMENT=1. The by default value is 10 degrees
+lower than the default value of PRIMER_MIN_TM. For example the structure:
+<pre>
+      -///------\\\-
+   5' ACGCTGTGCTGCGA 3'
+</pre>
+with melting temperature 53.7263 (calculated according to by
+default values of primer3) and
+<pre>
+      //////----\\\\\\
+   5' CCGCAGTAAGCTGCGG 3'
+</pre>
+with melting temperature 71.0918 (calculated according to by
+default values of primer3)
+
+For details about papers used for calculating hairpins see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t></p>]]>
+    </description>
+</tag>
+<tag>
+    <tagName>PRIMER_PAIR_MAX_HAIRPIN</tagName>
+    <dataType>float</dataType>
+    <default>47.0</default>
+    <description>
+    <![CDATA[<p>The more stable monomer structure calculated from the most
+stable structure of left primer and the most stable structure of right
+primer. Thermodynamical approach. See <p3t>PRIMER_MAX_HAIRPIN</p3t> for details.</p>]]>
+    </description>
+</tag>
+<tag>
+    <tagName>PRIMER_INTERNAL_MAX_HAIRPIN</tagName>
+    <dataType>float</dataType>
+    <default>47.0</default>
+    <description>
+     <![CDATA[<p>The most stable monomer structure of internal oligo
+calculated by thermodynamic approach. See <p3t>PRIMER_MAX_HAIRPIN</p3t> for details.</p>]]>
+    </description>
+</tag>
+<tag>
+     <tagName>PRIMER_WT_HAIRPIN</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty weight for the individual primer hairpin structure value as in <p3t>PRIMER_MAX_HAIRPIN</p3t>.</p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_PAIR_WT_HAIRPIN</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty weight for the most stable primer hairpin structure
+value as in <p3t>PRIMER_PAIR_MAX_HAIRPIN</p3t>.</p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_INTERNAL_WT_HAIRPIN</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty weight for the most stable
+primer hairpin structure value as in <p3t>PRIMER_INTERNAL_MAX_HAIRPIN</p3t>.</p>]]>
+     </description>
 </tag>
 <tag>
 	<tagName>PRIMER_MAX_END_STABILITY</tagName>
@@ -1681,6 +1934,15 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 	</description>
 </tag>
 <tag>
+      <tagName>PRIMER_MAX_TEMPLATE_MISPRIMING_TH</tagName>
+      <dataType>decimal, 9999.99</dataType>
+      <default>-1.00</default>
+      <description>
+<![CDATA[<p>Same as <p3t>PRIMER_MAX_TEMPLATE_MISPRIMING</p3t> but for calculating
+the alternative binding sites thermodynamical approach is used.</p>]]>
+      </description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</oldTagName>
@@ -1691,6 +1953,14 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
 	<description>
 <![CDATA[<p>Not implemented.</p>]]>
 	</description>
+</tag>
+<tag>
+  <tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB_TH</tagName>
+  <dataType>decimal, 9999.99</dataType>
+  <default>-1.00</default>
+  <description>
+  <![CDATA[<p>Not implemented.</p>]]>
+  </description>
 </tag>
 <tag>
 	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
@@ -1708,6 +1978,15 @@ oligos) to locations outside of the amplicon.</p>]]>
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING_TH</tagName>
+     <dataType>decimal, 9999.99</dataType>
+     <default>-1.00</default>
+     <description>
+     <![CDATA[<p>Same as <p3t>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</p3t> but for finding
+alternative binding sites thermodynamical alignment is used</p>]]>
+     </description>
+</tag>
+<tag>
 	<tagName>PRIMER_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
@@ -1720,12 +1999,28 @@ by the factor 100 to have the same effect.</p>]]>
 	</description>
 </tag>
 <tag>
+     <tagName>PRIMER_WT_TEMPLATE_MISPRIMING_TH</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty for a single primer binding to the template sequence (thermodynamic approach).</p>]]>
+     </description>
+</tag>
+<tag>
 	<tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> for the internal oligo.]]>
 	</description>
+</tag>
+<tag>
+        <tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB_TH</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+	<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> for the internal oligo.]]>
+        </description>
 </tag>
 <tag>
 	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
@@ -1739,7 +2034,15 @@ The values used with the older versions have to be multiplied
 by the factor 100 to have the same effect.</p>]]>
 	</description>
 </tag>
-
+<tag>
+     <tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING_TH</tagName>
+     <dataType>float</dataType>
+     <default>0.0</default>
+     <description>
+     <![CDATA[<p>Penalty for a primer pair binding to the template sequence
+(thermodynamic approach).</p>]]>
+     </description>
+</tag>
 <tag>
 	<tagName>PRIMER_MISPRIMING_LIBRARY</tagName>
 	<dataType>string</dataType>
