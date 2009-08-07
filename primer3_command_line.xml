@@ -48,7 +48,7 @@ An example Tag with all possible options:
 
 	-->
 <tag>
-	<tagName>-about</tagName>
+	<tagName>-a / -about</tagName>
 	<description>
 <![CDATA[<p>With this argument primer3 generates one line of output:
 <pre>
@@ -59,14 +59,14 @@ query primer3 for its version.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-format_output</tagName>
+	<tagName>-f / -format_output</tagName>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 user-oriented (rather than program-oriented) output.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-strict_tags</tagName>
+	<tagName>-s / -strict_tags</tagName>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
@@ -74,7 +74,7 @@ it does not recognize.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-p3_settings_file=<i>file_path</i> </tagName>
+	<tagName>-p=<i>file_path</i> / -p3_settings_file=<i>file_path</i></tagName>
 	<description>
 <![CDATA[<p>This argument specifies a settings file,
 <i>file_path</i>. Primer3 reads the global 
@@ -88,7 +88,7 @@ format.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-io_version=<i>n</i></tagName>
+	<tagName>-i=<i>n</i> / -io_version=<i>n</i></tagName>
 	<description>
 <![CDATA[<p>This argument directs primer3 to use
 io version <i>n</i> input and output conventions.
@@ -100,9 +100,23 @@ to use functionality that is new in release 2.0.0.</p>]]>
 </tag>
 
 <tag>
-	<tagName>-2x_compat</tagName>
+	<tagName>-2 / -2x_compat</tagName>
 	<description>
 <![CDATA[<p>This argument is no longer supported.</p>]]>
 	</description>
+</tag>
+<tag>
+        <tagName>-o=<i>file_path</i> / -output=<i>file_path</i></tagName>
+        <description>
+<![CDATA[<p>This argument specifies the file where the output
+should be written. If ommited, stdout is used. </p>]]>
+        </description>
+</tag>
+<tag>
+        <tagName>-e=<i>file_path</i> / -error=<i>file_path</i></tagName>
+        <description>
+<![CDATA[<p>This argument specifies the file where the error 
+messages should be written. If ommited, stderr is used.</p>]]>
+        </description>
 </tag>
 </primer3Doc>
