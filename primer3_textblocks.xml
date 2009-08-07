@@ -517,7 +517,8 @@ http://primer3.sourceforge.net/contact.php</p>]]>
 	<id>commandLineTags</id>
 	<head>COMMAND LINE ARGUMENTS</head>
 	<text>
-<![CDATA[<p>These parameters are read from command line:</p>]]>
+<![CDATA[<p>The following parameters are read from command line (any
+abbreviation of the parameters is allowed, e.g. -ab instead of -about):</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1218,7 +1219,7 @@ The command line for primer3 is:<br />
 primer3_core [ -format_output ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=<file_path> ] [ -strict_tags ] [ -output=<file_path> ] [ -error=<file_path> ] [ input_file ] <br />
 <br />
 A complete list of valid command line tags can be found in 
-COMMAND LINE TAGS below.<br />
+COMMAND LINE ARGUMENTS below.<br />
 <br />
 If no input file is specified, primer3_core will read its input 
 from stdin.</p>]]>
