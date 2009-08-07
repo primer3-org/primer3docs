@@ -79,10 +79,10 @@ it does not recognize.</p>]]>
 <![CDATA[<p>This argument specifies a settings file,
 <i>file_path</i>. Primer3 reads the global 
 ("PRIMER_...") parameters from this file first. 
-Tags appearing in the settings file overwrite
+Tags appearing in the settings file override
 default primer3 settings. The values set in
-the settings files can be overwritten 
-by tags in the command line input. See 
+the settings files can be also overridden 
+by tags in the input file. See 
 primer3 file documentation for details on the file 
 format.</p>]]>
 	</description>
@@ -94,8 +94,8 @@ format.</p>]]>
 io version <i>n</i> input and output conventions.
 <i>n</i> can be 3 (for mostly backward
 compatible behavior) or 4.
--io_version=4 is required
-to use functionality that is new in release 2.0.0.</p>]]>
+-io_version=4 is required to use functionality that 
+is new in release 2.0.0 and later.</p>]]>
 	</description>
 </tag>
 
