@@ -50,9 +50,10 @@ An example Tag with all possible options:
 <tag>
 	<tagName>-about</tagName>
 	<description>
-<![CDATA[<p>With this argument primer3 generates one line of output:
+<![CDATA[<p>With this argument primer3 generates one line of output 
+indicating the release number:
 <pre>
-primer3 release 2.0.0
+primer3 release <release number>
 </pre>
 and then exits. This allows scripts to 
 query primer3 for its version.</p>]]>
