@@ -53,7 +53,7 @@ An example Tag with all possible options:
 <![CDATA[<p>With this argument primer3 generates one line of output 
 indicating the release number:
 <pre>
-primer3 release <release number>
+primer3 release &lt;release number&gt;
 </pre>
 and then exits. This allows scripts to 
 query primer3 for its version.</p>]]>
