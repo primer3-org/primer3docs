@@ -517,7 +517,12 @@ http://primer3.sourceforge.net/contact.php</p>]]>
 	<id>commandLineTags</id>
 	<head>COMMAND LINE ARGUMENTS</head>
 	<text>
-<![CDATA[<p>These parameters are read from command line:</p>]]>
+<![CDATA[<p>This section presents the list of arguments that may given in
+the command line. Any abbreviation of the arguments is allowed
+(e.g. -ab instead of -about) and each argument can be preceded by 
+either one or two dashes. In the case of arguments that receive 
+values (like for instance <i>io_version</i>), the '=' can be replaced 
+by a space.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1210,23 +1215,18 @@ web-based front end to primer3 named primer3plus at
 	<text>
 <![CDATA[<p>By default, the executable program produced by the Makefile is
 called primer3_core.  This is the C program that does the heavy
-lifting of primer picking.  There is also a more user-friendly
-web interface (distributed separately).<br />
+lifting of primer picking.  There are also two, more user-friendly,
+web interfaces (distributed separately).<br />
 <br />
 The command line for primer3 is:<br />
 <br />
-primer3_core [ -format_output ] [ -strict_tags ] < input_file.txt<br />
+primer3_core [ -format_output ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=<file_path> ] [ -strict_tags ] [ -output=<file_path> ] [ -error=<file_path> ] [ input_file ] <br />
 <br />
-A complete list of valid command line tags can be found in 
-COMMAND LINE TAGS below.<br />
+A complete list of valid command line arguments can be found in 
+COMMAND LINE ARGUMENTS below.<br />
 <br />
-WARNING: primer3_core only reads its input on stdin, so the usual
-Unix convention of<br />
-<br />
-primer3_core input_file.txt<br />
-<br />
-*will not work*.  Primer3_core will just sit there forever
-waiting for its input on stdin.</p>]]>
+If no input file is specified, primer3_core will read its input 
+from stdin.</p>]]>
 	</text>
 </textBlock>
 <textBlock>

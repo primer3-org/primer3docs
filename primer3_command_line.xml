@@ -50,9 +50,10 @@ An example Tag with all possible options:
 <tag>
 	<tagName>-about</tagName>
 	<description>
-<![CDATA[<p>With this argument primer3 generates one line of output:
+<![CDATA[<p>With this argument primer3 generates one line of output 
+indicating the release number:
 <pre>
-primer3 release 2.0.0
+primer3 release <release number>
 </pre>
 and then exits. This allows scripts to 
 query primer3 for its version.</p>]]>
@@ -74,15 +75,15 @@ it does not recognize.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-p3_settings_file=<i>file_path</i> </tagName>
+	<tagName>-p3_settings_file=<i>file_path</i></tagName>
 	<description>
 <![CDATA[<p>This argument specifies a settings file,
 <i>file_path</i>. Primer3 reads the global 
 ("PRIMER_...") parameters from this file first. 
-Tags appearing in the settings file overwrite
+Tags appearing in the settings file override
 default primer3 settings. The values set in
-the settings files can be overwritten 
-by tags in the command line input. See 
+the settings files can be also overridden 
+by tags in the input file. See 
 primer3 file documentation for details on the file 
 format.</p>]]>
 	</description>
@@ -94,8 +95,8 @@ format.</p>]]>
 io version <i>n</i> input and output conventions.
 <i>n</i> can be 3 (for mostly backward
 compatible behavior) or 4.
--io_version=4 is required
-to use functionality that is new in release 2.0.0.</p>]]>
+-io_version=4 is required to use functionality that 
+is new in release 2.0.0 and later.</p>]]>
 	</description>
 </tag>
 
@@ -104,5 +105,19 @@ to use functionality that is new in release 2.0.0.</p>]]>
 	<description>
 <![CDATA[<p>This argument is no longer supported.</p>]]>
 	</description>
+</tag>
+<tag>
+        <tagName>-output=<i>file_path</i></tagName>
+        <description>
+<![CDATA[<p>This argument specifies the file where the output
+should be written. If omitted, stdout is used. </p>]]>
+        </description>
+</tag>
+<tag>
+        <tagName>-error=<i>file_path</i></tagName>
+        <description>
+<![CDATA[<p>This argument specifies the file where the error 
+messages should be written. If omitted, stderr is used.</p>]]>
+        </description>
 </tag>
 </primer3Doc>
