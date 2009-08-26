@@ -1234,7 +1234,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</description>
 </tag>
 <tag>
-     <tagName>PRIMER_THERMODYNAMICAL_ALIGNMENT</tagName>
+     <tagName>PRIMER_THERMODYNAMIC_ALIGNMENT</tagName>
      <dataType>boolean</dataType>
      <default>0</default>
      <description>
@@ -1242,7 +1242,19 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 oligos secondary structures (dimers, hairpins, template mispriming) by
 thermodynamical approach.</p>]]>
      </description>
-</tag>	       
+</tag>
+<tag>
+     <tagName>PRIMER_THERMODYNAMIC_PARAMETERS_PATH</tagName>
+     <dataType>string</dataType>
+     <default> ./primer3_config </default>
+     <description>
+<![CDATA[<p>This tag specifies the path to the directory that contains all the
+parameter files used by the thermodynamic approach. In Linux, there are two
+default locations that are tested if this tag is not defined: 
+<i>./primer3_config/</i> and <i>/opt/primer3_config/</i>.
+For Windows, there is only one default location: <i>.\primer3_config\</i>.</p>]]>
+     </description>
+</tag>
 <tag>
 	<tagName>PRIMER_MAX_SELF_ANY</tagName>
     <oldTag>
@@ -1293,7 +1305,7 @@ oligos.</p>]]>
 	  mismatches, dangling ends have been used. Also parameters for
 increments for length dependence of
 bulge and internal loops have been used. This parameter is calculated only
-if PRIMER_THERMODYNAMICAL_ALIGNMENT=1. The by default value is 10 degrees
+if PRIMER_THERMODYNAMIC_ALIGNMENT=1. The by default value is 10 degrees
 lower than the default value of PRIMER_MIN_TM. For example, the alignment
 width length 15nt</p>
 <pre>
@@ -1617,7 +1629,7 @@ value as in <p3t>PRIMER_MAX_SELF_END_TH</p3t></p>]]>
      </description>
 </tag>
 <tag>
-    <tagName>PRIMER_MAX_HAIRPIN</tagName>
+    <tagName>PRIMER_MAX_HAIRPIN_TH</tagName>
     <dataType>float</dataType>
     <default>47.0</default>
     <description>
@@ -1625,7 +1637,7 @@ value as in <p3t>PRIMER_MAX_SELF_END_TH</p3t></p>]]>
 calculated by thermodynamic approach. The hairpin loops,
 bulge loops, internal loops, internal single mismatches, dangling ends,
 terminal mismatches have been considered. This parameter is calculated only
-if PRIMER_THERMODYNAMICAL_ALIGNMENT=1. The by default value is 10 degrees
+if PRIMER_THERMODYNAMIC_ALIGNMENT=1. The by default value is 10 degrees
 lower than the default value of PRIMER_MIN_TM. For example the structure:
 <pre>
       -///------\\\-
@@ -1644,48 +1656,39 @@ For details about papers used for calculating hairpins see <p3t>PRIMER_MAX_SELF_
     </description>
 </tag>
 <tag>
-    <tagName>PRIMER_PAIR_MAX_HAIRPIN</tagName>
+    <tagName>PRIMER_PAIR_MAX_HAIRPIN_TH</tagName>
     <dataType>float</dataType>
     <default>47.0</default>
     <description>
     <![CDATA[<p>The more stable monomer structure calculated from the most
 stable structure of left primer and the most stable structure of right
-primer. Thermodynamical approach. See <p3t>PRIMER_MAX_HAIRPIN</p3t> for details.</p>]]>
+primer. Thermodynamical approach. See <p3t>PRIMER_MAX_HAIRPIN_TH</p3t> for details.</p>]]>
     </description>
 </tag>
 <tag>
-    <tagName>PRIMER_INTERNAL_MAX_HAIRPIN</tagName>
+    <tagName>PRIMER_INTERNAL_MAX_HAIRPIN_TH</tagName>
     <dataType>float</dataType>
     <default>47.0</default>
     <description>
      <![CDATA[<p>The most stable monomer structure of internal oligo
-calculated by thermodynamic approach. See <p3t>PRIMER_MAX_HAIRPIN</p3t> for details.</p>]]>
+calculated by thermodynamic approach. See <p3t>PRIMER_MAX_HAIRPIN_TH</p3t> for details.</p>]]>
     </description>
 </tag>
 <tag>
-     <tagName>PRIMER_WT_HAIRPIN</tagName>
+     <tagName>PRIMER_WT_HAIRPIN_TH</tagName>
      <dataType>float</dataType>
      <default>0.0</default>
      <description>
-     <![CDATA[<p>Penalty weight for the individual primer hairpin structure value as in <p3t>PRIMER_MAX_HAIRPIN</p3t>.</p>]]>
+     <![CDATA[<p>Penalty weight for the individual primer hairpin structure value as in <p3t>PRIMER_MAX_HAIRPIN_TH</p3t>.</p>]]>
      </description>
 </tag>
 <tag>
-     <tagName>PRIMER_PAIR_WT_HAIRPIN</tagName>
-     <dataType>float</dataType>
-     <default>0.0</default>
-     <description>
-     <![CDATA[<p>Penalty weight for the most stable primer hairpin structure
-value as in <p3t>PRIMER_PAIR_MAX_HAIRPIN</p3t>.</p>]]>
-     </description>
-</tag>
-<tag>
-     <tagName>PRIMER_INTERNAL_WT_HAIRPIN</tagName>
+     <tagName>PRIMER_INTERNAL_WT_HAIRPIN_TH</tagName>
      <dataType>float</dataType>
      <default>0.0</default>
      <description>
      <![CDATA[<p>Penalty weight for the most stable
-primer hairpin structure value as in <p3t>PRIMER_INTERNAL_MAX_HAIRPIN</p3t>.</p>]]>
+primer hairpin structure value as in <p3t>PRIMER_INTERNAL_MAX_HAIRPIN_TH</p3t>.</p>]]>
      </description>
 </tag>
 <tag>

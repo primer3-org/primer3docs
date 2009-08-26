@@ -414,12 +414,12 @@ The self-complementarity measures for the selected oligo.</p>]]>
    </description>
 </tag>
 <tag>
-   <tagName>PRIMER_RIGHT_4_HAIRPIN</tagName>
+   <tagName>PRIMER_RIGHT_4_HAIRPIN_TH</tagName>
    <dataType>f</dataType>
    <optional>N</optional>
    <description>
    <![CDATA[<p>The calculated value of melting temperature of hairpin structure of primer. 
-   For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
+   For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t></p>]]>
    </description>
 </tag>
 <tag>
@@ -447,15 +447,6 @@ primer sequence. For details see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.
 The inter-pair complementarity measures over the complete primer for
 selected left and right primer.</p>]]>
     </description>
-</tag>
-<tag>
-     <tagName>PRIMER_PAIR_4_HAIRPIN</tagName>
-     <dataType>f</dataType>
-     <optional>N</optional>
-     <description>
-     <![CDATA[<p>The calculated value of melting temperature for more stable
-hairpin structure of primer from pair. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
-     </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_SELF_END</tagName>
@@ -488,21 +479,21 @@ The self-complementarity measures for the ends of selected oligo.</p>]]>
      </description>
 </tag>
 <tag>
-     <tagName>PRIMER_LEFT_4_HAIRPIN</tagName>
+     <tagName>PRIMER_LEFT_4_HAIRPIN_TH</tagName>
      <dataType>f</dataType>
      <optional>N</optional>
      <description>
      <![CDATA[<p>The calculated value of melting temperature of hairpin
-structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t></p>]]>
+structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t></p>]]>
      </description>
 </tag>
 <tag>
-     <tagName>PRIMER_INTERNAL_4_HAIRPIN</tagName>
+     <tagName>PRIMER_INTERNAL_4_HAIRPIN_TH</tagName>
      <dataType>f</dataType>
      <optional>N</optional>
      <description>
      <![CDATA[<p>The calculated value of melting temperature of hairpin
-structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN</p3t>
+structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t>
      </p>]]>
      </description>
 </tag>
