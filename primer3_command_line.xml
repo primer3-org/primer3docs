@@ -50,7 +50,7 @@ An example Tag with all possible options:
 <tag>
 	<tagName>-about</tagName>
 	<description>
-<![CDATA[<p>With this argument primer3 generates one line of output 
+<![CDATA[<p>With this argument primer3 generates one line of output
 indicating the release number:
 <pre>
 primer3 release &lt;release number&gt;
@@ -75,7 +75,7 @@ it does not recognize.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-p3_settings_file=<i>file_path</i></tagName>
+	<tagName>-p3_settings_file=<i>file_path</i> </tagName>
 	<description>
 <![CDATA[<p>This argument specifies a settings file,
 <i>file_path</i>. Primer3 reads the global 
@@ -83,7 +83,7 @@ it does not recognize.</p>]]>
 Tags appearing in the settings file override
 default primer3 settings. The values set in
 the settings files can be also overridden 
-by tags in the input file. See 
+by tags in the input file. See
 primer3 file documentation for details on the file 
 format.</p>]]>
 	</description>
