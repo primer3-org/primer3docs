@@ -166,6 +166,20 @@ overlaps one of these positions for at least
 <p3t>PRIMER_POS_OVERLAP_TO_END_DIST</p3t> nucleotides.</p>]]>
     </description>
 </tag>
+
+<tag>
+    <tagName>SEQUENCE_OVERLAP_JUNCTION_LIST</tagName>
+    <dataType>quality list</dataType>
+    <default>empty</default>
+    <description>
+<![CDATA[<p>A list of space separated integers. If this list is not empty primer3
+tries to pick primer pairs were the forward or the reverse primer overlaps one of 
+these junction points for at least <p3t>PRIMER_MIN_3_PRIME_OVERLAP_OF_JUNCTION</p3t> 
+nucleotides towards the 3' end, and at least <p3t>PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION</p3t> 
+nucleotides towards the 5' end.</p>]]>
+    </description>
+</tag>
+
 <tag>
 	<tagName>SEQUENCE_INTERNAL_EXCLUDED_REGION</tagName>
 	<oldTag>
@@ -478,6 +492,26 @@ value will increase running time.</p>]]>
     <description>
 <![CDATA[<p>The minimum distance of nucleotides a end of a primer has to 
 have to one of the positions in <p3t>SEQUENCE_PRIMER_OVERLAP_POS</p3t>.</p>]]>
+    </description>
+</tag>
+
+<tag>
+    <tagName>PRIMER_MIN_3_PRIME_OVERLAP_OF_JUNCTION</tagName>
+    <dataType>int</dataType>
+    <default>4</default>
+    <description>
+<![CDATA[<p>The minimum distance of nucleotides the 3' end of a primer has to 
+have to one of the positions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.</p>]]>
+    </description>
+</tag>
+
+<tag>
+    <tagName>PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION</tagName>
+    <dataType>int</dataType>
+    <default>7</default>
+    <description>
+<![CDATA[<p>The minimum distance of nucleotides the 5' end of a primer has to 
+have to one of the positions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.</p>]]>
     </description>
 </tag>
 
