@@ -89,6 +89,16 @@ format.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>-echo_settings_file</tagName>
+	<description>
+<![CDATA[<p>This argument indicates that primer3_core
+should print the input tags specified
+in the given settings file. If no settings file is
+provided or if the -format_output option is given,
+this argument will have no effect.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>-io_version=<i>n</i></tagName>
 	<description>
 <![CDATA[<p>This argument directs primer3 to use

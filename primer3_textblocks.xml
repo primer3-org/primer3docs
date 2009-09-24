@@ -1342,7 +1342,7 @@ web interfaces (distributed separately).<br />
 <br />
 The command line for primer3 is:<br />
 <br />
-primer3_core [ -format_output ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
+primer3_core [ -format_output ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
 <br />
 A complete list of valid command line arguments can be found in 
 COMMAND LINE ARGUMENTS below.<br />
@@ -1623,8 +1623,15 @@ you would want synthesized in a primer order.)</p>]]>
 	<head>OUTPUT TAGS</head>
 	<text>
 <![CDATA[<p>For each Boulder-IO record passed into primer3 via stdin, exactly
-one Boulder-IO record comes out of primer3 on stdout. These output
-records contain everything that the input record contains, plus a
+one Boulder-IO record comes out of primer3 on stdout.
+If a settings file is provided and the option to echo the settings file is given
+on the command line, then the contents of the settings file will also be
+part of the output. Two additional tags are used to indicate where the 
+records of the settings file begin and end: P3_SETTINGS_FILE_USED specifies
+the path to the settings file that was provided, P3_SETTINGS_FILE_END
+does not have any value and it just indicates the end of the settings records.<br />
+<br />
+The output records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br />
 <br />
