@@ -156,15 +156,26 @@ such as ALUs or LINEs.</p>]]>
 	</description>
 </tag>
 <tag>
-    <tagName>SEQUENCE_PRIMER_OVERLAP_POS</tagName>
-    <dataType>quality list</dataType>
-    <default>empty</default>
-    <description>
-<![CDATA[<p>A list of space separated integers. If this list is not empty primer3
-tries to pick primer pairs were the forward or the reverse primer 
-overlaps one of these positions for at least 
-<p3t>PRIMER_POS_OVERLAP_TO_END_DIST</p3t> nucleotides.</p>]]>
-    </description>
+  <tagName>SEQUENCE_PRIMER_PAIR_OK_REGION_LIST</tagName>
+  <dataType>interval list</dataType>
+  <default>empty</default>
+  <description>
+<![CDATA[<p>Primers and oligos must be included in one of the regions specified in this tag.
+The associated value must be a space-separated list of</p>
+<pre>
+<tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt>,<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>
+</pre>
+<p>pairs where the left primer must be in the region specified by 
+<tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt> and 
+the right primer must be in the region specified by
+<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>.
+Each region is specified by <tt><i>&lt;start&gt;</i></tt> which is 
+the index of the first base, and  <tt><i>&lt;length&gt;</i></tt> which is
+its length. A region may be empty, in which case the location of the
+corresponding primer is not constrained.
+This tag is useful for limiting the locations of the left primer, right primer or
+the primer pair.</p>]]>
+  </description>
 </tag>
 
 <tag>
@@ -481,17 +492,6 @@ returned are sorted by their &quot;quality&quot;, in other words by the
 value of the objective function (where a lower number indicates a
 better primer pair).  Caution: setting this parameter to a large
 value will increase running time.</p>]]>
-    </description>
-</tag>
-
-
-<tag>
-    <tagName>PRIMER_POS_OVERLAP_TO_END_DIST</tagName>
-    <dataType>int</dataType>
-    <default>5</default>
-    <description>
-<![CDATA[<p>The minimum distance of nucleotides a end of a primer has to 
-have to one of the positions in <p3t>SEQUENCE_PRIMER_OVERLAP_POS</p3t>.</p>]]>
     </description>
 </tag>
 
