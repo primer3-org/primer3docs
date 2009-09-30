@@ -1916,7 +1916,7 @@ are acceptable and have special interpretations:
 <br />
 <br />
 -1 indicates that a given primer can appear in
-multiple primer pairs returned by primer3
+multiple primer pairs returned by primer3. 
 The only requirement is that each primer pair
 be unique.  This is the default behavior and the behavior
 in previous releases.  This is also the most liberal
