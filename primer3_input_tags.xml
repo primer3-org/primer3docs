@@ -1907,7 +1907,7 @@ objective is get 'truly different' primer pairs, where
 the caller/user has some control over what 'truly different'
 means.<br />
 <br />
-Primers with 3-prime ends at positions
+Primers with 3' ends at positions
 e.g.  30 and 31 in the template
 sequence have a three-prime distance of 1.<br />
 <br />
