@@ -157,37 +157,97 @@ such as ALUs or LINEs.</p>]]>
 </tag>
 <tag>
   <tagName>SEQUENCE_PRIMER_PAIR_OK_REGION_LIST</tagName>
-  <dataType>interval list</dataType>
+  <dataType>space separated list of integer "quadruples"</dataType>
   <default>empty</default>
   <description>
-<![CDATA[<p>Primers and oligos must be included in one of the regions specified in this tag.
+<![CDATA[<p>
+
+This tag allows detailed specification of possible locations of left and right primers in primer pairs.
+<br><br>
 The associated value must be a space-separated list of</p>
+
 <pre>
 <tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt>,<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>
 </pre>
-<p>pairs where the left primer must be in the region specified by 
+<p>quadruples.
+
+The left primer must be in the region specified by 
 <tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt> and 
 the right primer must be in the region specified by
 <tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>.
-Each region is specified by <tt><i>&lt;start&gt;</i></tt> which is 
-the index of the first base, and  <tt><i>&lt;length&gt;</i></tt> which is
-its length. A region may be empty, in which case the location of the
+
+<tt><i>&lt;left_start&gt;</i></tt> and <tt><i>&lt;left_length&gt;</i></tt> specify the location of the left primer in terms of the index of
+the first base in the region and the length of the region.
+
+<tt><i>&lt;right_start&gt;</i></tt> and <tt><i>&lt;right_length&gt;</i></tt> specify the location of the right primer in analogous fashion.
+
+As seen in the example below, if no integers are specified for a region then the location of the
 corresponding primer is not constrained.
-This tag is useful for limiting the locations of the left primer, right primer or
-the primer pair.</p>]]>
+
+<br><br>
+Example:
+<pre>
+SEQUENCE_PRIMER_PAIR_OK_REGION_LIST=100,50,300,50 900,60,, ,,930,100
+</pre>
+<br>
+Specifies that there are three choices:
+<br><br>
+Left primer in the 50 bp region starting at position 100 AND right primer
+in the 50 bp region starting at position 300
+<br><br>
+OR
+<br><br>
+Left primer in the 60 bp region starting at position 900 (and right primer anywhere)
+<br><br>
+OR
+<br><br>
+Right primer in the 100 bp region starting at position 930 (and left
+primer anywhere)
+
+
+</p>]]>
   </description>
 </tag>
 
 <tag>
     <tagName>SEQUENCE_OVERLAP_JUNCTION_LIST</tagName>
-    <dataType>quality list</dataType>
+    <dataType>space separated integers</dataType>
     <default>empty</default>
     <description>
-<![CDATA[<p>A list of space separated integers. If this list is not empty primer3
-tries to pick primer pairs were the forward or the reverse primer overlaps one of 
-these junction points for at least <p3t>PRIMER_MIN_3_PRIME_OVERLAP_OF_JUNCTION</p3t> 
-nucleotides towards the 3' end, and at least <p3t>PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION</p3t> 
-nucleotides towards the 5' end.</p>]]>
+<![CDATA[<p>If this list is not empty, then
+the forward OR the reverse primer must overlap one of 
+these junction points by at least <p3t>PRIMER_MIN_3_PRIME_OVERLAP_OF_JUNCTION</p3t> 
+nucleotides at the 3' end and at least <p3t>PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION</p3t> 
+nucleotides at the 5' end.
+<br><br>
+In more detail: The junction associated with a given position is the space immediately to the right
+of that position in the template sequence on the strand given as input.
+<br><br>
+For example:
+<pre>
+<code>
+SEQUENCE_OVERLAP_JUNCTION_LIST=20
+# 1-based indexes
+PRIMER_MIN_3_PRIME_OVERLAP_OF_JUNCTION=4
+
+template: atcataggccatgcctgagc^gctacgact
+
+          ok           ...gagc^gcta-3'  (left primer)
+          not ok       ...gagc^gct-3'   (left primer)
+          ok           3'-ctcg^cgat...  (right pimer)
+          not ok        3'-tcg^cgat...  (right primer)
+
+PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION=5
+
+         ok           5'-tgagc^gccg...  (left primer)
+         not ok        5'-gagc^gccg...  (left primer)
+         ok           ...tgagc^gctac-5' (right primer)
+         not ok       ...tgagc^gcta-5'  (right primer)
+
+</code>
+</pre>
+
+</p>]]>
     </description>
 </tag>
 
@@ -290,7 +350,7 @@ primer will end at or after the stop codon.</p>]]>
 		<oldTagName>PRIMER_SEQUENCE_QUALITY</oldTagName>
 		<version>3.0</version>
 	</oldTag>
-	<dataType>quality list</dataType>
+	<dataType>space separated integers</dataType>
 	<default>empty</default>
 	<description>
 <![CDATA[<p>A list of space separated integers. There must be exactly
@@ -378,7 +438,7 @@ Legal values are:<br />
    It returns the primers sorted by quality starting with the 
    best primers. If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and 
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> is selected primer3 does not to pick 
-   primer pairs but treats it as independent lists.<br />
+   primer pairs but generates independent lists of left primers, right primers, and, if requested, internal oligos.<br />
 <br />
    <tt><i>pick_sequencing_primers</i></tt><br />
 <br />
@@ -500,8 +560,10 @@ value will increase running time.</p>]]>
     <dataType>int</dataType>
     <default>4</default>
     <description>
-<![CDATA[<p>The minimum distance of nucleotides the 3' end of a primer has to 
-have to one of the positions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.</p>]]>
+<![CDATA[<p>The 3' end of the left OR the right primer must 
+overlap one of the junctions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t> by this amount.
+See details in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.
+</p>]]>
     </description>
 </tag>
 
@@ -510,8 +572,10 @@ have to one of the positions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.</p>]]
     <dataType>int</dataType>
     <default>7</default>
     <description>
-<![CDATA[<p>The minimum distance of nucleotides the 5' end of a primer has to 
-have to one of the positions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.</p>]]>
+<![CDATA[<p>The 5' end of the left OR the right primer must 
+overlap one of the junctions in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t> by this amount.
+See details in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.
+</p>]]>
     </description>
 </tag>
 
@@ -540,7 +604,8 @@ would set this parameter to <tt><i>100-150 200-250</i></tt>.<br />
 <br />
 Primer3 favors product-size ranges to the left side of the parameter string.
 Primer3 will return legal primers pairs in the first range
-regardless the value of the objective function for these pairs.
+regardless the value of the objective function for pairs in subsequent ranges.
+
 Only if there are an insufficient number of primers in the first
 range will primer3 return primers in a subsequent range.<br />
 <br />
@@ -560,8 +625,10 @@ would, of course, include the primers themselves.</p>]]>
 no optimum product size.  This parameter influences primer pair 
 selection only if <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t> or
 <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t> is non-0.<br />
-This parameter increases calculation time, so set this only if 
-you need a exact product size.</p>]]>
+
+A non-0 value for this parameter will likely increase calculation time, so set this only if 
+a product size near a specific value is truly important.
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1853,21 +1920,30 @@ multiple primer pairs returned by primer3
 The only requirement is that each primer pair
 be unique.  This is the default behavior and the behavior
 in previous releases.  This is also the most liberal
-behavior.<br />
+behavior.
+
 <br />
+<br />
+
 0 indicates a primer pair is acceptable if neither the left or the right primer 
-already appeared in any of the previous pairs.<br />
+already appeared in any of the previous pairs.
+
+In other words, primers in two different pairs are allowed to have the same
+3' position provided their 5' positions differ.
+
 <br />
+<br />
+
 For n &gt; 0:
 A primer pair is acceptable if:<br />
 <br />
-NOT(3' end of left primer closer than n to the 3' end a left primer in
-an existing pair)<br />
+NOT(3' end of left primer closer than n to the 3' end of a left primer in
+a previous pair)<br />
 <br />
 AND<br />
 <br />
-NOT(3' end of right primer closer than n to the 3' end of right primer
-in an existing pair)</p>]]>
+NOT(3' end of right primer closer than n to the 3' end of a right primer
+in a previous pair)</p>]]>
 	</description>
 </tag>
 
@@ -2429,8 +2505,6 @@ both sides in which primer3plus picks the best primer. Value only used if
 	</description>
 </tag>
 
-
-
 	
 <!-- Flags not sorted and of no function -->
 <tag>
@@ -2454,24 +2528,22 @@ both sides in which primer3plus picks the best primer. Value only used if
 	</description>
 </tag>
 
-	
-	
-	
-	
-	
-
-
-
 <tag>
 	<tagName>P3_FILE_ID</tagName>
 	<dataType>string</dataType>
 	<default>empty</default>
 	<description>
-<![CDATA[<p>This tag is only valid in primer3 setting files. It should be used to 
-identify the purpose of this settings. It is printed out on the 
-output of primer3.</p>]]>
+
+<![CDATA[<p>
+This tag is only valid in primer3 setting files. It should be used to 
+identify the purpose of the settings files it appears in. It is printed out on the 
+output of primer3.
+See also also the command line flag -echo_settings_file.
+</p>]]>
 	</description>
 </tag>
+
+
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
 	<oldTag>
@@ -2480,6 +2552,7 @@ output of primer3.</p>]]>
 	</oldTag>
 	<dataType>boolean</dataType>
 	<default>0</default>
+
 	<description>
 <![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates 
 one or more output
@@ -2491,9 +2564,26 @@ must be supplied).  If internal oligos
 are requested, primer3 produces a file
 &lt;sequence_id&gt;.int, which lists all
 acceptable internal oligos.  Obviously, &lt;sequence_id&gt; needs
-to be a string that will work as a file name.</p>]]>
-	</description>
+to be a string that will work as a file name.
+
+
+
+
+<br>
+<br>
+
+See also the <code>pick_primer_list</code>
+argument to <p3t>PRIMER_TASK</p3t>, which offers similar functionality on stdout.
+
+</p>]]>
+
+</description>
+
 </tag>
+
+
+
+
 <tag>
 	<tagName>P3_COMMENT</tagName>
 	<oldTag>

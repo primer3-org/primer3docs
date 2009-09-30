@@ -105,17 +105,11 @@ this argument will have no effect.</p>]]>
 io version <i>n</i> input and output conventions.
 <i>n</i> can be 3 (for mostly backward
 compatible behavior) or 4.
--io_version=4 is required to use functionality that 
+-io_version=4 <strong>is the default</strong> and is required to use functionality that 
 is new in release 2.0.0 and later.</p>]]>
 	</description>
 </tag>
 
-<tag>
-	<tagName>-2x_compat</tagName>
-	<description>
-<![CDATA[<p>This argument is no longer supported.</p>]]>
-	</description>
-</tag>
 <tag>
         <tagName>-output=<i>file_path</i></tagName>
         <description>
