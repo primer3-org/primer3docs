@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
 <!--
-Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -67,7 +67,7 @@ Graduate Medical School Singapore, formerly Whitehead Institute)
 based on the design of earlier versions, notably Primer 0.5
 (Steve Lincoln, Mark Daly, and Eric S. Lander).
 The original web interface was designed by Richard Resnick.  Lincoln
-Stein designed Boulder-IO format in the days before XML and RDF, and
+Stein designed the Boulder-IO format in the days before XML and RDF, and
 championed the idea of making primer3 a software component, which
 has been key to its wide utility.
 
@@ -77,14 +77,22 @@ design of primer3. Brant Faircloth has helped with
 ensuring that primer3 runs on Windows and MacOS and with the
 primer3 web site. 
 Triinu Koressaar and Maido Remm modernized the melting 
-temperature calculations.
+temperature calculations in 2008.  
+Triinu Koressaar added secondary structure, 
+primer-dimer, and template mispriming based on a thermodynamic
+model in 2.2.0.
+Ioana Cutcutache is responsible for most of the 
+remaining improvements
+in 2.2.0, including performance enhancements, modern
+command line arguments, and new input tags to 
+control primer location (with the "overlap junction"
+tags initially implemented by Andreas Untergasser).
+Jian Ye patiently provided new requirements.
 
 <br />
 <br />
-Primer3 is now operating as an open software development project hosted
-on SourceForge, and we are working out how to acknowledge all who have
-contributed to its enhancement.  Current active developers can be
-found at http://sourceforge.net/projects/primer3/.</p>]]>
+Primer3 is an open software development project hosted
+on SourceForge: <link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -651,9 +659,9 @@ by a space.</p>]]>
 	<id>copyrightLicense</id>
 	<head>COPYRIGHT AND LICENSE</head>
 	<text>
-<![CDATA[<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+<![CDATA[<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky All rights
+(<link>http://purl.com/STEVEROZEN/</link>), Andreas Untergasser and Helen Skaletsky All rights
 reserved.
 
     This file is part of the primer3 suite and libraries.
