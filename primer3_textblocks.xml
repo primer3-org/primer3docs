@@ -1232,11 +1232,7 @@ The first option is just a shortcut to the second.</p>]]>
 <br />
 Running the tests<br />
 =================<br />
-We are working on integrating the test suite to windows.  
-However, substantial differences between windows and 
-Unix/Linux require some differences in the test script.<br />
-<br />
-You must also install a perl distribution to run the 
+You must install a perl distribution to run the 
 windows tests.<br />
 <br />
 We *strongly* recommend you install ActiveState perl 
@@ -1259,8 +1255,9 @@ known to work.<br />
     command-line window from windows explorer, this will 
     fill in the location for you<br />
 <br />
-5. On the command line, run 'perl p3test.pl --windows' in this 
-   directory<br />
+5. On the command line, run 'mingw32-make VAL=--windows' in this 
+   directory. You can also run the tests individually, 
+   for example 'perl p3test.pl --windows'.<br />
 6. You should see [OK] for all of the tests.<br />
 <br />
 Running the software<br />
