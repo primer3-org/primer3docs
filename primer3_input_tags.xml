@@ -157,14 +157,14 @@ such as ALUs or LINEs.</p>]]>
 </tag>
 <tag>
   <tagName>SEQUENCE_PRIMER_PAIR_OK_REGION_LIST</tagName>
-  <dataType>space separated list of integer "quadruples"</dataType>
+  <dataType>semicolon separated list of integer "quadruples"</dataType>
   <default>empty</default>
   <description>
 <![CDATA[<p>
 
 This tag allows detailed specification of possible locations of left and right primers in primer pairs.
 <br><br>
-The associated value must be a space-separated list of</p>
+The associated value must be a semicolon-separated list of</p>
 
 <pre>
 <tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt>,<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>
@@ -187,7 +187,7 @@ corresponding primer is not constrained.
 <br><br>
 Example:
 <pre>
-SEQUENCE_PRIMER_PAIR_OK_REGION_LIST=100,50,300,50 900,60,, ,,930,100
+SEQUENCE_PRIMER_PAIR_OK_REGION_LIST=100,50,300,50 ; 900,60,, ; ,,930,100
 </pre>
 <br>
 Specifies that there are three choices:
