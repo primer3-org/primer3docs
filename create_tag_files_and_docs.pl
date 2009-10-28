@@ -47,7 +47,7 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "2.2.0";
+my $scriptP3Version = "2.2.1";
 my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009";
 
 # Modify here the order of the textblocks or add new:
