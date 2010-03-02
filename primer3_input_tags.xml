@@ -1896,25 +1896,77 @@ for example AAAAAA.</p>]]>
 
 
 <tag>
-	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
+	<tagName>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</tagName>
 	<dataType>int</dataType>
 	<default>-1</default>
 	<description>
 <![CDATA[<p>When returning multiple primer pairs,
 the minimum number of base pairs between the 3' ends of
-any two left or any two right primers.  The
-objective is get 'truly different' primer pairs, where
-the caller/user has some control over what 'truly different'
-means.<br />
+any two left primers.<br />
 <br />
-Primers with 3' ends at positions
-e.g.  30 and 31 in the template
+Primers with 3' ends at positions e.g.  30 and 31 in the template
 sequence have a three-prime distance of 1.<br />
 <br />
 In addition to positive values, the values -1 and 0 
 are acceptable and have special interpretations:
 <br />
 <br />
+-1 indicates that a given left primer can appear in
+multiple primer pairs returned by primer3. 
+The only requirement is that each primer pair
+be unique.  This is the default behavior.
+
+<br />
+<br />
+
+0 indicates a primer pair is acceptable if the left primer
+did not already appear in any of the previous pairs.
+
+In other words, left primers in two different pairs are allowed to have the same
+3' position provided their 5' positions differ.
+
+<br />
+<br />
+
+For n &gt; 0:
+A primer pair is acceptable if:<br />
+<br />
+NOT(3' end of left primer closer than n to the 3' end of a left primer in
+a previous pair)<br /></p>]]>
+	</description>
+</tag>
+
+
+<tag>
+	<tagName>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</tagName>
+	<dataType>int</dataType>
+	<default>-1</default>
+	<description>
+<![CDATA[<p>Same as <p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t>, 
+but refering to the minimum number of base 
+pairs between the 3' ends of any two right primers.<br /></p>]]>
+	</description>
+</tag>
+
+
+<tag>
+	<tagName>PRIMER_MIN_THREE_PRIME_DISTANCE</tagName>
+	<dataType>int</dataType>
+	<default>-1</default>
+	<description>
+<![CDATA[<p>General tag, refering to
+the minimum number of base pairs between the 3' ends of
+any two left or any two right primers.  The
+objective is get 'truly different' primer pairs, where
+the caller/user has some control over what 'truly different'
+means.<br />
+<br />
+
+Possible values:
+
+<br />
+<br />
+
 -1 indicates that a given primer can appear in
 multiple primer pairs returned by primer3. 
 The only requirement is that each primer pair
@@ -1928,9 +1980,6 @@ behavior.
 0 indicates a primer pair is acceptable if neither the left or the right primer 
 already appeared in any of the previous pairs.
 
-In other words, primers in two different pairs are allowed to have the same
-3' position provided their 5' positions differ.
-
 <br />
 <br />
 
@@ -1943,7 +1992,13 @@ a previous pair)<br />
 AND<br />
 <br />
 NOT(3' end of right primer closer than n to the 3' end of a right primer
-in a previous pair)</p>]]>
+in a previous pair)<br />
+<br />
+It is an error to specify both 
+PRIMER_MIN_THREE_PRIME_DISTANCE and one of the more specific tags
+(<p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t> or 
+<p3t>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</p3t>)
+in the same input record.</p>]]>
 	</description>
 </tag>
 
