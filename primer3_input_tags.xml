@@ -1913,26 +1913,24 @@ are acceptable and have special interpretations:
 <br />
 -1 indicates that a given left primer can appear in
 multiple primer pairs returned by primer3. 
-The only requirement is that each primer pair
-be unique.  This is the default behavior.
+This is the default behavior.
 
 <br />
 <br />
 
-0 indicates a primer pair is acceptable if the left primer
-did not already appear in any of the previous pairs.
-
-In other words, left primers in two different pairs are allowed to have the same
-3' position provided their 5' positions differ.
+0 indicates that a left primer is acceptable if it
+was not already used.  
+In other words, two left primers are allowed to
+have the same 3' position provided their 5' positions differ.
 
 <br />
 <br />
 
-For n &gt; 0:
-A primer pair is acceptable if:<br />
+For <i>n</i> &gt; 0:
+A left primer is acceptable if:<br />
 <br />
-NOT(3' end of left primer closer than n to the 3' end of a left primer in
-a previous pair)<br /></p>]]>
+NOT(3' end of left primer closer than <i>n</i> to the 3' end of a previously
+used left primer)<br /></p>]]>
 	</description>
 </tag>
 
@@ -1942,9 +1940,8 @@ a previous pair)<br /></p>]]>
 	<dataType>int</dataType>
 	<default>-1</default>
 	<description>
-<![CDATA[<p>Same as <p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t>, 
-but refering to the minimum number of base 
-pairs between the 3' ends of any two right primers.<br /></p>]]>
+<![CDATA[<p>Analogous to <p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t>, 
+but for right primers.<br /></p>]]>
 	</description>
 </tag>
 
@@ -1954,54 +1951,29 @@ pairs between the 3' ends of any two right primers.<br /></p>]]>
 	<dataType>int</dataType>
 	<default>-1</default>
 	<description>
-<![CDATA[<p>General tag, refering to
-the minimum number of base pairs between the 3' ends of
-any two left or any two right primers.  The
-objective is get 'truly different' primer pairs, where
-the caller/user has some control over what 'truly different'
-means.<br />
-<br />
-
-Possible values:
-
+<![CDATA[<p>A "convenience" tag that simultaneously
+sets 
+<p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t>
+and
+<p3t>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</p3t>
 <br />
 <br />
-
--1 indicates that a given primer can appear in
-multiple primer pairs returned by primer3. 
-The only requirement is that each primer pair
-be unique.  This is the default behavior and the behavior
-in previous releases.  This is also the most liberal
-behavior.
-
-<br />
-<br />
-
-0 indicates a primer pair is acceptable if neither the left or the right primer 
-already appeared in any of the previous pairs.
-
-<br />
-<br />
-
-For n &gt; 0:
-A primer pair is acceptable if:<br />
-<br />
-NOT(3' end of left primer closer than n to the 3' end of a left primer in
-a previous pair)<br />
-<br />
-AND<br />
-<br />
-NOT(3' end of right primer closer than n to the 3' end of a right primer
-in a previous pair)<br />
-<br />
+For example
+<pre>
+PRIMER_MIN_THREE_PRIME_DISTANCE=3
+</pre>
+is equivalent to
+<pre>
+PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE=3
+PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE=3
+</pre>
 It is an error to specify both 
-PRIMER_MIN_THREE_PRIME_DISTANCE and one of the more specific tags
-(<p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t> or 
-<p3t>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</p3t>)
+PRIMER_MIN_THREE_PRIME_DISTANCE and either
+<p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t> or 
+<p3t>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</p3t>
 in the same input record.</p>]]>
 	</description>
 </tag>
-
 
 <tag>
 	<tagName>PRIMER_PICK_ANYWAY</tagName>
