@@ -51,11 +51,7 @@ An example Tag with all possible options:
 	<tagName>-about</tagName>
 	<description>
 <![CDATA[<p>With this argument primer3 generates one line of output
-indicating the release number:
-<pre>
-primer3 release &lt;release number&gt;
-</pre>
-and then exits. This allows scripts to 
+indicating the release number and then exits. This allows scripts to 
 query primer3 for its version.</p>]]>
 	</description>
 </tag>

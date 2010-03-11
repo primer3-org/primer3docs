@@ -168,7 +168,7 @@ primer, it is calculated like that:</p>
 <pre>
 <p3t>PRIMER_LEFT_4_PENALTY</p3t> =
 
-   <p3t>If PRIMER_LEFT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then this is added (+):
+   If <p3t>PRIMER_LEFT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then this is added (+):
 
        + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_LEFT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
@@ -364,7 +364,7 @@ primer, it is calculated like that:</p>
        (<p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t> - (<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 - 1))
     else if ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>) then is added (+):
       + <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> *
-      (1/(<p3t>>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>));
+      (1/(<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_TH</p3t>));
 
     If ((<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_RIGHT_4_HAIRPIN_TH</p3t>) then is added (+):
       + <p3t>PRIMER_WT_HAIRPIN_TH</p3t> *
@@ -457,14 +457,14 @@ primer, it is calculated like that:</p>
          (<p3t>PRIMER_INTERNAL_4_SELF_END_TH</p3t> - (<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 - 1))
     else if ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &gt; <p3t>PRIMER_INTERNAL_4_SELF_END_TH</p3t>) then is added (+):
       + <p3t>PRIMER_INTERNAL_WT_SELF_END_TH</p3t> *
-          (1/(<p3t> TM">PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>));
+          (1/(<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>));
 
     If ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &le; <p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t>) then is added (+):
       + <p3t>PRIMER_INTERNAL_WT_HAIRPIN_TH</p3t> *
         (<p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t> - (<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 - 1))
     else if ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &gt; <p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t>) then is added (+):
       + <p3t>PRIMER_INTERNAL_WT_HAIRPIN_TH</p3t> *
-        (1/(<p3t> TM">PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t>));
+        (1/(<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t>));
 </i>
 </pre>
 <p>	
@@ -542,7 +542,7 @@ this point. If primer pairs have to be selected, a
  
    If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>) then is added (+):
    + <p3t>PRIMER_PAIR_WT_COMPL_END_TH</p3t> *
-       (<p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t> - (<p3t>PRIMER_PAIR_4_TM</p3t>; - 5 - 1))
+       (<p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t> - (min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5 - 1))
   else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &gt; <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>) then is added (+):
     + <p3t>PRIMER_PAIR_WT_COMPL_END_TH</p3t> *
          (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>));
@@ -575,7 +575,7 @@ of possible vector contaminants and cloning artifacts coupled
 with database searches using blast, Fasta, or other similarity
 searching program to screen for vector contaminants and possible
 repeats.  Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
-others, 1995-1996, <link>ftp://ncbi.nlm.nih.gov/repository/repbase</link>)
+others, 1995-1996, <link>ftp://ftp.ncbi.nih.gov/repository/repbase/</link>)
 is an excellent source of repeat sequences and pointers to the
 literature.  (The Repbase files need to be converted to Fasta format
 before they can be used by primer3.) Primer3 now allows you to screen
@@ -633,15 +633,6 @@ The paper is available at
 <br />  
 Source code available at <link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
     </text>
-</textBlock>
-<textBlock>
-	<id>contact</id>
-	<head>REPORTING BUGS AND PROBLEMS AND SUGGESTING ENHANCEMENTS</head>
-	<text>
-<![CDATA[<p>For reporting errors
-or requesting enhancements, please see 
-http://primer3.sourceforge.net/contact.php</p>]]>
-	</text>
 </textBlock>
 <textBlock>
 	<id>commandLineTags</id>
@@ -1080,9 +1071,9 @@ and various tests will fail if pc
 newlines get inserted into the code and test files.  Instead, move the
 distribution (primer3_&lt;release&gt;.tar.gz) to Unix/Linux, and then<br />
 <br />
-$ unzip primer3_1.0.1.tar.gz<br />
-$ tar xvf primer3_1.0.1.tar<br />
-$ cd primer3_1.0.1/src<br />
+$ unzip primer3_&lt;release&gt;.tar.gz<br />
+$ tar xvf primer3_&lt;release&gt;.tar<br />
+$ cd primer3_&lt;release&gt;/src<br />
 <br />
 If you do not use gcc, then you will probably have 
 to modify the makefile to
@@ -1393,9 +1384,6 @@ GPL2 as well.
 We chose GPL2 because we wanted primer3 to evolve and for the 
 improvements to find their way back into the main distribution. 
 
-So if you make useful enhancements, please contact us: 
-http://primer3.sourceforge.net/contact.php
-
 If you are programming a new web interface which runs primer3, 
 please include in the about page of the tool the sentence 
 "&lt;your software name&gt; uses primer3 version ...". 
@@ -1404,11 +1392,7 @@ especially if you do not want to maintain it in the future.
 <br />
 <br />
 There is no need to ask us for permission to include primer3 
-in your tools, 
-
-If there are any issues / bugs / suggestions for 
-primer3, please let us know so we can improve it:
-http://primer3.sourceforge.net/contact.php</p>]]>
+in your tools.]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1490,7 +1474,6 @@ NEW VERSION                       - OLD VERSION
 <p3t>PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</p3t>- PRIMER_PAIR_MAX_MISPRIMING
 <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t>      - PRIMER_WT_REP_SIM
 <p3t>PRIMER_INTERNAL_WT_LIBRARY_MISHYB</p3t> - PRIMER_INTERNAL_WT_REP_SIM
-<p3t>PRIMER_INTERNAL_WT_LIBRARY_MISPRIMING</p3t> - PRIMER_INTERNAL_WT_REP_SIM
 <p3t>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</p3t> - PRIMER_PAIR_WT_REP_SIM
 
 <p3t>PRIMER_MAX_NS_ACCEPTED</p3t>            - PRIMER_NUM_NS_ACCEPTED
@@ -1681,7 +1664,7 @@ should use to screen for interspersed repeats or for other
 sequence to avoid as a location for primers. The human and 
 rodent libraries on the web page are adapted from Repbase 
 (J. Jurka, A.F.A. Smit, C. Pethiyagoda, et al., 1995-1996)
-<a href="ftp://ftp.ncbi.nih.gov/repository/repbase">ftp://ftp.ncbi.nih.gov/repository/repbase</a>).
+<a href="ftp://ftp.ncbi.nih.gov/repository/repbase/">ftp://ftp.ncbi.nih.gov/repository/repbase/</a>).
 The human library is humrep.ref concatenated with simple.ref,
 translated to FASTA format. There are two rodent libraries. One 
 is rodrep.ref translated to FASTA format, and the other is 
