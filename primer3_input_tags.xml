@@ -1646,7 +1646,7 @@ primer-dimer will not occur.  We recommend that
      <dataType>decimal 9999.99</dataType>
      <default>47.00</default>
      <description>
-     <![CDATA[<p><p3t>Same as <p3t>PRIMER_INTERNAL_MAX_SELF_END</p3t> but for
+     <![CDATA[<p>Same as <p3t>PRIMER_INTERNAL_MAX_SELF_END</p3t> but for
 calculating the score (melting temperature of structure) thermodynamical
 approach is used.</p>]]>
      </description>
