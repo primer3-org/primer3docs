@@ -185,10 +185,11 @@ As seen in the example below, if no integers are specified for a region then the
 corresponding primer is not constrained.
 
 <br><br>
-Example:
+Example:</p>
 <pre>
 SEQUENCE_PRIMER_PAIR_OK_REGION_LIST=100,50,300,50 ; 900,60,, ; ,,930,100
 </pre>
+<p>
 <br>
 Specifies that there are three choices:
 <br><br>
@@ -203,8 +204,6 @@ OR
 <br><br>
 Right primer in the 100 bp region starting at position 930 (and left
 primer anywhere)
-
-
 </p>]]>
   </description>
 </tag>
@@ -223,7 +222,7 @@ nucleotides at the 5' end.
 In more detail: The junction associated with a given position is the space immediately to the right
 of that position in the template sequence on the strand given as input.
 <br><br>
-For example:
+For example:</p>
 <pre>
 <code>
 SEQUENCE_OVERLAP_JUNCTION_LIST=20
@@ -246,8 +245,7 @@ PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION=5
 
 </code>
 </pre>
-
-</p>]]>
+]]>
     </description>
 </tag>
 
@@ -1120,7 +1118,7 @@ Use tag <p3t>PRIMER_SALT_CORRECTIONS</p3t>, to specify the salt correction
 method for melting temperature calculation.<br />
 <br />
 Example of calculating the melting temperature of an oligo if
-<p3t>PRIMER_TM_SANTALUCIA</p3t>=1 and <p3t>PRIMER_SALT_CORRECTIONS</p3t>=1
+<p3t>PRIMER_TM_FORMULA</p3t>=1 and <p3t>PRIMER_SALT_CORRECTIONS</p3t>=1
 recommended values):<br />
 <br />
 primer=CGTGACGTGACGGACT<br />
@@ -1423,9 +1421,9 @@ primer3 parameters), but the alignment
      A        A
 </pre>
 <p>is not considered (Tm=57.0997 and the length of oligo is 14nt).
-<ul type="square">Thermodynamical parameters and methods for finding
-the most stable structure are described in following papers:
-<li>[SantaLucia JR (1998) "A unified view of polymer, dumbbell and
+Thermodynamical parameters and methods for finding
+the most stable structure are described in following papers:</p>
+<ul><li>[SantaLucia JR (1998) "A unified view of polymer, dumbbell and
 oligonucleotide DNA nearest-neighbor
 thermodynamics", Proc Natl Acad Sci 95:1460-65
 <link> http://dx.doi.org/10.1073/pnas.95.4.1460</link>]
@@ -1464,7 +1462,7 @@ nucleic acid hybridization thermodynamics and computer-readable storage
 medium for use therein" World Intellectual Property Organization, WO 01/94611
 <link>http://www.wipo.int/pctdb/en/wo.jsp?wo=2001094611</link>]
 </li></ul>
-<br>
+<p><br>
 Predicting secondary structures can improve primer design by eliminating
 sequences with high possibility to form alternative secondary structures.
 	  </p>]]>
@@ -1739,7 +1737,7 @@ calculated by thermodynamic approach. The hairpin loops,
 bulge loops, internal loops, internal single mismatches, dangling ends,
 terminal mismatches have been considered. This parameter is calculated only
 if PRIMER_THERMODYNAMIC_ALIGNMENT=1. The by default value is 10 degrees
-lower than the default value of PRIMER_MIN_TM. For example the structure:
+lower than the default value of PRIMER_MIN_TM. For example the structure:</p>
 <pre>
       -///------\\\-
    5' ACGCTGTGCTGCGA 3'
@@ -1750,6 +1748,7 @@ default values of primer3) and
       //////----\\\\\\
    5' CCGCAGTAAGCTGCGG 3'
 </pre>
+<p>
 with melting temperature 71.0918 (calculated according to by
 default values of primer3)
 
@@ -1801,7 +1800,7 @@ primer hairpin structure value as in <p3t>PRIMER_INTERNAL_MAX_HAIRPIN_TH</p3t>.<
 right primer.  Bigger numbers mean more stable 3' ends.  The
 value is the maximum delta G (kcal/mol) for duplex disruption for
 the five 3' bases as calculated using the nearest-neighbor
-parameter values specified by the option of <p3t>PRIMER_TM_SANTALUCIA</p3t> 
+parameter values specified by the option of <p3t>PRIMER_TM_FORMULA</p3t> 
 Table of thermodynamic parameters.<br />
 <br />
 For example if the table of thermodynamic parameters suggested
@@ -1958,7 +1957,7 @@ and
 <p3t>PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE</p3t>
 <br />
 <br />
-For example
+For example</p>
 <pre>
 PRIMER_MIN_THREE_PRIME_DISTANCE=3
 </pre>
@@ -1967,6 +1966,7 @@ is equivalent to
 PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE=3
 PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE=3
 </pre>
+<p>
 It is an error to specify both 
 PRIMER_MIN_THREE_PRIME_DISTANCE and either
 <p3t>PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE</p3t> or 
@@ -2035,7 +2035,7 @@ set similar information is produced in the user-oriented output.</p>]]>
 <![CDATA[<p>This parameter provides a quick-and-dirty way to get primer3 to
 accept IUB / IUPAC codes for ambiguous bases (i.e. by changing
 all unrecognized bases to N).  If you wish to include an
-ambiguous base in an oligo, you must set <p3t>PRIMER_NUM_NS_ACCEPTED</p3t> to a
+ambiguous base in an oligo, you must set <p3t>PRIMER_MAX_NS_ACCEPTED</p3t> to a
 1 (non-0) value.<br />
 <br />
 Perhaps '-' and '* ' should be squeezed out rather than changed
@@ -2231,7 +2231,7 @@ library should be used and "turns off" the use of a
 previously specified library.<br />
 <br />
 Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
-others, 1995-1996, <link>ftp://ncbi.nlm.nih.gov/repository/repbase</link>)
+others, 1995-1996, <link>ftp://ftp.ncbi.nih.gov/repository/repbase/</link>)
 is an excellent source of repeat sequences and pointers to the
 literature. (The Repbase files need to be converted to Fasta
 format before they can be used by primer3.)</p>]]>
@@ -2380,7 +2380,7 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	<description>
 <![CDATA[<p>The minimum sequence quality (as specified by
 <p3t>SEQUENCE_QUALITY</p3t>) allowed within the 5' pentamer of a
-primer. Note that there is no <p3t>PRIMER_INTERNAL_MIN_END_QUALITY</p3t>.</p>]]>
+primer. Note that there is no PRIMER_INTERNAL_MIN_END_QUALITY.</p>]]>
 	</description>
 </tag>
 <tag>

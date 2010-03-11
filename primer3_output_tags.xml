@@ -127,12 +127,7 @@ PRIMER_PAIR_NUM_RETURNED will be 0.
     <optional>Y</optional>
     <description>
 <![CDATA[<p>s lists the problems (constraint violations) associated
-with the corresponding primer oligo.  Generated when
-<p3t>P3_SHOW_OLIGO_PROBLEMS</p3t> is true (non zero), and
-primer3 was forced to choose a primer or oligo
-that did not satisfy specified design constraints
-(as when <p3t>PRIMER_PICK_ANYWAY</p3t>=1 and a primer sequence
-is provided).</p>]]>
+with the corresponding primer oligo.</p>]]>
     </description>
 </tag>
 <tag>
@@ -150,6 +145,7 @@ PRIMER_LEFT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_RIGHT_EXPLAIN=considered 62, too many Ns 53, ok 9
 PRIMER_INTERNAL_OLIGO_EXPLAIN=considered 87, too many Ns 39, overlap excluded region 40, ok 8
 </pre>
+<p>
 All the categories are exclusive, except the 'considered' category.
 In some cases the ok count may be higher than the actual number 
 of ok oligos. This is because a primer can be considered as part of
@@ -184,7 +180,7 @@ because of several reasons:
 
 <ul>
 
-<li>When there are multiple <p3t>PRODUCT_SIZE_RANGE</p3t>s,
+<li>When there are multiple <p3t>PRIMER_PRODUCT_SIZE_RANGE</p3t>s,
 a primer pair may not be ok in one size range but ok
 in another.  Approximately, the counts for each statistic
 are summed over all product size ranges. 
@@ -212,10 +208,10 @@ constraints.  In this case
 <p3t>PRIMER_PAIR_EXPLAIN</p3t> might have a non-0
 number 'considered', even though one or more of
 <p3t>PRIMER_LEFT_EXPLAIN</p3t>, <p3t>PRIMER_RIGHT_EXPLAIN</p3t>, or
-<p3t>PRIMER_INTERNAL_OLIGO_EXPLAIN</p3t> has 'ok 0'.
+<p3t>PRIMER_INTERNAL_EXPLAIN</p3t> has 'ok 0'.
 </li>
 </ul>
-</p>]]>
+]]>
 	</description>
 </tag>
 <tag>
@@ -342,8 +338,8 @@ equation (iii) from the paper [Rychlik W, Spencer WJ and Rhoads
 RE (1990) "Optimization of the annealing temperature for DNA
 amplification in vitro", Nucleic Acids Res 18:6409-12
 <link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
-Printed only if a non-default value of <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or
-<p3t>PRIMER_MIN_PRODUCT_TM</p3t> is specified.</p>]]>
+Printed only if a non-default value of <p3t>PRIMER_PRODUCT_MAX_TM</p3t> or
+<p3t>PRIMER_PRODUCT_MIN_TM</p3t> is specified.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -357,7 +353,7 @@ Printed only if a non-default value of <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or
 	<description>
 <![CDATA[<p>f is the difference between the melting temperature of the
 product and the melting temperature of the less stable primer.
-Printed only if <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or <p3t>PRIMER_MIN_PRODUCT_TM</p3t> is
+Printed only if <p3t>PRIMER_PRODUCT_MAX_TM</p3t> or <p3t>PRIMER_PRODUCT_MIN_TM</p3t> is
 specified.</p>]]>
 	</description>
 </tag>
@@ -370,7 +366,7 @@ specified.</p>]]>
 WJ and Rhoads RE (1990) "Optimization of the annealing
 temperature for DNA amplification in vitro", Nucleic Acids Res
 18:6409-12. <link>http://dx.doi.org/10.1093/nar/18.21.6409</link>].
-Printed only if <p3t>PRIMER_MAX_PRODUCT_TM</p3t> or <p3t>PRIMER_MIN_PRODUCT_TM</p3t> is
+Printed only if <p3t>PRIMER_PRODUCT_MAX_TM</p3t> or <p3t>PRIMER_PRODUCT_MIN_TM</p3t> is
 specified.</p>]]>
 	</description>
 </tag>
@@ -572,7 +568,7 @@ in genes with repeated exons.</p>]]>
 <![CDATA[<p>f is the maximum mispriming score for the right primer
 against any sequence in the given <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>;
 s is the id of corresponding library sequence.
-<p3t>PRIMER_PAIR_LIBRARY_MISPRIMING</p3t> is the maximum sum of
+<p3t>PRIMER_PAIR_MAX_LIBRARY_MISPRIMING</p3t> is the maximum sum of
 mispriming scores in any single library sequence (perhaps a
 more reasonable estimator of the likelihood of mispriming).</p>]]>
 	</description>
@@ -612,7 +608,7 @@ function.)</p>]]>
 	<description>
 <![CDATA[<p>i is the position of the first base of the stop codon,
 if primer3 found one, or -1 if primer3 did not.  Printed
-only if the input tag <p3t>PRIMER_START_CODON_POSITION</p3t> with a
+only if the input tag <p3t>SEQUENCE_START_CODON_POSITION</p3t> with a
 non-default value is supplied.</p>]]>
 	</description>
 </tag>

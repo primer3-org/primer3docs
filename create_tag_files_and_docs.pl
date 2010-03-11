@@ -48,14 +48,13 @@ use File::Copy;
 # Modify here the version and years:                                #
 
 my $scriptP3Version = "2.2.2";
-my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009";
+my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010";
 
 # Modify here the order of the textblocks or add new:
 my @textblocksOrder = (
 "copyrightLicense",
 "introduction",
 "citationRequest",
-"contact",
 "licenseExplain",
 "installLinux",
 "installMac",
@@ -90,7 +89,6 @@ my @textblocksPrimer3WebHelp = (
 "pickAdvice",
 "cautions",
 "findNoPrimers",
-"contact",
 "sequenceTags",
 "globalTags",
 "outputHelp",
@@ -107,7 +105,6 @@ my @textblocksPrimer3PlusHelp = (
 "pickAdvice",
 "cautions",
 "findNoPrimers",
-"contact",
 "sequenceTags",
 "globalTags",
 "outputTags",
