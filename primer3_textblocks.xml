@@ -1069,11 +1069,11 @@ compile and/or test on a different operation system.
 Primer3_core will not compile 
 and various tests will fail if pc
 newlines get inserted into the code and test files.  Instead, move the
-distribution (primer3_&lt;release&gt;.tar.gz) to Unix/Linux, and then<br />
+distribution (primer3-&lt;release&gt;.tar.gz) to Unix/Linux, and then<br />
 <br />
-$ unzip primer3_&lt;release&gt;.tar.gz<br />
-$ tar xvf primer3_&lt;release&gt;.tar<br />
-$ cd primer3_&lt;release&gt;/src<br />
+$ unzip primer3-&lt;release&gt;.tar.gz<br />
+$ tar xvf primer3-&lt;release&gt;.tar<br />
+$ cd primer3-&lt;release&gt;/src<br />
 <br />
 If you do not use gcc, then you will probably have 
 to modify the makefile to
@@ -1213,10 +1213,10 @@ The first option is just a shortcut to the second.</p>]]>
 ============================<br />
 <br />
 1. Unzip the '.zip' file downloaded from SourceForge.net<br />
-2. You will create a primer3-1.1.3 folder in the location 
+2. You will create a primer3-&lt;release&gt; folder in the location 
    where the file was unzipped<br />
 3. You may copy the files from the 'bin' directory of the 
-   primer3-1.1.3 folder to a location of your choice.  
+   primer3-&lt;release&gt folder to a location of your choice.  
    The exact same files are located within the 'src' folder 
    so that the tests may be run (windows does not allow 
    relative paths in shortcuts).<br />
@@ -1237,12 +1237,12 @@ known to work.<br />
 4. Navigate to the location of the tests:<br />
 <br />
     A. if you put it in <br />
-    C:/Documents and Settings/YourName/primer3-1.1.3/test/,<br />
+    C:/Documents and Settings/YourName/primer3-&lt;release&gt/test/,<br />
     you would type <br />
-    'cd c:/Documents and Settings/YourName/primer3-1.1.3/test/'<br />
+    'cd c:/Documents and Settings/YourName/primer3-&lt;release&gt/test/'<br />
     <br />
     B. you can also type 'cd ' (don't forget the space 
-    after cd) and drag the primer3-1.1.3 folder onto the 
+    after cd) and drag the primer3-&lt;release&gt folder onto the 
     command-line window from windows explorer, this will 
     fill in the location for you<br />
 <br />
