@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
 <!--
-Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -1801,7 +1801,7 @@ right primer.  Bigger numbers mean more stable 3' ends.  The
 value is the maximum delta G (kcal/mol) for duplex disruption for
 the five 3' bases as calculated using the nearest-neighbor
 parameter values specified by the option of <p3t>PRIMER_TM_FORMULA</p3t> 
-Table of thermodynamic parameters.<br />
+<br />
 <br />
 For example if the table of thermodynamic parameters suggested
 by <a href="http://dx.doi.org/10.1073/pnas.95.4.1460">SantaLucia 1998, DOI:10.1073/pnas.95.4.1460</a> is used the deltaG 
@@ -2078,8 +2078,13 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
       <dataType>decimal, 9999.99</dataType>
       <default>-1.00</default>
       <description>
-<![CDATA[<p>Same as <p3t>PRIMER_MAX_TEMPLATE_MISPRIMING</p3t> but for calculating
-the alternative binding sites thermodynamical approach is used.</p>]]>
+<![CDATA[<p>Similar to <p3t>PRIMER_MAX_TEMPLATE_MISPRIMING</p3t> but 
+assesses alternative binding sites in the template using thermodynamic models.
+This parameter specifies the maximum allowed
+melting temperature of an oligo (primer)
+at an "ectopic" site within the template sequence; 47.0 would be
+a reasonable choice if <p3t>PRIMER_MIN_TM</p3t> is 57.0.
+</p>]]>
       </description>
 </tag>
 <tag>
@@ -2122,8 +2127,12 @@ oligos) to locations outside of the amplicon.</p>]]>
      <dataType>decimal, 9999.99</dataType>
      <default>-1.00</default>
      <description>
-     <![CDATA[<p>Same as <p3t>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</p3t> but for finding
-alternative binding sites thermodynamical alignment is used</p>]]>
+     <![CDATA[<p>The maximum allowed summed melting temperatures
+of both primers at ectopic sites within the template (with
+the two primers in an orientation that would allow PCR
+amplification.) 
+The melting temperatures are calculated
+as for <p3t>PRIMER_MAX_TEMPLATE_MISPRIMING_TH</p3t>.]]>
      </description>
 </tag>
 <tag>

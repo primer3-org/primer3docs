@@ -67,7 +67,10 @@ user-oriented (rather than program-oriented) output.</p>]]>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
-it does not recognize.</p>]]>
+it does not recognize.  This tag also applies to the settings file (see
+documentation for the -p3_settings_file argument),
+if any, but with limitations:  lines that do not begin with
+PRIMER_ or P3_FILE_ID are always ignored in the settings file.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -81,7 +84,9 @@ default primer3 settings. The values set in
 the settings files can be also overridden 
 by tags in the input file. See
 primer3 file documentation for details on the file 
-format.</p>]]>
+format.  <strong>WARNING: the -strict_tags flag applies only to
+tags beginning with the string "PRIMER_"; lines that do
+not begin with the string "PRIMER_" are ignored.</strong></p>]]>
 	</description>
 </tag>
 <tag>
