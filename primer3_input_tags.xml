@@ -2087,26 +2087,7 @@ a reasonable choice if <p3t>PRIMER_MIN_TM</p3t> is 57.0.
 </p>]]>
       </description>
 </tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_INTERNAL_OLIGO_MAX_TEMPLATE_MISHYB</oldTagName>
-		<version>3.0</version>
-	</oldTag>
-	<dataType>decimal, 9999.99</dataType>
-	<default>-1.00</default>
-	<description>
-<![CDATA[<p>Not implemented.</p>]]>
-	</description>
-</tag>
-<tag>
-  <tagName>PRIMER_INTERNAL_MAX_TEMPLATE_MISHYB_TH</tagName>
-  <dataType>decimal, 9999.99</dataType>
-  <default>-1.00</default>
-  <description>
-  <![CDATA[<p>Not implemented.</p>]]>
-  </description>
-</tag>
+
 <tag>
 	<tagName>PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING</tagName>
 	<dataType>decimal, 9999.99</dataType>
@@ -2147,6 +2128,7 @@ The values used with the older versions have to be multiplied
 by the factor 100 to have the same effect.</p>]]>
 	</description>
 </tag>
+
 <tag>
      <tagName>PRIMER_WT_TEMPLATE_MISPRIMING_TH</tagName>
      <dataType>float</dataType>
@@ -2155,22 +2137,7 @@ by the factor 100 to have the same effect.</p>]]>
      <![CDATA[<p>Penalty for a single primer binding to the template sequence (thermodynamic approach).</p>]]>
      </description>
 </tag>
-<tag>
-	<tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> for the internal oligo.]]>
-	</description>
-</tag>
-<tag>
-        <tagName>PRIMER_INTERNAL_WT_TEMPLATE_MISHYB_TH</tagName>
-	<dataType>float</dataType>
-	<default>0.0</default>
-	<description>
-	<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_TEMPLATE_MISPRIMING_TH</p3t> for the internal oligo.]]>
-        </description>
-</tag>
+
 <tag>
 	<tagName>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</tagName>
 	<dataType>float</dataType>
