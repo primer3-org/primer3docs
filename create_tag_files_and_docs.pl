@@ -822,6 +822,11 @@ sub createPrimer3PlusHelp {
     # Finish the strings for the files
     $final_html_string .= cgi_get_footer();
 
+    # Replace the backslashes by the number code
+    $final_html_string =~ s/\\p/&#92;p/g;
+    $final_html_string =~ s/\\</&#92;</g;
+    $final_html_string =~ s/\\\\\\/&#92;&#92;&#92;/g;
+
     # Write the files to the disk
     my $output_file = $output_folder. "primer3plusHelp.cgi";
     string2file($output_file, $final_html_string);
@@ -972,9 +977,9 @@ sub html_get_footer {
 # returns the cgi header #
 ##########################
 sub cgi_get_header {
-    my $html = qq{#!/usr/bin/perl
+    my $html = qq{#!/usr/bin/perl -w
 
-#  Copyright (c) 2006, 2007
+#  Copyright (c) 2006 - 2011
 #  by Andreas Untergasser and Harm Nijveen
 #  All rights reserved.
 # 
