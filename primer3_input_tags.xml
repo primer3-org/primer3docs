@@ -1337,9 +1337,10 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
      <dataType>boolean</dataType>
      <default>0</default>
      <description>
-<![CDATA[<p>If the associated value equals to 1, then primer3 will calculate
-oligos secondary structures (dimers, hairpins, template mispriming) by
-thermodynamical approach.</p>]]>
+<![CDATA[<p>If the associated value equals to 1, then primer3 will us
+thermodynamic models to calculate the
+the propensity of oligos to form hairpins, dimers, or to anneal to undesired sites in the template sequence.
+</p>]]>
      </description>
 </tag>
 <tag>
