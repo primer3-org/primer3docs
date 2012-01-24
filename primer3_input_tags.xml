@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <primer3Doc version="1.0">
 <!--
-Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
+Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,
+ 2011
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -365,41 +366,45 @@ quality information (for example phred).</p>]]>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_START</tagName>
 	<dataType>int</dataType>
-	<default>-1</default>
+	<default>-1000000</default>
 	<description>
 <![CDATA[<p>Forces the 5' end of the left primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constraints.</p>]]>
+constraints. The default value indicates that the start of the left primer
+can be anywhere.</p>]]>
 	</description>
 </tag>
 <tag>
 	<tagName>SEQUENCE_FORCE_LEFT_END</tagName>
 	<dataType>int</dataType>
-	<default>-1</default>
+	<default>-1000000</default>
 	<description>
 <![CDATA[<p>Forces the 3' end of the left primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constraints.</p>]]>
+constraints. The default value indicates that the end of the left primer
+can be anywhere.</p>]]>
 	</description>
 </tag>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_START</tagName>
 	<dataType>int</dataType>
-	<default>-1</default>
+	<default>-1000000</default>
 	<description>
 <![CDATA[<p>Forces the 5' end of the right primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constraints.</p>]]>
+constraints. The default value indicates that the start of the right primer
+can be anywhere.</p>]]>
 	</description>
 </tag>
 <tag>
 	<tagName>SEQUENCE_FORCE_RIGHT_END</tagName>
 	<dataType>int</dataType>
-	<default>-1</default>
+	<default>-1000000</default>
 	<description>
 <![CDATA[<p>Forces the 3' end of the right primer to be at the indicated 
 position. Primers are also picked if they violate certain
-constraints.</p>]]>
+constraints. The default value indicates that the end of the right primer
+can be anywhere.</p>]]>
 	</description>
 </tag>
 
