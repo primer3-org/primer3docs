@@ -2,6 +2,7 @@
 <primer3Doc version="1.0">
 <!--
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
+              2011,2012
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -755,7 +756,7 @@ Let's look at the input record itself:
 <p3t>SEQUENCE_ID</p3t>=example<br />
 <p3t>SEQUENCE_TEMPLATE</p3t>=GTAGTCAGTAGACNATGACNACTGACGATGCAGACNACACACACACACACAGCACACAGGTATTAGTGGGCCATTCGATCCCGACCCAAATCGATAGCTACGATGACG<br />
 <p3t>SEQUENCE_TARGET</p3t>=37,21<br />
-<p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+<p3t>PRIMER_TASK</p3t>=generic<br />
 <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
 <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
 <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
@@ -797,7 +798,7 @@ we want to use the PCR product for
 determining the length of the repeat, which is likely to be polymorphic).
 <br />
 <br />
-<p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+<p3t>PRIMER_TASK</p3t>=generic<br />
 <br />
 The <p3t>PRIMER_TASK</p3t> tells primer3 which 
 type of primers to pick. You can select typical primers for PCR 
@@ -1317,14 +1318,6 @@ o many other constraints.<br />
 All of these criteria are user-specifiable as constraints, and
 some are specifiable as terms in an objective function that
 characterizes an optimal primer pair.<br />
-<br />
-Whitehead Institute for Biomedical Research provides a basic
-web-based front end to primer3 named primer3web at
-<link>http://fokker.wi.mit.edu/</link><br />
-<br />
-Wageningen University Laboratory of Bioinformatics provides a enhanced 
-web-based front end to primer3 named primer3plus at
-<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link></p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1751,16 +1744,15 @@ considerably lower than that used as a PCR primer.</p>]]>
 </textBlock>
 <textBlock>
 	<id>webInterface</id>
-	<head>THE PRIMER3 WWW INTERFACE</head>
+	<head>PRIMER3 WWW INTERFACES</head>
 	<text>
 <![CDATA[<p>There are two web interfaces available :<br />
 The Whitehead Institute for Biomedical Research provides a basic
 web-based front end to primer3 named primer3web at
-<link>http://fokker.wi.mit.edu/cgi-bin/primer3/primer3_www.cgi</link><br />
+<link>http://frodo.wi.mit.edu/</link><br />
 <br />
-The Wageningen University Laboratory of Bioinformatics provides a enhanced 
-web-based front end to primer3 named primer3plus at
-<link>http://www.bioinformatics.nl/cgi-bin/primer3plus/primer3plus.cgi</link><br />
+A Primer3plus web services is at
+<link>http://primer3plus.com</link><br />
 <br />
 This distribution does not contain the Primer3 WWW interfaces.<br />
 <br />

@@ -2,7 +2,7 @@
 <primer3Doc version="1.0">
 <!--
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,
- 2011
+              2011,2012
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -408,24 +408,26 @@ can be anywhere.</p>]]>
 	</description>
 </tag>
 
-
-
-
 <tag>
 	<tagName>PRIMER_TASK</tagName>
 	<dataType>string</dataType>
-	<default>pick_pcr_primers</default>
+	<default>generic</default>
 	<description>
 <![CDATA[<p>This tag tells primer3 what task to perform.
 Legal values are:<br />
 <br />
+   <tt><i>generic</i></tt><br />
+<br />
+   Design a primer pair (the classic primer3 task) if
+   the <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1, and
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1. In addition, pick
+   an internal hybridization oligo if 
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1.
+<br />
+<br />
    <tt><i>pick_detection_primers</i></tt><br />
 <br />
-   Pick primers to detect a sequence (the classic primer3 task). Use 
-   the <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>, <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> and 
-   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> to control which primers are picked.
-   If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> are 
-   selected primer3 tries to pick primer pairs.<br />
+   Deprecated alias for <p3t>PRIMER_TASK</p3t>=generic<br />
 <br />
    <tt><i>check_primers</i></tt><br />
 <br />
@@ -473,43 +475,63 @@ Legal values are:<br />
 <br />
    <tt><i>pick_pcr_primers</i></tt><br />
 <br />
-   Shortcut for the following settings:<br />
-   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   Deprecated shortcut for the following settings:<br />
+   <p3t>PRIMER_TASK</p3t>=generic<br />
    <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
+   <br />
+   WARNING: this task changes the values of <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>,
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
+   in a way that is not obvious by looking at the input.<br />
 <br />
    <tt><i>pick_pcr_primers_and_hyb_probe</i></tt><br />
 <br />
-   Shortcut for the following settings:<br />
-   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   Deprecated shortcut for the following settings:<br />
+   <p3t>PRIMER_TASK</p3t>=generic<br />
    <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
+   <br />
+   WARNING: this task changes the values of <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>,
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
+   in a way that is not obvious by looking at the input.<br />
 <br />
    <tt><i>pick_left_only</i></tt><br />
 <br />
-   Shortcut for the following settings:<br />
-   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   Deprecated shortcut for the following settings:<br />
+   <p3t>PRIMER_TASK</p3t>=generic<br />
    <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=0<br />
+   <br />
+   WARNING: this task changes the values of <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>,
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
+   in a way that is not obvious by looking at the input.<br />
 <br />
    <tt><i>pick_right_only</i></tt><br />
 <br />
-   Shortcut for the following settings:<br />
-   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   Deprecated shortcut for the following settings:<br />
+   <p3t>PRIMER_TASK</p3t>=generic<br />
    <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=0<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=0<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
+   <br />
+   WARNING: this task changes the values of <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>,
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
+   in a way that is not obvious by looking at the input.<br />
 <br />
    <tt><i>pick_hyb_probe_only</i></tt><br />
 <br />
-   Shortcut for the following settings:<br />
-   <p3t>PRIMER_TASK</p3t>=pick_detection_primers<br />
+   Deprecated shortcut for the following settings:<br />
+   <p3t>PRIMER_TASK</p3t>=generic<br />
    <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=0<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=0<br />
+   <br />
+   WARNING: this task changes the values of <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>,
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
+   in a way that is not obvious by looking at the input.<br />
 </p>]]>
 	</description>
 </tag>
@@ -1759,16 +1781,6 @@ with melting temperature 71.0918 (calculated according to by
 default values of primer3)
 
 For details about papers used for calculating hairpins see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t></p>]]>
-    </description>
-</tag>
-<tag>
-    <tagName>PRIMER_PAIR_MAX_HAIRPIN_TH</tagName>
-    <dataType>float</dataType>
-    <default>47.0</default>
-    <description>
-    <![CDATA[<p>The more stable monomer structure calculated from the most
-stable structure of left primer and the most stable structure of right
-primer. Thermodynamical approach. See <p3t>PRIMER_MAX_HAIRPIN_TH</p3t> for details.</p>]]>
     </description>
 </tag>
 <tag>
