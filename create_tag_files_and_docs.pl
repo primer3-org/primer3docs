@@ -316,15 +316,23 @@ sub createReadmeTxt {
 	$txt_string .= underlineText("Contents","=")."\n";
 	my $chapterCount = 0;
 	foreach my $textblock_holder (@textblocksOrder) {
+	    if(!defined($textHead{$textblock_holder})) {
+		print STDERR "\nWARNING, no value for textblock $textblock_holder\n\n";
+	    } else {
 		if ($textHead{$textblock_holder} ne ""){
 			$chapterCount++;
 			$txt_string .= "$chapterCount. $textHead{$textblock_holder}\n";
 		}
+	    }
 	}
 	$txt_string .= "\n\n";
 
 	$chapterCount = 0;
 	foreach my $textblock_holder (@textblocksOrder) {
+	    if(!defined($textHead{$textblock_holder})) {
+		print STDERR "\nWARNING, no value for textblock $textblock_holder\n\n";
+		next;
+	    }
 		if ($textHead{$textblock_holder} ne ""){
 		$chapterCount++;
 			$txt_string .= underlineText("$chapterCount. $textHead{$textblock_holder}","=");
