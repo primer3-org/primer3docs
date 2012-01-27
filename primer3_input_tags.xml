@@ -423,6 +423,13 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1. In addition, pick
    an internal hybridization oligo if 
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1.
+   <br /><br />
+   NOTE: If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1, 
+   <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=0 
+   and
+   <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1,
+   then behaves similarly to 
+   <p3t>PRIMER_TASK</p3t>=pick_primer_list.
 <br />
 <br />
    <tt><i>pick_detection_primers</i></tt><br />
@@ -431,19 +438,22 @@ Legal values are:<br />
 <br />
    <tt><i>check_primers</i></tt><br />
 <br />
-   Primer3 does not pick any primers, it only checks the primers 
+   Primer3 only checks the primers 
    provided in <p3t>SEQUENCE_PRIMER</p3t>, <p3t>SEQUENCE_INTERNAL_OLIGO</p3t> and 
-   <p3t>SEQUENCE_PRIMER_REVCOMP</p3t>. Its the only task which does not
-   require a sequence. If the sequence is provided, it is used
-   as a template.<br />
+   <p3t>SEQUENCE_PRIMER_REVCOMP</p3t>. It is the only task that does not
+   require a sequence. However, if <p3t>SEQUENCE_TEMPLATE</p3t> is provided, it is used.
+   <br />
 <br />
    <tt><i>pick_primer_list</i></tt><br />
 <br />
-   Pick all primers in the sequence or limited by included region.
-   It returns the primers sorted by quality starting with the 
+   Pick all primers in <p3t>SEQUENCE_TEMPLATE</p3t> (possibly
+   limited by <p3t>SEQUENCE_INCLUDED_REGION</p3t>, 
+   <p3t>SEQUENCE_EXCLUDED_REGION</p3t>, etc.).
+   Returns the primers sorted by quality starting with the 
    best primers. If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and 
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> is selected primer3 does not to pick 
-   primer pairs but generates independent lists of left primers, right primers, and, if requested, internal oligos.<br />
+   primer pairs but generates independent lists of left primers, right primers,
+   and, if requested, internal oligos.<br />
 <br />
    <tt><i>pick_sequencing_primers</i></tt><br />
 <br />
@@ -2586,9 +2596,6 @@ are requested, primer3 produces a file
 &lt;sequence_id&gt;.int, which lists all
 acceptable internal oligos.  Obviously, &lt;sequence_id&gt; needs
 to be a string that will work as a file name.
-
-
-
 
 <br>
 <br>
