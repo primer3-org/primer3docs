@@ -124,15 +124,20 @@ primer-picking region.</p>]]>
 	<dataType>interval list</dataType>
 	<default>empty</default>
 	<description>
-<![CDATA[<p>If one or more Targets is specified then a legal primer pair must
-flank at least one of them.  A Target might be a simple sequence
+<![CDATA[<p>If one or more targets is specified then a legal primer pair must
+flank at least one of them.  A target might be a simple sequence
 repeat site (for example a CA repeat) or a single-base-pair
-polymorphism.  The value should be a space-separated list of</p>
+polymorphism, or an exon for resequencing.  The value should be a space-separated list of</p>
 <pre>
 <tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
 </pre>
 <p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
-Target, and <tt><i>&lt;length&gt;</i></tt> is its length.</p>]]>
+target, and <tt><i>&lt;length&gt;</i></tt> is its length.</p>]]>
+<br />
+<br />
+See also <p3t>PRIMER_INSIDE_PENALTY</p3t>, <p3t>PRIMER_OUTSIDE_PENALTY</p3t>.
+Has a different meaning when <p3t>PRIMER_TASK</p3t>=pick_sequencing_primers.
+See <p3t>PRIMER_TASK</p3t> for more information.
 	</description>
 </tag>
 <tag>
@@ -448,7 +453,8 @@ Legal values are:<br />
 <br />
    Pick all primers in <p3t>SEQUENCE_TEMPLATE</p3t> (possibly
    limited by <p3t>SEQUENCE_INCLUDED_REGION</p3t>, 
-   <p3t>SEQUENCE_EXCLUDED_REGION</p3t>, etc.).
+   <p3t>SEQUENCE_EXCLUDED_REGION</p3t>,
+   <p3t>SEQUENCE_PRIMER_PAIR_OK_REGION_LIST</p3t>, etc.).
    Returns the primers sorted by quality starting with the 
    best primers. If <p3t>PRIMER_PICK_LEFT_PRIMER</p3t> and 
    <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t> is selected primer3 does not to pick 
