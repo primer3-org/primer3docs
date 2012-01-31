@@ -215,17 +215,6 @@ number 'considered', even though one or more of
 	</description>
 </tag>
 <tag>
-	<tagName>P3_FILE_ID</tagName>
-	<dataType>s</dataType>
-	<optional>Y</optional>
-	<description>
-<![CDATA[<p>s prints out the description tag of the settings file loaded 
-at program start. It will be produced at each output. If no 
-settings file was specified this tag is not present and default 
-parameters are used.</p>]]>
-	</description>
-</tag>
-<tag>
 	<tagName>PRIMER_LEFT_4</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_LEFT</oldTagName>

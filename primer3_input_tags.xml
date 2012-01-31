@@ -2573,9 +2573,11 @@ both sides in which primer3plus picks the best primer. Value only used if
 
 <![CDATA[<p>
 This tag is only valid in primer3 setting files. It should be used to 
-identify the purpose of the settings files it appears in. It is printed out on the 
-output of primer3.
-See also also the command line flag -echo_settings_file.
+identify the purpose of the settings files it appears in. 
+It is always printed out on the output of primer3. 
+See also also the command line flag -echo_settings_file,
+which causes the entire settings file to be echoed in primer3_core's
+output.
 </p>]]>
 	</description>
 </tag>
