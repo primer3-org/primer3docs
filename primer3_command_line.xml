@@ -2,6 +2,7 @@
 <primer3Doc version="1.0">
 <!--
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008
+              2009,2010,2011,2012
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
@@ -55,6 +56,18 @@ indicating the release number and then exits. This allows scripts to
 query primer3 for its version.</p>]]>
 	</description>
 </tag>
+
+<tag>
+	<tagName>-default_version=<i>n</i></tagName>
+	<description>
+<![CDATA[<p><i>n</i>=2 is the default, and directs primer3_core
+to use the latest default values (the ones documented here).
+<i>n</i>=1 directs primer3_core to use defaults from version
+2.2.3 and before.
+</p>]]>
+	</description>
+</tag>
+
 <tag>
 	<tagName>-format_output</tagName>
 	<description>

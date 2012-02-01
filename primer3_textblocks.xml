@@ -1334,7 +1334,7 @@ web interfaces (distributed separately).<br />
 <br />
 The command line for primer3 is:<br />
 <br />
-primer3_core [ -format_output ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
+primer3_core [ -format_output ] [ -default_version=1|-default_version=2 ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
 <br />
 A complete list of valid command line arguments can be found in 
 COMMAND LINE ARGUMENTS below.<br />
