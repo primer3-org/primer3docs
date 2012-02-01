@@ -1131,7 +1131,7 @@ under hybridization conditions.</p>]]>
 		<version>3.0</version>
 	</oldTag>
 	<dataType>int</dataType>
-	<default>0</default>
+	<default>1</default>
 	<description>
 <![CDATA[<p>Specifies details of melting temperature calculation.  (New in
 v. 1.1.0, added by Maido Remm and Triinu Koressaar.)<br />
@@ -1238,7 +1238,7 @@ of divalent cations (in this case you also should use tag <p3t>PRIMER_DNTP_CONC<
 		<version>3.0</version>
 	</oldTag>
 	<dataType>float</dataType>
-	<default>0.0</default>
+	<default>1.5</default>
 	<description>
 <![CDATA[<p>The millimolar concentration of divalent salt cations (usually MgCl^(2+)) in
 the PCR. (New in v. 1.1.0, added by Maido Remm and Triinu Koressaar)<br />
@@ -1276,7 +1276,7 @@ melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentr
 <tag>
 	<tagName>PRIMER_DNTP_CONC</tagName>
 	<dataType>float</dataType>
-	<default>0.0</default>
+	<default>0.6</default>
 	<description>
 <![CDATA[<p>The millimolar concentration of the sum of all 
 deoxyribonucleotide triphosphates. A reaction mix containing 
@@ -1300,7 +1300,7 @@ PRIMER_DNTP_CONC=0.8. This argument is considered only if
 <tag>
 	<tagName>PRIMER_SALT_CORRECTIONS</tagName>
 	<dataType>int</dataType>
-	<default>0</default>
+	<default>1</default>
 	<description>
 <![CDATA[<p>Specifies the salt correction formula for the melting temperature
 calculation.  (New in v. 1.1.0, added by Maido Remm and Triinu
@@ -1310,7 +1310,7 @@ A value of 0 directs primer3 to use the the salt correction
 formula in the paper [Schildkraut, C, and Lifson, S (1965)
 "Dependence of the melting temperature of DNA on salt
 concentration", Biopolymers 3:195-208 (not available on-line)].
-This was the formula used in previous version of primer3.<br />
+This was the formula used in older versions of primer3.<br />
 <br />
 A value of 1 (*RECOMMENDED*) directs primer3 to use the salt correction
 formula in the paper [SantaLucia JR (1998) "A unified view of polymer,
@@ -1381,7 +1381,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 <tag>
      <tagName>PRIMER_THERMODYNAMIC_ALIGNMENT</tagName>
      <dataType>boolean</dataType>
-     <default>0</default>
+     <default>1</default>
      <description>
 <![CDATA[<p>If the associated value equals to 1, then primer3 will us
 thermodynamic models to calculate the
@@ -2267,7 +2267,7 @@ in this library rather than priming from them.</p>]]>
 <tag>
 	<tagName>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</tagName>
 	<dataType>boolean</dataType>
-	<default>1</default>
+	<default>0</default>
 	<description>
 <![CDATA[<p>If set to 1, treat ambiguity codes as if they were consensus
 codes when matching oligos to mispriming or mishyb
