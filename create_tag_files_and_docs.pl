@@ -57,6 +57,7 @@ my @textblocksOrder = (
 "introduction",
 "citationRequest",
 "licenseExplain",
+"changesFrom2.2.3",
 "installLinux",
 "installMac",
 "installWindows",
