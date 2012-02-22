@@ -168,7 +168,8 @@ such as ALUs or LINEs.</p>]]>
   <description>
 <![CDATA[<p>
 
-This tag allows detailed specification of possible locations of left and right primers in primer pairs.
+This tag allows detailed specification of possible
+locations of left and right primers in primer pairs.
 <br><br>
 The associated value must be a semicolon-separated list of</p>
 
@@ -558,7 +559,7 @@ Legal values are:<br />
 	<dataType>boolean</dataType>
 	<default>1</default>
 	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
+<![CDATA[<p>If the associated value = 1 (non-0), then primer3 will attempt to
 pick left primers.</p>]]>
 	</description>
 </tag>
@@ -567,7 +568,7 @@ pick left primers.</p>]]>
 	<dataType>boolean</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
+<![CDATA[<p>If the associated value = 1 (non-0), then primer3 will attempt to
 pick an internal oligo (hybridization probe to detect the PCR
 product).</p>]]>
 	</description>
@@ -577,7 +578,7 @@ product).</p>]]>
 	<dataType>boolean</dataType>
 	<default>1</default>
 	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 will attempt to
+<![CDATA[<p>If the associated value = 1 (non-0), then primer3 will attempt to
 pick a right primer.</p>]]>
 	</description>
 </tag>
@@ -1215,8 +1216,15 @@ Tm(C) = 323.704 - 273.15 = 50.554 C
 	<description>
 <![CDATA[<p>The millimolar (mM) concentration of monovalent salt cations (usually KCl) in the PCR.
 Primer3 uses this argument to calculate oligo and primer melting
-temperatures. Use tag <p3t>PRIMER_SALT_DIVALENT</p3t> to specify the concentration
-of divalent cations (in this case you also should use tag <p3t>PRIMER_DNTP_CONC</p3t>).</p>]]>
+temperatures. 
+<font color="red">
+(Triinu)
+Use tag <p3t>PRIMER_SALT_DIVALENT</p3t> and 
+<p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t> to specify the concentrations
+of divalent cations (in which case you also should also set tag <p3t>PRIMER_DNTP_CONC</p3t> to
+a reasonable value).
+</font>
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1252,13 +1260,20 @@ Formulas", Clinical Chemistry 47:1956-61 <link>http://www.clinchem.org/cgi/conte
 <pre>
 [Monovalent cations] = [Monovalent cations] + 120*(([divalent cations] - [dNTP])^0.5)
 </pre>
-<p>According to the formula concentration of deoxynucleotide triphosphate
-[dNTP] must be smaller than concentration of divalent cations. If the
-specified concentration of dNTPs is larger than specified concentration of
-divalent cations then the effect of divalent cations is not considered. The
-concentration of dNTPs is included to the formula because of some magnesium is bound by the
-dNTP. Attained concentration of monovalent cations is used to calculate oligo/primer
-melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</p>]]>
+<p>In addition, 
+if the specified concentration of dNTPs (<p3t>PRIMER_DNTP_CONC</p3t>)
+is larger than the concentration of divalent cations (<p3t>PRIMER_SALT_DIVALENT</p3t>)
+then the effect of the divalent cations is not considered. The
+concentration of dNTPs is considered in the formula above 
+because of some magnesium is bound by the dNTP.
+<font color="red">(Triinu)
+The adjusted concentration of monovalent cations is used in the
+calculation of oligo/primer
+melting temperature, PCR product melting temperature,
+and the stability of secondary structures (when <p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t> is 1).
+If <p3t>PRIMER_SALT_DIVALENT</p3t> > 0.0, be sure to
+set tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</font>
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1281,8 +1296,12 @@ melting temperature. Use tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentr
 <![CDATA[<p>The millimolar concentration of the sum of all 
 deoxyribonucleotide triphosphates. A reaction mix containing 
 0.2 mM ATP, 0.2 mM CTP, 0.2 mM GTP and 0.2 mM TTP would have a 
-PRIMER_DNTP_CONC=0.8. This argument is considered only if 
-<p3t>PRIMER_SALT_DIVALENT</p3t> is specified. See <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
+PRIMER_DNTP_CONC=0.8. <font color="red">(Triinu) This argument is considered for oligo and
+primer melting temperatures, for
+PCR product melting temperature, or for secondary 
+structure calculations only if 
+<p3t>PRIMER_SALT_DIVALENT</p3t> is > 0.0.</font>
+See <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1294,7 +1313,7 @@ PRIMER_DNTP_CONC=0.8. This argument is considered only if
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
-<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DNTP_CONC</p3t> for the internal oligo.</p>]]>
+<![CDATA[<p>Parameter for internal oligos analogous to <p3t>PRIMER_DNTP_CONC</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1310,13 +1329,15 @@ A value of 0 directs primer3 to use the the salt correction
 formula in the paper [Schildkraut, C, and Lifson, S (1965)
 "Dependence of the melting temperature of DNA on salt
 concentration", Biopolymers 3:195-208 (not available on-line)].
-This was the formula used in older versions of primer3.<br />
+This was the formula used in older versions of primer3.
+<br />
 <br />
 A value of 1 (*RECOMMENDED*) directs primer3 to use the salt correction
 formula in the paper [SantaLucia JR (1998) "A unified view of polymer,
 dumbbell and oligonucleotide DNA nearest-neighbor thermodynamics",
 Proc Natl Acad Sci 95:1460-65
-<link>http://dx.doi.org/10.1073/pnas.95.4.1460</link>]<br />
+<link>http://dx.doi.org/10.1073/pnas.95.4.1460</link>]
+<br />
 <br />
 A value of 2 directs primer3 to use the salt correction formula
 in the paper [Owczarzy, R., Moreira, B.G., You, Y., Behlke, M.A., and
@@ -1325,7 +1346,18 @@ containing magnesium and monovalent cations. Biochemistry 47, 5336-5353
 <link>http://dx.doi.org/10.1021/bi702363u</link>] following recommendations in the paper
 [Ahsen, v.N., Wittwer, C.T., and Schütz, E. (2010). Monovalent and divalent
 salt correction algorithms for Tm prediction-recommendations for Primer3
-usage. Brief Bioinform 12, 514 <link>http://dx.doi.org/10.1093/bib/bbq081</link>]. </p>]]>
+usage. Brief Bioinform 12, 514 <link>http://dx.doi.org/10.1093/bib/bbq081</link>]. 
+<br />
+<br />
+<font color="red"> (Triinu)
+For all values of <p3t>PRIMER_SALT_CORRECTIONS</p3t>,
+Primer3 also considers the values of the
+tags <p3t>PRIMER_SALT_DIVALENT</p3t>, 
+<p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t>,
+<p3t>PRIMER_DNTP_CONC</p3t>, and
+<p3t>PRIMER_INTERNAL_DNTP_CONC</p3t>.
+</font>
+</p>]]>
 	</description>
 </tag>
 <tag>
@@ -1383,7 +1415,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
      <dataType>boolean</dataType>
      <default>1</default>
      <description>
-<![CDATA[<p>If the associated value equals to 1, then primer3 will us
+<![CDATA[<p>If the associated value = 1, then primer3 will use
 thermodynamic models to calculate the
 the propensity of oligos to form hairpins, dimers, or to anneal to undesired sites in the template sequence.
 </p>]]>
@@ -2596,7 +2628,7 @@ output.
 	<default>0</default>
 
 	<description>
-<![CDATA[<p>If the associated value is 1 (non-0), then primer3 creates 
+<![CDATA[<p>If the associated value = 1 (non-0), then primer3 creates 
 one or more output
 files for each input <p3t>SEQUENCE_TEMPLATE</p3t>.  File &lt;sequence_id&gt;.for lists all
 acceptable left primers for &lt;sequence_id&gt;, and &lt;sequence_id&gt;.rev
