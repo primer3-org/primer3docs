@@ -1217,13 +1217,10 @@ Tm(C) = 323.704 - 273.15 = 50.554 C
 <![CDATA[<p>The millimolar (mM) concentration of monovalent salt cations (usually KCl) in the PCR.
 Primer3 uses this argument to calculate oligo and primer melting
 temperatures. 
-<font color="red">
-(Triinu)
 Use tag <p3t>PRIMER_SALT_DIVALENT</p3t> and 
 <p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t> to specify the concentrations
 of divalent cations (in which case you also should also set tag <p3t>PRIMER_DNTP_CONC</p3t> to
 a reasonable value).
-</font>
 </p>]]>
 	</description>
 </tag>
@@ -1266,13 +1263,12 @@ is larger than the concentration of divalent cations (<p3t>PRIMER_SALT_DIVALENT<
 then the effect of the divalent cations is not considered. The
 concentration of dNTPs is considered in the formula above 
 because of some magnesium is bound by the dNTP.
-<font color="red">(Triinu)
 The adjusted concentration of monovalent cations is used in the
 calculation of oligo/primer
 melting temperature, PCR product melting temperature,
 and the stability of secondary structures (when <p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t> is 1).
 If <p3t>PRIMER_SALT_DIVALENT</p3t> > 0.0, be sure to
-set tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</font>
+set tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.
 </p>]]>
 	</description>
 </tag>
@@ -1296,11 +1292,12 @@ set tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.</font
 <![CDATA[<p>The millimolar concentration of the sum of all 
 deoxyribonucleotide triphosphates. A reaction mix containing 
 0.2 mM ATP, 0.2 mM CTP, 0.2 mM GTP and 0.2 mM TTP would have a 
-PRIMER_DNTP_CONC=0.8. <font color="red">(Triinu) This argument is considered for oligo and
+PRIMER_DNTP_CONC=0.8. 
+This argument is considered for oligo and
 primer melting temperatures, for
 PCR product melting temperature, or for secondary 
 structure calculations only if 
-<p3t>PRIMER_SALT_DIVALENT</p3t> is > 0.0.</font>
+<p3t>PRIMER_SALT_DIVALENT</p3t> is > 0.0.
 See <p3t>PRIMER_SALT_DIVALENT</p3t>.</p>]]>
 	</description>
 </tag>
@@ -1349,14 +1346,12 @@ salt correction algorithms for Tm prediction-recommendations for Primer3
 usage. Brief Bioinform 12, 514 <link>http://dx.doi.org/10.1093/bib/bbq081</link>]. 
 <br />
 <br />
-<font color="red"> (Triinu)
 For all values of <p3t>PRIMER_SALT_CORRECTIONS</p3t>,
 Primer3 also considers the values of the
 tags <p3t>PRIMER_SALT_DIVALENT</p3t>, 
 <p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t>,
 <p3t>PRIMER_DNTP_CONC</p3t>, and
 <p3t>PRIMER_INTERNAL_DNTP_CONC</p3t>.
-</font>
 </p>]]>
 	</description>
 </tag>
