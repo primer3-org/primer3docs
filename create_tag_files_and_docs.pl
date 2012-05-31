@@ -48,7 +48,7 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "2.3.2";
+my $scriptP3Version = "2.3.4";
 my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012";
 
 # Modify here the order of the textblocks or add new:
@@ -169,16 +169,7 @@ foreach my $idHolder (@textblocksTags) {
 
 # Print a message about the TextBlocks
 my $readtextblocksCount = $#textblocksTags + 1;
-print "Read in $readtextblocksCount textblocks for processing...\n";
-
-
-
-
-
-print "\n";
-
-# Create the primer3_manual.txt
-createReadmeTxt();
+print "Read in $readtextblocksCount textblocks for processing...\n\n";
 
 # Create the tag_definitions.xml
 createTagDefinitionsXml();
@@ -195,11 +186,7 @@ createPrimer3PlusHelp();
 # Create the tags_list.txt
 createTagList();
 
-
 print"end processing\n";
-
-
-
 
 
 ###########################################
@@ -305,104 +292,6 @@ sub string2file {
 }
 
 
-###############################
-# creates the readme txt file #
-###############################
-sub createReadmeTxt {
-	# Prepare the strings for the files
-	my $txt_string = underlineText("primer3 release $scriptP3Version","=");
-	$txt_string .= "\n";
-
-# Create a Index
-	$txt_string .= underlineText("Contents","=")."\n";
-	my $chapterCount = 0;
-	foreach my $textblock_holder (@textblocksOrder) {
-	    if(!defined($textHead{$textblock_holder})) {
-		print STDERR "\nWARNING, no value for textblock $textblock_holder\n\n";
-	    } else {
-		if ($textHead{$textblock_holder} ne ""){
-			$chapterCount++;
-			$txt_string .= "$chapterCount. $textHead{$textblock_holder}\n";
-		}
-	    }
-	}
-	$txt_string .= "\n\n";
-
-	$chapterCount = 0;
-	foreach my $textblock_holder (@textblocksOrder) {
-	    if(!defined($textHead{$textblock_holder})) {
-		print STDERR "\nWARNING, no value for textblock $textblock_holder\n\n";
-		next;
-	    }
-		if ($textHead{$textblock_holder} ne ""){
-		$chapterCount++;
-			$txt_string .= underlineText("$chapterCount. $textHead{$textblock_holder}","=");
-			$txt_string .= "$textBody{$textblock_holder}\n\n\n";
-		}
-		# Print out the command line tags at the right spot
-		if ($textblock_holder eq "commandLineTags") {
-			$txt_string =~ s/\n$//;
-			foreach my $tag_holder (@commandTags) {
-				# Get all the XML data of one tag
-				my $tagName = get_node_content($tag_holder, "tagName");
-				my $description = get_node_content($tag_holder, "description");
-				
-				# Assemble the txt file
-				$txt_string .= $tagName."\n";
-				$txt_string .= "   $description\n\n";
-			}
-			$txt_string .= "\n";
-		}
-		if ($textblock_holder eq "sequenceTags") {
-			$txt_string =~ s/\n$//;
-			$txt_string .= printTags("SEQUENCE_");
-		}
-		if ($textblock_holder eq "globalTags") {
-			$txt_string =~ s/\n$//;
-			$txt_string .= printTags("PRIMER_");
-		}
-		if ($textblock_holder eq "programTags") {
-			$txt_string =~ s/\n$//;
-			$txt_string .= printTags("P3_");
-		}
-		if ($textblock_holder eq "outputTags") {
-			$txt_string =~ s/\n$//;
-			$txt_string .= printTags("output");
-		}
-	}
-	
-	# Replace HTML decorations
-	$txt_string =~ s/&gt;/>/g;
-	$txt_string =~ s/&lt;/</g;
-	$txt_string =~ s/&quot;/\"/g;
-	$txt_string =~ s/<a (.*?)>(.*?)<\/a>/$2/g;
-
-	# Replace HTML decorations	
-	$txt_string =~ s/<br \/>//g;
-	$txt_string =~ s/<h3>//g;
-	$txt_string =~ s/<\/h3>//g;
-	$txt_string =~ s/<p>//g;
-	$txt_string =~ s/<\/p>//g;
-	$txt_string =~ s/<link>//g;
-	$txt_string =~ s/<\/link>//g;
-	$txt_string =~ s/<pre>//g;
-	$txt_string =~ s/<\/pre>//g;
-	$txt_string =~ s/<i>//g;
-	$txt_string =~ s/<\/i>//g;
-	$txt_string =~ s/<tt>//g;
-	$txt_string =~ s/<\/tt>//g;
-	$txt_string =~ s/<p3t>//g;
-	$txt_string =~ s/<\/p3t>//g;
-	
-
-	# Write the files to the disk
-	my $output_file = $output_folder. "primer3_manual.txt";
-	string2file($output_file, $txt_string);
-
-	return 0;
-}
-
-
 #########################################
 # prints all tags of a certain group    #
 # $text can limit the output to certain #
@@ -465,20 +354,6 @@ sub printTags {
 	}
 
 	print "Printed $tagCount $text - Tags in readme.txt\n";
-	
-	return $output;
-}
-
-
-##############################
-# underlines the text with - #
-##############################
-sub underlineText {
-	my $text = shift;
-	my $symbol = shift;
-	my $output = "$text\n";
-	$text =~ s/./$symbol/g;
-	$output .= "$text\n";
 	
 	return $output;
 }
