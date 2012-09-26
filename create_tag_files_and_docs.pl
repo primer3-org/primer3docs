@@ -88,6 +88,7 @@ my @textblocksPrimer3WebHelp = (
 "copyrightLicense",
 "introduction",
 "citationRequest",
+"licenseExplain",
 "pickAdvice",
 "cautions",
 "findNoPrimers",
@@ -104,6 +105,7 @@ my @textblocksPrimer3PlusHelp = (
 "copyrightLicense",
 "introduction",
 "citationRequest",
+"licenseExplain",
 "pickAdvice",
 "cautions",
 "findNoPrimers",
@@ -647,7 +649,7 @@ sub createPrimer3PlusHelp {
     my $html_string .= "<h2>Index of contents</h2>";
     my $chapterCount = 0;
     $html_string .= "<p>\n";
-    foreach my $textblock_holder (@textblocksPrimer3WebHelp) {
+    foreach my $textblock_holder (@textblocksPrimer3PlusHelp) {
         if ($textHead{$textblock_holder} ne ""){
             $chapterCount++;
             $html_string .= "<a href=\"#$textblock_holder\">";

@@ -72,8 +72,8 @@ based on the design of earlier versions, notably Primer 0.5
 The original web interface was designed by Richard Resnick.  Lincoln
 Stein designed the Boulder-IO format in the days before XML and RDF, and
 championed the idea of making primer3 a software component, which
-has been key to its wide utility.
-
+has been key to its wide utility.<br />
+<br />
 In addition, among others, Ernst Molitor, Carl Foeller, and James Bonfield
 contributed to the early
 design of primer3. Brant Faircloth has helped with 
@@ -90,8 +90,8 @@ in 2.2.0, including performance enhancements, modern
 command line arguments, and new input tags to 
 control primer location (with the "overlap junction"
 tags initially implemented by Andreas Untergasser).
-Jian Ye patiently provided new requirements.
-
+Jian Ye patiently provided new requirements.<br />
+<br />
 Harm Nijveen and Andreas Untergasser developed the webinterface 
 Primer3Plus in 2006-2009. Currently Primer3Plus is maintained by 
 Andreas Untergasser.
