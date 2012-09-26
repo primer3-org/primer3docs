@@ -101,9 +101,9 @@ my @textblocksPrimer3WebHelp = (
 
 # Modify here the order of the textblocks for the primer3plus help page:
 my @textblocksPrimer3PlusHelp = (
-"copyrightLicenseP3P",
+"copyrightLicense",
 "introduction",
-"citationRequestP3P",
+"citationRequest",
 "pickAdvice",
 "cautions",
 "findNoPrimers",
