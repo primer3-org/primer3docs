@@ -1412,7 +1412,18 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
      <description>
 <![CDATA[<p>If the associated value = 1, then primer3 will use
 thermodynamic models to calculate the
-the propensity of oligos to form hairpins, dimers, or to anneal to undesired sites in the template sequence.
+the propensity of oligos to form hairpins and dimers.
+</p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</tagName>
+     <dataType>boolean</dataType>
+     <default>1</default>
+     <description>
+<![CDATA[<p>If the associated value = 1, then primer3 will use
+thermodynamic models to calculate the
+the propensity of oligos to anneal to undesired sites in the template sequence.
 </p>]]>
      </description>
 </tag>
