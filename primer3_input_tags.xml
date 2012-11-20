@@ -1266,7 +1266,7 @@ because of some magnesium is bound by the dNTP.
 The adjusted concentration of monovalent cations is used in the
 calculation of oligo/primer
 melting temperature, PCR product melting temperature,
-and the stability of secondary structures (when <p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t> is 1).
+and the stability of secondary structures (when <p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t> is 1).
 If <p3t>PRIMER_SALT_DIVALENT</p3t> > 0.0, be sure to
 set tag <p3t>PRIMER_DNTP_CONC</p3t> to specify the concentration of dNTPs.
 </p>]]>
@@ -1406,7 +1406,7 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	</description>
 </tag>
 <tag>
-     <tagName>PRIMER_THERMODYNAMIC_ALIGNMENT</tagName>
+     <tagName>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</tagName>
      <dataType>boolean</dataType>
      <default>1</default>
      <description>
@@ -1489,7 +1489,7 @@ oligos.</p>]]>
 	  mismatches, dangling ends have been used. Also parameters for
 increments for length dependence of
 bulge and internal loops have been used. This parameter is calculated only
-if PRIMER_THERMODYNAMIC_ALIGNMENT=1. The by default value is 10 degrees
+if PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT=1. The by default value is 10 degrees
 lower than the default value of PRIMER_MIN_TM. For example, the alignment
 width length 15nt</p>
 <pre>
@@ -1821,7 +1821,7 @@ value as in <p3t>PRIMER_MAX_SELF_END_TH</p3t></p>]]>
 calculated by thermodynamic approach. The hairpin loops,
 bulge loops, internal loops, internal single mismatches, dangling ends,
 terminal mismatches have been considered. This parameter is calculated only
-if PRIMER_THERMODYNAMIC_ALIGNMENT=1. The by default value is 10 degrees
+if PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT=1. The by default value is 10 degrees
 lower than the default value of PRIMER_MIN_TM. For example the structure:</p>
 <pre>
       -///------\\\-
@@ -2154,7 +2154,8 @@ consensus (see <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>).</p>]]>
       <default>-1.00</default>
       <description>
 <![CDATA[<p>Similar to <p3t>PRIMER_MAX_TEMPLATE_MISPRIMING</p3t> but 
-assesses alternative binding sites in the template using thermodynamic models.
+assesses alternative binding sites in the template using thermodynamic models
+(when PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT=1).
 This parameter specifies the maximum allowed
 melting temperature of an oligo (primer)
 at an "ectopic" site within the template sequence; 47.0 would be
@@ -2209,7 +2210,7 @@ by the factor 100 to have the same effect.</p>]]>
      <dataType>float</dataType>
      <default>0.0</default>
      <description>
-     <![CDATA[<p>Penalty for a single primer binding to the template sequence (thermodynamic approach).</p>]]>
+     <![CDATA[<p>Penalty for a single primer binding to the template sequence (thermodynamic approach, when PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT=1).</p>]]>
      </description>
 </tag>
 
@@ -2231,7 +2232,7 @@ by the factor 100 to have the same effect.</p>]]>
      <default>0.0</default>
      <description>
      <![CDATA[<p>Penalty for a primer pair binding to the template sequence
-(thermodynamic approach).</p>]]>
+(thermodynamic approach, when PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT=1).</p>]]>
      </description>
 </tag>
 <tag>

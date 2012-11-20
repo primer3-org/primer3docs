@@ -220,7 +220,7 @@ primer, it is calculated like that:</p>
 
 
    These are allways added (+) to the penalty
-   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+   (if the thermodynamic approach is used then the part in <i>italic</i>
       is substituted with text below this calculation):
 
     <i>+ <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_LEFT_4_SELF_ANY</p3t>
@@ -240,7 +240,7 @@ primer, it is calculated like that:</p>
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
               <p3t>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3t> )
       
-      If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+      If the thermodynamic approach is used then the part of <i>italic</i> in
           the above calculation is replaced by this:
 
  <i>
@@ -327,7 +327,7 @@ primer, it is calculated like that:</p>
 
 
    These are allways added (+) to the penalty
-   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+   (if the thermodynamic approach is used then the part in <i>italic</i>
       is substituted with text below this calculation):
 
    <i> + <p3t>PRIMER_WT_SELF_ANY</p3t> * <p3t>PRIMER_RIGHT_4_SELF_ANY</p3t>
@@ -347,7 +347,7 @@ primer, it is calculated like that:</p>
             ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
               <p3t>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3t> )
      
-     If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+     If the thermodynamic approach is used then the part of <i>italic</i> in
          the above calculation is replaced by this:
 
 <i>
@@ -431,7 +431,7 @@ primer, it is calculated like that:</p>
 
 
    These are always added (+) to the penalty:
-   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+   (if the thermodynamic approach is used then the part in <i>italic</i>
       is substituted with text below this calculation):
       
   <i>+ <p3t>PRIMER_INTERNAL_WT_SELF_ANY</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_ANY</p3t>
@@ -448,7 +448,7 @@ primer, it is calculated like that:</p>
           ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
             <p3t>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3t> )
 
-   If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+   If the thermodynamic approach is used then the part of <i>italic</i> in
    the above calculation is replaced by this:
 <i>
    If ((<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5) &le; <p3t>PRIMER_INTERNAL_4_SELF_ANY_TH</p3t>) then is added (+):
@@ -521,7 +521,7 @@ this point. If primer pairs have to be selected, a
 
 
    These are allways added (+) to the penalty:
-   (if PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part in <i>italic</i>
+   (if the thermodynamic approach is used then the part in <i>italic</i>
        is substituted with text below this calculation):
        
      + <p3t>PRIMER_PAIR_WT_DIFF_TM</p3t> * 
@@ -536,7 +536,7 @@ this point. If primer pairs have to be selected, a
      + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> *
           <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t>
 
-     If PRIMER_THERMODYNAMIC_ALIGNMENT=1 then the part of <i>italic</i> in
+     If the thermodynamic approach is used then the part of <i>italic</i> in
      the above calculation is replaced by this:
 <i>
    If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5) &le; <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>) then is added (+):
