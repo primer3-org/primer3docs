@@ -638,29 +638,49 @@ by a space.</p>]]>
 	<id>changesFrom2.2.3</id>
 	<head>CHANGES FROM VERSION 2.2.3</head>
 	<text>
-<![CDATA[<p>1. We changed the following default values:<br />
+<![CDATA[<p>
+1. The tag PRIMER_THERMODYNAMIC_ALIGNMENT was replaced by two new tags:
+<br /><br />
+   - <p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t> which governs hairpin 
+and oligo-oligo interactions. Therefore, whenever it is set to 1 
+(the default) thermodynamic alignments will be used for oligo-oligo 
+interactions and hairpins.
+<br /><br />
+   - <p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t> which governs the 
+oligo-template interactions and, when set to 1 (the default), will 
+cause primer3 to use the thermodynamic alignment against templates.
+<br /><br />
+The reason for this change is to provide the option of using the 
+old alignment for oligo-template interactions when the thermodynamic 
+alignment is too slow or the template is too long (there is a hard 
+limit THAL_MAX_SEQ=10k on the length of sequences involved in 
+thermodynamic alignments).
+<br /><br />
+2. We changed the following default values:<br />
 <br />
-1.1. Changing default oligo temperature calculations
+2.1. Changing default oligo temperature calculations
 <br /><br />
 <p3t>PRIMER_TM_FORMULA</p3t>=1  (was 0)<br />
 <p3t>PRIMER_SALT_CORRECTIONS</p3t>=1 (was 0)<br />
 <br />
-1.2. Making thermodynamic secondary structure calculations the default:<br />
+2.2. Making thermodynamic secondary structure calculations the default:<br />
 <br />
-<p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t>=1 (was 0)<br />
+<p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t>=1 (was 0)<br />
+<p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=1 (was 0)<br />
 <br />
-1.3. The following need reasonable values to support the changes in 1.1
-and 1.2 above:<br />
+2.3. The following need reasonable values to support the changes in 2.1
+and 2.2 above:<br />
 <br />
 <p3t>PRIMER_SALT_DIVALENT</p3t>=1.5 (was 0.0)<br />
 <p3t>PRIMER_DNTP_CONC</p3t>=0.6 (was 0.0)<br />
 <br />
-1.4. To make old defaults easily accessible, we added a command line
+2.4. To make old defaults easily accessible, we added a command line
 argument, --default_version=1, which directs primer3_core to use the
 old defaults. --default_version=2 directs primer3_core to use the new
 defaults.  The default is --default_version=2.<br />
 <br />
-1.5. IMPORTANT: because <p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t>=1,
+2.5. IMPORTANT: because <p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t>=1 and
+<p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=1,
 <p3t>PRIMER_THERMODYNAMIC_PARAMETERS_PATH</p3t> must point to the right location.
 This tag specifies the path to the directory that contains all the
 parameter files used by the thermodynamic approach. In Linux, there
@@ -670,33 +690,35 @@ there is only one default location: .\primer3_config\.  If the the
 parameter files are not in one these locations, be sure to set
 <p3t>PRIMER_THERMODYNAMIC_PARAMETERS_PATH</p3t>.<br />
 <br />
-1.6. Changed default for <br />
+2.6. Changed default for <br />
 <br />
 <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=0 (was 1)<br />
 <br />
 (0 is almost always the the behavior one wants.)<br />
 <br />
-1.7. To get the behavior of -default_version=1 when -default_version=2
+2.7. To get the behavior of -default_version=1 when -default_version=2
 set the following:<br />
 <br />
 <p3t>PRIMER_TM_FORMULA</p3t>=0<br />
 <p3t>PRIMER_SALT_CORRECTIONS</p3t>=0<br />
-<p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t>=0<br />
+<p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t>=0<br />
+<p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=0<br />
 <p3t>PRIMER_SALT_DIVALENT</p3t>=0.0<br />
 <p3t>PRIMER_DNTP_CONC</p3t>=0.0<br />
 <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=1<br />
 <br />
-1.8. To get the behavior of -default_version=2 when -default_version=1
+2.8. To get the behavior of -default_version=2 when -default_version=1
 set the following:<br />
 <br />
 <p3t>PRIMER_TM_FORMULA</p3t>=1<br />
 <p3t>PRIMER_SALT_CORRECTIONS</p3t>=1<br />
-<p3t>PRIMER_THERMODYNAMIC_ALIGNMENT</p3t>=1<br />
+<p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t>=1<br />
+<p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=1<br />
 <p3t>PRIMER_SALT_DIVALENT</p3t>=1.5<br />
 <p3t>PRIMER_DNTP_CONC</p3t>=0.6<br />
 <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=0<br />
 <br />
-2. We changed the NULL value for SEQUENCE_FORCE_{LEFT,RIGHT}_START_END to
+3. We changed the NULL value for SEQUENCE_FORCE_{LEFT,RIGHT}_START_END to
 -1000000, and made it an error to select <p3t>PRIMER_FIRST_BASE_INDEX</p3t> <=
 this value.  This is to correct an error when
 SEQUENCE_FORCE_{LEFT,RIGHT}_START_END was -1 (value previously used to
@@ -704,25 +726,25 @@ indicate a NULL) but <p3t>PRIMER_FIRST_BASE_INDEX</p3t> was < 0, which caused th
 intended NULL value (-1) to be treated as a constraint on primer
 location (a constraint that was not possible to satisfy).<br />
 <br />
-3. We changed the <p3t>PRIMER_TASK</p3t> called 'pick_detection_primers' to
+4. We changed the <p3t>PRIMER_TASK</p3t> called 'pick_detection_primers' to
 'generic' while retaining 'pick_detection_primers' as an alias for
 backward compatibility.<br />
 <br />
-4. The code now uses 'end' alignments when assessing template mispriming
+5. The code now uses 'end' alignments when assessing template mispriming
 using thermodynamic alignments. This is consistent with the approach
 taken with the previous alignment algorithm and with checking for
 mispriming against repeat libraries.<br />
 <br />
-4. We removed PRIMER_PAIR_MAX_HAIRPIN_TH (which was ignored previously).<br />
+6. We removed PRIMER_PAIR_MAX_HAIRPIN_TH (which was ignored previously).<br />
 <br />
-5. Primer3 now requires the user to set <p3t>SEQUENCE_TARGET</p3t>, not
+7. Primer3 now requires the user to set <p3t>SEQUENCE_TARGET</p3t>, not
 <p3t>SEQUENCE_INCLUDED_REGION</p3t> when <p3t>PRIMER_TASK</p3t>=pick_discriminative_primers<br />
 <br />
-5. When <p3t>PRIMER_TASK</p3t>=pick_discriminative_primers or
+8. When <p3t>PRIMER_TASK</p3t>=pick_discriminative_primers or
 <p3t>PRIMER_TASK</p3t>=pick_cloning_primers the value of <p3t>SEQUENCE_INCLUDED_REGION</p3t>
 is no longer changed to the entire input sequence.<br />
 <br />
-6. The handling of divalent cations when <p3t>PRIMER_SALT_CORRECTIONS</p3t>=2
+9. The handling of divalent cations when <p3t>PRIMER_SALT_CORRECTIONS</p3t>=2
 (not the default and not the recommended value) has been updated. The
 rationale is that, when divalent cations are present, the formula by
 Owczarzy et al., 2004 (used previously by Primer3) can be improved
@@ -731,17 +753,24 @@ upon as described in (Ahsen et al., 2010; Owczarzy et al.,
 to follow the scheme in Figure 9 of (Owczarzy et al., 2008). Please
 find references to these papers below in the manual.<br />
 <br />
-7. In addition, several error corrections:<br />
+10. We modified the error handling of non-memory related errors that
+can occur during the thermodynamic alignment. They are no longer
+fatal errors.<br />
 <br />
-7.1. Corrected a short, fixed-size buffer for the file/path names specified
+11. We removed io_version 3, which was only kept for backward compatibility
+with very old versions of primer3.<br />
+<br />
+12. In addition, several error corrections:<br />
+<br />
+12.1. Corrected a short, fixed-size buffer for the file/path names specified
 by the command line arguments -output, -error and for the settings
 file.<br />
 <br />
-7.2. Two other corrected errors were in p3_set_gs_primer_self_end and
+12.2. Two other corrected errors were in p3_set_gs_primer_self_end and
 p3_set_gs_primer_internal_oligo_self_end, which erroneously multiplied
 their 'val' arguments by 100.<br />
 <br />
-7.3. Primer3 now detects and handles the situation in which user-supplied
+12.3. Primer3 now detects and handles the situation in which user-supplied
 primers (<p3t>SEQUENCE_PRIMER</p3t> and <p3t>SEQUENCE_PRIMER_REVCOMP</p3t>) have the left
 primer to the right of the right primer.  Also issue a warning if
 user-supplied primers occur in more than one location in the template.<br /></p>]]>
