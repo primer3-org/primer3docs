@@ -115,12 +115,8 @@ this argument will have no effect.</p>]]>
 <tag>
 	<tagName>-io_version=<i>n</i></tagName>
 	<description>
-<![CDATA[<p>This argument directs primer3 to use
-io version <i>n</i> input and output conventions.
-<i>n</i> can be 3 (for mostly backward
-compatible behavior) or 4.
--io_version=4 <strong>is the default</strong> and is required to use functionality that 
-is new in release 2.0.0 and later.</p>]]>
+<![CDATA[<p>This argument is provided for backward compatibility.
+-io_version=4 <strong>is the only legal value and the default</strong>.
 	</description>
 </tag>
 

@@ -630,7 +630,7 @@ Source code available at <link>http://sourceforge.net/projects/primer3/</link>.<
 the command line. Any unique abbreviation of the arguments is allowed
 (e.g. -ab instead of -about) and each argument can be preceded by 
 either one or two dashes. In the case of arguments that receive 
-values (for example <i>io_version</i>), the '=' can be replaced 
+values, the '=' can be replaced 
 by a space.</p>]]>
 	</text>
 </textBlock>
@@ -1421,7 +1421,7 @@ web interfaces (distributed separately).<br />
 <br />
 The command line for primer3 is:<br />
 <br />
-primer3_core [ -format_output ] [ -default_version=1|-default_version=2 ] [ -io_version=3|-io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
+primer3_core [ -format_output ] [ -default_version=1|-default_version=2 ] [ -io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
 <br />
 A complete list of valid command line arguments can be found in 
 COMMAND LINE ARGUMENTS below.<br />
@@ -1488,20 +1488,10 @@ designed with the idea in mind that computer scripts and other
 programs use primer3_core. The modifications make it easier for 
 programs to read and write primer3 input and output.<br />
 <br />
-For temporary backward compatibility, a command line argument 
-(-io_version=3) allows the use of primer3 tags the are nearly 
-identical to the previous version. However, even with
--io_version=3, the text of some warning and error messages has 
-changed, as have some details of the PRIMER_..._EXPLAIN
-output tags.  New functionality is not available with the
--io_version=3 tags.
-
 Furthermore the primer3 default values and the use of 
 <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> and <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>
 have changed in version 2.0. 
-
-The backward compatibility might be dropped in the next 
-release of primer3.<br />
+<br />
 <br />
 There are three classes of input: "Sequence" input tags describe 
 a particular input sequence to primer3, and are reset after 
@@ -1710,13 +1700,10 @@ The output records contain everything that the input record contains, plus a
 subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br />
 <br />
-For -io_version=4 (the default), tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
+Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
 where &lt;j&gt; is an integer from 0 to n, where n is at most the 
 value of <p3t>PRIMER_NUM_RETURN</p3t>. In the documentation the output 
 number 4 is shown as for example: <p3t>PRIMER_LEFT_4_TM</p3t>.<br />
-<br />
-For -io_verion=3, when &lt;j&gt;=0, the tag has the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;tag_name&gt;
-<br />
 <br />
 In the descriptions below, 'i,n' represents a start/length pair,
 's' represents a string, x represents an arbitrary integer, and f
