@@ -326,7 +326,7 @@ substring of the reverse strand of <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	<dataType>int</dataType>
 	<min></min>
 	<max></max>
-	<default>-1000000</default>
+	<default>-2000000</default>
 	<description>
 <![CDATA[<p>This parameter should be considered EXPERIMENTAL at this point.
 Please check the output carefully; some erroneous inputs might
