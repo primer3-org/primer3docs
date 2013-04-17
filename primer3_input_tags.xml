@@ -621,13 +621,155 @@ See details in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.
     </description>
 </tag>
 
+<tag>
+	<tagName>PRIMER_MUST_MATCH_FIVE_PRIME</tagName>
+	<dataType>ambiguous nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>Discards all primers which do not match this match sequence at the 5' end. 
+(New in v. 2.4.0, added by A. Untergasser.)<br />
+<br />
+The match sequence must be 5 nucletides long and can contain the following letters:<br />
+<pre>
+    N   Any nucleotide
+
+    A   Adenine
+    G   Guanine
+    C   Cytosine
+    T   Thymine
+
+    R   Purine (A or G)
+    Y   Pyrimidine (C or T)
+    W   Weak (A or T)
+    S   Strong (G or C)
+    M   Amino (A or C)
+    K   Keto (G or T)
+    B   Not A (G or C or T)
+    H   Not G (A or C or T)
+    D   Not C (A or G or T)
+    V   Not T (A or G or C)
+</pre>
+Any primer which will not match the entire match sequence at th 5' end will 
+be discarded and not evaluated. Setting strict requirements here will result 
+in low quality primers due to the high numbers of primers discarded at this 
+step.<br />
+<br />
+<strong>Example 1:</strong><br />
+PRIMER_MUST_MATCH_FIVE_PRIME=tgnnn<br /><br />
+Could result in the following matching:<br />
+<pre>
+    tgcatgattggatacgtttga
+    |||||
+    tgnnn
+
+ -> This primer would be used.
+
+
+    attcgattctccccggtatc
+      |||
+    tgnnn
+
+ -> This primer would be discarded.
+</pre><br /><br />
+<strong>Example 2:</strong><br />
+PRIMER_MUST_MATCH_FIVE_PRIME=hnnnn<br /><br />
+Could result in the following matching:<br />
+<pre>
+    tgcatgattggatacgtttga
+    |||||
+    hnnnn
+
+ -> This primer would be used.
+
+
+    ggctgatgaaggaaagcaag
+     ||||
+    hnnnn
+
+ -> This primer would be discarded.
+</pre><br /><br />
+This parameter would force all primers selected by primer3 to not have guanosine 
+at the 5' end of any primer which could be useful to avoid quenching of 
+flourochromes. 
+</p>]]>
+	</description>
+</tag>
+
+<tag>
+	<tagName>PRIMER_INTERNAL_MUST_MATCH_FIVE_PRIME</tagName>
+	<dataType>ambiguous nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MUST_MATCH_FIVE_PRIME</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+
+<tag>
+	<tagName>PRIMER_MUST_MATCH_THREE_PRIME</tagName>
+	<dataType>ambiguous nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>Discards all primers which do not match this match sequence at the 3' end. Similar 
+parameter to <p3t>PRIMER_MUST_MATCH_FIVE_PRIME</p3t>, but limits the 3' end. 
+(New in v. 2.4.0, added by A. Untergasser.)<br />
+<br />
+The match sequence must be 5 nucletides long and can contain the following letters:<br />
+<pre>
+    N   Any nucleotide
+
+    A   Adenine
+    G   Guanine
+    C   Cytosine
+    T   Thymine
+
+    R   Purine (A or G)
+    Y   Pyrimidine (C or T)
+    W   Weak (A or T)
+    S   Strong (G or C)
+    M   Amino (A or C)
+    K   Keto (G or T)
+    B   Not A (G or C or T)
+    H   Not G (A or C or T)
+    D   Not C (A or G or T)
+    V   Not T (A or G or C)
+</pre>
+Any primer which will not match the entire match sequence at th 3' end will 
+be discarded and not evaluated. Setting strict requirements here will result 
+in low quality primers due to the high numbers of primers discarded at this 
+step.<br />
+<br />
+<strong>Example 1:</strong><br />
+PRIMER_MUST_MATCH_FIVE_PRIME=nnnga<br /><br />
+Could result in the following matching:<br />
+<pre>
+    tgcatgattggatacgtttga
+                    |||||
+                    nnnga
+
+ -> This primer would be used.
+
+
+    attcgattctccccggtatc
+                   |||
+                   nnnga
+
+ -> This primer would be discarded.
+</pre>
+</p>]]>
+	</description>
+</tag>
+
+<tag>
+	<tagName>PRIMER_INTERNAL_MUST_MATCH_THREE_PRIME</tagName>
+	<dataType>ambiguous nucleotide sequence</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MUST_MATCH_THREE_PRIME</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
 
 <tag>
 	<tagName>PRIMER_PRODUCT_SIZE_RANGE</tagName>
-	<oldTag>
-		<oldTagName>PRIMER_DEFAULT_PRODUCT</oldTagName>
-		<version>2.0</version>
-	</oldTag>
 	<dataType>size range list</dataType>
 	<default>100-300</default>
 	<description>
