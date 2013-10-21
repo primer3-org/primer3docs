@@ -627,7 +627,7 @@ See details in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.
 	<default>empty</default>
 	<description>
 <![CDATA[<p>Discards all primers which do not match this match sequence at the 5' end. 
-(New in v. 2.4.0, added by A. Untergasser.)<br />
+(New in v. 2.3.6, added by A. Untergasser.)<br />
 <br />
 The match sequence must be 5 nucletides long and can contain the following letters:<br />
 <pre>
@@ -711,7 +711,7 @@ flourochromes.
 	<description>
 <![CDATA[<p>Discards all primers which do not match this match sequence at the 3' end. Similar 
 parameter to <p3t>PRIMER_MUST_MATCH_FIVE_PRIME</p3t>, but limits the 3' end. 
-(New in v. 2.4.0, added by A. Untergasser.)<br />
+(New in v. 2.3.6, added by A. Untergasser.)<br />
 <br />
 The match sequence must be 5 nucletides long and can contain the following letters:<br />
 <pre>
