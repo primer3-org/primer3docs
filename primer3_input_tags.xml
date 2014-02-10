@@ -1597,9 +1597,7 @@ For Windows, there is only one default location: <i>.\primer3_config\</i>.</p>]]
 itself (interfering with target sequence binding). It will score 
 ANY binding occurring within the entire primer sequence.<br />
 It is the maximum allowable local alignment score when testing 
-a single primer for (local) self-complementarity and the 
-maximum allowable local alignment score when testing for 
-complementarity between left and right primers.  Local 
+a single primer for (local) self-complementarity.  Local 
 self-complementarity is taken to predict the tendency of primers 
 to anneal to each other without necessarily causing self-priming 
 in the PCR.  The scoring system gives 1.00 for complementary 
@@ -1724,7 +1722,8 @@ sequences with high possibility to form alternative secondary structures.
     <default>8.00</default>
     <description>
 <![CDATA[<p>PRIMER_PAIR_MAX_COMPL_ANY describes the tendency of the left primer 
-to bind to the right primer. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p>]]>
+to bind to the right primer. It is the maximum allowable local alignment score when testing for 
+complementarity between left and right primers. It is similar to <p3t>PRIMER_MAX_SELF_ANY</p3t>.</p>]]>
     </description>
 </tag>
 <tag>
@@ -1812,9 +1811,7 @@ and amplify a short piece (forming a primer-dimer). These primers
 are then unable to bind and amplify the target sequence.<br />
 PRIMER_MAX_SELF_END is the maximum allowable 3'-anchored global 
 alignment score when testing a single primer for 
-self-complementarity, and the maximum allowable 3'-anchored 
-global alignment score when testing for complementarity between 
-left and right primers. The 3'-anchored global alignment score 
+self-complementarity. The 3'-anchored global alignment score 
 is taken to predict the likelihood of PCR-priming primer-dimers, 
 for example</p>
 <pre>
@@ -1833,7 +1830,7 @@ argument. In the examples above the scores are 7.00 and 6.00
 respectively. Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable 3'-anchored global
 alignment between two oligos.  In order to estimate 3'-anchored
-global alignments for candidate primers and primer pairs, Primer
+global alignments for candidate primers, Primer3
 assumes that the sequence from which to choose primers is
 presented 5'->3'. It is nonsensical to provide a larger value
 for this parameter than for the Maximum (local) Complementarity
@@ -1885,7 +1882,7 @@ approach is used.</p>]]>
     <default>3.00</default>
     <description>
 <![CDATA[<p>PRIMER_PAIR_MAX_COMPL_END tries to bind the 3'-END of the left primer 
-to the right primer and scores the best binding it can find.
+to the right primer and scores the best binding it can find. 
 It is similar to <p3t>PRIMER_MAX_SELF_END</p3t>.</p>]]>
     </description>
 </tag>
