@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 # Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
-#               2011,2012
+#               2011,2012,2016
 # Whitehead Institute for Biomedical Research, Steve Rozen
 # (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 # All rights reserved.
@@ -48,8 +48,8 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "2.3.6";
-my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013";
+my $scriptP3Version = "2.3.7";
+my $scriptP3Years = "1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
 
 # Modify here the order of the textblocks or add new:
 my @textblocksOrder = (
