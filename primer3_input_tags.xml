@@ -483,11 +483,13 @@ Legal values are:<br />
    Pick primers suited to select primers which bind with their end at 
    a specific position. This can be used to force the end of a primer 
    to a polymorphic site, with the goal of discriminating between
-   sequence variants. <p3t>SEQUENCE_INCLUDED_REGION</p3t> must be used to 
-   indicate the last nucleotide of the left (first nucleotide of 
-   included region) and the right primer (last nucleotide of 
-   included region). Due to these limitations primer3 can only vary 
-   the length of the primers. Set <p3t>PRIMER_PICK_ANYWAY</p3t>=1 to obtain 
+   sequence variants. <p3t>SEQUENCE_TARGET</p3t> must be used to
+   provide a single target indicating the last nucleotide of the left 
+   (nucleotide before the first nucleotide of the target) and the right 
+   primer (nucleotide following the target). The primers border the 
+   <p3t>SEQUENCE_TARGET</p3t>. Due to these limitations 
+   primer3 can only vary the length of the primers. Set 
+   <p3t>PRIMER_PICK_ANYWAY</p3t>=1 to obtain 
    primers even if they violate specific constraints.<br />
 <br />
    <tt><i>pick_pcr_primers</i></tt><br />
