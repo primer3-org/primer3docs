@@ -1082,7 +1082,7 @@ pre-XML, pre-RDF, text-based input/output format for
 program-to-program data interchange.  By default, primer3 also
 produces output in the same format.<br />
 <br />
-When run with the -format_output command-line flag, primer3
+When run with the --format_output command-line flag, primer3
 prints a more user-oriented report for each sequence.<br />
 <br />
 Primer3 exits with 0 status if it operates correctly.  See EXIT
@@ -1136,7 +1136,7 @@ status.<br />
 <br />
 This document lists the input tags that primer3 recognizes.
 Primer3 echos and ignores any tags it does not recognize, unless
-the -strict_tags flag is set on the command line, in which case
+the --strict_tags flag is set on the command line, in which case
 primer3 prints an error in the <p3t>PRIMER_ERROR</p3t> output tag (see
 below), and prints additional information on stdout; this option
 can be useful for debugging systems that incorporate primer3.<br />
@@ -1419,7 +1419,7 @@ web interfaces (distributed separately).<br />
 <br />
 The command line for primer3 is:<br />
 <br />
-primer3_core [ -format_output ] [ -default_version=1|-default_version=2 ] [ -io_version=4 ] [ -p3_settings_file=&lt;file_path&gt; ] [ -echo_settings_file ] [ -strict_tags ] [ -output=&lt;file_path&gt; ] [ -error=&lt;file_path&gt; ] [ input_file ] <br />
+primer3_core [ --format_output ] [ --default_version=1|--default_version=2 ] [ --io_version=4 ] [ --p3_settings_file=&lt;file_path&gt; ] [ --echo_settings_file ] [ --strict_tags ] [ --output=&lt;file_path&gt; ] [ --error=&lt;file_path&gt; ] [ input_file ] <br />
 <br />
 A complete list of valid command line arguments can be found in 
 COMMAND LINE ARGUMENTS below.<br />

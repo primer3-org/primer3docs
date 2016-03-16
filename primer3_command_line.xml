@@ -49,7 +49,7 @@ An example Tag with all possible options:
 
 	-->
 <tag>
-	<tagName>-about</tagName>
+	<tagName>--about</tagName>
 	<description>
 <![CDATA[<p>With this argument primer3 generates one line of output
 indicating the release number and then exits. This allows scripts to 
@@ -58,7 +58,7 @@ query primer3 for its version.</p>]]>
 </tag>
 
 <tag>
-	<tagName>-default_version=<i>n</i></tagName>
+	<tagName>--default_version=<i>n</i></tagName>
 	<description>
 <![CDATA[<p><i>n</i>=2 is the default, and directs primer3_core
 to use the latest default values (the ones documented here).
@@ -69,25 +69,25 @@ to use the latest default values (the ones documented here).
 </tag>
 
 <tag>
-	<tagName>-format_output</tagName>
+	<tagName>--format_output</tagName>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 user-oriented (rather than program-oriented) output.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-strict_tags</tagName>
+	<tagName>--strict_tags</tagName>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core should generate
 a fatal error if there is any tag in the input that
 it does not recognize.  This tag also applies to the settings file (see
-documentation for the -p3_settings_file argument),
+documentation for the --p3_settings_file argument),
 if any, but with limitations:  lines that do not begin with
 PRIMER_ or P3_FILE_ID are always ignored in the settings file.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-p3_settings_file=<i>file_path</i> </tagName>
+	<tagName>--p3_settings_file=<i>file_path</i> </tagName>
 	<description>
 <![CDATA[<p>This argument specifies a settings file,
 <i>file_path</i>. Primer3 reads the global 
@@ -97,38 +97,38 @@ default primer3 settings. The values set in
 the settings files can be also overridden 
 by tags in the input file. See
 primer3 file documentation for details on the file 
-format.  <strong>WARNING: the -strict_tags flag applies only to
+format.  <strong>WARNING: the --strict_tags flag applies only to
 tags beginning with the string "PRIMER_"; lines that do
 not begin with the string "PRIMER_" are ignored.</strong></p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-echo_settings_file</tagName>
+	<tagName>--echo_settings_file</tagName>
 	<description>
 <![CDATA[<p>This argument indicates that primer3_core
 should print the input tags specified
 in the given settings file. If no settings file is
-provided or if the -format_output option is given,
+provided or if the --format_output option is given,
 this argument will have no effect.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>-io_version=<i>n</i></tagName>
+	<tagName>--io_version=<i>n</i></tagName>
 	<description>
 <![CDATA[<p>This argument is provided for backward compatibility.
--io_version=4 <strong>is the only legal value and the default</strong>.
+--io_version=4 <strong>is the only legal value and the default</strong>.
 	</description>
 </tag>
 
 <tag>
-        <tagName>-output=<i>file_path</i></tagName>
+        <tagName>--output=<i>file_path</i></tagName>
         <description>
 <![CDATA[<p>This argument specifies the file where the output
 should be written. If omitted, stdout is used. </p>]]>
         </description>
 </tag>
 <tag>
-        <tagName>-error=<i>file_path</i></tagName>
+        <tagName>--error=<i>file_path</i></tagName>
         <description>
 <![CDATA[<p>This argument specifies the file where the error 
 messages should be written. If omitted, stderr is used.</p>]]>
