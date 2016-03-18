@@ -61,7 +61,6 @@ my @textblocksOrder = (
 "installLinux",
 "installMac",
 "installWindows",
-"buildOsX",
 "systemRequirements",
 "invokingPrimer3",
 "commandLineTags",
