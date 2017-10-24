@@ -119,6 +119,10 @@ my @textblocksPrimer3PlusHelp = (
 
 
 my $output_folder = cwd.'/script_output/';
+if (!(-d $output_folder)) {
+    mkdir $output_folder;
+    print "mkdir: $output_folder\n";
+}
 
 print"start processing\n";
 

@@ -1,13 +1,21 @@
 How to install and run the script
 ---------------------------------
 
-Update your environment:
+Update your environment on Linux:
 
 `sudo apt-get install libxml2-dev`
 
 `sudo perl -MCPAN -e shell`
-  `install XML::LibXML`
-  `exit`
+`install XML::LibXML`
+`exit`
+
+Update your environment on Windows:
+
+Install: [Perl from ActiveState](https://www.activestate.com/activeperl)
+
+Run: Perl Package Manager
+Search and install: `XML-LibXML`
+
 
 Run the script:
 
