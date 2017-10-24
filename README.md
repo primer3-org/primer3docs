@@ -1,3 +1,18 @@
+How to install and run the script
+---------------------------------
+
+Update your environment:
+
+`sudo apt-get install libxml2-dev`
+
+`sudo perl -MCPAN -e shell`
+  `install XML::LibXML`
+  `exit`
+
+Run the script:
+
+`./create_tag_files_and_docs.pl`
+
 Guide to use primer3 docs
 -------------------------
 
