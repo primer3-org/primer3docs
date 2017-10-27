@@ -5,7 +5,7 @@ Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
               2011,2012
 Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser, Helen Skaletsky, 
-Triinu K&otilde;ressaar and Maido Remm.
+Triinu Koressaar and Maido Remm.
 All rights reserved.
 
     This file is part of the Primer3 suite and libraries.
@@ -99,7 +99,8 @@ Andreas Untergasser.
 <br />
 <br />
 Primer3 is an open software development project hosted
-on SourceForge: <link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
+on SourceForge: <link>http://sourceforge.net/projects/primer3/</link> and
+on GitHub: <link>https://github.com/primer3-org</link>.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -159,6 +160,12 @@ primer, it is calculated like that:</p>
 
        + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
             ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> )
+
+
+
+   If masking is used (PRIMER_MASK_TEMPLATE=1), then this is added (+):
+       + PRIMER_WT_FAILURE_RATE * PRIMER_LEFT_4_FAILURE_RATE
+
 
 
    The following section uses &lt;primer length&gt; as part of 
@@ -266,6 +273,11 @@ primer, it is calculated like that:</p>
 
        + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
             ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> )
+
+
+   If masking is used (PRIMER_MASK_TEMPLATE=1), then this is added (+):
+       + PRIMER_WT_FAILURE_RATE * PRIMER_RIGHT_4_FAILURE_RATE
+
 
 
    The following section uses &lt;primer length&gt; as part of 
@@ -752,10 +764,10 @@ user-supplied primers occur in more than one location in the template.<br /></p>
 	<head>COPYRIGHT AND LICENSE</head>
 	<text>
 <![CDATA[<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
-              2011,2012,2013,2016
+              2011,2012,2013,2016,2017
 Whitehead Institute for Biomedical Research, Steve Rozen
-(<link>http://purl.com/STEVEROZEN/</link>), Andreas Untergasser and Helen Skaletsky. All rights
-reserved.
+(<link>http://purl.com/STEVEROZEN/</link>), Helen Skaletsky, Triinu Koressaar, 
+Maido Remm and Andreas Untergasser. All rights reserved.
 
     This file is part of the Primer3 suite and libraries.
 
@@ -1719,7 +1731,7 @@ format.</p>
 from the <a href="http://www.fruitfly.org">Berkeley Drosophila Genome Project</a>:</p>
 <blockquote><p>
 1. A library of transposable elements
-<a href="http://genomebiology.com/2002/3/12/research/0084">
+<a href="https://www.ncbi.nlm.nih.gov/pubmed/12537573">
 <i>The transposable elements of the Drosophila melanogaster euchromatin - a genomics perspective</i>
 J.S. Kaminker, C.M. Bergman, B. Kronmiller, J. Carlson, R. Svirskas, S. Patel, E. Frise, D.A. Wheeler, S.E. Lewis, G.M. Rubin, M. Ashburner and S.E. Celniker
 Genome Biology (2002) 3(12):research0084.1-0084.20</a>, 
@@ -1733,7 +1745,6 @@ Both were downloaded 6/23/04.<br>
 The contents of the libraries can be viewed at the following links:<br>
 <ul>
 <li><a href="show_humrep_and_simple.cgi">HUMAN</a> (contains microsatellites)</li>
-<li><a href="show_rodrep_and_simple.cgi">RODENT_AND_SIMPLE</a> (contains microsatellites)</li>
 <li><a href="show_rodent_ref.cgi">RODENT</a> (does not contain microsatellites)</li>
 <li><a href="show_drosophila_w_transposons.cgi">DROSOPHILA</a></li>
 </ul>
@@ -1797,17 +1808,17 @@ considerably lower than that used as a PCR primer.</p>]]>
 	<head>PRIMER3 WWW INTERFACES</head>
 	<text>
 <![CDATA[<p>There are two web interfaces available :<br />
-The Whitehead Institute for Biomedical Research provides a basic
-web-based front end to Primer3 named Primer3Web at
-<link>http://primer3.wi.mit.edu/</link><br />
+The Bioinformatics workgroup at University of Tartu provides a basic
+web-based interface to Primer3 named Primer3Web at
+<link>http://primer3.ut.ee/</link><br />
 <br />
 A Primer3Plus web services is at
 <link>http://primer3plus.com</link><br />
 <br />
-This distribution does not contain the Primer3 WWW interfaces.<br />
 <br />
 Web interface code is available at
-<link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
+<link>http://sourceforge.net/projects/primer3/</link> and 
+on GitHub: <link>https://github.com/primer3-org</link>.</p>]]>
 	</text>
 </textBlock>
 </primer3Doc>
