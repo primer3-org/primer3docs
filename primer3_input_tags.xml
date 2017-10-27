@@ -1287,7 +1287,7 @@ version of Primer3).<br />
 <br />
 This backward compatible calculation uses the table of
 thermodynamic parameters in the paper [Breslauer KJ, Frank R,
-Blöcker H and Marky LA (1986) "Predicting DNA duplex stability
+Bl&ouml;cker H and Marky LA (1986) "Predicting DNA duplex stability
 from the base sequence" Proc Natl Acad Sci 83:4746-50
 <link>http://dx.doi.org/10.1073/pnas.83.11.3746</link>],
 and the method in the paper [Rychlik W, Spencer WJ and Rhoads
@@ -1488,7 +1488,7 @@ in the paper [Owczarzy, R., Moreira, B.G., You, Y., Behlke, M.A., and
 Walder, J.A. (2008). Predicting stability of DNA duplexes in solutions
 containing magnesium and monovalent cations. Biochemistry 47, 5336-5353
 <link>http://dx.doi.org/10.1021/bi702363u</link>] following recommendations in the paper
-[Ahsen, v.N., Wittwer, C.T., and Schütz, E. (2010). Monovalent and divalent
+[Ahsen, v.N., Wittwer, C.T., and Sch&uuml;tz, E. (2010). Monovalent and divalent
 salt correction algorithms for Tm prediction-recommendations for Primer3
 usage. Brief Bioinform 12, 514 <link>http://dx.doi.org/10.1093/bib/bbq081</link>]. 
 <br />
