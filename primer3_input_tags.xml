@@ -2546,6 +2546,68 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 	</description>
 </tag>
 
+<!-- Flags for template masker function -->
+
+<tag>
+	<tagName>PRIMER_MASK_TEMPLATE</tagName>
+	<dataType>boolean</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>This feature helps to prevent designing primers to template regions that are repetitive. Primers with more binding sites tend to have higher failure rates. The masking is based on statistical model, which calculates the probability of failure P<sub>f</sub> as follows:<br />
+<pre>P<sub>f</sub>= e<sup>m</sup> / (1 + e<sup>m</sup>),</pre>
+where m = 0.1772 * K11 + 0.239 * K16 - 4.336 <br />
+and K11 and K16 are frequencies of 11-mers and 16-mers in given genome. The frequencies are stored in species-specific k-mer list files. Users can build their own k-mer lists for species of interest. GenomeTester4 software for making properly formatted k-mer lists can be downloaded from GitHub: <link>https://github.com/bioinfo-ut/GenomeTester4</link>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MASKING_LIST_PREFIX</tagName>
+	<dataType>string</dataType>
+	<default>homo_sapiens</default>
+	<description>
+<![CDATA[<p>This tag specifies the species whose k-mer lists are used for pre-masking.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_KMER_LISTS_PATH</tagName>
+	<dataType>string</dataType>
+	<default>../kmer_lists/</default>
+	<description>
+<![CDATA[<p>This tag specifies the path to the directory that contains k-mer list files for masking algorithm. Required for command-line execution. On web interface the species is selected from drop-down menu</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_FAILURE_RATE</tagName>
+	<dataType>float</dataType>
+	<default>0.1</default>
+	<description>
+<![CDATA[<p>Cutoff value of accepted failure rate for masking algorithm. Higher value gives lower stringency, meaning that fewer nucleotides in target sequence is masked.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_FAILURE_RATE</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for the primer failure rate.</p>]]>
+	</description>
+</tag><tag>
+	<tagName>PRIMER_MASK_5P_DIRECTION</tagName>
+	<dataType>int</dataType>
+	<default>1</default>
+	<description>
+<![CDATA[<p>The number of nucleotides masking algorithm should mask from 5' direction.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MASK_3P_DIRECTION</tagName>
+	<dataType>int</dataType>
+	<default>0</default>
+	<description>
+<![CDATA[<p>The number of nucleotides masking algorithm should mask from 3' direction.</p>]]>
+	</description>
+</tag>
+
+<!-- End of flags for template masker function -->
 
 <tag>
 	<tagName>PRIMER_MIN_QUALITY</tagName>
