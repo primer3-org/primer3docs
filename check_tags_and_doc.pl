@@ -6,9 +6,9 @@
 # (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 # All rights reserved.
 # 
-#     This file is part of the primer3 suite and libraries.
+#     This file is part of the Primer3 suite and libraries.
 # 
-#     The primer3 suite and libraries are free software;
+#     The Primer3 suite and libraries are free software;
 #     you can redistribute them and/or modify them under the terms
 #     of the GNU General Public License as published by the Free
 #     Software Foundation; either version 2 of the License, or (at
@@ -103,7 +103,7 @@ foreach (@rawBoulder) {
 my @prAr = sort(keys(%docTags));
 foreach (@prAr) {
     if (!(defined $boulderTags{$_})) {
-        print "Tag not read by primer3: $_\n";
+        print "Tag not read by Primer3: $_\n";
     }
 }
 

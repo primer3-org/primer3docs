@@ -6,9 +6,9 @@
 # (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 # All rights reserved.
 # 
-#     This file is part of the primer3 suite and libraries.
+#     This file is part of the Primer3 suite and libraries.
 # 
-#     The primer3 suite and libraries are free software;
+#     The Primer3 suite and libraries are free software;
 #     you can redistribute them and/or modify them under the terms
 #     of the GNU General Public License as published by the Free
 #     Software Foundation; either version 2 of the License, or (at
@@ -82,24 +82,24 @@ my @textblocksOrder = (
 "webInterface",
 "acknowledgments");
 
-# Modify here the order of the textblocks for the primer3web help page:
+# Modify here the order of the textblocks for the Primer3Web help page:
 my @textblocksPrimer3WebHelp = (
 "copyrightLicense",
 "introduction",
 "citationRequest",
 "licenseExplain",
-"pickAdvice",
-"cautions",
-"findNoPrimers",
 "sequenceTags",
 "globalTags",
 "outputHelp",
-"providedMisprimingLibs",
 "calculatePenalties",
+"cautions",
+"providedMisprimingLibs",
+"findNoPrimers",
+"pickAdvice",
 "webInterface",
 "acknowledgments");
 
-# Modify here the order of the textblocks for the primer3plus help page:
+# Modify here the order of the textblocks for the Primer3Plus help page:
 my @textblocksPrimer3PlusHelp = (
 "copyrightLicense",
 "introduction",
@@ -283,7 +283,9 @@ sub string2file {
 	my $file = shift;	# File Name
 	my $string = shift; # String to save in
 	my $error = 0;
-	
+
+	$string =~ s/\s+\n/\n/g;
+
 	if (open FILE, ">:utf8", $file) { 
 		print FILE $string;
 		close(FILE);
@@ -632,7 +634,12 @@ sub createPrimer3webHelp {
     $html_string =~ s/<br \/>/<br>/g;
     $html_string =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
     $html_string =~ s/<p3t>(.*?)<\/p3t>/<a href=\"#$1\">$1<\/a>/g;
-    
+   
+    # Do some fixes
+    $html_string =~ s/<a href="#PRIMER_LEFT_4[^"]+">([^<>]+)<\/a>/$1/g;
+    $html_string =~ s/<a href="#PRIMER_RIGHT_4[^"]+">([^<>]+)<\/a>/$1/g;
+    $html_string =~ s/<a href="#PRIMER_PAIR_4[^"]+">([^<>]+)<\/a>/$1/g;
+ 
     # Write the files to the disk
     my $output_file = $output_folder. "primer3web_help.htm";
     string2file($output_file, $html_string);
@@ -813,7 +820,7 @@ sub html_get_header {
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>primer3 release $scriptP3Version - manual</title>
+  <title>Primer3 release $scriptP3Version - manual</title>
   <style type="text/css">
   body {
   background-color:white;
@@ -873,7 +880,7 @@ sub cgi_get_header {
 #  by Andreas Untergasser and Harm Nijveen
 #  All rights reserved.
 # 
-#  This file is part of Primer3Plus. Primer3Plus is a webinterface to primer3.
+#  This file is part of Primer3Plus. Primer3Plus is a webinterface to Primer3.
 # 
 #  The Primer3Plus is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

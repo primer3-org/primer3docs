@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://primer3.sourceforge.net/"
-	xmlns="http://primer3.sourceforge.net/"
+	targetNamespace="http://primer3.org/"
+	xmlns="http://primer3.org/"
 	elementFormDefault="qualified">
 <xs:element name="primer3Doc">
   <xs:complexType>

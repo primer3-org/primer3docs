@@ -21,12 +21,12 @@ Run the script:
 
 `./create_tag_files_and_docs.pl`
 
-Guide to use primer3 docs
+Guide to use Primer3 docs
 -------------------------
 
 The motivation to start this documentation script originated from the 
-need to keep the readme files in primer3 and the helpfiles in 
-primer3web and primer3plus in sync. With primer3 getting more input 
+need to keep the readme files in Primer3 and the helpfiles in 
+Primer3Web and Primer3Plus in sync. With Primer3 getting more input 
 tags this also helps to keep the overview.
 
 It works rather simple. All information is stored in XML files. Then 

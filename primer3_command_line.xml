@@ -7,9 +7,9 @@ Whitehead Institute for Biomedical Research, Steve Rozen
 (http://purl.com/STEVEROZEN/), Andreas Untergasser and Helen Skaletsky.
 All rights reserved.
 
-    This file is part of the primer3 suite and libraries.
+    This file is part of the Primer3 suite and libraries.
 
-    The primer3 suite and libraries are free software;
+    The Primer3 suite and libraries are free software;
     you can redistribute them and/or modify them under the terms
     of the GNU General Public License as published by the Free
     Software Foundation; either version 2 of the License, or (at
@@ -51,9 +51,9 @@ An example Tag with all possible options:
 <tag>
 	<tagName>--about</tagName>
 	<description>
-<![CDATA[<p>With this argument primer3 generates one line of output
+<![CDATA[<p>With this argument Primer3 generates one line of output
 indicating the release number and then exits. This allows scripts to 
-query primer3 for its version.</p>]]>
+query Primer3 for its version.</p>]]>
 	</description>
 </tag>
 
@@ -93,10 +93,10 @@ PRIMER_ or P3_FILE_ID are always ignored in the settings file.</p>]]>
 <i>file_path</i>. Primer3 reads the global 
 ("PRIMER_...") parameters from this file first. 
 Tags appearing in the settings file override
-default primer3 settings. The values set in
+default Primer3 settings. The values set in
 the settings files can be also overridden 
 by tags in the input file. See
-primer3 file documentation for details on the file 
+Primer3 file documentation for details on the file 
 format.  <strong>WARNING: the --strict_tags flag applies only to
 tags beginning with the string "PRIMER_"; lines that do
 not begin with the string "PRIMER_" are ignored.</strong></p>]]>
