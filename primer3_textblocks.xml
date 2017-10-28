@@ -99,8 +99,9 @@ Andreas Untergasser.
 <br />
 <br />
 Primer3 is an open software development project hosted
-on SourceForge: <link>http://sourceforge.net/projects/primer3/</link> and
-on GitHub: <link>https://github.com/primer3-org</link>.</p>]]>
+on GitHub: <link>https://github.com/primer3-org</link> and 
+on SourceForge: <link>http://sourceforge.net/projects/primer3/</link>.
+</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -162,9 +163,8 @@ primer, it is calculated like that:</p>
             ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> )
 
 
-
-   If masking is used (PRIMER_MASK_TEMPLATE=1), then this is added (+):
-       + PRIMER_WT_FAILURE_RATE * PRIMER_LEFT_4_FAILURE_RATE
+   If masking is used (<p3t>PRIMER_MASK_TEMPLATE</p3t>=1), then this is added (+):
+       + <p3t>PRIMER_WT_FAILURE_RATE</p3t> * PRIMER_LEFT_4_FAILURE_RATE
 
 
 
@@ -275,8 +275,8 @@ primer, it is calculated like that:</p>
             ( <p3t>PRIMER_OPT_GC_PERCENT</p3t> - <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> )
 
 
-   If masking is used (PRIMER_MASK_TEMPLATE=1), then this is added (+):
-       + PRIMER_WT_FAILURE_RATE * PRIMER_RIGHT_4_FAILURE_RATE
+   If masking is used (<p3t>PRIMER_MASK_TEMPLATE</p3t>=1), then this is added (+):
+       + <p3t>PRIMER_WT_FAILURE_RATE</p3t> * PRIMER_RIGHT_4_FAILURE_RATE
 
 
 
@@ -604,7 +604,7 @@ Bioinformatics 2007;23(10):1289-91.<br />
 The papers is available at<br />
 <link>https://www.ncbi.nlm.nih.gov/pubmed/17379693</link><br />
 <br />
-Source code available at <link>http://sourceforge.net/projects/primer3/</link>.</p>]]>
+Source code available at <link>https://github.com/primer3-org/primer3</link>.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1015,7 +1015,7 @@ Such a Primer3 settings file is a text file. The first three
 lines of the file have to be as described below followed by tags 
 as they would be provided at standard input:</p>
 <pre>
-Primer3 File - http://primer3.sourceforge.net
+Primer3 File - http://primer3.org
 P3_FILE_TYPE=settings
 
 P3_FILE_ID=Description of the settings
@@ -1026,7 +1026,7 @@ SEQUENCE_TEMPLATE=ATG...
 =
 </pre> 
 <p>
-In the first line "Primer3 File - http://primer3.sourceforge.net" 
+In the first line "Primer3 File - http://primer3.org" 
 without tailing space. In the second line "P3_FILE_TYPE=settings".
 Valid values for P3_FILE_TYPE are all_parameters, sequence and 
 settings. Up to now, only settings is supported. The third line 
@@ -1766,7 +1766,7 @@ records.</p>]]>
 	<id>systemRequirements</id>
 	<head>SYSTEM REQUIREMENTS</head>
 	<text>
-<![CDATA[<p>Please see <link>http://sourceforge.net/projects/primer3/</link> for up-to-date
+<![CDATA[<p>Please see <link>https://github.com/primer3-org/primer3</link> for up-to-date
 information.  Primer3 should compile on any system using with an 
 ANSI C compiler like Linux/Unix, MacOS 10 or MS Windows.  The 
 Makefile will probably need to be modified for compilation with 
@@ -1816,8 +1816,7 @@ A Primer3Plus web services is at
 <link>http://primer3plus.com</link><br />
 <br />
 <br />
-Web interface code is available at
-<link>http://sourceforge.net/projects/primer3/</link> and 
+Web interface code is available 
 on GitHub: <link>https://github.com/primer3-org</link>.</p>]]>
 	</text>
 </textBlock>
