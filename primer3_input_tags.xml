@@ -2570,27 +2570,7 @@ downloaded from GitHub:
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_MASKING_LIST_PREFIX</tagName>
-	<dataType>string</dataType>
-	<default>homo_sapiens</default>
-	<description>
-<![CDATA[<p>This tag specifies the species whose k-mer lists are used for 
-pre-masking.</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_KMER_LISTS_PATH</tagName>
-	<dataType>string</dataType>
-	<default>../kmer_lists/</default>
-	<description>
-<![CDATA[<p>This tag specifies the path to the directory that 
-contains k-mer list files for masking algorithm. Required 
-for command-line execution. On web interface the species 
-is selected from drop-down menu</p>]]>
-	</description>
-</tag>
-<tag>
-	<tagName>PRIMER_FAILURE_RATE</tagName>
+	<tagName>PRIMER_MASK_FAILURE_RATE</tagName>
 	<dataType>float</dataType>
 	<default>0.1</default>
 	<description>
@@ -2600,7 +2580,7 @@ that fewer nucleotides in target sequence is masked.</p>]]>
 	</description>
 </tag>
 <tag>
-	<tagName>PRIMER_WT_FAILURE_RATE</tagName>
+	<tagName>PRIMER_WT_MASK_FAILURE_RATE</tagName>
 	<dataType>float</dataType>
 	<default>0.0</default>
 	<description>
@@ -2624,7 +2604,26 @@ from 5' direction.</p>]]>
 from 3' direction.</p>]]>
 	</description>
 </tag>
-
+<tag>
+	<tagName>PRIMER_MASK_KMERLIST_PATH</tagName>
+	<dataType>string</dataType>
+	<default>../kmer_lists/</default>
+	<description>
+<![CDATA[<p>This tag specifies the path to the directory that 
+contains k-mer list files for masking algorithm. Required 
+for command-line execution. On web interface the species 
+is selected from drop-down menu</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MASK_KMERLIST_PREFIX</tagName>
+	<dataType>string</dataType>
+	<default>homo_sapiens</default>
+	<description>
+<![CDATA[<p>This tag specifies the species whose k-mer lists are used for 
+pre-masking.</p>]]>
+	</description>
+</tag>
 <!-- End of flags for template masker function -->
 
 <tag>

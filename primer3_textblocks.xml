@@ -164,7 +164,7 @@ primer, it is calculated like that:</p>
 
 
    If masking is used (<p3t>PRIMER_MASK_TEMPLATE</p3t>=1), then this is added (+):
-       + <p3t>PRIMER_WT_FAILURE_RATE</p3t> * PRIMER_LEFT_4_FAILURE_RATE
+       + <p3t>PRIMER_WT_MASK_FAILURE_RATE</p3t> * PRIMER_LEFT_4_MASK_FAILURE_RATE
 
 
 
@@ -276,7 +276,7 @@ primer, it is calculated like that:</p>
 
 
    If masking is used (<p3t>PRIMER_MASK_TEMPLATE</p3t>=1), then this is added (+):
-       + <p3t>PRIMER_WT_FAILURE_RATE</p3t> * PRIMER_RIGHT_4_FAILURE_RATE
+       + <p3t>PRIMER_WT_MASK_FAILURE_RATE</p3t> * PRIMER_RIGHT_4_MASK_FAILURE_RATE
 
 
 
