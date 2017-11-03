@@ -3,11 +3,14 @@ How to install and run the script
 
 Update your environment on Linux:
 
-`sudo apt-get install libxml2-dev`
+`sudo apt-get install libxml2-dev git-all`
 
 `sudo perl -MCPAN -e shell`
+
 `install XML::LibXML`
+
 `exit`
+
 
 Update your environment on Windows:
 
@@ -16,6 +19,11 @@ Install: [Perl from ActiveState](https://www.activestate.com/activeperl)
 Run: Perl Package Manager
 Search and install: `XML-LibXML`
 
+Get Primer3Docs:
+
+`git clone https://github.com/primer3-org/primer3docs.git primer3docs`
+
+`cd primer3docs`
 
 Run the script:
 
