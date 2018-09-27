@@ -195,6 +195,9 @@ createPrimer3PlusHelp();
 # Create the tags_list.txt
 createTagList();
 
+# Create the default_settings.json
+createSettingsJson();
+
 print"end processing\n";
 
 
@@ -367,6 +370,61 @@ sub printTags {
 	print "Printed $tagCount $text - Tags in readme.txt\n";
 	
 	return $output;
+}
+
+##########################################
+# creates the default_settings.json file #
+##########################################
+sub createSettingsJson {
+        # Prepare the strings for the files
+        my $out_string = "{\"def\":{\n";
+        my $tagCount = 0;
+        my ($oldTagName, $tagName, $tagType);
+        my $dev_val;
+
+        # Now print out all tags
+        foreach my $tag_holder (@xml_tags) {
+                $tagCount++;
+
+                # Get all the XML data of one tag
+                $tagName = get_node_content($tag_holder, "tagName");
+		$tagType = get_node_content($tag_holder, "dataType");
+                $dev_val = get_node_content($tag_holder, "default");
+		if ($dev_val eq "empty") {
+			$dev_val = "";
+		}
+
+                # Assemble the XML file
+        	$out_string .= "\"$tagName\":[\"$dev_val\",\"$tagType\"],\n";
+        }
+	$out_string =~ s/,\n$/\n/;
+	$out_string .= "},\n\"replace\":{\n";
+
+        # Now print out all tags
+        foreach my $tag_holder (@xml_tags) {
+                $tagCount++;
+
+                # Get all the XML data of one tag
+                $tagName = get_node_content($tag_holder, "tagName");
+                my @oldTags = get_node_content_array($tag_holder, "oldTagName");
+
+                # Assemble the XML file
+                if (!($oldTags[0] eq "")) {
+                        foreach $oldTagName (@oldTags) {
+                                $out_string .= "\"$oldTagName\":\"$tagName\",\n";
+                        }
+                }
+        }
+        $out_string =~ s/,\n$/\n/;
+        $out_string .= "}\n}\n";
+
+        # Write the files to the disk
+        my $output_file = $output_folder. "default_settings.json";
+        string2file($output_file, $out_string);
+
+        print "Printed $tagCount Tags in default_settings.json\n";
+
+        return 0;
 }
 
 
