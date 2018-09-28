@@ -393,6 +393,14 @@ sub createSettingsJson {
 		if ($dev_val eq "empty") {
 			$dev_val = "";
 		}
+		if ($tagType =~ /"/) {
+			print "Alert Tag $tagName: in dataType invaldid\" removed: $tagType\n";
+			$tagType =~ s/"//g;
+		}
+                if ($dev_val =~ /"/) {
+                        print "Alert Tag $tagName: in default value invaldid\" removed: $dev_val\n";
+                        $dev_val =~ s/"//g;
+                }
 
                 # Assemble the XML file
         	$out_string .= "\"$tagName\":[\"$dev_val\",\"$tagType\"],\n";

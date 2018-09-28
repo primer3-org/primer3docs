@@ -163,7 +163,7 @@ such as ALUs or LINEs.</p>]]>
 </tag>
 <tag>
   <tagName>SEQUENCE_PRIMER_PAIR_OK_REGION_LIST</tagName>
-  <dataType>semicolon separated list of integer "quadruples"</dataType>
+  <dataType>semicolon separated list of integer quadruples</dataType>
   <default>empty</default>
   <description>
 <![CDATA[<p>
