@@ -116,10 +116,10 @@ this argument will have no effect.</p>]]>
 	<tagName>--io_version=<i>n</i></tagName>
 	<description>
 <![CDATA[<p>This argument is provided for backward compatibility.
---io_version=4 <strong>is the only legal value and the default</strong>.
+--io_version=4 <strong>is the only legal value and the default
+</strong>.</p>]]>
 	</description>
 </tag>
-
 <tag>
         <tagName>--output=<i>file_path</i></tagName>
         <description>

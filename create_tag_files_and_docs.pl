@@ -50,10 +50,10 @@ use File::Copy;
 
 my $scriptP3Version = "2.4.0";
 my $scriptP3ManualTit = "PRIMER3 RELEASE $scriptP3Version MANUAL";
-my $scriptP3PlusHelpTit = "PRIMER3PLUS RELEASE 2.5.0 HELP";
+my $scriptP3PlusHelpTit = "PRIMER3PLUS RELEASE 3.0.0 HELP";
 my $scriptP3WebHelpTit = "PRIMER3WEB RELEASE 4.1.0 MANUAL";
 
-my $scriptP3Years =  "1996-2017", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
+my $scriptP3Years =  "1996-2018", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
 
 # Modify here the order of the textblocks or add new:
 my @textblocksOrder = (
@@ -114,6 +114,7 @@ my @textblocksPrimer3PlusHelp = (
 "findNoPrimers",
 "sequenceTags",
 "globalTags",
+"p3pTags",
 "outputTags",
 "providedMisprimingLibs",
 "calculatePenalties",
@@ -162,6 +163,18 @@ $readTagCount = $#outTagTags + 1;
 print "Read in $readTagCount output Tags for processing...\n";
 
 
+# Open the output Tag file
+my $p3pTagFile = "primer3plus_tags.xml";
+my $p3pTagRoot = getXmlRoot($p3pTagFile);
+# Read all Tag in an array
+my @p3pTagTags = $p3pTagRoot->getElementsByTagName('tag');
+# First sort the tags alphabetically tags
+my @sortedp3pTags = sort tagSort @p3pTagTags;
+# Print a message about the Tags
+$readTagCount = $#sortedp3pTags + 1;
+print "Read in $readTagCount Primer3Plus Tags for processing...\n";
+
+
 # Open the TextBlocks file
 my $textblocksFile = "primer3_textblocks.xml";
 my $textblocksRoot = getXmlRoot($textblocksFile);
@@ -189,11 +202,12 @@ createReadmeHtml();
 # Create the primer3web_help.htm
 createPrimer3webHelp();
 
-# Create the primer3plusHelp.cgi
-createPrimer3PlusHelp();
-
 # Create the tags_list.txt
 createTagList();
+
+
+# Create the primer3plusHelp.html
+createPrimer3PlusHelp();
 
 # Create the default_settings.json
 createSettingsJson();
@@ -324,6 +338,8 @@ sub printTags {
 
 	if ($text eq "output"){
 		@tags = @outTagTags;
+        } elsif ($text eq "P3P_") {
+                @tags = @p3pTagTags;
 	} else {
 		@tags = @xml_tags;
 	}
@@ -339,7 +355,7 @@ sub printTags {
 		
 		if (($tagsNames[0] =~ /^$text/) and ($text ne "output")) {
 			foreach $tagName (@tagsNames) {
-				$output .= "<h3><a name=\"$tagName\">".$tagName." (";
+				$output .= "<h3><a id=\"$tagName\">".$tagName." (";
 				$output .= $dataType."; default ".$default.")</a></h3>\n";
 			}
 			
@@ -352,7 +368,7 @@ sub printTags {
 		if ($text eq "output") {
 			foreach $tagName (@tagsNames) {
 				# Assemble the txt file
-				$output .= "<h3><a name=\"$tagName\">";
+				$output .= "<h3><a id=\"$tagName\">";
 				$output .= $tagName."=".$dataType;
 				if ($optional eq "Y"){
 					$output .= " (*)";
@@ -382,8 +398,14 @@ sub createSettingsJson {
         my ($oldTagName, $tagName, $tagType);
         my $dev_val;
 
+	# Add the Primer3Plus tags:
+	my @combP3P = @xml_tags;
+	push(@combP3P, @p3pTagTags);
+        # First sort the tags alphabetically tags
+        my @sortedComb = sort tagSort @combP3P;
+
         # Now print out all tags
-        foreach my $tag_holder (@xml_tags) {
+        foreach my $tag_holder (@sortedComb) {
                 $tagCount++;
 
                 # Get all the XML data of one tag
@@ -718,9 +740,9 @@ sub createPrimer3webHelp {
     return 0;
 }
 
-########################################
-# creates the primer3plusHelp.cgi file #
-########################################
+#########################################
+# creates the primer3plusHelp.html file #
+#########################################
 sub createPrimer3PlusHelp {
     # Prepare the strings for the files
     my $final_html_string = cgi_get_header($scriptP3PlusHelpTit);
@@ -743,7 +765,7 @@ sub createPrimer3PlusHelp {
     foreach my $textblock_holder (@textblocksPrimer3PlusHelp) {
         if ($textHead{$textblock_holder} ne ""){
             $chapterCount++;        
-            $html_string .= "<h2><a name=\"$textblock_holder\">$chapterCount. ";
+            $html_string .= "<h2><a id=\"$textblock_holder\">$chapterCount. ";
             $html_string .= "$textHead{$textblock_holder}</a></h2>\n\n";
             $html_string .= "$textBody{$textblock_holder}\n\n";
         }
@@ -771,6 +793,11 @@ sub createPrimer3PlusHelp {
             $html_string .= printTable("PRIMER_");
             $html_string .= printTags("PRIMER_");
         }
+        if ($textblock_holder eq "p3pTags") {
+            $html_string =~ s/\n$//;
+            $html_string .= printTable("P3P_");
+            $html_string .= printTags("P3P_");
+        }
         if ($textblock_holder eq "programTags") {
             $html_string =~ s/\n$//;
             $html_string .= printTags("P3_");
@@ -796,7 +823,7 @@ sub createPrimer3PlusHelp {
     $final_html_string =~ s/\\\\\\/&#92;&#92;&#92;/g;
 
     # Write the files to the disk
-    my $output_file = $output_folder. "primer3plusHelp.cgi";
+    my $output_file = $output_folder. "primer3plusHelp.html";
     string2file($output_file, $final_html_string);
 
     return 0;
@@ -809,7 +836,7 @@ sub createPrimer3PlusHelp {
 ####################################################
 sub printTable {
 	my $text = shift;
-	my $output = "<table style=\"text-align: left; width: 800px;\" border=\"1\">\n";
+	my $output = "<table class=\"p3p_tab_help_table\" style=\"text-align: left; width: 800px; border: 1px;\">\n";
 
 	my $tagCount = 0;
 	my @tags;
@@ -818,6 +845,8 @@ sub printTable {
 
 	if ($text eq "output"){
 		@tags = @outTagTags;
+        } elsif ($text eq "P3P_") {
+		@tags = @p3pTagTags;
 	} else {
 		@tags = @xml_tags;
 	}
@@ -925,6 +954,11 @@ sub html_get_header {
   text-align:left;
   width:850px;
   }
+  .p3_prop {
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+  }
   </style>
 </head>
 <body>
@@ -952,59 +986,79 @@ sub html_get_footer {
 # returns the cgi header #
 ##########################
 sub cgi_get_header {
-    my $html = qq{#!/usr/bin/perl -w
+    my $html = qq{<!doctype html>
+<html lang="en">
 
-#  Copyright (c) 2006 - 2011
-#  by Andreas Untergasser and Harm Nijveen
-#  All rights reserved.
-# 
-#  This file is part of Primer3Plus. Primer3Plus is a webinterface to Primer3.
-# 
-#  The Primer3Plus is free software; you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2 of the License, or
-#  (at your option) any later version.
-# 
-#  Primer3Plus is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-# 
-#  You should have received a copy of the GNU General Public License
-#  along with Primer3Plus (file gpl.txt in the source distribution);
-#  if not, write to the Free Software Foundation, Inc., 51 Franklin St,
-#  Fifth Floor, Boston, MA  02110-1301  USA
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=1034, initial-scale=1.0">
+  <meta name="description" content="Primer3Plus picks primers from a DNA sequence using Primer3. This is the latest version straight from the developers with all the new features.">
+  <title>Primer3Plus - Help</title>
+  <link rel="stylesheet" href="static/css/primer3plus.css">
+  <link rel="canonical" href="https://primer3plus.com/primer3plusHelp.html" />
+</head>
 
-use strict;
-use HtmlFunctions;
+<body>
+  <div class="p3p_page">
+    <div class="p3p_top_bar">
+      <table>
+        <colgroup>
+          <col style="width: 60%" class="p3p_blue">
+          <col style="width: 20%" class="p3p_blue">
+          <col style="width: 20%" class="p3p_blue">
+        </colgroup>
+        <tr>
+          <td class="p3p_big_space p3p_blue" rowspan="2"><a class="p3p_top_bar_title">Primer3Plus</a><br>
+            <a class="p3p_top_bar_explain">pick primers from a DNA sequence</a>
+          </td>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plusPackage.cgi">More...</a>
+          </td>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="https://github.com/primer3-org/primer3plus">Source Code</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plus.cgi">Main</a>
+          </td>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plusAbout.cgi">About</a>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-# This CGI prints out the Help-File 
-
-# This file was created by the documentation scripts
-# Do not edit this file
-# Edit the documentation XMLs instead!
-
-
-my \$helpHTML = qq};
-$html .= "{\n";
-$html .= qq{<div id="primer3plus_help">
-
+    <div id="P3P_TAB_HELP" class="p3p_tab_page">
 };
 
-    return $html;
+	return $html;
 }
 
 ##########################
 # returns the cgi footer #
 ##########################
 sub cgi_get_footer {
-	my $html = "</div>\n";
-    $html .= "};";
-    $html .= qq{
+	my $html = qq{    </div>
 
-print "Content-type: text/html\\n\\n";
-print createHelpHTML(\$helpHTML), "\\n";
+    <div class="p3p_footer_bar">
+      <div class="p3p_footer_l">
+        GEAR + Primer3 ~
+        <a target="_blank" class="p3p_footer_link" href="https://gear.embl.de"> Home </a> ·
+        <a target="_blank" class="p3p_footer_link" href="https://github.com/gear-genomics"> GEAR-GitHub </a> ·
+        <a target="_blank" class="p3p_footer_link" href="https://github.com/primer3-org"> Primer3-GitHub </a> ·
+        <a target="_blank" class="p3p_footer_link" href="https://gear.embl.de/terms"> Terms of Use </a> ·
+        <a target="_blank" class="p3p_footer_link" href="https://gear.embl.de/contact"> Contact Us </a>
+      </div>
+      <div class="p3p_footer_r">
+        Hosted with love by 
+        <a target="_blank" class="p3p_footer_link" href="https://www.embl.de">EMBL</a>
+      </div>
+    </div>
 
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="static/js/primer3plus.js"></script>
+
+</body>
+</html>
 };
 	
 	return $html;

@@ -453,7 +453,7 @@ primer, it is calculated like that:</p>
 <p>	
 The primers are then sorted by penalty and Primer3 tries to pick 
 the primers with the lowest penalty. For the <p3t>PRIMER_TASK</p3t>
-<tt><i>pick_primer_list</i></tt> or <tt><i>pick_sequencing_primers</i></tt> the selection ends at 
+<pre><i>pick_primer_list</i></pre> or <pre><i>pick_sequencing_primers</i></pre> the selection ends at 
 this point. If primer pairs have to be selected, a 
 <p3t>PRIMER_PAIR_4_PENALTY</p3t> is calculated:
 <pre>
@@ -1694,6 +1694,15 @@ represents a float.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
+        <id>p3pTags</id>
+        <head>Primer3Plus Input Tags</head>
+        <text>
+<![CDATA[<p>Primer3Plus input tags start with P3P_... and describe the 
+general parameters that Primer3Plus may use in its interface. 
+<br />Primer3 cannot use this tags and ignores them.</p>]]>
+        </text>
+</textBlock>
+<textBlock>
 	<id>pickAdvice</id>
 	<head>ADVICE FOR PICKING PRIMERS</head>
 	<text>
@@ -1744,9 +1753,9 @@ http://www.fruitfly.org/sequence/sequence_db/na_re.dros</a>.
 Both were downloaded 6/23/04.<br>
 The contents of the libraries can be viewed at the following links:<br>
 <ul>
-<li><a href="show_humrep_and_simple.cgi">HUMAN</a> (contains microsatellites)</li>
-<li><a href="show_rodent_ref.cgi">RODENT</a> (does not contain microsatellites)</li>
-<li><a href="show_drosophila_w_transposons.cgi">DROSOPHILA</a></li>
+<li><a href="https://show_humrep_and_simple.cgi">HUMAN</a> (contains microsatellites)</li>
+<li><a href="https://show_rodent_ref.cgi">RODENT</a> (does not contain microsatellites)</li>
+<li><a href="https://show_drosophila_w_transposons.cgi">DROSOPHILA</a></li>
 </ul>
 <br>]]>
     </text>

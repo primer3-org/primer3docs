@@ -108,10 +108,10 @@ example, often the first dozen or so bases of a sequence are
 vector, and should be excluded from consideration. The value for
 this parameter has the form</p>
 <pre>
-<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+<i>&lt;start&gt;</i>,<i>&lt;length&gt;</i>
 </pre>
-<p>where <tt><i>&lt;start&gt;</i></tt> is the index of the first base to consider,
-and <tt><i>&lt;length&gt;</i></tt> is the number of subsequent bases in the
+<p>where <a class="p3_prop"><i>&lt;start&gt;</i></a> is the index of the first base to consider,
+and <a class="p3_prop"><i>&lt;length&gt;</i></a> is the number of subsequent bases in the
 primer-picking region.</p>]]>
 	</description>
 </tag>
@@ -129,10 +129,10 @@ flank at least one of them.  A target might be a simple sequence
 repeat site (for example a CA repeat) or a single-base-pair
 polymorphism, or an exon for resequencing.  The value should be a space-separated list of</p>
 <pre>
-<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+<i>&lt;start&gt;</i>,<i>&lt;length&gt;</i>
 </pre>
-<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of a
-target, and <tt><i>&lt;length&gt;</i></tt> is its length.</p>]]>
+<p>pairs where <a class="p3_prop"><i>&lt;start&gt;</i></a> is the index of the first base of a
+target, and <a class="p3_prop"><i>&lt;length&gt;</i></a> is its length.</p>]]>
 <br />
 <br />
 See also <p3t>PRIMER_INSIDE_PENALTY</p3t>, <p3t>PRIMER_OUTSIDE_PENALTY</p3t>.
@@ -152,10 +152,10 @@ See <p3t>PRIMER_TASK</p3t> for more information.
 <![CDATA[<p>Primers and oligos may not overlap any region specified in this tag.
 The associated value must be a space-separated list of</p>
 <pre>
-<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+<i>&lt;start&gt;</i>,<i>&lt;length&gt;</i>
 </pre>
-<p>pairs where <tt><i>&lt;start&gt;</i></tt> is the index of the first base of
-the excluded region, and <tt><i>&lt;length&gt;</i></tt> is its length.  This tag is
+<p>pairs where <a class="p3_prop"><i>&lt;start&gt;</i></a> is the index of the first base of
+the excluded region, and <a class="p3_prop"><i>&lt;length&gt;</i></a> is its length.  This tag is
 useful for tasks such as excluding regions of low sequence
 quality or for excluding regions containing repetitive elements
 such as ALUs or LINEs.</p>]]>
@@ -174,19 +174,19 @@ locations of left and right primers in primer pairs.
 The associated value must be a semicolon-separated list of</p>
 
 <pre>
-<tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt>,<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>
+<i>&lt;left_start&gt;</i>,<i>&lt;left_length&gt;</i>,<i>&lt;right_start&gt;</i>,<i>&lt;right_length&gt;</i>
 </pre>
 <p>quadruples.
 
 The left primer must be in the region specified by 
-<tt><i>&lt;left_start&gt;</i></tt>,<tt><i>&lt;left_length&gt;</i></tt> and 
+<a class="p3_prop"><i>&lt;left_start&gt;</i></a>,<a class="p3_prop"><i>&lt;left_length&gt;</i></a> and 
 the right primer must be in the region specified by
-<tt><i>&lt;right_start&gt;</i></tt>,<tt><i>&lt;right_length&gt;</i></tt>.
+<a class="p3_prop"><i>&lt;right_start&gt;</i></a>,<a class="p3_prop"><i>&lt;right_length&gt;</i></a>.
 
-<tt><i>&lt;left_start&gt;</i></tt> and <tt><i>&lt;left_length&gt;</i></tt> specify the location of the left primer in terms of the index of
+<a class="p3_prop"><i>&lt;left_start&gt;</i></a> and <a class="p3_prop"><i>&lt;left_length&gt;</i></a> specify the location of the left primer in terms of the index of
 the first base in the region and the length of the region.
 
-<tt><i>&lt;right_start&gt;</i></tt> and <tt><i>&lt;right_length&gt;</i></tt> specify the location of the right primer in analogous fashion.
+<a class="p3_prop"><i>&lt;right_start&gt;</i></a> and <a class="p3_prop"><i>&lt;right_length&gt;</i></a> specify the location of the right primer in analogous fashion.
 
 As seen in the example below, if no integers are specified for a region then the location of the
 corresponding primer is not constrained.
@@ -268,7 +268,7 @@ PRIMER_MIN_5_PRIME_OVERLAP_OF_JUNCTION=5
 <![CDATA[<p>Middle oligos may not overlap any region specified by this tag.
 The associated value must be a space-separated list of</p>
 <pre>
-<tt><i>&lt;start&gt;</i></tt>,<tt><i>&lt;length&gt;</i></tt>
+<i>&lt;start&gt;</i>,<i>&lt;length&gt;</i>
 </pre>
 <p>pairs, where &lt;start&gt; is the index of the first base of
 an excluded region, and &lt;length&gt; is its length.  Often one would
@@ -422,7 +422,7 @@ can be anywhere.</p>]]>
 <![CDATA[<p>This tag tells Primer3 what task to perform.
 Legal values are:<br />
 <br />
-   <tt><i>generic</i></tt><br />
+   <a class="p3_prop"><i>generic</i></a><br />
 <br />
    Design a primer pair (the classic Primer3 task) if
    the <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1, and
@@ -438,11 +438,11 @@ Legal values are:<br />
    <p3t>PRIMER_TASK</p3t>=pick_primer_list.
 <br />
 <br />
-   <tt><i>pick_detection_primers</i></tt><br />
+   <a class="p3_prop"><i>pick_detection_primers</i></a><br />
 <br />
    Deprecated alias for <p3t>PRIMER_TASK</p3t>=generic<br />
 <br />
-   <tt><i>check_primers</i></tt><br />
+   <a class="p3_prop"><i>check_primers</i></a><br />
 <br />
    Primer3 only checks the primers 
    provided in <p3t>SEQUENCE_PRIMER</p3t>, <p3t>SEQUENCE_INTERNAL_OLIGO</p3t> and 
@@ -450,7 +450,7 @@ Legal values are:<br />
    require a sequence. However, if <p3t>SEQUENCE_TEMPLATE</p3t> is provided, it is used.
    <br />
 <br />
-   <tt><i>pick_primer_list</i></tt><br />
+   <a class="p3_prop"><i>pick_primer_list</i></a><br />
 <br />
    Pick all primers in <p3t>SEQUENCE_TEMPLATE</p3t> (possibly
    limited by <p3t>SEQUENCE_INCLUDED_REGION</p3t>, 
@@ -462,13 +462,13 @@ Legal values are:<br />
    primer pairs but generates independent lists of left primers, right primers,
    and, if requested, internal oligos.<br />
 <br />
-   <tt><i>pick_sequencing_primers</i></tt><br />
+   <a class="p3_prop"><i>pick_sequencing_primers</i></a><br />
 <br />
    Pick primers suited to sequence a region. <p3t>SEQUENCE_TARGET</p3t> can be 
    used to indicate several targets. The position of each primer is 
    calculated for optimal sequencing results.<br />
 <br />
-   <tt><i>pick_cloning_primers</i></tt><br />
+   <a class="p3_prop"><i>pick_cloning_primers</i></a><br />
 <br />
    Pick primers suited to clone a gene were the start nucleotide and 
    the end nucleotide of the PCR fragment must be fixed, for example 
@@ -478,7 +478,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_ANYWAY</p3t>=1 to obtain primers even if they violate 
    specific constraints.<br />
 <br />
-   <tt><i>pick_discriminative_primers</i></tt><br />
+   <a class="p3_prop"><i>pick_discriminative_primers</i></a><br />
 <br />
    Pick primers suited to select primers which bind with their end at 
    a specific position. This can be used to force the end of a primer 
@@ -492,7 +492,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_ANYWAY</p3t>=1 to obtain 
    primers even if they violate specific constraints.<br />
 <br />
-   <tt><i>pick_pcr_primers</i></tt><br />
+   <a class="p3_prop"><i>pick_pcr_primers</i></a><br />
 <br />
    Deprecated shortcut for the following settings:<br />
    <p3t>PRIMER_TASK</p3t>=generic<br />
@@ -504,7 +504,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
    in a way that is not obvious by looking at the input.<br />
 <br />
-   <tt><i>pick_pcr_primers_and_hyb_probe</i></tt><br />
+   <a class="p3_prop"><i>pick_pcr_primers_and_hyb_probe</i></a><br />
 <br />
    Deprecated shortcut for the following settings:<br />
    <p3t>PRIMER_TASK</p3t>=generic<br />
@@ -516,7 +516,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
    in a way that is not obvious by looking at the input.<br />
 <br />
-   <tt><i>pick_left_only</i></tt><br />
+   <a class="p3_prop"><i>pick_left_only</i></a><br />
 <br />
    Deprecated shortcut for the following settings:<br />
    <p3t>PRIMER_TASK</p3t>=generic<br />
@@ -528,7 +528,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
    in a way that is not obvious by looking at the input.<br />
 <br />
-   <tt><i>pick_right_only</i></tt><br />
+   <a class="p3_prop"><i>pick_right_only</i></a><br />
 <br />
    Deprecated shortcut for the following settings:<br />
    <p3t>PRIMER_TASK</p3t>=generic<br />
@@ -540,7 +540,7 @@ Legal values are:<br />
    <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>, and <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>
    in a way that is not obvious by looking at the input.<br />
 <br />
-   <tt><i>pick_hyb_probe_only</i></tt><br />
+   <a class="p3_prop"><i>pick_hyb_probe_only</i></a><br />
 <br />
    Deprecated shortcut for the following settings:<br />
    <p3t>PRIMER_TASK</p3t>=generic<br />
@@ -631,7 +631,7 @@ See details in <p3t>SEQUENCE_OVERLAP_JUNCTION_LIST</p3t>.
 <![CDATA[<p>Discards all primers which do not match this match sequence at the 5' end. 
 (New in v. 2.3.6, added by A. Untergasser.)<br />
 <br />
-The match sequence must be 5 nucletides long and can contain the following letters:<br />
+The match sequence must be 5 nucletides long and can contain the following letters:</p>
 <pre>
     N   Any nucleotide
 
@@ -651,14 +651,14 @@ The match sequence must be 5 nucletides long and can contain the following lette
     D   Not C (A or G or T)
     V   Not T (A or G or C)
 </pre>
-Any primer which will not match the entire match sequence at th 5' end will 
+<p>Any primer which will not match the entire match sequence at th 5' end will 
 be discarded and not evaluated. Setting strict requirements here will result 
 in low quality primers due to the high numbers of primers discarded at this 
 step.<br />
 <br />
 <strong>Example 1:</strong><br />
 PRIMER_MUST_MATCH_FIVE_PRIME=tgnnn<br /><br />
-Could result in the following matching:<br />
+Could result in the following matching:</p>
 <pre>
     tgcatgattggatacgtttga
     |||||
@@ -672,10 +672,10 @@ Could result in the following matching:<br />
     tgnnn
 
  -> This primer would be discarded.
-</pre><br /><br />
-<strong>Example 2:</strong><br />
+</pre><br />
+<p><strong>Example 2:</strong><br />
 PRIMER_MUST_MATCH_FIVE_PRIME=hnnnn<br /><br />
-Could result in the following matching:<br />
+Could result in the following matching:</p>
 <pre>
     tgcatgattggatacgtttga
     |||||
@@ -689,8 +689,8 @@ Could result in the following matching:<br />
     hnnnn
 
  -> This primer would be discarded.
-</pre><br /><br />
-This parameter would force all primers selected by Primer3 to not have guanosine 
+</pre><br />
+<p>This parameter would force all primers selected by Primer3 to not have guanosine 
 at the 5' end of any primer which could be useful to avoid quenching of 
 flourochromes. 
 </p>]]>
@@ -715,7 +715,7 @@ flourochromes.
 parameter to <p3t>PRIMER_MUST_MATCH_FIVE_PRIME</p3t>, but limits the 3' end. 
 (New in v. 2.3.6, added by A. Untergasser.)<br />
 <br />
-The match sequence must be 5 nucletides long and can contain the following letters:<br />
+The match sequence must be 5 nucletides long and can contain the following letters:</p>
 <pre>
     N   Any nucleotide
 
@@ -735,14 +735,14 @@ The match sequence must be 5 nucletides long and can contain the following lette
     D   Not C (A or G or T)
     V   Not T (A or G or C)
 </pre>
-Any primer which will not match the entire match sequence at th 3' end will 
+<p>Any primer which will not match the entire match sequence at th 3' end will 
 be discarded and not evaluated. Setting strict requirements here will result 
 in low quality primers due to the high numbers of primers discarded at this 
 step.<br />
 <br />
 <strong>Example 1:</strong><br />
 PRIMER_MUST_MATCH_FIVE_PRIME=nnnga<br /><br />
-Could result in the following matching:<br />
+Could result in the following matching:</p>
 <pre>
     tgcatgattggatacgtttga
                     |||||
@@ -756,8 +756,7 @@ Could result in the following matching:<br />
                    nnnga
 
  -> This primer would be discarded.
-</pre>
-</p>]]>
+</pre>]]>
 	</description>
 </tag>
 
@@ -779,14 +778,14 @@ Could result in the following matching:<br />
 user wants the primers to create, and is a space separated list
 of elements of the form</p>
 <pre>
-<tt><i>&lt;x&gt;-&lt;y&gt;</i></tt>
+<i>&lt;x&gt;-&lt;y&gt;</i>
 </pre>
-<p>where an <tt><i>&lt;x&gt;-&lt;y&gt;</i></tt> pair is a legal range of lengths for the
+<p>where an <a class="p3_prop"><i>&lt;x&gt;-&lt;y&gt;</i></a> pair is a legal range of lengths for the
 product.  For example, if one wants PCR products to be between
 100 to 150 bases (inclusive) then one would set this parameter to
-<tt><i>100-150</i></tt>.  If one desires PCR products in either the range from
+<a class="p3_prop"><i>100-150</i></a>.  If one desires PCR products in either the range from
 100 to 150 bases or in the range from 200 to 250 bases then one
-would set this parameter to <tt><i>100-150 200-250</i></tt>.<br />
+would set this parameter to <a class="p3_prop"><i>100-150 200-250</i></a>.<br />
 <br />
 Primer3 favors product-size ranges to the left side of the parameter string.
 Primer3 will return legal primers pairs in the first range
@@ -1655,7 +1654,7 @@ the most stable structure are described in following papers:</p>
 <ul><li>[SantaLucia JR (1998) "A unified view of polymer, dumbbell and
 oligonucleotide DNA nearest-neighbor
 thermodynamics", Proc Natl Acad Sci 95:1460-65
-<link> http://dx.doi.org/10.1073/pnas.95.4.1460</link>]
+<link>http://dx.doi.org/10.1073/pnas.95.4.1460</link>]
 </li><li>
 [SantaLucia JR and Hicks D (2004) "The thermodynamics of DNA structural
 motifs", Annu Rev Biophys Biomol Struct 33:415-40
@@ -2411,8 +2410,8 @@ the end of the file.  Whitespace and newlines are ignored.
 Characters 'A', 'T', 'G', 'C', 'a', 't', 'g', 'c' and
 IUB/IUPAC 'ambiguity' codes ('R, 'Y', 'K', 'M', 'S', 'W',
 'N', including lower case) are retained. For technical
-reasons the length of the sequence must be >= 3. Of course,
-sequences of length < 10 or so are probably useless, but
+reasons the length of the sequence must be &gt;= 3. Of course,
+sequences of length &lt; 10 or so are probably useless, but
 will be accepted without complaint.<br />
 <br />
 WARNING: always set <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=0
@@ -2557,9 +2556,9 @@ in <p3t>PRIMER_MISPRIMING_LIBRARY</p3t>.</p>]]>
 regions that are repetitive. Primers with more binding 
 sites tend to have higher failure rates. The masking is 
 based on statistical model, which calculates the 
-probability of failure P<sub>f</sub> as follows:<br />
+probability of failure P<sub>f</sub> as follows:</p> 
 <pre>P<sub>f</sub>= e<sup>m</sup> / (1 + e<sup>m</sup>),</pre>
-where m = 0.1772 * K11 + 0.239 * K16 - 4.336 <br />
+<p>where m = 0.1772 * K11 + 0.239 * K16 - 4.336 <br />
 and K11 and K16 are frequencies of 11-mers and 16-mers 
 in given genome. The frequencies are stored in 
 species-specific k-mer list files. Users can build their 
@@ -2845,8 +2844,19 @@ output.
 </p>]]>
 	</description>
 </tag>
-
-
+<tag>
+	<tagName>P3_FILE_TYPE</tagName>
+	<dataType>string</dataType>
+	<default>sequence</default>
+	<description>
+<![CDATA[<p>
+This tag is only valid in the header of Primer3 setting files. It 
+should be used in the second line to identify the type files it 
+appears in. Valid options are sequence, settings or all. In 
+Primer3Plus it can control which parameters are loaded.
+</p>]]>
+	</description>
+</tag>
 <tag>
 	<tagName>P3_FILE_FLAG</tagName>
 	<oldTag>
@@ -2876,13 +2886,8 @@ argument to <p3t>PRIMER_TASK</p3t>, which offers similar functionality on stdout
 
 </p>]]>
 
-</description>
-
+    </description>
 </tag>
-
-
-
-
 <tag>
 	<tagName>P3_COMMENT</tagName>
 	<oldTag>
