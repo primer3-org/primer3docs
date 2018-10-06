@@ -446,7 +446,7 @@ sub createSettingsJson {
                 }
         }
         $out_string =~ s/,\n$/\n/;
-        $out_string .= "}\n}\n";
+        $out_string .= "},\n" . attach_to_p3p_json() . "}\n";
 
         # Write the files to the disk
         my $output_file = $output_folder. "default_settings.json";
@@ -1062,5 +1062,23 @@ sub cgi_get_footer {
 };
 	
 	return $html;
+}
+
+sub attach_to_p3p_json {
+	my $var = qq{"server_setting_files":[
+{"name":"qPCR","file":"qPCR.txt"},
+{"name":"Probe","file":"probe.txt"},
+{"name":"P3P v.2.4.2 Def","file":"primer3plus_2_4_2_default_settings.txt"},
+{"name":"P3W v0.4.0 Def","file":"primer3web_v0_4_0_default_settings.txt"},
+{"name":"P3 v1.1.4 Def","file":"primer3_v1_1_4_default_settings.txt"}
+],
+"misspriming_lib_files":[
+{"name":"HUMAN","file":"humrep_and_simple.txt"},
+{"name":"RODENT_AND_SIMPLE","file":"rodrep_and_simple.txt"},
+{"name":"RODENT","file":"rodent_ref.txt"},
+{"name":"DROSOPHILA","file":"drosophila_w_transposons.txt"}
+]
+};
+	return $var;
 }
 

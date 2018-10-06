@@ -2428,7 +2428,10 @@ Repbase (J. Jurka, A.F.A. Smit, C. Pethiyagoda, and
 others, 1995-1996, <link>ftp://ftp.ncbi.nih.gov/repository/repbase/</link>)
 is an excellent source of repeat sequences and pointers to the
 literature. (The Repbase files need to be converted to Fasta
-format before they can be used by Primer3.)</p>]]>
+format before they can be used by Primer3.)<br />
+<br />
+See <p3t>PROVIDED MISPRIMING LIBRARIES</p3t> for the sequence 
+libraries available on this server.</p>]]>
 	</description>
 </tag>
 <tag>

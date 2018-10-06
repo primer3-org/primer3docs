@@ -56,6 +56,15 @@ An example Tag with all possible options:
 </tag>
 -->
 <tag>
+        <tagName>P3P_SERVER_SETTINGS_FILE</tagName>
+        <dataType>string</dataType>
+        <default>F</default>
+        <description>
+<![CDATA[<p>Specifies a settings file stored on the server. It 
+can be loaded by hitting the "Activate Settings" Button.</p>]]>
+        </description>
+</tag>
+<tag>
 	<tagName>P3P_PRIMER_NAME_ACRONYM_LEFT</tagName>
 	<dataType>string</dataType>
 	<default>F</default>

@@ -1753,9 +1753,10 @@ http://www.fruitfly.org/sequence/sequence_db/na_re.dros</a>.
 Both were downloaded 6/23/04.<br>
 The contents of the libraries can be viewed at the following links:<br>
 <ul>
-<li><a href="https://show_humrep_and_simple.cgi">HUMAN</a> (contains microsatellites)</li>
-<li><a href="https://show_rodent_ref.cgi">RODENT</a> (does not contain microsatellites)</li>
-<li><a href="https://show_drosophila_w_transposons.cgi">DROSOPHILA</a></li>
+<li><a href="https://raw.githubusercontent.com/primer3-org/primer3plus/master/server/mispriming_lib/humrep_and_simple.txt">HUMAN + SIMPLE</a> (contains microsatellites)</li>
+<li><a href="https://raw.githubusercontent.com/primer3-org/primer3plus/master/server/mispriming_lib/rodent_ref.txt">RODENT</a> (does not contain microsatellites)</li>
+<li><a href="https://raw.githubusercontent.com/primer3-org/primer3plus/master/server/mispriming_lib/rodrep_and_simple.txt">RODENT + SIMPLE</a> (contains microsatellites)</li>
+<li><a href="https://raw.githubusercontent.com/primer3-org/primer3plus/master/server/mispriming_lib/drosophila_w_transposons.txt">DROSOPHILA</a> (ontains transposons)</li>
 </ul>
 <br>]]>
     </text>
