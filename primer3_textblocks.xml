@@ -1695,7 +1695,7 @@ represents a float.</p>]]>
 </textBlock>
 <textBlock>
         <id>p3pTags</id>
-        <head>Primer3Plus Input Tags</head>
+        <head>PRIMER3PLUS INPUT TAGS</head>
         <text>
 <![CDATA[<p>Primer3Plus input tags start with P3P_... and describe the 
 general parameters that Primer3Plus may use in its interface. 

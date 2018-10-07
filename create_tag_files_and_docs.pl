@@ -992,7 +992,7 @@ sub cgi_get_header {
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=1034, initial-scale=1.0">
-  <meta name="description" content="Primer3Plus picks primers from a DNA sequence using Primer3. This is the latest version straight from the developers with all the new features.">
+  <meta name="description" content="The Help section explains all Primer3 and Primer3Plus tags and provides information on the primer selection behind the scenes.">
   <title>Primer3Plus - Help</title>
   <link rel="stylesheet" href="static/css/primer3plus.css">
   <link rel="canonical" href="https://primer3plus.com/primer3plusHelp.html" />
@@ -1008,18 +1008,18 @@ sub cgi_get_header {
           <col style="width: 20%" class="p3p_blue">
         </colgroup>
         <tr>
-          <td class="p3p_big_space p3p_blue" rowspan="2"><a class="p3p_top_bar_title">Primer3Plus</a><br>
+          <td class="p3p_big_space p3p_blue" rowspan="2"><a class="p3p_top_bar_title">Primer3Plus - Help</a><br>
             <a class="p3p_top_bar_explain">pick primers from a DNA sequence</a>
           </td>
-          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plusPackage.cgi">More...</a>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="primer3plusPackage.html">More...</a>
           </td>
           <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="https://github.com/primer3-org/primer3plus">Source Code</a>
           </td>
         </tr>
         <tr>
-          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plus.cgi">Main</a>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="index.html">Back</a>
           </td>
-          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="http://primer3plusAbout.cgi">About</a>
+          <td class="p3p_big_space p3p_blue"><a style="font-weight:bold" href="primer3plusAbout.html">About</a>
           </td>
         </tr>
       </table>
@@ -1053,9 +1053,6 @@ sub cgi_get_footer {
     </div>
 
   </div>
-
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="static/js/primer3plus.js"></script>
 
 </body>
 </html>
