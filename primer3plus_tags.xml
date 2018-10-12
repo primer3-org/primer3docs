@@ -76,7 +76,7 @@ is added to left primers.</p>]]>
 <tag>
 	<tagName>P3P_PRIMER_NAME_ACRONYM_INTERNAL</tagName>
 	<dataType>string</dataType>
-	<default>R</default>
+	<default>IN</default>
 	<description>
 <![CDATA[<p>Primer3Plus creates a name for each Primer. This tag
 is added to left primers.</p>]]>
@@ -85,7 +85,7 @@ is added to left primers.</p>]]>
 <tag>
 	<tagName>P3P_PRIMER_NAME_ACRONYM_RIGHT</tagName>
 	<dataType>string</dataType>
-	<default>IN</default>
+	<default>R</default>
 	<description>
 <![CDATA[<p>Primer3Plus creates a name for each Primer. This tag
 is added to left primers.</p>]]>
