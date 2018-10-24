@@ -205,6 +205,10 @@ createPrimer3webHelp();
 # Create the tags_list.txt
 createTagList();
 
+###########################
+# Change Settings for P3P #
+###########################
+changeP3PSettings();
 
 # Create the primer3plusHelp.html
 createPrimer3PlusHelp();
@@ -214,6 +218,35 @@ createSettingsJson();
 
 print"end processing\n";
 
+###########################
+# Change Settings for P3P #
+###########################
+sub changeP3PSettings() {
+	my %upVal;
+	$upVal{'PRIMER_PRODUCT_SIZE_RANGE'} = '501-600 601-700 401-500 701-850 851-1000 1001-1500 1501-3000 3001-5000 401-500 301-400 201-300 101-200 5001-7000 7001-10000 10001-20000';
+	$upVal{'PRIMER_EXPLAIN_FLAG'} = '1';
+	$upVal{'PRIMER_FIRST_BASE_INDEX'} = '1';
+	$upVal{'PRIMER_INTERNAL_MAX_HAIRPIN_TH'} = '47.00';
+	$upVal{'PRIMER_LIBERAL_BASE'} = '1';
+	$upVal{'PRIMER_MAX_END_STABILITY'} = '9.0';
+	$upVal{'PRIMER_MAX_HAIRPIN_TH'} = '47.00';
+	$upVal{'PRIMER_MAX_TEMPLATE_MISPRIMING'} = '12.00';
+	$upVal{'PRIMER_MAX_TEMPLATE_MISPRIMING_TH'} = '47.00';
+	$upVal{'PRIMER_MIN_LEFT_THREE_PRIME_DISTANCE'} = '3';
+	$upVal{'PRIMER_MIN_RIGHT_THREE_PRIME_DISTANCE'} = '3';
+	$upVal{'PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING'} = '24.00';
+	$upVal{'PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING_TH'} = '47.00';
+
+	print "Replace default values for P3P:\n";
+        foreach my $tag_holder (@xml_tags) {
+		my $tagName = get_node_content($tag_holder, "tagName");
+                my $dev_val = get_node_content($tag_holder, "default");
+		if(defined($upVal{$tagName})) {
+			set_node_content($tag_holder, "default", $upVal{$tagName});
+			print "  " . $tagName . "=" . $upVal{$tagName} . "\n";
+		}
+	}
+}
 
 ###########################################
 # Opent the xml file and returns the root #
@@ -268,6 +301,20 @@ sub get_node_content {
 	$txt =~ s/\s+$//;
 	
 	return $txt;
+}
+sub set_node_content {
+        my $root = shift;
+        my $node = shift;
+	my $val  = shift;
+
+        my @xml = $root->getElementsByTagName($node);
+
+        if (!(defined ($xml[0]))) {
+                return;
+        }
+
+        $xml[0]->removeChildNodes();
+	$xml[0]->appendText($val);
 }
 
 ##################################################
