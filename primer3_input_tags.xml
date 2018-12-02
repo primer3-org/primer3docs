@@ -1574,6 +1574,39 @@ the propensity of oligos to anneal to undesired sites in the template sequence.
      </description>
 </tag>
 <tag>
+     <tagName>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</tagName>
+     <dataType>boolean</dataType>
+     <default>0</default>
+     <description>
+<![CDATA[<p>If the associated value = 1, then Primer3 will print out the 
+calculated secondary structures, for example:</p>
+<h4>Dimers:</h4>
+<pre>
+t: 7.8  dG: -1724  dH: -91400  dS: -289
+  5' ACGCAAAGCACGCTCC-CGATC 3'
+      ||   |||  |||   ||
+3' CTAGCCC-TCGCACGAAACGCA 5'
+</pre>
+<h4>Hairpins:</h4>
+<pre>
+t: 36.4  dG: 42  dH: -22500  dS: -73
+5' CGCAAAGCACGCT&#x2510;
+            ||  &#x2502;
+        3' AGCCC&#x2518;
+</pre>
+<p>
+The tags <p3t>PRIMER_LEFT_4_SELF_ANY_STUCT</p3t>, <p3t>PRIMER_LEFT_4_SELF_END_STUCT</p3t>, 
+<p3t>PRIMER_LEFT_4_HAIRPIN_STUCT</p3t> (these tags are also present for RIGHT and INTERNAL 
+primers), <p3t>PRIMER_PAIR_4_COMPL_ANY_STUCT</p3t> and <p3t>PRIMER_PAIR_4_COMPL_END_STUCT</p3t> 
+are only present if a secondary structure could be calculated.<br />
+<br />
+As the string has to fit on one line, the newlines are indicated by the two characters 
+'\' and 'n' and have to be replaced (regex: /\\n/\n/g). Hairpins use unicode characters
+for the turn. For html they have to be replaced (regex: /U\+25(\d\d)/&amp;#x25$1;/g).
+</p>]]>
+     </description>
+</tag>
+<tag>
      <tagName>PRIMER_THERMODYNAMIC_PARAMETERS_PATH</tagName>
      <dataType>string</dataType>
      <default> ./primer3_config </default>

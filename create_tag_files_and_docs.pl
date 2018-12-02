@@ -61,6 +61,7 @@ my @textblocksOrder = (
 "introduction",
 "citationRequest",
 "licenseExplain",
+"differencePrimer3vsPrimer3Plus",
 "changesFrom2.2.3",
 "installLinux",
 "installMac",
@@ -109,6 +110,7 @@ my @textblocksPrimer3PlusHelp = (
 "introduction",
 "citationRequest",
 "licenseExplain",
+"differencePrimer3vsPrimer3Plus",
 "pickAdvice",
 "cautions",
 "findNoPrimers",
@@ -226,6 +228,8 @@ sub changeP3PSettings() {
 	$upVal{'PRIMER_PRODUCT_SIZE_RANGE'} = '501-600 601-700 401-500 701-850 851-1000 1001-1500 1501-3000 3001-5000 401-500 301-400 201-300 101-200 5001-7000 7001-10000 10001-20000';
 	$upVal{'PRIMER_EXPLAIN_FLAG'} = '1';
 	$upVal{'PRIMER_FIRST_BASE_INDEX'} = '1';
+        $upVal{'PRIMER_SECONDARY_STRUCTURE_ALIGNMENT'} = '1';
+        $upVal{'PRIMER_NUM_RETURN'} = '10';
 	$upVal{'PRIMER_INTERNAL_MAX_HAIRPIN_TH'} = '47.00';
 	$upVal{'PRIMER_LIBERAL_BASE'} = '1';
 	$upVal{'PRIMER_MAX_END_STABILITY'} = '9.0';
@@ -237,15 +241,19 @@ sub changeP3PSettings() {
 	$upVal{'PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING'} = '24.00';
 	$upVal{'PRIMER_PAIR_MAX_TEMPLATE_MISPRIMING_TH'} = '47.00';
 
-	print "Replace default values for P3P:\n";
+	print "Replace default values for P3P:\nUpdate in textblocks differencePrimer3vsPrimer3Plus\n";
+	my $p3_Vals = "Primer3 Values:\n";
+	my $p3p_Vals = "Primer3Plus Values:\n";
         foreach my $tag_holder (@xml_tags) {
 		my $tagName = get_node_content($tag_holder, "tagName");
                 my $dev_val = get_node_content($tag_holder, "default");
 		if(defined($upVal{$tagName})) {
+			$p3_Vals .= "  " . $tagName . "=" . get_node_content($tag_holder, "default") . "\n";
 			set_node_content($tag_holder, "default", $upVal{$tagName});
-			print "  " . $tagName . "=" . $upVal{$tagName} . "\n";
+			$p3p_Vals .= "  " . $tagName . "=" . $upVal{$tagName} . "\n";
 		}
 	}
+	print "$p3_Vals\n$p3p_Vals\n";
 }
 
 ###########################################
@@ -648,7 +656,7 @@ sub createReadmeHtml {
 	foreach my $textblock_holder (@textblocksOrder) {
 		if ($textHead{$textblock_holder} ne ""){
 			$chapterCount++;		
-			$html_string .= "<h2><a name=\"$textblock_holder\">$chapterCount. ";
+			$html_string .= "<h2><a id=\"$textblock_holder\">$chapterCount. ";
 			$html_string .= "$textHead{$textblock_holder}</a></h2>\n\n";
 			$html_string .= "$textBody{$textblock_holder}\n\n";
 		}
@@ -969,13 +977,13 @@ sub html_get_header {
         $titel =~ s/RELEASE/Release/g;
         $titel =~ s/MANUAL/Manual/g;
         $titel =~ s/HELP/Help/g;
-	my $html = qq{<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-        "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+	my $html = qq{<!doctype html>
+<html lang="en">
 <head>
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=1034, initial-scale=1.0">
   <title>$titel</title>
-  <style type="text/css">
+  <style>
   body {
   background-color:white;
   color:black;

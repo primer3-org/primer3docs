@@ -399,39 +399,19 @@ The self-complementarity measures for the selected oligo.</p>]]>
    </description>
 </tag>
 <tag>
-   <tagName>PRIMER_RIGHT_4_HAIRPIN_TH</tagName>
-   <dataType>f</dataType>
-   <optional>N</optional>
-   <description>
-   <![CDATA[<p>The calculated value of melting temperature of hairpin structure of primer. 
-   For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t></p>]]>
-   </description>
-</tag>
-<tag>
-	<tagName>PRIMER_PAIR_4_COMPL_ANY</tagName>
-	<dataType>f</dataType>
-	<optional>N</optional>
-	<description>
-<![CDATA[<p>The calculated value for the tendency of a primer pair to bind to 
-each other (interfering with target sequence binding). It will 
-score ANY binding occurring within the entire primer sequence. 
-For details see <p3t>PRIMER_MAX_SELF_ANY</p3t>.<br /> 
-The inter-pair complementarity measures over the complete primer 
-for selected left and right primer.</p>]]>
-	</description>
-</tag>
-<tag>
-    <tagName>PRIMER_PAIR_4_COMPL_ANY_TH</tagName>
-    <dataType>f</dataType>
-    <optional>N</optional>
-    <description>
-    <![CDATA[<p>The calculated value for the tendency of a primer pair to
-bind to each other (interfering with target sequence binding). It will
-calculate the melting temperature of ANY binding occurring within the entire
-primer sequence. For details see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.
-The inter-pair complementarity measures over the complete primer for
-selected left and right primer.</p>]]>
-    </description>
+        <tagName>PRIMER_LEFT_4_SELF_ANY_STUCT</tagName>
+        <tagName>PRIMER_INTERNAL_4_SELF_ANY_STUCT</tagName>
+        <tagName>PRIMER_RIGHT_4_SELF_ANY_STUCT</tagName>
+        <dataType>s</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>A string representation of the calculated secondary 
+structure. The tag is only present if a secondary structure could 
+be calculated and <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1.<br />
+See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.
+</p>]]>
+        </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_SELF_END</tagName>
@@ -464,23 +444,84 @@ The self-complementarity measures for the ends of selected oligo.</p>]]>
      </description>
 </tag>
 <tag>
-     <tagName>PRIMER_LEFT_4_HAIRPIN_TH</tagName>
-     <dataType>f</dataType>
-     <optional>N</optional>
-     <description>
-     <![CDATA[<p>The calculated value of melting temperature of hairpin
-structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t></p>]]>
-     </description>
+        <tagName>PRIMER_LEFT_4_SELF_END_STUCT</tagName>
+        <tagName>PRIMER_INTERNAL_4_SELF_END_STUCT</tagName>
+        <tagName>PRIMER_RIGHT_4_SELF_END_STUCT</tagName>
+        <dataType>s</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>A string representation of the calculated secondary 
+structure. The tag is only present if a secondary structure could 
+be calculated and <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1.<br />
+See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.
+</p>]]>
+        </description>
 </tag>
 <tag>
-     <tagName>PRIMER_INTERNAL_4_HAIRPIN_TH</tagName>
-     <dataType>f</dataType>
-     <optional>N</optional>
-     <description>
-     <![CDATA[<p>The calculated value of melting temperature of hairpin
-structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t>
-     </p>]]>
-     </description>
+   <tagName>PRIMER_LEFT_4_HAIRPIN_TH</tagName>
+   <tagName>PRIMER_INTERNAL_4_HAIRPIN_TH</tagName>
+   <tagName>PRIMER_RIGHT_4_HAIRPIN_TH</tagName>
+   <dataType>f</dataType>
+   <optional>N</optional>
+   <description>
+   <![CDATA[<p>The calculated value of melting temperature of hairpin
+structure of primer. For details see <p3t>PRIMER_MAX_HAIRPIN_TH</p3t></p>]]>
+   </description>
+</tag>
+<tag>
+        <tagName>PRIMER_LEFT_4_HAIRPIN_STUCT</tagName>
+        <tagName>PRIMER_INTERNAL_4_HAIRPIN_STUCT</tagName>
+        <tagName>PRIMER_RIGHT_4_HAIRPIN_STUCT</tagName>
+        <dataType>s</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>A string representation of the calculated secondary 
+structure. The tag is only present if a secondary structure could 
+be calculated and <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1.<br />
+See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.
+</p>]]>
+        </description>
+</tag>
+<tag>
+        <tagName>PRIMER_PAIR_4_COMPL_ANY</tagName>
+        <dataType>f</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>The calculated value for the tendency of a primer pair to bind to 
+each other (interfering with target sequence binding). It will 
+score ANY binding occurring within the entire primer sequence. 
+For details see <p3t>PRIMER_MAX_SELF_ANY</p3t>.<br /> 
+The inter-pair complementarity measures over the complete primer 
+for selected left and right primer.</p>]]>
+        </description>
+</tag>
+<tag>
+    <tagName>PRIMER_PAIR_4_COMPL_ANY_TH</tagName>
+    <dataType>f</dataType>
+    <optional>N</optional>
+    <description>
+    <![CDATA[<p>The calculated value for the tendency of a primer pair to
+bind to each other (interfering with target sequence binding). It will
+calculate the melting temperature of ANY binding occurring within the entire
+primer sequence. For details see <p3t>PRIMER_MAX_SELF_ANY_TH</p3t>.
+The inter-pair complementarity measures over the complete primer for
+selected left and right primer.</p>]]>
+    </description>
+</tag>
+<tag>
+        <tagName>PRIMER_PAIR_4_COMPL_ANY_STUCT</tagName>
+        <dataType>s</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>A string representation of the calculated secondary 
+structure. The tag is only present if a secondary structure could 
+be calculated and <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1.<br />
+See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.
+</p>]]>
+        </description>
 </tag>
 <tag>
 	<tagName>PRIMER_PAIR_4_COMPL_END</tagName>
@@ -510,6 +551,19 @@ the target sequence. For details see <p3t>PRIMER_MAX_SELF_END_TH</p3t>.
 The inter-pair complementarity measures for the ends of selected left and
 right primer.</p>]]>
      </description>
+</tag>
+<tag>
+        <tagName>PRIMER_PAIR_4_COMPL_END_STUCT</tagName>
+        <dataType>s</dataType>
+        <optional>N</optional>
+        <description>
+<![CDATA[<p>A string representation of the calculated secondary 
+structure. The tag is only present if a secondary structure could 
+be calculated and <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1.<br />
+See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.
+</p>]]>
+        </description>
 </tag>
 <tag>
 	<tagName>PRIMER_LEFT_4_END_STABILITY</tagName>
