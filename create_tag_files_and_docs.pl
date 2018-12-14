@@ -629,18 +629,12 @@ sub createTagDefinitionsXml {
 }
 
 
-###############################
-# creates the readme.htm file #
-###############################
+###############################################
+# creates the readme.htm and manual.html file #
+###############################################
 sub createReadmeHtml {
-	# Prepare the strings for the files
-	my $html_string = html_get_header($scriptP3ManualTit);
-
-	# Create a main title
-	$html_string .= "<h1>$scriptP3ManualTit</h1>\n";
-
 	# Create a Index
-	$html_string .= "<h2>CONTENTS</h2>";
+	my $html_string = "<h2>CONTENTS</h2>";
 	my $chapterCount = 0;
 	$html_string .= "<p>\n";
 	foreach my $textblock_holder (@textblocksOrder) {
@@ -693,17 +687,39 @@ sub createReadmeHtml {
 			$html_string .= printTags("output");
 		}
 	}
+
+        # Prepare the strings for the files
+        my $html_man = html_get_header($scriptP3ManualTit);
+
+        # Create a main title
+        $html_man .= "<h1>$scriptP3ManualTit</h1>\n";
+
+	# Add the content
+        $html_man .= $html_string;
 	
 	# Finish the strings for the files
-	$html_string .= html_get_footer();
+	$html_man .= html_get_footer();
 	
-	$html_string =~ s/<br \/>/<br>/g;
-	$html_string =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
-	$html_string =~ s/<p3t>(.*?)<\/p3t>/<a href=\"#$1\">$1<\/a>/g;
+	$html_man =~ s/<br \/>/<br>/g;
+	$html_man =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
+	$html_man =~ s/<p3t>(.*?)<\/p3t>/<a href=\"#$1\">$1<\/a>/g;
 	
 	# Write the files to the disk
 	my $output_file = $output_folder. "primer3_manual.htm";
-	string2file($output_file, $html_string);
+	string2file($output_file, $html_man);
+
+        # Create the manual.html for the homepage
+        my $html_home = "---\nlayout: default\ntitle: Manual\n---\n<div id=\"main\">\n";
+        $html_home .= $html_string;
+	$html_home .= "</div>\n";
+
+        $html_home =~ s/<br \/>/<br>/g;
+        $html_home =~ s/<link>(.*?)<\/link>/<a href=\"$1\">$1<\/a>/g;
+        $html_home =~ s/<p3t>(.*?)<\/p3t>/<a href=\"#$1\">$1<\/a>/g;
+
+        # Write the files to the disk
+        my $web_file = $output_folder. "manual.html";
+        string2file($web_file, $html_home);
 
 	return 0;
 }
