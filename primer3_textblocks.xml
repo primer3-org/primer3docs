@@ -590,7 +590,6 @@ publications as<br />
 * Untergasser A, Cutcutache I, Koressaar T, Ye J, Faircloth BC, Remm M and Rozen SG.<br />
 Primer3--new capabilities and interfaces.<br />
 Nucleic Acids Res. 2012 Aug 1;40(15):e115.<br />
-<br />
 The paper is available at
 <link>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3424584/</link><br />
 <br />
@@ -602,7 +601,7 @@ Bioinformatics 2007;23(10):1289-1291.<br />
 The paper is available at
 <link>https://www.ncbi.nlm.nih.gov/pubmed/17379693</link><br />
 <br />
-If you use masker function then please cite<br />
+If you use masker function then please cite:<br />
 * Koressaar T, Lepamets M, Kaplinski L, Raime K, Andreson R and Remm M.<br />
 Primer3_masker: integrating masking of template sequence with primer design software.<br />
 Bioinformatics 2018;34(11):1937-1938.<br />
