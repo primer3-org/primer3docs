@@ -4,7 +4,7 @@
 Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
               2011,2012
 Whitehead Institute for Biomedical Research, Steve Rozen
-(http://purl.com/STEVEROZEN/), Andreas Untergasser, Helen Skaletsky, 
+(http://purl.com/STEVEROZEN/), Andreas Untergasser, Helen Skaletsky,
 Triinu Koressaar and Maido Remm.
 All rights reserved.
 
@@ -52,7 +52,7 @@ An example Tag with all possible options:
 
 The text blocks added here also have to be added to the array
 @textblocksOrder in create_tag_files.pl to be used.
-	
+
 -->
 <textBlock>
 	<id>acknowledgments</id>
@@ -77,24 +77,24 @@ has been key to its wide utility.<br />
 <br />
 In addition, among others, Ernst Molitor, Carl Foeller, and James Bonfield
 contributed to the early
-design of Primer3. Brant Faircloth has helped with 
+design of Primer3. Brant Faircloth has helped with
 ensuring that Primer3 runs on Windows and MacOS and with the
-Primer3 web site. 
-Triinu Koressaar and Maido Remm modernized the melting 
-temperature calculations in 2008.  
-Triinu Koressaar added secondary structure, 
+Primer3 web site.
+Triinu Koressaar and Maido Remm modernized the melting
+temperature calculations in 2008.
+Triinu Koressaar added secondary structure,
 primer-dimer, and template mispriming based on a thermodynamic
 model in 2.2.0.
-Ioana Cutcutache is responsible for most of the 
+Ioana Cutcutache is responsible for most of the
 remaining improvements
 in 2.2.0, including performance enhancements, modern
-command line arguments, and new input tags to 
+command line arguments, and new input tags to
 control primer location (with the "overlap junction"
 tags initially implemented by Andreas Untergasser).
 Jian Ye patiently provided new requirements.<br />
 <br />
-Harm Nijveen and Andreas Untergasser developed the webinterface 
-Primer3Plus in 2006-2009. Currently Primer3Plus is maintained by 
+Harm Nijveen and Andreas Untergasser developed the webinterface
+Primer3Plus in 2006-2009. Currently Primer3Plus is maintained by
 Andreas Untergasser.
 <br />
 <br />
@@ -114,26 +114,26 @@ The calculation of penalty values
 takes into consideration penalty weights, which allow
 one to fine-tune the selection of primers to specific needs.<br />
 <br />
-This section will explain the selection process of primers by 
+This section will explain the selection process of primers by
 Primer3. In general the selection is a multi step process:<br />
 <br />
-In the first step, Primer3 evaluates every primer that 
+In the first step, Primer3 evaluates every primer that
 can be picked in the region of interest, possibly subject to
 constraints due to target regions, product size ranges, and
 so forth, that might preclude the use of primers in the
-eventually selected primer pairs. In this pass the hard 
-limits are tested like <p3t>PRIMER_MAX_GC</p3t> or <p3t>PRIMER_MIN_TM</p3t>. Primers 
-with a GC lower than <p3t>PRIMER_MAX_GC</p3t> or a Tm higher than 
-<p3t>PRIMER_MIN_TM</p3t> are memorized, the primers which fail in one of 
-these tests are excluded. Primer3 can be forced to use primers 
-failing to pass this test by setting <p3t>PRIMER_PICK_ANYWAY</p3t> to one 
+eventually selected primer pairs. In this pass the hard
+limits are tested like <p3t>PRIMER_MAX_GC</p3t> or <p3t>PRIMER_MIN_TM</p3t>. Primers
+with a GC lower than <p3t>PRIMER_MAX_GC</p3t> or a Tm higher than
+<p3t>PRIMER_MIN_TM</p3t> are memorized, the primers which fail in one of
+these tests are excluded. Primer3 can be forced to use primers
+failing to pass this test by setting <p3t>PRIMER_PICK_ANYWAY</p3t> to one
 (only available for primers provided by the user).<br />
 <br />
 In the second step, Primer3 calculates a penalty for each
-primer. This penalty is the only score by which Primer3 
-evaluates the primers It is also provided as output 
-<p3t>PRIMER_LEFT_4_PENALTY</p3t>, <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> and 
-<p3t>PRIMER_RIGHT_4_PENALTY</p3t> (shown for the primer set 4). For each 
+primer. This penalty is the only score by which Primer3
+evaluates the primers It is also provided as output
+<p3t>PRIMER_LEFT_4_PENALTY</p3t>, <p3t>PRIMER_INTERNAL_4_PENALTY</p3t> and
+<p3t>PRIMER_RIGHT_4_PENALTY</p3t> (shown for the primer set 4). For each
 primer, it is calculated like that:</p>
 
 <h3>Left Primers:</h3>
@@ -149,7 +149,7 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_LEFT_4_TM</p3t> )
 
 
-   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
+   If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
@@ -167,9 +167,9 @@ primer, it is calculated like that:</p>
 
 
 
-   The following section uses &lt;primer length&gt; as part of 
-   the term which is given as output in 
-   <p3t>PRIMER_LEFT_4</p3t>=position,&lt;primer length&gt; 
+   The following section uses &lt;primer length&gt; as part of
+   the term which is given as output in
+   <p3t>PRIMER_LEFT_4</p3t>=position,&lt;primer length&gt;
 
    If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> then
        this is added (+):
@@ -186,7 +186,7 @@ primer, it is calculated like that:</p>
 
    If the primer does not overlap a target then
        this is added (+):
-	
+
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_LEFT_4_POSITION_PENALTY</p3t>
 
 
@@ -208,9 +208,9 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_LEFT_4_LIBRARY_MISPRIMING</p3t>
 
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
-            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> -
               <p3t>PRIMER_LEFT_4_MIN_SEQ_QUALITY</p3t> )
-      
+
       If the thermodynamic approach is used then the part of <i>italic</i> in
           the above calculation is replaced by this:
 
@@ -250,24 +250,24 @@ primer, it is calculated like that:</p>
 <pre>
 <p3t>PRIMER_RIGHT_4_PENALTY</p3t> =
 
-   If <p3t>PRIMER_RIGHT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &gt; <p3t>PRIMER_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_TM_GT</p3t> * ( <p3t>PRIMER_RIGHT_4_TM</p3t> - <p3t>PRIMER_OPT_TM</p3t> )
 
-   If <p3t>PRIMER_RIGHT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> then 
+   If <p3t>PRIMER_RIGHT_4_TM</p3t> &lt; <p3t>PRIMER_OPT_TM</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_RIGHT_4_TM</p3t> )
 
 
-   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_GT</p3t> *
             ( <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> - <p3t>PRIMER_OPT_GC_PERCENT</p3t> )
 
-   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then 
+   If <p3t>PRIMER_RIGHT_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_GC_PERCENT_LT</p3t> *
@@ -279,24 +279,24 @@ primer, it is calculated like that:</p>
 
 
 
-   The following section uses &lt;primer length&gt; as part of 
-   the term which is given as output in 
-   <p3t>PRIMER_RIGHT_4</p3t>=position,&lt;primer length&gt; 
+   The following section uses &lt;primer length&gt; as part of
+   the term which is given as output in
+   <p3t>PRIMER_RIGHT_4</p3t>=position,&lt;primer length&gt;
 
-   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> then 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_GT</p3t> *
             ( &lt;primer length&gt; - <p3t>PRIMER_OPT_SIZE</p3t> )
 
-   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> then 
+   If &lt;primer length&gt; &lt; <p3t>PRIMER_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_WT_SIZE_LT</p3t> *
             ( <p3t>PRIMER_OPT_SIZE</p3t> - &lt;primer length&gt; )
 
 
-   If the primer does not overlap a target then 
+   If the primer does not overlap a target then
        this is added (+):
 
        + <p3t>PRIMER_WT_POS_PENALTY</p3t> * <p3t>PRIMER_RIGHT_4_POSITION_PENALTY</p3t>
@@ -320,9 +320,9 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_RIGHT_4_LIBRARY_MISPRIMING</p3t>
 
        + <p3t>PRIMER_WT_SEQ_QUAL</p3t> *
-            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+            ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> -
               <p3t>PRIMER_RIGHT_4_MIN_SEQ_QUALITY</p3t> )
-     
+
      If the thermodynamic approach is used then the part of <i>italic</i> in
          the above calculation is replaced by this:
 
@@ -378,7 +378,7 @@ primer, it is calculated like that:</p>
        then this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_GC_PERCENT_GT</p3t> *
-            ( <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> - 
+            ( <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> -
               <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t> )
 
    If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
@@ -389,11 +389,11 @@ primer, it is calculated like that:</p>
               <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> )
 
 
-   The following section uses &lt;primer length&gt; as part of 
-   the term which is given as output in 
-   <p3t>PRIMER_INTERNAL_4</p3t>=position,&lt;primer length&gt; 
+   The following section uses &lt;primer length&gt; as part of
+   the term which is given as output in
+   <p3t>PRIMER_INTERNAL_4</p3t>=position,&lt;primer length&gt;
 
-   If &lt;primer length&gt; &gt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> then 
+   If &lt;primer length&gt; &gt; <p3t>PRIMER_INTERNAL_OPT_SIZE</p3t> then
        this is added (+):
 
        + <p3t>PRIMER_INTERNAL_WT_SIZE_GT</p3t> *
@@ -409,7 +409,7 @@ primer, it is calculated like that:</p>
    These are always added (+) to the penalty:
    (if the thermodynamic approach is used then the part in <i>italic</i>
       is substituted with text below this calculation):
-      
+
   <i>+ <p3t>PRIMER_INTERNAL_WT_SELF_ANY</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_ANY</p3t>
 
      + <p3t>PRIMER_INTERNAL_WT_SELF_END</p3t> * <p3t>PRIMER_INTERNAL_4_SELF_END</p3t></i>
@@ -420,8 +420,8 @@ primer, it is calculated like that:</p>
      + <p3t>PRIMER_INTERNAL_WT_LIBRARY_MISHYB</p3t> *
           <p3t>PRIMER_INTERNAL_4_LIBRARY_MISHYB</p3t>
 
-     + <p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t> * 
-          ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> - 
+     + <p3t>PRIMER_INTERNAL_WT_SEQ_QUAL</p3t> *
+          ( <p3t>PRIMER_QUALITY_RANGE_MAX</p3t> -
             <p3t>PRIMER_INTERNAL_4_MIN_SEQ_QUALITY</p3t> )
 
    If the thermodynamic approach is used then the part of <i>italic</i> in
@@ -449,16 +449,16 @@ primer, it is calculated like that:</p>
         (1/(<p3t>PRIMER_INTERNAL_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_INTERNAL_4_HAIRPIN_TH</p3t>));
 </i>
 </pre>
-<p>	
-The primers are then sorted by penalty and Primer3 tries to pick 
+<p>
+The primers are then sorted by penalty and Primer3 tries to pick
 the primers with the lowest penalty. For the <p3t>PRIMER_TASK</p3t>
-<pre><i>pick_primer_list</i></pre> or <pre><i>pick_sequencing_primers</i></pre> the selection ends at 
-this point. If primer pairs have to be selected, a 
+<pre><i>pick_primer_list</i></pre> or <pre><i>pick_sequencing_primers</i></pre> the selection ends at
+this point. If primer pairs have to be selected, a
 <p3t>PRIMER_PAIR_4_PENALTY</p3t> is calculated:
 <pre>
 <p3t>PRIMER_PAIR_4_PENALTY</p3t> =
 
-   To the pair penalty are at first the single primer penalties 
+   To the pair penalty are at first the single primer penalties
    added (+):
 
        + <p3t>PRIMER_PAIR_WT_PR_PENALTY</p3t> *
@@ -468,7 +468,7 @@ this point. If primer pairs have to be selected, a
    If internal oligo is picked then this is added (+):
 
        + <p3t>PRIMER_PAIR_WT_IO_PENALTY</p3t> * <p3t>PRIMER_INTERNAL_4_PENALTY</p3t>
-	
+
 
    If <p3t>PRIMER_PAIR_4_PRODUCT_TM</p3t> &gt; <p3t>PRIMER_PRODUCT_OPT_TM</p3t> then
        this is added (+):
@@ -499,8 +499,8 @@ this point. If primer pairs have to be selected, a
    These are allways added (+) to the penalty:
    (if the thermodynamic approach is used then the part in <i>italic</i>
        is substituted with text below this calculation):
-       
-     + <p3t>PRIMER_PAIR_WT_DIFF_TM</p3t> * 
+
+     + <p3t>PRIMER_PAIR_WT_DIFF_TM</p3t> *
           &lt;difference in Tm between the left and the right primer&gt;
 
   <i>+ <p3t>PRIMER_PAIR_WT_COMPL_ANY</p3t> * <p3t>PRIMER_PAIR_4_COMPL_ANY</p3t>
@@ -521,7 +521,7 @@ this point. If primer pairs have to be selected, a
   else if ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5) &gt; <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>) then is added (+):
    + <p3t>PRIMER_PAIR_WT_COMPL_ANY_TH</p3t> *
       (1/(min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5 + 1 - <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>));
- 
+
    If ((min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t> - 5) &le; <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>) then is added (+):
    + <p3t>PRIMER_PAIR_WT_COMPL_END_TH</p3t> *
        (<p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t> - (min(<p3t>PRIMER_LEFT_4_TM</p3t>,<p3t>PRIMER_RIGHT_4_TM</p3t>) - 5 - 1))
@@ -538,7 +538,7 @@ this point. If primer pairs have to be selected, a
 
 </i>
 </pre>
-<p>Primer3 tries to select pairs with the lowest penalty which 
+<p>Primer3 tries to select pairs with the lowest penalty which
 still fulfill all necessary requirements like non-redundancy or
 product size limits.</p>]]>
 	</text>
@@ -548,8 +548,8 @@ product size limits.</p>]]>
 	<head>CAUTIONS</head>
 	<text>
 <![CDATA[<p>Some of the most important issues in primer picking can be
-addressed only before using Primer3. These are sequence quality 
-(including making sure the sequence is not vector and not chimeric) 
+addressed only before using Primer3. These are sequence quality
+(including making sure the sequence is not vector and not chimeric)
 and avoiding repetitive elements.<br />
 <br />
 Techniques for avoiding problems include a thorough understanding
@@ -571,8 +571,8 @@ Excluded Regions. The beginning of a sequencing read is often
 problematic because of primer peaks, and the end of the read
 often contains many low-quality or even meaningless called bases.
 Therefore, when picking primers from single-pass sequence it is
-often best to use the <p3t>SEQUENCE_INCLUDED_REGION</p3t> parameter to 
-ensure that Primer3 chooses primers in the high quality region 
+often best to use the <p3t>SEQUENCE_INCLUDED_REGION</p3t> parameter to
+ensure that Primer3 chooses primers in the high quality region
 of the read.<br />
 <br />
 In addition, Primer3 takes as input a <p3t>SEQUENCE_QUALITY</p3t> list for
@@ -593,15 +593,22 @@ Nucleic Acids Res. 2012 Aug 1;40(15):e115.<br />
 <br />
 The paper is available at
 <link>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3424584/</link><br />
-<br />	
+<br />
 and <br />
 <br />
 * Koressaar T and Remm M.<br />
 Enhancements and modifications of primer design program Primer3.<br />
-Bioinformatics 2007;23(10):1289-91.<br />
-<br />
-The papers is available at<br />
+Bioinformatics 2007;23(10):1289-1291.<br />
+The paper is available at
 <link>https://www.ncbi.nlm.nih.gov/pubmed/17379693</link><br />
+<br />
+If you use masker function then please cite<br />
+* Koressaar T, Lepamets M, Kaplinski L, Raime K, Andreson R and Remm M.<br />
+Primer3_masker: integrating masking of template sequence with primer design software.<br />
+Bioinformatics 2018;34(11):1937-1938.<br />
+The paper is available at
+<link>https://www.ncbi.nlm.nih.gov/pubmed/29360956</link><br />
+
 <br />
 Source code available at <link>https://github.com/primer3-org/primer3</link>.</p>]]>
 	</text>
@@ -612,9 +619,9 @@ Source code available at <link>https://github.com/primer3-org/primer3</link>.</p
 	<text>
 <![CDATA[<p>This section presents the list of arguments that may given in
 the command line. Any unique abbreviation of the arguments is allowed
-(e.g. -ab instead of -about) and each argument can be preceded by 
-either one or two dashes. In the case of arguments that receive 
-values, the '=' can be replaced 
+(e.g. -ab instead of -about) and each argument can be preceded by
+either one or two dashes. In the case of arguments that receive
+values, the '=' can be replaced
 by a space.</p>]]>
 	</text>
 </textBlock>
@@ -625,19 +632,19 @@ by a space.</p>]]>
 <![CDATA[<p>
 1. The tag PRIMER_THERMODYNAMIC_ALIGNMENT was replaced by two new tags:
 <br /><br />
-   - <p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t> which governs hairpin 
-and oligo-oligo interactions. Therefore, whenever it is set to 1 
-(the default) thermodynamic alignments will be used for oligo-oligo 
+   - <p3t>PRIMER_THERMODYNAMIC_OLIGO_ALIGNMENT</p3t> which governs hairpin
+and oligo-oligo interactions. Therefore, whenever it is set to 1
+(the default) thermodynamic alignments will be used for oligo-oligo
 interactions and hairpins.
 <br /><br />
-   - <p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t> which governs the 
-oligo-template interactions and, when set to 1 (default is 0), will 
+   - <p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t> which governs the
+oligo-template interactions and, when set to 1 (default is 0), will
 cause Primer3 to use the thermodynamic alignment against templates.
 <br /><br />
-The reason for this change is to provide the option of using the 
-old alignment for oligo-template interactions when the thermodynamic 
-alignment is too slow or the template is too long (there is a hard 
-limit THAL_MAX_SEQ=10k on the length of sequences involved in 
+The reason for this change is to provide the option of using the
+old alignment for oligo-template interactions when the thermodynamic
+alignment is too slow or the template is too long (there is a hard
+limit THAL_MAX_SEQ=10k on the length of sequences involved in
 thermodynamic alignments).
 <br /><br />
 2. We changed the following default values:<br />
@@ -765,7 +772,7 @@ user-supplied primers occur in more than one location in the template.<br /></p>
 <![CDATA[<pre>Copyright (c) 1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010
               2011,2012,2013,2016,2017
 Whitehead Institute for Biomedical Research, Steve Rozen
-(<link>http://purl.com/STEVEROZEN/</link>), Helen Skaletsky, Triinu Koressaar, 
+(<link>http://purl.com/STEVEROZEN/</link>), Helen Skaletsky, Triinu Koressaar,
 Maido Remm and Andreas Untergasser. All rights reserved.
 
     This file is part of the Primer3 suite and libraries.
@@ -804,13 +811,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <id>differencePrimer3vsPrimer3Plus</id>
         <head>DIFFERENCE BETWEEN PRIMER3 AND PRIMER3PLUS</head>
         <text>
-<![CDATA[<p>Primer3Plus is a web interface to Primer3, so if you pick 
-primers with Primer3Plus, it will collect and reformat your input, run 
-the command line tool Primer3, collet and reformats it's output and 
+<![CDATA[<p>Primer3Plus is a web interface to Primer3, so if you pick
+primers with Primer3Plus, it will collect and reformat your input, run
+the command line tool Primer3, collet and reformats it's output and
 display it to you.<br />
-In principle, both tools would give you the same output. In practice, 
-the default settings ob both tools differ. While Primer3 default 
-settings are usually kept for backward compatibility, the Primer3Plus 
+In principle, both tools would give you the same output. In practice,
+the default settings ob both tools differ. While Primer3 default
+settings are usually kept for backward compatibility, the Primer3Plus
 default settings are adapted for regular wetlab use.</p>
 <h4>Primer3 Values:</h4>
 <pre>
@@ -832,8 +839,8 @@ default settings are adapted for regular wetlab use.</p>
 </pre>
 <h4>Primer3Plus Values:</h4>
 <pre>
-  PRIMER_PRODUCT_SIZE_RANGE=501-600 601-700 401-500 701-850 851-1000 1001-1500 
-                            1501-3000 3001-5000 401-500 301-400 201-300 
+  PRIMER_PRODUCT_SIZE_RANGE=501-600 601-700 401-500 701-850 851-1000 1001-1500
+                            1501-3000 3001-5000 401-500 301-400 201-300
                             101-200 5001-7000 7001-10000 10001-20000
   PRIMER_SECONDARY_STRUCTURE_ALIGNMENT=1
   PRIMER_NUM_RETURN=10
@@ -856,7 +863,7 @@ default settings are adapted for regular wetlab use.</p>
 	<id>earlierVersions</id>
 	<head>DIFFERENCES FROM EARLIER VERSIONS</head>
 	<text>
-<![CDATA[<p>The section HOW TO MIGRATE TAGS TO 
+<![CDATA[<p>The section HOW TO MIGRATE TAGS TO
 IO VERSION 4 describes th modified tags in detail.
 See also the file release_notes.txt in this directory.
 </p>]]>
@@ -918,29 +925,29 @@ There is a simple sequence repeat in this sequence.
 The repeat starts
 at base 37, and has a length of 21 bases. We instruct Primer3 to
 choose primers that flank the repeat site (because
-we want to use the PCR product for 
+we want to use the PCR product for
 determining the length of the repeat, which is likely to be polymorphic).
 <br />
 <br />
 <p3t>PRIMER_TASK</p3t>=generic<br />
 <br />
-The <p3t>PRIMER_TASK</p3t> tells Primer3 which 
-type of primers to pick. You can select typical primers for PCR 
+The <p3t>PRIMER_TASK</p3t> tells Primer3 which
+type of primers to pick. You can select typical primers for PCR
 detection, primers for cloning or for sequencing.<br />
 <br />
 <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>=1<br />
 <p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t>=1<br />
 <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>=1<br />
 <br />
-We would like to pick a left primer, an internal oligo and a 
-right primer, so we set these flags to 1 (true). In combination 
-with the <p3t>PRIMER_TASK</p3t> this tags control which primers are 
+We would like to pick a left primer, an internal oligo and a
+right primer, so we set these flags to 1 (true). In combination
+with the <p3t>PRIMER_TASK</p3t> this tags control which primers are
 picked.<br />
 <br />
 <p3t>PRIMER_OPT_SIZE</p3t>=18<br />
 <br />
-Since our sequence length is rather small (only 108 bases long), 
-we lower the <p3t>PRIMER_OPT_SIZE</p3t> from 20 to 18. It is 
+Since our sequence length is rather small (only 108 bases long),
+we lower the <p3t>PRIMER_OPT_SIZE</p3t> from 20 to 18. It is
 more likely that Primer3 will succeed if it aims for smaller
 primers.<br />
 <br />
@@ -992,13 +999,13 @@ examined.<br />
 The '=' character terminates the record.<br />
 <br />
 There were many Boulder-IO input tags that were not
-specified, 
-which is legal.  For the tags with default 
-values, those defaults will be used in the analysis. For the 
-tags with NO default values (for example <p3t>SEQUENCE_TARGET</p3t>), the 
-functionality requested by the those tags will be absent. 
-Also, please note 
-that it is not the case that we need to surround a simple sequence 
+specified,
+which is legal.  For the tags with default
+values, those defaults will be used in the analysis. For the
+tags with NO default values (for example <p3t>SEQUENCE_TARGET</p3t>), the
+functionality requested by the those tags will be absent.
+Also, please note
+that it is not the case that we need to surround a simple sequence
 repeat every time we want to pick primers!</p>]]>
 	</text>
 </textBlock>
@@ -1006,7 +1013,7 @@ repeat every time we want to pick primers!</p>]]>
 	<id>exampleOutput</id>
 	<head>EXAMPLE OUTPUT</head>
 	<text>
-<![CDATA[<p>You should run it yourself.  Use the file 'example' 
+<![CDATA[<p>You should run it yourself.  Use the file 'example'
 that came with this distribution
 directory as input.</p>]]>
 	</text>
@@ -1058,12 +1065,12 @@ In all of the error cases above Primer3 prints a message to stderr.</p>]]>
 	<id>fileFormat</id>
 	<head>PRIMER3 SETTINGS FILE FORMAT</head>
 	<text>
-<![CDATA[<p>Primer3 can read global settings from a text file at program 
-start up. This allows the user to save and exchange settings 
+<![CDATA[<p>Primer3 can read global settings from a text file at program
+start up. This allows the user to save and exchange settings
 tailored to special applications.<br />
 <br />
-Such a Primer3 settings file is a text file. The first three 
-lines of the file have to be as described below followed by tags 
+Such a Primer3 settings file is a text file. The first three
+lines of the file have to be as described below followed by tags
 as they would be provided at standard input:</p>
 <pre>
 Primer3 File - http://primer3.org
@@ -1075,17 +1082,17 @@ SEQUENCE_TEMPLATE=ATG...
 ...
 ...
 =
-</pre> 
+</pre>
 <p>
-In the first line "Primer3 File - http://primer3.org" 
+In the first line "Primer3 File - http://primer3.org"
 without tailing space. In the second line "P3_FILE_TYPE=settings".
-Valid values for P3_FILE_TYPE are all_parameters, sequence and 
-settings. Up to now, only settings is supported. The third line 
-has to be empty. It is strongly advised to describe the settings 
-using the P3_FILE_ID tag. It will print the description of the 
-settings on the output. From the fourth line on regular 
-Boulder-IO can be used as it is used in regular input. It also 
-has to be terminated with a single "=". There can be only one 
+Valid values for P3_FILE_TYPE are all_parameters, sequence and
+settings. Up to now, only settings is supported. The third line
+has to be empty. It is strongly advised to describe the settings
+using the P3_FILE_ID tag. It will print the description of the
+settings on the output. From the fourth line on regular
+Boulder-IO can be used as it is used in regular input. It also
+has to be terminated with a single "=". There can be only one
 input per file.</p>]]>
 	</text>
 </textBlock>
@@ -1093,18 +1100,18 @@ input per file.</p>]]>
 	<id>globalTags</id>
 	<head>"GLOBAL" INPUT TAGS</head>
 	<text>
-<![CDATA[<p>"Global" input tags start with PRIMER_... and describe the 
-general parameters that Primer3 should use in its searches. 
-The values of these tags persist between input Boulder 
-records until or unless they are explicitly reset. Errors 
-in "Global" input tags are fatal because they invalidate 
+<![CDATA[<p>"Global" input tags start with PRIMER_... and describe the
+general parameters that Primer3 should use in its searches.
+The values of these tags persist between input Boulder
+records until or unless they are explicitly reset. Errors
+in "Global" input tags are fatal because they invalidate
 the basic conditions under which primers are being picked.<br />
 <br />
-Because the laboratory detection step using internal oligos is 
-independent of the PCR amplification procedure, internal oligo 
-tags have defaults that are independent of the parameters that 
-govern the selection of PCR primers. For example, the melting 
-temperature of an oligo used for hybridization might be 
+Because the laboratory detection step using internal oligos is
+independent of the PCR amplification procedure, internal oligo
+tags have defaults that are independent of the parameters that
+govern the selection of PCR primers. For example, the melting
+temperature of an oligo used for hybridization might be
 considerably lower than that used as a PCR primer.
 <br /></p>]]>
 	</text>
@@ -1135,7 +1142,7 @@ as follows:</p>
 
   o A (TAG,VALUE) pair has the following requirements:
 
-    o the TAG must be immediately (without spaces) 
+    o the TAG must be immediately (without spaces)
           followed by '='.
 </pre>
 <p>An example of a legal (TAG,VALUE) pair is<br />
@@ -1191,7 +1198,7 @@ new value silently over-writes the previous value.
 <![CDATA[<p>Unzip and untar the distribution.
 DO NOT do this on a PC if you are going to
 compile and/or test on a different operation system.
-Primer3_core will not compile 
+Primer3_core will not compile
 and various tests will fail if pc
 newlines get inserted into the code and test files.  Instead, move the
 distribution (primer3-&lt;release&gt;.tar.gz) to Unix/Linux, and then<br />
@@ -1200,7 +1207,7 @@ $ unzip primer3-&lt;release&gt;.tar.gz<br />
 $ tar xvf primer3-&lt;release&gt;.tar<br />
 $ cd primer3-&lt;release&gt;/src<br />
 <br />
-If you do not use gcc, then you will probably have 
+If you do not use gcc, then you will probably have
 to modify the makefile to
 use your (ANSI) C compiler with the compile
 and link flags it understands.<br />
@@ -1215,7 +1222,7 @@ $ make test<br />
 # You should not see 'FAILED' during the tests.<br />
 <br />
 If your perl command is not called perl (for example, if it is
-called perl5) you will have to modify the 
+called perl5) you will have to modify the
 Makefile in the test/ directory.<br />
 <br />
 ntdpal (NucleoTide Dynamic Programming ALignment) is a
@@ -1234,10 +1241,10 @@ strictly as is; for further documentation please see the code.</p>]]>
 <br />
 1.  Double click on the .tar.gz file to extract the archive.<br />
 <br />
-2.  The binary files are located in the 'bin' [for 'binary'] 
+2.  The binary files are located in the 'bin' [for 'binary']
     folder<br />
 <br />
-3.  (Optional) To run the tests, cd to the new directory and 
+3.  (Optional) To run the tests, cd to the new directory and
     then the test folder<br />
 <br />
 4.  (Optional) Within this folder run:
@@ -1245,8 +1252,8 @@ strictly as is; for further documentation please see the code.</p>]]>
 <br />
 5.  (Optional) You should not see 'FAILED' during the tests.<br />
 <br />
-6.  (Optional) *NOTE*:  If your perl command is not called 
-    perl (for example, if it is called perl5) you will have 
+6.  (Optional) *NOTE*:  If your perl command is not called
+    perl (for example, if it is called perl5) you will have
     to modify the internals of the test scripts).<br />
 <br />
 7.	Copy the following files to a location of your choice:<br />
@@ -1255,56 +1262,56 @@ strictly as is; for further documentation please see the code.</p>]]>
 	c.  bin/oligotm<br />
 	d.  bin/primer3_core<br />
 <br />
-8.	(Optional) Make sure this location is within your $PATH 
+8.	(Optional) Make sure this location is within your $PATH
     (see below)<br />
 <br />
 <br />
 Where to put the binary files<br />
 =============================<br />
 <br />
-A good place to put these is within ~/bin/ (this means in 
+A good place to put these is within ~/bin/ (this means in
 your home folder, within a folder named `bin` [for 'binary']).<br />
 <br />
-You can also just drag the 'bin' folder to a location within 
+You can also just drag the 'bin' folder to a location within
 your home directory.<br />
 <br />
-You can certainly also copy the files within 'bin' to 
-/usr/local/bin (if you are an administrator) or another 
+You can certainly also copy the files within 'bin' to
+/usr/local/bin (if you are an administrator) or another
 similar location.<br />
 <br />
-You may need to adjust the permissions on the binaries if 
+You may need to adjust the permissions on the binaries if
 you get fancy.<br />
 <br />
 <br />
 Add the location to your $PATH<br />
 ==============================<br />
 <br />
-This is an optional step, but it will allow you to run 
-Primer3 in any directory on your machine as your user just 
+This is an optional step, but it will allow you to run
+Primer3 in any directory on your machine as your user just
 by typing its name (primer3_core).<br />
 <br />
-*** You should be very careful when altering your $PATH as 
-things can go very wrong.  See below for an alternate 
+*** You should be very careful when altering your $PATH as
+things can go very wrong.  See below for an alternate
 method. *** <br />
 <br />
-If you added the binaries to /usr/local/bin, then you do 
+If you added the binaries to /usr/local/bin, then you do
 not need to do this.<br />
 <br />
-If you added the binaries to a local directory (let's say 
+If you added the binaries to a local directory (let's say
 ~/bin/), do the following:<br />
 <br />
-	1.  Edit your ~/.bash_profile.  You can edit this on 
+	1.  Edit your ~/.bash_profile.  You can edit this on
         the command line (Terminal) with:<br />
 <br />
 		nano ~/.bash_profile<br />
 <br />
-	2. Add the following line if it is not present 
+	2. Add the following line if it is not present
        (replacing '~/bin' if you used another directory):<br />
 <br />
 		PATH=$PATH:~/bin/<br />
 <br />
-	3. If a PATH line *is* present, ensure you add a colon 
-       to the end of what is there and then the directory, 
+	3. If a PATH line *is* present, ensure you add a colon
+       to the end of what is there and then the directory,
        so if you have something like:<br />
 <br />
 		a) PATH=$PATH:/usr/local/genome/bin:/sw/bin<br />
@@ -1313,15 +1320,15 @@ If you added the binaries to a local directory (let's say
 <br />
 		b) PATH=$PATH:/usr/local/genome/bin:/sw/bin:~/bin<br />
 <br />
-	4. Quit and restart terminal for the changes to take 
+	4. Quit and restart terminal for the changes to take
        effect.<br />
-<br />	
+<br />
 If you don't add the location to your $PATH<br />
 ===========================================<br />
 <br />
-Assuming you don't want to modify your $PATH, you can still 
-run the binaries.  Let's assume you put the files in 
-'~/bin/.  You may run primer3_core by doing either of the 
+Assuming you don't want to modify your $PATH, you can still
+run the binaries.  Let's assume you put the files in
+'~/bin/.  You may run primer3_core by doing either of the
 following:<br />
 <br />
 	1. ~/bin/primer3_core &lt; yourInputFile<br />
@@ -1358,18 +1365,18 @@ Compile Primer3<br />
 <br />
 1. Download and install MinGW64 from<br />
    https://sourceforge.net/projects/mingw-w64/files/latest/download
-2. Open the windows command line and change to the src folder in 
+2. Open the windows command line and change to the src folder in
    Primer3<br />
 3. Run: mingw32-make TESTOPTS=--windows<br />
 <br />
 Running the tests<br />
 =================<br />
-You must install a perl distribution to run the 
+You must install a perl distribution to run the
 windows tests.<br />
 <br />
-We *strongly* recommend you install ActiveState perl 
-(http://www.activestate.com/products/activeperl/) 
-as this was used to test our Primer3 builds, and it is 
+We *strongly* recommend you install ActiveState perl
+(http://www.activestate.com/products/activeperl/)
+as this was used to test our Primer3 builds, and it is
 known to work.<br />
 <br />
 1. Click on 'Start > Run...'<br />
@@ -1382,24 +1389,24 @@ known to work.<br />
     you would type <br />
     'cd c:/Documents and Settings/YourName/primer3-&lt;release&gt;/test/'<br />
     <br />
-    B. you can also type 'cd ' (don't forget the space 
-    after cd) and drag the primer3-&lt;release&gt; folder onto the 
-    command-line window from windows explorer, this will 
+    B. you can also type 'cd ' (don't forget the space
+    after cd) and drag the primer3-&lt;release&gt; folder onto the
+    command-line window from windows explorer, this will
     fill in the location for you<br />
 <br />
-5. On the command line, run 'mingw32-make TESTOPTS=--windows' in this 
-   directory. You can also run the tests individually, 
+5. On the command line, run 'mingw32-make TESTOPTS=--windows' in this
+   directory. You can also run the tests individually,
    for example 'perl p3test.pl --windows'.<br />
-6. You should see [OK] for the majority of the tests. The masker 
+6. You should see [OK] for the majority of the tests. The masker
    functionality is not supported on Windows and coresponding tests
    will fail.<br />
 <br />
 Running the software<br />
 ====================<br />
 <br />
-To run the program, you must do so from the MS-DOS 
-command-line.  The intricacies of the DOS command line are 
-beyond the scope of this document.  Google for more 
+To run the program, you must do so from the MS-DOS
+command-line.  The intricacies of the DOS command line are
+beyond the scope of this document.  Google for more
 information, if needed.  Here is a quick summary:<br />
 <br />
 1. Click on 'Start > Run...'<br />
@@ -1412,29 +1419,29 @@ information, if needed.  Here is a quick summary:<br />
     you would type <br />
     'cd c:/Documents and Settings/YourName/Temp'<br />
 <br />
-    B. you can also type 'cd ' (don't forget the space 
-    after cd) and drag the Primer3 folder onto the 
-    command-line window from windows explorer, this will 
+    B. you can also type 'cd ' (don't forget the space
+    after cd) and drag the Primer3 folder onto the
+    command-line window from windows explorer, this will
     fill in the location for you<br />
 <br />
 5. Run the example file by typing:<br />
 <br />
     primer3_core.exe &lt; example<br />
 <br />
-Other files may be run in a similar fashion.  If your input 
-filename is 'MyData.txt' you can run Primer3 using this 
+Other files may be run in a similar fashion.  If your input
+filename is 'MyData.txt' you can run Primer3 using this
 file (in the correct format; see README) with:<br />
 <br />
     primer3_core.exe &lt; MyData.txt<br />
 <br />
-If your file is not in the folder containing 
-primer3_core.exe, you could run the program from the 
+If your file is not in the folder containing
+primer3_core.exe, you could run the program from the
 primer3_core folder using:<br />
 <br />
     primer3_core.exe &lt; c:/someOtherFolder/someOtherFolder/MyData.txt<br />
 <br />
-Finally, if you want to run the program without going to 
-its folder, assuming primer3_core.exe is in c:/Temp, you 
+Finally, if you want to run the program without going to
+its folder, assuming primer3_core.exe is in c:/Temp, you
 could run:<br />
 <br />
     c:/Temp/primer3_core.exe &lt; c:/someOtherFolder/someOtherFolder/MyData.txt</p>]]>
@@ -1475,10 +1482,10 @@ The command line for Primer3 is:<br />
 <br />
 primer3_core [ --format_output ] [ --default_version=1|--default_version=2 ] [ --io_version=4 ] [ --p3_settings_file=&lt;file_path&gt; ] [ --echo_settings_file ] [ --strict_tags ] [ --output=&lt;file_path&gt; ] [ --error=&lt;file_path&gt; ] [ input_file ] <br />
 <br />
-A complete list of valid command line arguments can be found in 
+A complete list of valid command line arguments can be found in
 COMMAND LINE ARGUMENTS below.<br />
 <br />
-If no input file is specified, primer3_core will read its input 
+If no input file is specified, primer3_core will read its input
 from stdin.</p>]]>
 	</text>
 </textBlock>
@@ -1487,13 +1494,13 @@ from stdin.</p>]]>
 	<head>FAIR USE OF PRIMER3</head>
 	<text>
 <![CDATA[<p>
-The development of Primer3 is promoted by a small group of 
-enthusiastic scientists mainly in their free time.They do not gain 
+The development of Primer3 is promoted by a small group of
+enthusiastic scientists mainly in their free time.They do not gain
 any financial profit with Primer3.<br />
 <br />
-There are two groups of Primer3 users: end users, who run 
-Primer3 to pick their primers and programmers, who use Primer3 
-in their scripts or software packages. We encourage both to use 
+There are two groups of Primer3 users: end users, who run
+Primer3 to pick their primers and programmers, who use Primer3
+in their scripts or software packages. We encourage both to use
 Primer3.
 <br />
 <br />
@@ -1502,31 +1509,31 @@ require that use of this software be cited in publications
 as listed above under CITING PRIMER3.
 <br />
 <br />
-If you are a programmer, you  will see that Primer3 is now 
-distributed under the GNU  General Public License, version 2 or 
-(at  your option) any later version of the License (GPL2). 
+If you are a programmer, you  will see that Primer3 is now
+distributed under the GNU  General Public License, version 2 or
+(at  your option) any later version of the License (GPL2).
 
-As we understand it, if you include parts of the Primer3 source 
-code in your source code or link to Primer3 binary libraries in 
-your executable, you have to release your software also under 
-GPL2. If you only call Primer3 from your software and interpret 
-its output, you can use any license you want for your software. 
-If you modify Primer3 and then release your modified software, 
-you have to release your modifications in source code under 
+As we understand it, if you include parts of the Primer3 source
+code in your source code or link to Primer3 binary libraries in
+your executable, you have to release your software also under
+GPL2. If you only call Primer3 from your software and interpret
+its output, you can use any license you want for your software.
+If you modify Primer3 and then release your modified software,
+you have to release your modifications in source code under
 GPL2 as well.
 <br />
 <br />
-We chose GPL2 because we wanted Primer3 to evolve and for the 
-improvements to find their way back into the main distribution. 
+We chose GPL2 because we wanted Primer3 to evolve and for the
+improvements to find their way back into the main distribution.
 
-If you are programming a new web interface which runs Primer3, 
-please include in the about page of the tool the sentence 
-"&lt;your software name&gt; uses Primer3 version ...". 
-Please consider releasing your software under GPL2 as well, 
-especially if you do not want to maintain it in the future. 
+If you are programming a new web interface which runs Primer3,
+please include in the about page of the tool the sentence
+"&lt;your software name&gt; uses Primer3 version ...".
+Please consider releasing your software under GPL2 as well,
+especially if you do not want to maintain it in the future.
 <br />
 <br />
-There is no need to ask us for permission to include Primer3 
+There is no need to ask us for permission to include Primer3
 in your tools.]]>
 	</text>
 </textBlock>
@@ -1534,32 +1541,32 @@ in your tools.]]>
 	<id>migrateTags</id>
 	<head>HOW TO MIGRATE TAGS TO IO VERSION 4</head>
 	<text>
-<![CDATA[<p>With Primer3 release 2.0, many Boulder-IO tags were 
-modified and new tags were introduced. The new Primer3 tags are 
-designed with the idea in mind that computer scripts and other 
-programs use primer3_core. The modifications make it easier for 
+<![CDATA[<p>With Primer3 release 2.0, many Boulder-IO tags were
+modified and new tags were introduced. The new Primer3 tags are
+designed with the idea in mind that computer scripts and other
+programs use primer3_core. The modifications make it easier for
 programs to read and write Primer3 input and output.<br />
 <br />
-Furthermore the Primer3 default values and the use of 
+Furthermore the Primer3 default values and the use of
 <p3t>PRIMER_WT_TEMPLATE_MISPRIMING</p3t> and <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t>
-have changed in version 2.0. 
+have changed in version 2.0.
 <br />
 <br />
-There are three classes of input: "Sequence" input tags describe 
-a particular input sequence to Primer3, and are reset after 
-every Boulder record (now starting with SEQUENCE_).  "Global" 
-input tags describe the general parameters that Primer3 should 
-use in its searches, and the values of these tags persist 
-between input Boulder records until or unless they are 
-explicitly reset (now starting with PRIMER_). "Program" 
-parameters that deal with the behavior of the Primer3 program 
-itself (now starting with P3_). See below for a list of the 
+There are three classes of input: "Sequence" input tags describe
+a particular input sequence to Primer3, and are reset after
+every Boulder record (now starting with SEQUENCE_).  "Global"
+input tags describe the general parameters that Primer3 should
+use in its searches, and the values of these tags persist
+between input Boulder records until or unless they are
+explicitly reset (now starting with PRIMER_). "Program"
+parameters that deal with the behavior of the Primer3 program
+itself (now starting with P3_). See below for a list of the
 modified tags.<br />
 <br />
-The handling of PRIMER_TASK changed completely. In the past we 
-used it to tell Primer3 what task to perform. Now the task is 
-complemented with <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>, 
-<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> and <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>, which 
+The handling of PRIMER_TASK changed completely. In the past we
+used it to tell Primer3 what task to perform. Now the task is
+complemented with <p3t>PRIMER_PICK_RIGHT_PRIMER</p3t>,
+<p3t>PRIMER_PICK_INTERNAL_OLIGO</p3t> and <p3t>PRIMER_PICK_LEFT_PRIMER</p3t>, which
 specify which primers are to be picked.<br />
 <br />
 These Tags are modified:<br />
@@ -1567,7 +1574,7 @@ These Tags are modified:<br />
 The "per sequence" tags:</p>
 <pre>
 NEW VERSION                       - OLD VERSION
-----------------------------------------------------------------------------------------                       
+----------------------------------------------------------------------------------------
 <p3t>SEQUENCE_ID</p3t>                       - PRIMER_SEQUENCE_ID
 <p3t>SEQUENCE_TEMPLATE</p3t>                 - SEQUENCE
 <p3t>SEQUENCE_QUALITY</p3t>                  - PRIMER_SEQUENCE_QUALITY
@@ -1639,7 +1646,7 @@ The following tags INTERNAL_OLIGO is replaced by INTERNAL:
 <p3t>PRIMER_INTERNAL_MAX_GC</p3t>            - PRIMER_INTERNAL_OLIGO_MAX_GC
 <p3t>PRIMER_INTERNAL_DNTP_CONC</p3t>         - PRIMER_INTERNAL_OLIGO_DNTP_CONC
 <p3t>PRIMER_INTERNAL_DNA_CONC</p3t>          - PRIMER_INTERNAL_OLIGO_DNA_CONC
-<p3t>PRIMER_INTERNAL_MAX_POLY_X</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X 
+<p3t>PRIMER_INTERNAL_MAX_POLY_X</p3t>        - PRIMER_INTERNAL_OLIGO_MAX_POLY_X
 <p3t>PRIMER_INTERNAL_MISHYB_LIBRARY</p3t>    - PRIMER_INTERNAL_OLIGO_MISHYB_LIBRARY
 <p3t>PRIMER_INTERNAL_MIN_QUALITY</p3t>       - PRIMER_INTERNAL_OLIGO_MIN_QUALITY
 
@@ -1666,12 +1673,12 @@ There are three big changes on the output:<br />
 <br />
 Now all primer related output follows the rule:
 PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;.
-where &lt;j&gt; is an integer from 0 to n, where n is at most the 
+where &lt;j&gt; is an integer from 0 to n, where n is at most the
 value of <p3t>PRIMER_NUM_RETURN</p3t> - 1.<br />
 <br />
-This allows easy scripting by using the underscores _ to split 
-the name. The first part is PRIMER, the second the type of oligo 
-or pair parameters, the third is always a number, starting at 
+This allows easy scripting by using the underscores _ to split
+the name. The first part is PRIMER, the second the type of oligo
+or pair parameters, the third is always a number, starting at
 0 and the rest is used by the tags.<br />
 <br />
 That affects also (shown for output number 4):</p>
@@ -1743,7 +1750,7 @@ you would want synthesized in a primer order.)</p>]]>
 one Boulder-IO record comes out of Primer3 on stdout.
 If a settings file is provided and the option to echo the settings file is given
 on the command line, then the contents of the settings file will also be
-part of the output. Two additional tags are used to indicate where the 
+part of the output. Two additional tags are used to indicate where the
 records of the settings file begin and end: P3_SETTINGS_FILE_USED specifies
 the path to the settings file that was provided, P3_SETTINGS_FILE_END
 does not have any value and it just indicates the end of the settings records.<br />
@@ -1753,8 +1760,8 @@ subset of the following tag/value pairs.  Unless noted by (*),
 each tag appears for each primer pair returned.<br />
 <br />
 Tags are of the form PRIMER_{LEFT,RIGHT,INTERNAL,PAIR}_&lt;j&gt;_&lt;tag_name&gt;
-where &lt;j&gt; is an integer from 0 to n, where n is at most the 
-value of <p3t>PRIMER_NUM_RETURN</p3t>. In the documentation the output 
+where &lt;j&gt; is an integer from 0 to n, where n is at most the
+value of <p3t>PRIMER_NUM_RETURN</p3t>. In the documentation the output
 number 4 is shown as for example: <p3t>PRIMER_LEFT_4_TM</p3t>.<br />
 <br />
 In the descriptions below, 'i,n' represents a start/length pair,
@@ -1766,8 +1773,8 @@ represents a float.</p>]]>
         <id>p3pTags</id>
         <head>PRIMER3PLUS INPUT TAGS</head>
         <text>
-<![CDATA[<p>Primer3Plus input tags start with P3P_... and describe the 
-general parameters that Primer3Plus may use in its interface. 
+<![CDATA[<p>Primer3Plus input tags start with P3P_... and describe the
+general parameters that Primer3Plus may use in its interface.
 <br />Primer3 cannot use this tags and ignores them.</p>]]>
         </text>
 </textBlock>
@@ -1785,8 +1792,8 @@ Applications", pp 31-40, Humana Press, Totowa NJ.</p>]]>
 	<id>programTags</id>
 	<head>"PROGRAM" INPUT TAGS</head>
 	<text>
-<![CDATA[<p>"Program" input tags start with P3_... describe the 
-parameters that deal with the behavior of the Primer3 program 
+<![CDATA[<p>"Program" input tags start with P3_... describe the
+parameters that deal with the behavior of the Primer3 program
 itself.)</p>]]>
 	</text>
 </textBlock>
@@ -1794,16 +1801,16 @@ itself.)</p>]]>
     <id>providedMisprimingLibs</id>
     <head>PROVIDED MISPRIMING LIBRARIES</head>
     <text>
-<![CDATA[<p>This selection indicates what mispriming library (if any) Primer3 
-should use to screen for interspersed repeats or for other 
-sequence to avoid as a location for primers. The human and 
-rodent libraries on the web page are adapted from Repbase 
+<![CDATA[<p>This selection indicates what mispriming library (if any) Primer3
+should use to screen for interspersed repeats or for other
+sequence to avoid as a location for primers. The human and
+rodent libraries on the web page are adapted from Repbase
 (J. Jurka, A.F.A. Smit, C. Pethiyagoda, et al., 1995-1996)
 <a href="ftp://ftp.ncbi.nih.gov/repository/repbase/">ftp://ftp.ncbi.nih.gov/repository/repbase/</a>).
 The human library is humrep.ref concatenated with simple.ref,
-translated to FASTA format. There are two rodent libraries. One 
-is rodrep.ref translated to FASTA format, and the other is 
-rodrep.ref concatenated with simple.ref, translated to FASTA 
+translated to FASTA format. There are two rodent libraries. One
+is rodrep.ref translated to FASTA format, and the other is
+rodrep.ref concatenated with simple.ref, translated to FASTA
 format.</p>
 <p>The <i>Drosophila</i> library is the concatenation of two libraries
 from the <a href="http://www.fruitfly.org">Berkeley Drosophila Genome Project</a>:</p>
@@ -1812,7 +1819,7 @@ from the <a href="http://www.fruitfly.org">Berkeley Drosophila Genome Project</a
 <a href="https://www.ncbi.nlm.nih.gov/pubmed/12537573">
 <i>The transposable elements of the Drosophila melanogaster euchromatin - a genomics perspective</i>
 J.S. Kaminker, C.M. Bergman, B. Kronmiller, J. Carlson, R. Svirskas, S. Patel, E. Frise, D.A. Wheeler, S.E. Lewis, G.M. Rubin, M. Ashburner and S.E. Celniker
-Genome Biology (2002) 3(12):research0084.1-0084.20</a>, 
+Genome Biology (2002) 3(12):research0084.1-0084.20</a>,
 <a href="http://www.fruitfly.org/data/p_disrupt/datasets/ASHBURNER/D_mel_transposon_sequence_set.fasta">
 http://www.fruitfly.org/data/p_disrupt/datasets/ASHBURNER/D_mel_transposon_sequence_set.fasta</a>
 <br><br>
@@ -1834,10 +1841,10 @@ The contents of the libraries can be viewed at the following links:<br>
 	<id>sequenceTags</id>
 	<head>"SEQUENCE" INPUT TAGS</head>
 	<text>
-<![CDATA[<p>"Sequence" input tags start with SEQUENCE_... and describe a 
-particular input sequence to Primer3. They are reset after every 
-Boulder record. Errors in "Sequence" input tags invalidate the 
-current record, but Primer3 will continue to process additional 
+<![CDATA[<p>"Sequence" input tags start with SEQUENCE_... and describe a
+particular input sequence to Primer3. They are reset after every
+Boulder record. Errors in "Sequence" input tags invalidate the
+current record, but Primer3 will continue to process additional
 records.</p>]]>
 	</text>
 </textBlock>
@@ -1846,9 +1853,9 @@ records.</p>]]>
 	<head>SYSTEM REQUIREMENTS</head>
 	<text>
 <![CDATA[<p>Please see <link>https://github.com/primer3-org/primer3</link> for up-to-date
-information.  Primer3 should compile on any system using with an 
-ANSI C compiler like Linux/Unix, MacOS 10 or MS Windows.  The 
-Makefile will probably need to be modified for compilation with 
+information.  Primer3 should compile on any system using with an
+ANSI C compiler like Linux/Unix, MacOS 10 or MS Windows.  The
+Makefile will probably need to be modified for compilation with
 C compilers other than gcc.
 </p>]]>
 	</text>
@@ -1858,27 +1865,27 @@ C compilers other than gcc.
 	<head>Primer3 input tags</head>
 	<text>
 <![CDATA[<p>There are 3 major classes of input tags.  "Sequence" input tags
-starting with SEQUENCE_... describe a particular input sequence 
-to Primer3, and are reset after every Boulder record.  "Global" 
-input tags starting with PRIMER_... describe the general parameters 
-that Primer3 should use in its searches, and the values of these 
-tags persist between input Boulder records until or unless they 
-are explicitly reset. The third class of P3_... tags describe 
-parameters which modify the way Primer3 provides the output (for 
-example as separate files) and do not influence the primer selection 
+starting with SEQUENCE_... describe a particular input sequence
+to Primer3, and are reset after every Boulder record.  "Global"
+input tags starting with PRIMER_... describe the general parameters
+that Primer3 should use in its searches, and the values of these
+tags persist between input Boulder records until or unless they
+are explicitly reset. The third class of P3_... tags describe
+parameters which modify the way Primer3 provides the output (for
+example as separate files) and do not influence the primer selection
 itself.<br />
-Tags which do not start with SEQUENCE_, PRIMER_ or P3_ are ignored 
+Tags which do not start with SEQUENCE_, PRIMER_ or P3_ are ignored
 by Primer3.<br />
-  Errors in "Sequence" input tags invalidate the current record, 
+  Errors in "Sequence" input tags invalidate the current record,
 but Primer3 will continue to process additional records.<br />
-  Errors in "Global" input tags are fatal because they invalidate 
+  Errors in "Global" input tags are fatal because they invalidate
 the basic conditions under which primers are being picked.<br />
 <br />
-Because the laboratory detection step using internal oligos is 
-independent of the PCR amplification procedure, internal oligo 
-tags have defaults that are independent of the parameters that 
-govern the selection of PCR primers. For example, the melting 
-temperature of an oligo used for hybridization might be 
+Because the laboratory detection step using internal oligos is
+independent of the PCR amplification procedure, internal oligo
+tags have defaults that are independent of the parameters that
+govern the selection of PCR primers. For example, the melting
+temperature of an oligo used for hybridization might be
 considerably lower than that used as a PCR primer.</p>]]>
 	</text>
 </textBlock>
@@ -1895,7 +1902,7 @@ A Primer3Plus web services is at
 <link>http://primer3plus.com</link><br />
 <br />
 <br />
-Web interface code is available 
+Web interface code is available
 on GitHub: <link>https://github.com/primer3-org</link>.</p>]]>
 	</text>
 </textBlock>
