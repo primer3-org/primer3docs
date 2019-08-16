@@ -1340,7 +1340,12 @@ The first option is just a shortcut to the second.</p>]]>
 	<id>installWindows</id>
 	<head>INSTALLATION INSTRUCTIONS - WINDOWS</head>
 	<text>
-<![CDATA[<p>How to install this software<br />
+<![CDATA[<p>Functionality warning<br />
+=====================<br />
+<br />
+The windows version does not support the masker functionality.
+</p>
+<p>How to install this software<br />
 ============================<br />
 <br />
 Get your copy of the source code<br />
@@ -1362,8 +1367,8 @@ or
 Compile Primer3<br />
 ---------------<br />
 <br />
-1. Download and install MinGW64 from<br />
-   https://sourceforge.net/projects/mingw-w64/files/latest/download
+1. Download and install TDM-GCC MinGW Compiler from<br />
+   https://sourceforge.net/projects/tdm-gcc/ 
 2. Open the windows command line and change to the src folder in
    Primer3<br />
 3. Run: mingw32-make TESTOPTS=--windows<br />
