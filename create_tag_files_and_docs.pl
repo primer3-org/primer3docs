@@ -48,12 +48,12 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "2.4.0";
+my $scriptP3Version = "2.5.0";
 my $scriptP3ManualTit = "PRIMER3 RELEASE $scriptP3Version MANUAL";
 my $scriptP3PlusHelpTit = "PRIMER3PLUS RELEASE 3.0.0 HELP";
 my $scriptP3WebHelpTit = "PRIMER3WEB RELEASE 4.1.0 MANUAL";
 
-my $scriptP3Years =  "1996-2018", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
+my $scriptP3Years =  "1996-2019", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
 
 # Modify here the order of the textblocks or add new:
 my @textblocksOrder = (
