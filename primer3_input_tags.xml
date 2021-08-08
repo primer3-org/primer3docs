@@ -2450,7 +2450,7 @@ will be accepted without complaint.<br />
 WARNING: always set <p3t>PRIMER_LIB_AMBIGUITY_CODES_CONSENSUS</p3t>=0
 if any sequence in the library contains strings of 'N's:
 NNNNNNNNNNNNNNNNNNNN.<br />
-NOWWW<br />
+<br />
 There are no restrictions on line length.<br />
 <br />
 An empty value for this parameter indicates that no repeat
