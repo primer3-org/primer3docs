@@ -318,6 +318,50 @@ substring of the reverse strand of <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>SEQUENCE_OVERHANG_LEFT</tagName>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The provided sequence is added to the 5' end of the left
+primer. The overhang sequences are utilized in calculating SELF_ANY,
+SELF_END, HAIRPIN, COMPL_ANY, COMPL_END, plus the _TH and _STRUCT
+versions of those outputs, as well as PRODUCT_SIZE. Internal oligos
+may not have an overhang.<br />
+<br />
+The length of SEQUENCE_OVERHANG_LEFT and SEQUENCE_OVERHANG_RIGHT do
+not add to the binding product size of
+<p3t>PRIMER_PRODUCT_SIZE_RANGE</p3t> or
+<p3t>PRIMER_PRODUCT_OPT_SIZE</p3t>.<br />
+<br />
+The TM anG GC_PERCENT calculations will only be based on the 3'
+portion of the oligo that binds to the template.<br />
+<br />
+The following elements include SEQUENCE_OVERHANG_LEFT:
+<p3t>PRIMER_LEFT_4_SELF_ANY</p3t>, <p3t>PRIMER_LEFT_4_SELF_ANY_TH</p3t>,
+<p3t>PRIMER_LEFT_4_SELF_ANY_STUCT</p3t>,
+<p3t>PRIMER_LEFT_4_SELF_END</p3t>, <p3t>PRIMER_LEFT_4_SELF_END_TH</p3t>,
+<p3t>PRIMER_LEFT_4_SELF_END_STUCT</p3t>,
+<p3t>PRIMER_LEFT_4_HAIRPIN_TH</p3t>,
+<p3t>PRIMER_LEFT_4_HAIRPIN_STUCT</p3t>,
+<p3t>PRIMER_PAIR_4_COMPL_ANY</p3t>, <p3t>PRIMER_PAIR_4_COMPL_ANY_TH</p3t>,
+<p3t>PRIMER_PAIR_4_COMPL_ANY_STUCT</p3t>,
+<p3t>PRIMER_PAIR_4_COMPL_END</p3t>, <p3t>PRIMER_PAIR_4_COMPL_END_TH</p3t>,
+<p3t>PRIMER_PAIR_4_COMPL_END_STUCT</p3t>,
+<p3t>PRIMER_PAIR_4_PRODUCT_SIZE</p3t>.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>SEQUENCE_OVERHANG_RIGHT</tagName>
+	<dataType>string</dataType>
+	<default>empty</default>
+	<description>
+<![CDATA[<p>The provided sequence is added to the 5' end of the right
+primer. It is reverse complementary to the template sequence.<br />
+<br />
+See <p3t>SEQUENCE_OVERHANG_LEFT</p3t> for more details.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>SEQUENCE_START_CODON_POSITION</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_START_CODON_POSITION</oldTagName>
@@ -798,7 +842,12 @@ For those with primarily a computational background,
 the PCR product size is the size (in base pairs) 
 of the DNA fragment that would be produced by the
 PCR reaction on the given sequence template.  This
-would, of course, include the primers themselves.</p>]]>
+would, of course, include the primers themselves.<br />
+<br />
+The length of <p3t>SEQUENCE_OVERHANG_LEFT</p3t> and <p3t>SEQUENCE_OVERHANG_RIGHT</p3t> do
+not add to the binding product size of
+PRIMER_PRODUCT_SIZE_RANGE or
+<p3t>PRIMER_PRODUCT_OPT_SIZE</p3t>.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -812,8 +861,12 @@ selection only if <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_GT</p3t> or
 <p3t>PRIMER_PAIR_WT_PRODUCT_SIZE_LT</p3t> is non-0.<br />
 
 A non-0 value for this parameter will likely increase calculation time, so set this only if 
-a product size near a specific value is truly important.
-</p>]]>
+a product size near a specific value is truly important.<br />
+<br />
+The length of <p3t>SEQUENCE_OVERHANG_LEFT</p3t> and <p3t>SEQUENCE_OVERHANG_RIGHT</p3t> do
+not add to the binding product size of
+<p3t>PRIMER_PRODUCT_SIZE_RANGE</p3t> or
+PRIMER_PRODUCT_OPT_SIZE.</p>]]>
 	</description>
 </tag>
 <tag>
@@ -2127,7 +2180,8 @@ last five 3' bases of a left or right primer.</p>]]>
 	<default>5</default>
 	<description>
 <![CDATA[<p>The maximum allowable length of a mononucleotide repeat,
-for example AAAAAA.</p>]]>
+for example AAAAAA, 'GGGNNN' violates MAX_POLY_X=5. It is based on
+the worst possible case (all 3 Ns could be Gs).</p>]]>
 	</description>
 </tag>
 <tag>
