@@ -394,6 +394,18 @@ primer will end at or after the stop codon.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>SEQUENCE_START_CODON_SEQUENCE</tagName>
+	<dataType>string</dataType>
+	<default>ATG</default>
+	<description>
+<![CDATA[<p>The sequence of the start codon, by default ATG.
+Some bacteria use different start codons, this tag allows to
+specify alternative start codons.<br />
+<br />
+Any triplet can be provided as start codon.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>SEQUENCE_QUALITY</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_SEQUENCE_QUALITY</oldTagName>
