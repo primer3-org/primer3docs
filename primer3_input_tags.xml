@@ -1722,6 +1722,112 @@ default locations that are tested if this tag is not defined:
 For Windows, there is only one default location: <i>.\primer3_config\</i>.</p>]]>
      </description>
 </tag>
+
+<tag>
+	<tagName>PRIMER_ANNEALING_TEMP</tagName>
+	<dataType>float</dataType>
+	<default>-10.0</default>
+	<description>
+<![CDATA[<p>The annealing temperature (Celsius) used in the PCR reaction. Usually
+it is chosen up to 10°C below the melting temperature of the primers. If provided,
+Primer3 will calculate the fraction of primers bound at the provided annealing
+temperature for each oligo. By default not active, see "GENERAL THOUGHTS ON PRIMER
+BINDING" for more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MIN_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>-10.0</default>
+	<description>
+<![CDATA[<p>Minimum acceptable fraction of primer bound at <p3t>PRIMER_ANNEALING_TEMP</p3t>
+for a primer oligo in percent. By default not active, see "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MIN_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>-10.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MIN_BOUND</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_OPT_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>97.0</default>
+	<description>
+<![CDATA[<p>Optimum fraction of primer bound at <p3t>PRIMER_ANNEALING_TEMP</p3t>
+for a primer oligo in percent. By default not active, see "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_OPT_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>97.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_OPT_BOUND</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_MAX_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>110.0</default>
+	<description>
+<![CDATA[<p>Maximum acceptable fraction of primer bound at <p3t>PRIMER_ANNEALING_TEMP</p3t>
+for a primer oligo in percent. By default not active, see "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_MAX_BOUND</tagName>
+	<dataType>float</dataType>
+	<default>110.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_MAX_BOUND</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_BOUND_LT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for primers with a fraction of primer bound lower than
+<p3t>PRIMER_OPT_BOUND</p3t>. By default not active, see "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_BOUND_LT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_BOUND_LT</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_WT_BOUND_GT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Penalty weight for primers with a fraction of primer bound over
+<p3t>PRIMER_OPT_BOUND</p3t>. By default not active, see "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_WT_BOUND_GT</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_WT_BOUND_GT</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+
+
+
 <tag>
 	<tagName>PRIMER_MAX_SELF_ANY</tagName>
     <oldTag>

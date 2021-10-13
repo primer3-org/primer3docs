@@ -314,6 +314,19 @@ objective function.</p>]]>
 	</description>
 </tag>
 <tag>
+	<tagName>PRIMER_LEFT_4_BOUND</tagName>
+	<tagName>PRIMER_INTERNAL_4_BOUND</tagName>
+	<tagName>PRIMER_RIGHT_4_BOUND</tagName>
+	<dataType>f</dataType>
+	<optional>N</optional>
+	<description>
+<![CDATA[<p>The calculated fraction of primers bound to a template at the
+<p3t>PRIMER_ANNEALING_TEMP</p3t> in percent if the primer and template would be
+at equal concentration. See "GENERAL THOUGHTS ON PRIMER BINDING" for
+more details.</p>]]>
+	</description>
+</tag>
+<tag>
 	<tagName>PRIMER_PAIR_4_PRODUCT_TM</tagName>
 	<oldTag>
 		<oldTagName>PRIMER_PRODUCT_TM</oldTagName>

@@ -80,6 +80,7 @@ my @textblocksOrder = (
 "outputTags",
 "exampleOutput",
 "pickAdvice",
+"primerBinding",
 "cautions",
 "findNoPrimers",
 "earlierVersions",
@@ -101,6 +102,7 @@ my @textblocksPrimer3WebHelp = (
 "providedMisprimingLibs",
 "findNoPrimers",
 "pickAdvice",
+"primerBinding",
 "webInterface",
 "acknowledgments");
 
@@ -112,6 +114,7 @@ my @textblocksPrimer3PlusHelp = (
 "licenseExplain",
 "differencePrimer3vsPrimer3Plus",
 "pickAdvice",
+"primerBinding",
 "cautions",
 "findNoPrimers",
 "sequenceTags",

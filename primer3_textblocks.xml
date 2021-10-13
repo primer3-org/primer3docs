@@ -149,6 +149,15 @@ primer, it is calculated like that:</p>
        + <p3t>PRIMER_WT_TM_LT</p3t> * ( <p3t>PRIMER_OPT_TM</p3t> - <p3t>PRIMER_LEFT_4_TM</p3t> )
 
 
+   If <p3t>PRIMER_LEFT_4_BOUND</p3t> &gt; <p3t>PRIMER_OPT_BOUND</p3t> then this is added (+):
+
+       + <p3t>PRIMER_WT_BOUND_GT</p3t> * ( <p3t>PRIMER_LEFT_4_BOUND</p3t> - <p3t>PRIMER_OPT_BOUND</p3t> )
+
+   If <p3t>PRIMER_LEFT_4_BOUND</p3t> &lt; <p3t>PRIMER_OPT_BOUND</p3t> then this is added (+):
+
+       + <p3t>PRIMER_WT_BOUND_LT</p3t> * ( <p3t>PRIMER_OPT_BOUND</p3t> - <p3t>PRIMER_LEFT_4_BOUND</p3t> )
+
+
    If <p3t>PRIMER_LEFT_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_OPT_GC_PERCENT</p3t> then
        this is added (+):
 
@@ -372,6 +381,19 @@ primer, it is calculated like that:</p>
 
        + <p3t>PRIMER_INTERNAL_WT_TM_LT</p3t> *
             ( <p3t>PRIMER_INTERNAL_OPT_TM</p3t> - <p3t>PRIMER_INTERNAL_4_TM</p3t> )
+
+
+   If <p3t>PRIMER_INTERNAL_4_BOUND</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_BOUND</p3t> then
+       this is added (+):
+
+       + <p3t>PRIMER_INTERNAL_WT_BOUND_GT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_4_BOUND</p3t> - <p3t>PRIMER_INTERNAL_OPT_BOUND</p3t> )
+
+   If <p3t>PRIMER_INTERNAL_4_BOUND</p3t> &lt; <p3t>PRIMER_INTERNAL_OPT_BOUND</p3t> then
+       this is added (+):
+
+       + <p3t>PRIMER_INTERNAL_WT_BOUND_LT</p3t> *
+            ( <p3t>PRIMER_INTERNAL_OPT_BOUND</p3t> - <p3t>PRIMER_INTERNAL_4_BOUND</p3t> )
 
 
    If <p3t>PRIMER_INTERNAL_4_GC_PERCENT</p3t> &gt; <p3t>PRIMER_INTERNAL_OPT_GC_PERCENT</p3t>
@@ -812,7 +834,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <text>
 <![CDATA[<p>Primer3Plus is a web interface to Primer3, so if you pick
 primers with Primer3Plus, it will collect and reformat your input, run
-the command line tool Primer3, collet and reformats it's output and
+the command line tool Primer3, collet and reformat it's output and
 display it to you.<br />
 In principle, both tools would give you the same output. In practice,
 the default settings ob both tools differ. While Primer3 default
@@ -1538,7 +1560,7 @@ especially if you do not want to maintain it in the future.
 <br />
 <br />
 There is no need to ask us for permission to include Primer3
-in your tools.]]>
+in your tools.</p>]]>
 	</text>
 </textBlock>
 <textBlock>
@@ -1790,6 +1812,207 @@ general parameters that Primer3Plus may use in its interface.
 Primers for Polymerase Chain Reaction" in BA White, Ed., "Methods
 in Molecular Biology, Vol. 15: PCR Protocols: Current Methods and
 Applications", pp 31-40, Humana Press, Totowa NJ.</p>]]>
+	</text>
+</textBlock>
+<textBlock>
+	<id>primerBinding</id>
+	<head>GENERAL THOUGHTS ON PRIMER BINDING</head>
+	<text>
+<![CDATA[<p>The binding of primers to a template DNA is depending on the primer
+sequence and the concentration of primer and template DNA,
+monovalent, divalent ions and dNTPs. Also other components like DMSO
+or contaminants influence the binding of primers. In primer design,
+the melting temperature is a critical factor and is calculated using
+thermodynamic equations (see <p3t>PRIMER_TM_FORMULA</p3t> for more information).
+The melting temperature is defined as the temperature where half of
+the primers are bound to target and it can be measured by heating up
+a double stranded DNA while monitoring the UV absorbance. In this
+situation, the double stranded DNA [AB] melts into two single strands
+([A] and [B]) of equal concentration. The situation at the start of a
+PCR reaction is quite different. Usually the concentration of primer
+[A] in a typical PCR reaction (see <p3t>PRIMER_DNA_CONC</p3t>) is with 0.5
+micromolar high, the concentration of template DNA [B] with 10
+nanograms low. The actual micromolar concentration of the primer
+binding sites which would be required for the thermodynamic
+calculations depends on the type of DNA and will be very different
+in genomic DNA (few binding sites per nanogram) or plasmid and cDNA
+(many binding sites per nanogram). As the concentration of [AB], [A]
+and [B] changes dramatically during a PCR run (this is the aim of
+the PCR reaction), so does the melting temperature. For the
+thermodynamic calculations in Primer3 we use <p3t>PRIMER_DNA_CONC</p3t> as
+an "empirically determined" concentration of annealing oligo over
+the course the PCR (see <p3t>PRIMER_DNA_CONC</p3t> for details), which is less
+than the actual concentration of oligos in the initial reaction mix
+because of its dependence on the amount of template (including PCR
+product) in a given cycle. The melting temperature is calculated
+based on:</p>
+<pre>
+Tm = deltaH / ( deltaS + R * ln ( [<p3t>PRIMER_DNA_CONC</p3t>] / 4 ) )
+</pre>
+<p>Primers are rarely used at melting temperature. Usually, the
+annealing temperature in a PCR reaction is usually chosen 6-10°C
+below the melting temperature of the primers and can be indicated
+to Primer3 with the <p3t>PRIMER_ANNEALING_TEMP</p3t> parameter. The idea behind
+this reduction in temperature is to increase the fraction of primers
+bound to target. While at the melting temperature 50% of the primers
+are bound to target, at the reduced annealing temperature 95-98%
+should be bound. The fraction of bound primers depends on dH and dS
+and can be calculated based on (see <p3t>PRIMER_LEFT_4_BOUND</p3t> for
+details):</p>
+<pre>
+dG = dH - T * dS
+K = e^[-dG / ( R * T )]
+K = e^[( dS / R ) - ( dH / ( R * T ) ) ]
+fract = ( 1 / ( 1 + sqrt( 1 / ( ( <p3t>PRIMER_DNA_CONC</p3t> / 4000000000.0 ) * K)))) * 100
+</pre>
+<p>Unfortunately, the effect of dH on the fraction of bound primers is
+depending on the temperature, while the effect of dS is not.
+Therefore, primers which do have the same melting temperature and
+bind to 50% at melting temperature, may differ in binding at
+annealing temperature. Or on the other hand, primers which are dG
+matched to have identical binding at annealing temperature may differ
+in melting temperature. This dates back to the third myth described
+by SantaLucia on page 18 in [SantaLucia (2007) Physical principles
+and visual-OMP software for optimal PCR design. Methods Mol Biol.
+2007;402:3-34. doi: 10.1007/978-1-59745-528-2_1.] SantaLucia argues,
+that primers should not be matched on melting temperature
+(<p3t>PRIMER_OPT_TM</p3t>) but on the fraction of primers bound at
+annealing temperature (<p3t>PRIMER_OPT_BOUND</p3t>). Especially multiplex
+primers should profit from thermodynamic parameters where the
+individual primers match better to each other.<br />
+<br />
+It may come as a surprise that the calculated melting temperature and
+bound fractions do not reflect the actual situation in the final PCR
+reaction and you could wonder if this parameters are at all useful.
+Although this parameters are representations of the primers
+thermodynamic properties under ideal conditions, they are useful to
+select primers with matching thermodynamic properties that perform
+well together in a PCR reaction. The melting temperature and the
+fraction of primer bound at annealing temperature are intuitive
+parameters that are easier to evaluate than the dG, dH and dS values
+they are based on.<br />
+<br />
+In Primer3 dG matching can be archived by setting a group of
+parameters as described below. Please consider this feature
+experimental. Primer selection based on melting temperature proved
+successful over the last decades. The selection based on deltaG by
+setting a bound fraction at melting temperature as target value is
+new and the optimal parameters still have to be found. As a start the
+fraction of bound primers may be calculated with no big impact on
+primer selection by solely providing an annealing temperature
+(<p3t>PRIMER_ANNEALING_TEMP</p3t>). For true dG matching the selection on
+melting temperature has to be switched off.</p>
+<pre>
+# Activate statistics
+<p3t>PRIMER_EXPLAIN_FLAG</p3t>=1
+
+# Activate the SantaLucia Tm calculation and salt correction
+<p3t>PRIMER_TM_FORMULA</p3t>=1
+<p3t>PRIMER_SALT_CORRECTIONS</p3t>=1
+
+# Provide the annealing temperature
+<p3t>PRIMER_ANNEALING_TEMP</p3t>=50.0
+
+# Set the fraction of bound primers
+<p3t>PRIMER_MIN_BOUND</p3t>=96.5
+<p3t>PRIMER_OPT_BOUND</p3t>=97.0
+<p3t>PRIMER_MAX_BOUND</p3t>=97.5
+<p3t>PRIMER_INTERNAL_MIN_BOUND</p3t>=96.5
+<p3t>PRIMER_INTERNAL_OPT_BOUND</p3t>=97.0
+<p3t>PRIMER_INTERNAL_MAX_BOUND</p3t>=97.5
+
+# Activate selection by penalty values
+<p3t>PRIMER_WT_BOUND_LT</p3t>=1.0
+<p3t>PRIMER_WT_BOUND_GT</p3t>=1.0
+<p3t>PRIMER_INTERNAL_WT_BOUND_LT</p3t>=1.0
+<p3t>PRIMER_INTERNAL_WT_BOUND_GT</p3t>=1.0
+
+# Do not exclude primers based on Tm
+<p3t>PRIMER_MAX_TM</p3t>=80.0
+<p3t>PRIMER_MIN_TM</p3t>=40.0
+<p3t>PRIMER_INTERNAL_MAX_TM</p3t>=80.0
+<p3t>PRIMER_INTERNAL_MIN_TM</p3t>=40.0
+
+# Inactivate selection by penalty values
+<p3t>PRIMER_WT_TM_LT</p3t>=0.0
+<p3t>PRIMER_WT_TM_GT</p3t>=0.0
+<p3t>PRIMER_INTERNAL_WT_TM_LT</p3t>=0.0
+<p3t>PRIMER_INTERNAL_WT_TM_GT</p3t>=0.0
+</pre>
+<p>The fraction of primers bound to a template at the
+<p3t>PRIMER_ANNEALING_TEMP</p3t> can be calculated for the situation
+where the primer and template would be at equal concentration.<br />
+<br />
+The thermodynamic parameter dG of the primer are used to calculate
+the equilibrium constant:</p>
+<pre>
+   R = 1.9872
+   T = (<p3t>PRIMER_ANNEALING_TEMP</p3t>) + 273.15
+   dG = dH - T * dS
+   K = e^[-dG / ( R * T )]
+   K = e^[( dS / R ) - ( dH / ( R * T ) ) ]
+</pre>
+<p>The equilibrium constant for the reaction is based on the
+concentration of primer [A], template[B] and primer bound to template
+[AB]:</p>
+<pre>
+   A + B <==> AB
+
+   K = c[AB] / ( c[A] * c[B] )
+</pre>
+<p>c[AB] of this equation is the "empirically determined", the molar
+concentration of each annealing oligo over the course the PCR. It is
+provided in PRIMER_DNA_CONC.<br />
+c[A] is the molar concentration of oligos in the initial reaction
+mix.<br />
+c[B] is the molar concentration of template in the initial reaction
+mix.<br />
+<br />
+The molar concentration of template in a PCR reaction is usually not
+known and low. The molar concentration of oligos is high. Therefore
+the fraction of primers bound is calculated for a situation, where
+primer and template are at an equal concentration. This simplifies
+the equation:</p>
+<pre>
+   c[A] = c[B]
+   K = c[AB] / ( c[A] * c[A] )
+</pre>
+<p>The faction of primers bound to a template can be calculated:</p>
+<pre>
+   frac = c[AB] / ( c[A] + c[AB] )
+
+   c[A] = ( 1 / frac - 1 ) * c[AB]
+
+   K = c[AB] / ( c[A] * c[A] )
+
+   K = c[AB] / [ ( 1 / frac - 1 ) * c[AB] * ( 1 / frac - 1 ) * c[AB] ]
+
+   K = 1 / [ ( 1 / frac - 1 ) ^ 2 * c[AB] ]
+
+   ( 1 / frac - 1 ) ^ 2 = 1 / ( K * c[AB] )
+
+   1 / frac - 1 = sqrt[ 1 / ( K * c[AB] ) ]
+
+   frac = 1 / ( 1 + sqrt[ 1 / ( K * c[AB] ) ] )
+</pre>
+<p>As the fraction should be in percent and the PRIMER_DNA_CONC is in
+nanomolar, the final calculation is for symmetrical oligos:</p>
+<pre>
+   fract = ( 1 / ( 1 + sqrt( 1 / ( ( PRIMER_DNA_CONC / 1000000000.0 ) * K)))) * 100
+</pre>
+<p>and for unsymmetrical oligos:</p>
+<pre>
+   fract = ( 1 / ( 1 + sqrt( 1 / ( ( PRIMER_DNA_CONC / 4000000000.0 ) * K)))) * 100
+</pre>
+<p>with</p>
+<pre>
+   K = e^[( dS / R ) - ( dH / ( R * T ) ) ]
+</pre>
+<p>These calculations are not available if PRIMER_SALT_CORRECTIONS=2
+(Owczarzy, R), as this empirical salt correction corrects the melting
+temperature of primers and does not allow the correction of the
+thermodynamic parameters required for the bound fraction calculation.
+</p>]]>
 	</text>
 </textBlock>
 <textBlock>
