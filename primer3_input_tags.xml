@@ -1610,10 +1610,8 @@ tags <p3t>PRIMER_SALT_DIVALENT</p3t>,
 	<dataType>float</dataType>
 	<default>50.0</default>
 	<description>
-
 <![CDATA[<p>
-<p>
-A value to use as nanomolar (nM) concentration of each annealing oligo 
+A value to use as nanomolar (nM) concentration of each annealing oligo
 over the course the PCR.
 Primer3 uses this argument to esimate oligo melting
 temperatures. This parameter corresponds to 'c' in equation (ii) 
@@ -1653,6 +1651,92 @@ See ADVICE FOR PICKING PRIMERS.</p>]]>
 	<default>50.0</default>
 	<description>
 <![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DNA_CONC</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_DMSO_CONC</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>The concentration of DMSO in percent. See
+PRIMER_DMSO_FACTOR for details of Tm correction.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_DMSO_CONC</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DMSO_CONC</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_DMSO_FACTOR</tagName>
+	<dataType>float</dataType>
+	<default>0.6</default>
+	<description>
+
+<![CDATA[<p>The melting temperature of primers can be approximately corrected for DMSO:<br>
+<br>
+Tm = Tm (without DMSO) - PRIMER_DMSO_FACTOR * PRIMER_DMSO_CONC<br>
+<br>
+The PRIMER_DMSO_CONC concentration must be given in %. By default the
+PRIMER_DMSO_FACTOR for correction is 0.6 as suggested by Musielski et
+al (H Musielski, W Mann, R Laue and S Michel. Z allg Microbiol,
+21:447–456, 1981). Ahsen et al. propose a factor of 0.75 (N von Ahsen,
+C T Wittwer and E Schutz. Clinical Chemistry, 47:1956–1961, 2001),
+Cullen et al. a factor of 0.5 (B Cullen and M Bick. Nucleic acids
+research, 3:49–62, 1976) and Escara et al. a factor of 0.675 (J Escara
+and J Hutton. Biopolymers, 19:1315–1327, 1980).</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_DMSO_FACTOR</tagName>
+	<dataType>float</dataType>
+	<default>0.6</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_DMSO_FACTOR</p3t> for the internal oligo.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_FORMAMIDE_CONC</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+
+<![CDATA[<p>The concentration od DMSO in mol/l. The melting temperature
+of primers can be approximately corrected for formamide:<br>
+<br>
+Tm = Tm (without formamide) +(0.453 * PRIMER_[LEFT/INTERNAL/RIGHT]_4_GC_PERCENT / 100 - 2.88) * PRIMER_FORMAMIDE_CONC<br>
+<br>
+The PRIMER_FORMAMIDE_CONC correction was suggested by Blake and
+Delcourt (R D Blake and S G Delcourt. Nucleic Acids Research, 24,
+11:2095–2103, 1996).<br>
+<br>
+Convert % into mol/l:<br>
+<br>
+[DMSO in mol/l] = [DMSO in % weight] * 10 / 45.04 g/mol<br>
+<br>
+[DMSO in mol/l] = [DMSO in % volume] * 10 * 1.13 g/cm3 / 45.04 g/mol<br>
+<br>
+Casey, Davidson and Hutton suggest an alternative formula (N Casey and
+J Davidson. Nucleic acids research, 4:1539–1532, 1977; JR Hutton.
+Nucleic acids research, 4:3537–3555, 1977):<br>
+<br>
+Tm = Tm (without formamide) - 0.65 * formamide_conc (in %)<br>
+<br>
+To apply this formula in Primer3, <p3t>PRIMER_FORMAMIDE_CONC</p3t> could be set
+to 0.0, <p3t>PRIMER_DMSO_FACTOR</p3t> set to 1.0. Then the formamide_conc can be
+multiplied by 0.65 and added to the <p3t>PRIMER_DMSO_CONC</p3t> multiplied by
+<p3t>PRIMER_DMSO_FACTOR</p3t>. The resulting value is given in <p3t>PRIMER_DMSO_CONC</p3t>.]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_FORMAMIDE_CONC</tagName>
+	<dataType>float</dataType>
+	<default>0.0</default>
+	<description>
+<![CDATA[<p>Equivalent parameter of <p3t>PRIMER_FORMAMIDE_CONC</p3t> for the internal oligo.</p>]]>
 	</description>
 </tag>
 <tag>
