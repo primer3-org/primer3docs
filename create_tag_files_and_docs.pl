@@ -1146,6 +1146,7 @@ sub cgi_get_footer {
 sub attach_to_p3p_json {
 	my $var = qq{"server_setting_files":[
 {"name":"qPCR","file":"qPCR.txt"},
+{"name":"Annealing Temp","file":"annealing_temp.txt"},
 {"name":"Probe","file":"probe.txt"},
 {"name":"P3P v.2.4.2 Def","file":"primer3plus_2_4_2_default_settings.txt"},
 {"name":"P3W v0.4.0 Def","file":"primer3web_v0_4_0_default_settings.txt"},
