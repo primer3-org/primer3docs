@@ -38,6 +38,10 @@
 
 
 # This script requires the XML-LibXML extentions by Christian Glahn from cpan
+# cpan App::cpanminus
+# sudo apt install cpanminus
+# cpanm XML::LibXML
+# reopen terminal
 
 use strict;
 use Cwd;
@@ -48,12 +52,12 @@ use File::Copy;
 #####################################################################
 # Modify here the version and years:                                #
 
-my $scriptP3Version = "2.5.0";
+my $scriptP3Version = "2.6.0";
 my $scriptP3ManualTit = "PRIMER3 RELEASE $scriptP3Version MANUAL";
-my $scriptP3PlusHelpTit = "PRIMER3PLUS RELEASE 3.0.0 HELP";
+my $scriptP3PlusHelpTit = "PRIMER3PLUS RELEASE 3.2.0 HELP";
 my $scriptP3WebHelpTit = "PRIMER3WEB RELEASE 4.1.0 MANUAL";
 
-my $scriptP3Years =  "1996-2019", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
+my $scriptP3Years =  "1996-2022", #"1996,1997,1998,1999,2000,2001,2004,2006,2007,2008,2009,2010,2011,2012,2013,2016";
 
 # Modify here the order of the textblocks or add new:
 my @textblocksOrder = (
@@ -1069,7 +1073,7 @@ sub cgi_get_header {
   <meta name="description" content="The Help section explains all Primer3 and Primer3Plus tags and provides information on the primer selection behind the scenes.">
   <title>Primer3Plus - Help</title>
   <link rel="stylesheet" href="static/css/primer3plus.css">
-  <link rel="canonical" href="https://primer3plus.com/primer3plusHelp.html" />
+  <link rel="canonical" href="https://www.primer3plus.com/primer3plusHelp.html" />
 </head>
 
 <body>
