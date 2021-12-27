@@ -322,7 +322,8 @@ objective function.</p>]]>
 	<description>
 <![CDATA[<p>The calculated fraction of primers bound to a template at the
 <p3t>PRIMER_ANNEALING_TEMP</p3t> in percent if the primer and template would be
-at equal concentration. See "GENERAL THOUGHTS ON PRIMER BINDING" for
+at equal concentration. See 
+<a href="#primerBinding">"GENERAL THOUGHTS ON PRIMER BINDING"</a> for
 more details.</p>]]>
 	</description>
 </tag>
