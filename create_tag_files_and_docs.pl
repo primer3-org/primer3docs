@@ -233,6 +233,7 @@ print"end processing\n";
 sub changeP3PSettings() {
 	my %upVal;
 	$upVal{'PRIMER_PRODUCT_SIZE_RANGE'} = '501-600 601-700 401-500 701-850 851-1000 1001-1500 1501-3000 3001-5000 401-500 301-400 201-300 101-200 5001-7000 7001-10000 10001-20000';
+	$upVal{'PRIMER_ANNEALING_TEMP'} = '52.0';
 	$upVal{'PRIMER_EXPLAIN_FLAG'} = '1';
 	$upVal{'PRIMER_FIRST_BASE_INDEX'} = '1';
         $upVal{'PRIMER_SECONDARY_STRUCTURE_ALIGNMENT'} = '1';
@@ -1146,9 +1147,10 @@ sub cgi_get_footer {
 sub attach_to_p3p_json {
 	my $var = qq{"server_setting_files":[
 {"name":"qPCR","file":"qPCR.txt"},
+{"name":"Cloning Primers","file":"cloning_primers.txt"},
 {"name":"Annealing Temp","file":"annealing_temp.txt"},
+{"name":"Secondary Structures","file":"secondary_structures.txt"},
 {"name":"Probe","file":"probe.txt"},
-{"name":"P3P v.3.1.0 Def","file":"primer3plus_3_1_0_default_settings.txt"},
 {"name":"P3P v.2.4.2 Def","file":"primer3plus_2_4_2_default_settings.txt"},
 {"name":"P3W v0.4.0 Def","file":"primer3web_v0_4_0_default_settings.txt"},
 {"name":"P3 v1.1.4 Def","file":"primer3_v1_1_4_default_settings.txt"}
