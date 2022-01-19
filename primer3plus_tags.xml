@@ -110,5 +110,46 @@ no debug information. "1" moderate debug information and "2"
 very verbouse developper debug information.</p>]]>
 	</description>
 </tag>
+<tag>
+	<tagName>P3P_GB_RETURN_PATH</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It contains the html return path.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_DB</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It contains the selected database.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_POSITION</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It contains the window psition.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_FILE</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It contains the UUID to get the BED
+file.</p>]]>
+	</description>
+</tag>
 
 </primer3Doc>
