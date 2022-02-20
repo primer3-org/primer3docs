@@ -1704,7 +1704,7 @@ and J Hutton. Biopolymers, 19:1315–1327, 1980).</p>]]>
 	<default>0.0</default>
 	<description>
 
-<![CDATA[<p>The concentration od DMSO in mol/l. The melting temperature
+<![CDATA[<p>The concentration of formamide in mol/l. The melting temperature
 of primers can be approximately corrected for formamide:<br>
 <br>
 Tm = Tm (without formamide) +(0.453 * PRIMER_[LEFT/INTERNAL/RIGHT]_4_GC_PERCENT / 100 - 2.88) * PRIMER_FORMAMIDE_CONC<br>
