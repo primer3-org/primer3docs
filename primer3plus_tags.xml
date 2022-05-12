@@ -137,7 +137,40 @@ UCSC Genome Browser. It contains the selected database.</p>]]>
 	<description>
 <![CDATA[<p>This parameter is used be UCSC Genome Browser.
 It is not user editable, hidden and used to link back to the
-UCSC Genome Browser. It contains the window psition.</p>]]>
+UCSC Genome Browser. It contains the window position.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_EXONS</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It lists the exons in the genome and 
+may be empty or not present.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_ORIENTATION</tagName>
+	<dataType>string</dataType>
+	<default>+</default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It gives the orientation of the ORF in
+the genome. It may be "+" or "-" or not present.</p>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>P3P_GB_RAW_SEQUENCE</tagName>
+	<dataType>string</dataType>
+	<default></default>
+	<description>
+<![CDATA[<p>This parameter is used be UCSC Genome Browser.
+It is not user editable, hidden and used to link back to the
+UCSC Genome Browser. It saves the unmodified sequence from UCSC 
+Genome Browser.</p>]]>
 	</description>
 </tag>
 <tag>
