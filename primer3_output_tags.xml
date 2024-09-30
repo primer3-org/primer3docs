@@ -267,9 +267,23 @@ primer, and n is its length.</p>]]>
 	<description>
 <![CDATA[<p>The actual sequence of the oligo. The sequence of left primer and
 internal oligo is presented 5' -> 3' on the same strand as the
-input <p3t>SEQUENCE_TEMPLATE</p3t> (which must be presented 5' -> 3').  The 
+input <p3t>SEQUENCE_TEMPLATE</p3t> (which must be presented 5' -> 3').  The
 sequence of the right primer is presented 5' -> 3' on the 
-opposite strand from the input <p3t>SEQUENCE_TEMPLATE</p3t>.</p>]]>
+opposite strand from the input <p3t>SEQUENCE_TEMPLATE</p3t>.</p>
+<p>If <p3t>PRIMER_INTERNAL_REV_COMP_G_RICH</p3t>=1 the PRIMER_INTERNAL_4_SEQUENCE
+might given as reverse complement of the sequence. If PRIMER_INTERNAL_4_SEQUENCE
+is reverse complemented, the optional tag 
+<p3t>PRIMER_INTERNAL_4_REVERSE_COMPLEMENTED</p3t>=1 is present.</p>]]>]]>
+	</description>
+</tag>
+<tag>
+	<tagName>PRIMER_INTERNAL_4_REVERSE_COMPLEMENTED</tagName>
+	<dataType>i</dataType>
+	<optional>Y</optional>
+	<description>
+<![CDATA[<p>The presence of this optional tag with value 1 indicates that
+<p3t>PRIMER_INTERNAL_4_SEQUENCE</p3t> is reverse complementary to the
+provided sequence.</p>]]>
 	</description>
 </tag>
 <tag>

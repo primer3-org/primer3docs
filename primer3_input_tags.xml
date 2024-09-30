@@ -656,6 +656,28 @@ pick a right primer.</p>]]>
 	</description>
 </tag>
 
+<tag>
+    <tagName>PRIMER_INTERNAL_REV_COMP_G_RICH</tagName>
+    <dataType>int</dataType>
+    <default>0</default>
+    <description>
+<![CDATA[<p>More Cs are preferred over Gs in probes. Setting
+PRIMER_INTERNAL_REV_COMP_G_RICH=1 will reverse complement the internal
+oligo if more Gs then Cs are in the sequence. An additional output
+tag PRIMER_INTERNAL_0_REVERSE_COMPLEMENTED=1 will only be present with
+these internal oligos.</p>]]>
+    </description>
+</tag>
+<tag>
+    <tagName>PRIMER_INTERNAL_NO_5_PRIME_G</tagName>
+    <dataType>int</dataType>
+    <default>0</default>
+    <description>
+<![CDATA[<p>Probes can be quenched if a G is on the 5' end. Setting
+PRIMER_INTERNAL_NO_5_PRIME_G=1 will force Primer3 to pick only internal
+oligos with no 5' G.</p>]]>
+    </description>
+</tag>
 
 <tag>
     <tagName>PRIMER_NUM_RETURN</tagName>
