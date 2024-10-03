@@ -2181,7 +2181,8 @@ or
                3' AGCGCTCCGGGTATCGGA 5'
 </pre>
 <p>The scoring system is as for the Maximum Complementarity
-argument. In the examples above the scores are 7.00 and 6.00
+argument. In the examples above the scores are 7.00
+(8bp bind 8x +1.0, 1bp not binding  1x -1.0 = 7.0) and 6.00
 respectively. Scores are non-negative, and a score of 0.00
 indicates that there is no reasonable 3'-anchored global
 alignment between two oligos.  In order to estimate 3'-anchored
