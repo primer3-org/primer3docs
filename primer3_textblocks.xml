@@ -530,8 +530,7 @@ this point. If primer pairs have to be selected, a
 
      + <p3t>PRIMER_PAIR_WT_LIBRARY_MISPRIMING</p3t> * <p3t>PRIMER_PAIR_4_LIBRARY_MISPRIMING</p3t>
 
-     + <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> *
-          <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t>
+  <i>+ <p3t>PRIMER_PAIR_WT_TEMPLATE_MISPRIMING</p3t> * <p3t>PRIMER_PAIR_4_TEMPLATE_MISPRIMING</p3t></i>
 
      If the thermodynamic approach is used then the part of <i>italic</i> in
      the above calculation is replaced by this:
