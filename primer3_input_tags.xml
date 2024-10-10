@@ -1427,6 +1427,13 @@ view of polymer, dumbbell and oligonucleotide DNA nearest-neighbor
 thermodynamics", Proc Natl Acad Sci 95:1460-65
 <link>http://dx.doi.org/10.1073/pnas.95.4.1460</link>].<br />
 <br />
+A value of 2 directs Primer3 to use the table of
+thermodynamic values and the method for melting temperature
+calculation suggested in the paper  [SantaLucia JR and Hicks (2004)
+"The thermodynamics of DNA Structuralmotifs",
+PAnnu. Rev. Biophys. Biomol. Struct. 2004. 33:415–40
+<link>http://dx.doi.org/10.1146/annurev.biophys.32.110601.141800</link>]
+<br />
 Use tag <p3t>PRIMER_SALT_CORRECTIONS</p3t>, to specify the salt correction
 method for melting temperature calculation.<br />
 <br />
@@ -1484,8 +1491,14 @@ Tm(C) = 323.704 - 273.15 = 50.554 C
 	<default>50.0</default>
 	<description>
 <![CDATA[<p>The millimolar (mM) concentration of monovalent salt cations (usually KCl) in the PCR.
-Primer3 uses this argument to calculate oligo and primer melting
-temperatures. 
+Primer3 uses this argument to calculate oligo and primer melting temperatures.<br />
+<br />
+[monovalent cations] = [Na+] + [K+] + [TRIS] / 2<br />
+<br />
+For the calculaion of the movovalent cations the millimolar (mM) concentration of the individual
+cations must be summed up. TRIS is usually used as a buffer, so only half of the concentration
+present as ion. Therefor, the mM concentration of TRIS should be divided by 2 before adding.<br />
+<br />
 Use tag <p3t>PRIMER_SALT_DIVALENT</p3t> and 
 <p3t>PRIMER_INTERNAL_SALT_DIVALENT</p3t> to specify the concentrations
 of divalent cations (in which case you also should also set tag <p3t>PRIMER_DNTP_CONC</p3t> to
