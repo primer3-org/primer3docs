@@ -2617,8 +2617,8 @@ do not overlap the 3'-end of primer.</p>]]>
 These output tags are intended to provide information on the number of
 oligos and primer pairs that Primer3 examined and counts of the number
 discarded for various reasons. Be aware that Primer3 stops evaluation
-of a oligo for performance reasons once it emerges that it will not
-be part of a valid primer pair (and the oligo stays labled as OK).  If
+of an oligo for performance reasons once it emerges that it will not
+be part of a valid primer pair (and the oligo stays labeled as OK).  If
 -format_output is set similar information is produced in the
 user-oriented output.<br />
 <br />
