@@ -2607,17 +2607,33 @@ do not overlap the 3'-end of primer.</p>]]>
 
 <tag>
 	<tagName>PRIMER_EXPLAIN_FLAG</tagName>
-	<dataType>boolean</dataType>
+	<dataType>int</dataType>
 	<default>0</default>
 	<description>
-<![CDATA[<p>If this flag is 1 (non-0), produce <p3t>PRIMER_LEFT_EXPLAIN</p3t>,
+<![CDATA[<p>If this flag is 1 or 2, produce <p3t>PRIMER_LEFT_EXPLAIN</p3t>,
 <p3t>PRIMER_RIGHT_EXPLAIN</p3t>, <p3t>PRIMER_INTERNAL_EXPLAIN</p3t> and/or
-<p3t>PRIMER_PAIR_EXPLAIN</p3t> output
-tags as appropriate.  
+<p3t>PRIMER_PAIR_EXPLAIN</p3t> output tags as appropriate.<br />
+<br />
 These output tags are intended to provide information on the number of
-oligos and primer pairs that Primer3 examined and counts of
-the number discarded for various reasons.  If -format_output is
-set similar information is produced in the user-oriented output.</p>]]>
+oligos and primer pairs that Primer3 examined and counts of the number
+discarded for various reasons. Be aware that Primer3 stops evaluation
+of a oligo for performance reasons once it emerges that it will not
+be part of a valid primer pair (and the oligo stays labled as OK).  If
+-format_output is set similar information is produced in the
+user-oriented output.<br />
+<br />
+0 produces no statistics.<br />
+<br />
+1 counts only the checks that Primer3 performed.  For speed, Primer3
+checks self complementarity and hairpins only for oligos that the
+pair search reaches, so oligos that would fail these checks can be
+counted as ok.<br />
+<br />
+2 also performs the self complementarity and hairpin checks on the
+remaining oligos, so the statistics are complete.  The selected
+primers do not change, but the run takes about 30% longer.  Library
+and template mispriming are still checked only for oligos that the
+pair search reaches.</p>]]>
 	</description>
 </tag>
 
