@@ -583,7 +583,7 @@ right primer.</p>]]>
 <tag>
         <tagName>PRIMER_PAIR_4_COMPL_END_STUCT</tagName>
         <dataType>s</dataType>
-        <optional>N</optional>
+        <optional>Y</optional>
         <description>
 <![CDATA[<p>A string representation of the calculated secondary 
 structure. The tag is only present if a secondary structure could 
@@ -627,6 +627,23 @@ input tags have defined values.</p>]]>
      <![CDATA[<p>These output tags apply to mispriming within the template sequence and the calculation
 method is based on thermodynamical approach. This often arises, for example,
 in genes with repeated exons.</p>]]>
+     </description>
+</tag>
+<tag>
+     <tagName>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_STUCT</tagName>
+     <tagName>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_STUCT</tagName>
+     <dataType>s</dataType>
+     <optional>Y</optional>
+     <description>
+     <![CDATA[<p>A string representation of the binding to the template
+that gives <p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_TH</p3t>. Only the part
+of the template around the binding site is shown. There is no structure
+for the pair, because its value is the sum of two separate bindings, one
+of each primer.<br />
+The tags are only present if <p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=1,
+<p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t>=1 and the melting
+temperature is above 0. See <p3t>PRIMER_SECONDARY_STRUCTURE_ALIGNMENT</p3t> for examples and
+notes on the necessary reformating of the string.</p>]]>
      </description>
 </tag>
 <tag>

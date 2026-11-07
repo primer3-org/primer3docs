@@ -1823,6 +1823,10 @@ The tags <p3t>PRIMER_LEFT_4_SELF_ANY_STUCT</p3t>, <p3t>PRIMER_LEFT_4_SELF_END_ST
 primers), <p3t>PRIMER_PAIR_4_COMPL_ANY_STUCT</p3t> and <p3t>PRIMER_PAIR_4_COMPL_END_STUCT</p3t> 
 are only present if a secondary structure could be calculated.<br />
 <br />
+With <p3t>PRIMER_THERMODYNAMIC_TEMPLATE_ALIGNMENT</p3t>=1,
+<p3t>PRIMER_LEFT_4_TEMPLATE_MISPRIMING_STUCT</p3t> and
+<p3t>PRIMER_RIGHT_4_TEMPLATE_MISPRIMING_STUCT</p3t> show the binding to the template.<br />
+<br />
 As the string has to fit on one line, the newlines are indicated by the two characters 
 '\' and 'n' and have to be replaced (regex: /\\n/\n/g). Hairpins use unicode characters
 for the turn. For html they have to be replaced (regex: /U\+25(\d\d)/&amp;#x25$1;/g).
